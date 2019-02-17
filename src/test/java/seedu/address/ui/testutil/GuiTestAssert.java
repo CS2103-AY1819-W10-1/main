@@ -24,6 +24,9 @@ public class GuiTestAssert {
         assertEquals(expectedCard.getName(), actualCard.getName());
         assertEquals(expectedCard.getPhone(), actualCard.getPhone());
         assertEquals(expectedCard.getTags(), actualCard.getTags());
+        expectedCard.getTags().forEach(tag ->
+                assertEquals(expectedCard.getTagStyleClass(tag), actualCard.getTagStyleClass(tag))
+        );
     }
 
     /**
