@@ -16,7 +16,7 @@ public class ResultDisplayTest extends GuiUnitTest {
 
     private ArrayList<String> defaultStyleOfResultDisplay;
     private ArrayList<String> errorStyleOfResultDisplay;
-    
+
     @Before
     public void setUp() {
         resultDisplay = new ResultDisplay();
@@ -37,7 +37,7 @@ public class ResultDisplayTest extends GuiUnitTest {
         guiRobot.pauseForHuman();
         assertEquals("", resultDisplayHandle.getText());
     }
-    
+
     @Test
     public void emptyFeedback_emptyDisplay() {
         guiRobot.interact(() -> resultDisplay.setFeedbackSuccessToUser(""));
@@ -52,7 +52,7 @@ public class ResultDisplayTest extends GuiUnitTest {
         assertEquals("Dummy feedback to user", resultDisplayHandle.getText());
         assertStyleForSuccessfulFeedback(resultDisplayHandle);
     }
-    
+
     @Test
     public void errorFeedback() {
         guiRobot.interact(() -> resultDisplay.setFeedbackErrorToUser("Dummy feedback to user"));
@@ -60,7 +60,7 @@ public class ResultDisplayTest extends GuiUnitTest {
         assertEquals("Dummy feedback to user", resultDisplayHandle.getText());
         assertStyleForErrorFeedback(resultDisplayHandle);
     }
-    
+
     @Test
     public void consecutiveFeedBack() {
         // new error result received
@@ -68,13 +68,13 @@ public class ResultDisplayTest extends GuiUnitTest {
         guiRobot.pauseForHuman();
         assertEquals("Dummy feedback to user", resultDisplayHandle.getText());
         assertStyleForErrorFeedback(resultDisplayHandle);
-        
+
         // new error result received
         guiRobot.interact(() -> resultDisplay.setFeedbackErrorToUser("Dummy feedback to user"));
         guiRobot.pauseForHuman();
         assertEquals("Dummy feedback to user", resultDisplayHandle.getText());
         assertStyleForErrorFeedback(resultDisplayHandle);
-        
+
         // new success result received
         guiRobot.interact(() -> resultDisplay.setFeedbackSuccessToUser("Dummy feedback to user"));
         guiRobot.pauseForHuman();
@@ -93,7 +93,7 @@ public class ResultDisplayTest extends GuiUnitTest {
         assertEquals("Dummy feedback to user", resultDisplayHandle.getText());
         assertStyleForErrorFeedback(resultDisplayHandle);
     }
-    
+
     private void assertStyleForSuccessfulFeedback(ResultDisplayHandle resultDisplayHandle) {
         assertEquals(defaultStyleOfResultDisplay, resultDisplayHandle.getStyleClass());
     }
