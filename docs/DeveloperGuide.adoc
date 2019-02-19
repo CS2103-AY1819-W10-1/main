@@ -1,4 +1,4 @@
-= AddressBook Level 4 - Developer Guide
+= README - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -13,9 +13,9 @@ ifdef::env-github[]
 :warning-caption: :warning:
 :experimental:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level4/tree/master
+:repoURL: https://github.com/CS2103-AY1819S2-W10-1/main/tree/master
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `CS2103-AY1819S2-W10-1`      Since: `Jan 2019`      Licence: `MIT`
 
 == Setting up
 
@@ -811,13 +811,23 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 
 *Target user profile*:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of links
+* is a heavy consumer of web content who follows many websites
+* wants to download content for offline browsing because of irregular Internet access
 * prefer desktop apps over other types
 * can type fast
 * prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Target user personas*:
+
+* Sylvia is a product manager in a Silicon Valley technology startup who often has to fly around the world for business. As an avid reader who wants to improve her work, she regularly keeps up to date with business and technology websites. With so much new content from different places everyday, she wishes she could collect them all together and focus on reading without distractions like advertisements. To be more productive on those long-haul flights, she would also like to download content to read offline.
+* Sundaresh is a freelance app developer in Bangalore who consumes a lot of information on the Internet for work. The web browser bookmark manager just isn’t powerful or flexible enough for him to manage the huge number of links, and doesn’t help him follow his favourite software development blogs either. He likes doing work outside of home, but reliable free Internet access is hard to find and he doesn’t want to pay sky-high prices for mobile Internet, so he wishes he could easily download content for offline reading before leaving home.
+* Joshua is a businessman in a fast-paced job environment. Always on the move, he finds himself having intermittent free time in his day traveling where he has no Internet connection. He wishes he has an offline news reader that automatically downloads news, hassle-free, from his favorite sources so he can read them on-the-go, saving his mobile data.
+
+*Value proposition*:
+
+Discover, curate and read more content you care about in less time (than a typical mouse/GUI driven app)
 
 [appendix]
 == User Stories
@@ -826,36 +836,156 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
+
 |Priority |As a ... |I want to ... |So that I can...
-|`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |add a new person |
+|`* * *`
+|new user
+|see usage instructions
+|refer to instructions when I forget how to use the App
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`*`
+|user
+|search the web for articles like top headlines
+|easily and conveniently find content to save
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* * *`
+|user
+|add a link with title, preview image and other helpful data automatically extracted and article content downloaded
+|save it for later reference and view it later when I go offline
 
-|`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
+|`*`
+|offline user
+|add a link with helpful data to be extracted and article content to be downloaded when connected to the Internet
+|save it for later reference
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`* *`
+|heavy user
+|add tags when adding a link
+|organise my links
+
+|`* *`
+|heavy user
+|add a note when adding a link
+|remember why I saved the link when I view it later
+
+|`* * *`
+|user
+|list all previously saved links
+|see what I’ve saved
+
+|`*`
+|user
+|see roughly how long it takes to read an article
+|choose what to read within my time contraints
+
+|`* * *`
+|user
+|find a link containing keyword(s)
+|locate links I want without having to go through the entire list
+
+|`* *`
+|heavy user
+|sort and filter links by read status, tags and other fields
+|locate specific links in a huge list of links easily (look for a needle in a haystack easily)
+
+|`* *`
+|user
+|edit a link
+|write a note about it or reorganise it
+
+|`* * *`
+|user
+|delete a link
+|remove entries that I no longer need
+
+|`* *`
+|heavy user
+|re-download content from previously saved links
+|get the latest revision of content from links I added a long time ago
+
+|`* *`
+|heavy user
+|mark links as read or unread
+|better manage a huge list of links
+
+|`* *`
+|heavy user
+|archive old links and delete their downloaded content
+|keep old links for reference but save disk space
+
+|`* * *`
+|user
+|view a saved link in a browser
+|read the content of links I’ve saved
+
+|`* *`
+|user
+|view a saved link in a clean reading mode
+|focus on content with no distractions
+
+|`*`
+|heavy user
+|change the style of reading mode
+|consume a lot of content using a style which works best for me to reduce sensory overload
+
+|`* *`
+|user
+|follow a feed
+|keep track of content that matters to me
+
+|`* *`
+|user
+|list feeds I’m following
+|see what content I’m keeping track of
+
+|`* *`
+|user
+|unfollow a feed
+|stop keeping track of content that no longer matters to me
+
+|`*`
+|heavy user
+|edit a feed
+|update outdated details like feed URL and name
+
+|`* *`
+|user
+|update links from feeds
+|get the latest content from the feeds I’m following
+
+|`*`
+|new user
+|search online for feeds to follow
+|easily and conveniently find content to keep track of
+
+|`*`
+|heavy user
+|import/export data and settings
+|transfer my content to another computer or another app
+
+|`*`
+|heavy user
+|create command aliases/macros
+|manage things even faster
+
 |=======================================================================
-
 _{More to be added}_
 
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `Manager` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Delete link
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  Actor requests to list links
+2.  System shows a list of links
+3.  Actor requests to delete a specific link in the list
+4.  System deletes the link
 +
 Use case ends.
 
@@ -869,9 +999,112 @@ Use case ends.
 * 3a. The given index is invalid.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 3a1. System shows an error message.
 +
 Use case resumes at step 2.
+
+[discrete]
+=== Use case: Browsing feed
+
+*MSS*
+
+1. Actor requests list of recommended feeds.
+2. System shows a list of feeds in the list view.
+3. Actor requests to view a particular feed of their choice.
+4. System fetches the feed and displays the list of links obtained in the list view.
+5. Actor requests to view an link of their choice.
+6. System displays the linked article in the reader view.
+7. Actor requests to add another link of their choice to the reading list.
+8. System saves the link to the reading list and downloads the article for future offline viewing, and displays a success status message.
++
+Steps 5-8 repeat for as long as Actor wants to continue browsing.
+9. Actor may request to subscribe to the feed.
+10. System adds the feed to the subscriptions list.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* [3,5,7]a. The given index is invalid.
+[none]
+** [3,5,7]a1. System shows an error status message.
++
+Use case resumes from corresponding step.
+* [3,5]a. System does not have internet access (Actor is offline)
+[none]
+** [3,5]a1. System shows an error status message.
++
+Use case ends.
+* 7a. The given link has already been added to the reading list.
+[none]
+** 7a1. System shows an info status message that the link has already been added before.
++
+Use case resumes from step 4.
+
+[discrete]
+=== Use case: Browsing articles
+
+*MSS*
+
+1. Actor requests to view a particular link.
+2. System displays the linked article in the reader view.
+3. Actor requests to view list of links found in the article.
+4. System displays the links in the list view.
+5. Actor requests to view a particular link in the list view.
+6. System displays the linked article in the reader view.
++
+Steps 5-6 repeat for as long as Actor wants to browse articles.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 3a. Actor requests to add a particular link found in article to the reading list.
+[none]
+** 3a1. System saves the link to the reading list and downloads the article for future offline viewing, and displays a success status message.
++
+Use case resumes from step 5.
+* [1,5]a. Actor may be offline if content has been downloaded for that particular link (i.e. if it is in the reading list).
+[none]
+** [1,5]a1. System fetches the article from local storage rather than from the Internet.
++
+Use case resumes from step [2,6].
+
+[discrete]
+=== Use case: Organising links in reading list
+
+*MSS*
+
+Steps below can be performed in any order the user wishes:
+
+A. Actor requests to update reading list with new articles in subscribed feeds.
+System fetches each subscribed feed, adding new articles to the reading list.
+
+B. Actor requests to view reading list.
+System shows the links in the reading list in the list view.
+
+C. Actor requests to view archive list.
+System shows the links in the archive list in the list view.
+
+D. Actor requests to filter the set of links by a criterion of their choice.
+System updates the list view where the links are filtered by the given criterion.
+
+E. Actor requests to sort the set of links by a criterion of their choice.
+System updates the list view where links are sorted by the given criterion.
+
+F. Actor requests to mark a set of links of their choice as read.
+System sets the read status for the given links as read, and updates the list view to reflect the change.
+
+G. Actor requests to add or remove tags for a set of links of their choice.
+System adds or removes the given tags from the links specified, and updates the list view to reflect the change.
+
+H. Actor requests to archive a set of links of their choice.
+System removes the links from the reading list and adds them to the archive list, purges downloaded content for those links, and updates the list view to reflect the change.
+
+I. Actor requests to unarchive a set of links of their choice.
+System removes the links from the archive list and adds them to the reading list, ensures content is downloaded for those links, and updates the list view to reflect the change.
 
 _{More to be added}_
 
@@ -881,6 +1114,8 @@ _{More to be added}_
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `9` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  A heavy user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  A user should find it comfortable to read articles on the reader view. If the default is not comfortable, the user should be able to style the view with custom CSS styles such that it becomes comfortable.
 
 _{More to be added}_
 
