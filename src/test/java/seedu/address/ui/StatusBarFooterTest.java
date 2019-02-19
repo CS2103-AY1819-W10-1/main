@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
+import static seedu.address.ui.StatusBarFooter.TARGET_COUNT_STATUS;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -55,21 +56,26 @@ public class StatusBarFooterTest extends GuiUnitTest {
     @Test
     public void display() {
         // initial state
-        assertStatusBarContent(RELATIVE_PATH.resolve(STUB_SAVE_LOCATION).toString(), SYNC_STATUS_INITIAL);
+        int initialTargetCount = addressBook.getPersonList().size();
+        assertStatusBarContent(RELATIVE_PATH.resolve(STUB_SAVE_LOCATION).toString(), SYNC_STATUS_INITIAL,
+                String.format(TARGET_COUNT_STATUS, initialTargetCount));
 
         // after address book is updated
         guiRobot.interact(() -> addressBook.addPerson(ALICE));
         assertStatusBarContent(RELATIVE_PATH.resolve(STUB_SAVE_LOCATION).toString(),
-                String.format(SYNC_STATUS_UPDATED, new Date(injectedClock.millis()).toString()));
+                String.format(SYNC_STATUS_UPDATED, new Date(injectedClock.millis()).toString()),
+                String.format(TARGET_COUNT_STATUS, initialTargetCount + 1));
     }
 
     /**
      * Asserts that the save location matches that of {@code expectedSaveLocation}, and the
      * sync status matches that of {@code expectedSyncStatus}.
      */
-    private void assertStatusBarContent(String expectedSaveLocation, String expectedSyncStatus) {
+    private void assertStatusBarContent(String expectedSaveLocation, String expectedSyncStatus,
+                                        String expectedTargetCountStatus) {
         assertEquals(expectedSaveLocation, statusBarFooterHandle.getSaveLocation());
         assertEquals(expectedSyncStatus, statusBarFooterHandle.getSyncStatus());
+        assertEquals(expectedTargetCountStatus, statusBarFooterHandle.getTargetCount());
         guiRobot.pauseForHuman();
     }
 
