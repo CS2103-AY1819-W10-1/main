@@ -57,7 +57,7 @@ public abstract class AddressBookSystemTest {
                                                                                    "text-area",
                                                                                    "result-display");
     private static final List<String> RESULT_DISPLAY_ERROR_STYLE =
-            Arrays.asList("text-input", "text-field", ResultDisplay.ERROR_STYLE_CLASS);
+            Arrays.asList("text-input", "text-area", "result-display", ResultDisplay.ERROR_STYLE_CLASS);
 
     private MainWindowHandle mainWindowHandle;
     private TestApp testApp;
