@@ -77,6 +77,13 @@ public class LogicManagerTest {
     }
 
     @Test
+    public void execute_validAliasCommand_success() {
+        String listCommand = ListCommand.COMMAND_ALIAS;
+        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        assertHistoryCorrect(listCommand);
+    }
+
+    @Test
     public void execute_storageThrowsIoException_throwsCommandException() throws Exception {
         // Setup LogicManager with JsonAddressBookIoExceptionThrowingStub
         JsonAddressBookStorage addressBookStorage =

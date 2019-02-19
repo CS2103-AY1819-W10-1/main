@@ -343,10 +343,103 @@
 }
 
 #tags .label {
-    -fx-text-fill: white;
-    -fx-background-color: #3e7b91;
     -fx-padding: 1 3 1 3;
     -fx-border-radius: 2;
     -fx-background-radius: 2;
     -fx-font-size: 11;
+}
+
+#tags .red {
+    -fx-text-fill: white;
+    -fx-background-color: #f44336;
+}
+
+#tags .pink {
+    -fx-text-fill: white;
+    -fx-background-color: #e91e63;
+}
+
+#tags .purple {
+    -fx-text-fill: white;
+    -fx-background-color: #9c27b0;
+}
+
+#tags .deepPurple {
+    -fx-text-fill: white;
+    -fx-background-color: #673ab7;
+}
+
+#tags .indigo {
+    -fx-text-fill: white;
+    -fx-background-color: #3f51b5;
+}
+
+#tags .blue {
+    -fx-text-fill: white;
+    -fx-background-color: #1e88e5;
+}
+
+#tags .lightBlue {
+    -fx-text-fill: black;
+    -fx-background-color: #03a9f4;
+}
+
+#tags .cyan {
+    -fx-text-fill: black;
+    -fx-background-color: #00bcd4;
+}
+
+#tags .teal {
+    -fx-text-fill: white;
+    -fx-background-color: #009688;
+}
+
+#tags .green {
+    -fx-text-fill: white;
+    -fx-background-color: #43a047;
+}
+
+#tags .lightGreen {
+    -fx-text-fill: black;
+    -fx-background-color: #8bc34a;
+}
+
+#tags .lime {
+    -fx-text-fill: black;
+    -fx-background-color: #cddc39;
+}
+
+#tags .yellow {
+    -fx-text-fill: black;
+    -fx-background-color: #ffeB3b;
+}
+
+#tags .amber {
+    -fx-text-fill: black;
+    -fx-background-color: #ffc107;
+}
+
+#tags .orange {
+    -fx-text-fill: black;
+    -fx-background-color: #ff9800;
+}
+
+#tags .deepOrange {
+    -fx-text-fill: white;
+    -fx-background-color: #f4511e;
+}
+
+#tags .brown {
+    -fx-text-fill: white;
+    -fx-background-color: #795548;
+}
+
+#tags .gray {
+    -fx-text-fill: black;
+    -fx-background-color: #9e9e9e;
+}
+
+#tags .blueGray {
+    -fx-text-fill: white;
+    -fx-background-color: #607d8b;
 }
