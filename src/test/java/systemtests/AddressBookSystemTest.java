@@ -53,7 +53,9 @@ public abstract class AddressBookSystemTest {
     private static final List<String> COMMAND_BOX_ERROR_STYLE =
             Arrays.asList("text-input", "text-field", CommandBox.ERROR_STYLE_CLASS);
 
-    private static final List<String> RESULT_DISPLAY_DEFAULT_STYLE = Arrays.asList("text-input", "text-area", "result-display");
+    private static final List<String> RESULT_DISPLAY_DEFAULT_STYLE = Arrays.asList("text-input",
+                                                                                   "text-area",
+                                                                                   "result-display");
     private static final List<String> RESULT_DISPLAY_ERROR_STYLE =
             Arrays.asList("text-input", "text-field", ResultDisplay.ERROR_STYLE_CLASS);
 
