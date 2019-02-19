@@ -5,52 +5,43 @@
 :stylesDir: stylesheets
 
 AddressBook - Level 4 was developed by the https://se-edu.github.io/docs/Team.html[se-edu] team. +
-_{The dummy content given below serves as a placeholder to be used by future forks of the project.}_ +
-{empty} +
+
 We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore].
 
 == Project Team
 
-=== John Doe
-image::damithc.jpg[width="150", align="left"]
-{empty}[http://www.comp.nus.edu.sg/~damithch[homepage]] [https://github.com/damithc[github]] [<<johndoe#, portfolio>>]
+=== Rayner Lim
+image::rlrh.png[width="150", align="left"]
+{empty}[https://github.com/rlrh[github]]
 
-Role: Project Advisor
-
-'''
-
-=== John Roe
-image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
-
-Role: Team Lead +
-Responsibilities: UI
+Role: Team Lead, Developer +
+Responsibilities:
 
 '''
 
-=== Johnny Doe
-image::yijinl.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+=== Thomas Tan
+image::thomastanck.png[width="150", align="left"]
+{empty}[https://github.com/thomastanck[github]]
 
-Role: Developer +
-Responsibilities: Data
-
-'''
-
-=== Johnny Roe
-image::m133225.jpg[width="150", align="left"]
-{empty}[http://github.com/m133225[github]] [<<johndoe#, portfolio>>]
-
-Role: Developer +
-Responsibilities: Dev Ops + Threading
+Role: Software Architect, Developer +
+Responsibilities:
 
 '''
 
-=== Benson Meier
-image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+=== Qi Ji
+image::qjqqyy.png[width="150", align="left"]
+{empty}[https://github.com/qjqqyy[github]]
 
-Role: Developer +
-Responsibilities: UI
+Role: Quality Assurance Lead, Developer +
+Responsibilities:
+
+'''
+
+=== Jonathan Cheng
+image::epicfailname.png[width="150", align="left"]
+{empty}[https://github.com/epicfailname[github]]
+
+Role: Technical Lead, Developer +
+Responsibilities:
 
 '''

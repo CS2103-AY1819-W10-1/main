@@ -63,6 +63,7 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         executeCommand(SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals("", getCommandBox().getInput());
         assertCommandBoxShowsDefaultStyle();
+        assertResultDisplayShowsDefaultStyle();
         assertNotEquals(HelpCommand.SHOWING_HELP_MESSAGE, getResultDisplay().getText());
         assertNotEquals(BrowserPanel.DEFAULT_PAGE, getBrowserPanel().getLoadedUrl());
         assertListMatching(getPersonListPanel(), getModel().getFilteredPersonList());
