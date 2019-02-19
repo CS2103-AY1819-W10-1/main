@@ -45,6 +45,7 @@ public class ResultDisplayTest extends GuiUnitTest {
         assertEquals("", resultDisplayHandle.getText());
         assertEquals(defaultStyleOfResultDisplay, resultDisplayHandle.getStyleClass());
     }
+
     @Test
     public void successfulFeedback() {
         guiRobot.interact(() -> resultDisplay.setFeedbackSuccessToUser("Dummy feedback to user"));
