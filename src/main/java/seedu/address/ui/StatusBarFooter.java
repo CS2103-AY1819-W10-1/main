@@ -58,7 +58,6 @@ public class StatusBarFooter extends UiPart<Region> {
         targetCountStatus.setText(String.format(TARGET_COUNT_STATUS, change.getList().size()));
     }
 
-
     /**
      * Sets the clock used to determine the current time.
      */
