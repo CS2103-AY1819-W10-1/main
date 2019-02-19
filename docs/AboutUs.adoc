@@ -23,7 +23,7 @@ Responsibilities:
 
 === Qi Ji
 image::qjqqyy.png[width="150", align="left"]
-{empty}[http://github.com/qjqqy[github]]
+{empty}[http://github.com/qjqqyy[github]]
 
 Role: Quality Assurance Lead, Developer +
 Responsibilities:
