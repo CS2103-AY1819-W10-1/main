@@ -978,14 +978,14 @@ _{More to be added}_
 (For all use cases below, the *System* is the `Manager` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Delete link
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  Actor requests to list links
+2.  System shows a list of links
+3.  Actor requests to delete a specific link in the list
+4.  System deletes the link
 +
 Use case ends.
 
@@ -999,10 +999,11 @@ Use case ends.
 * 3a. The given index is invalid.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 3a1. System shows an error message.
 +
 Use case resumes at step 2.
 
+[discrete]
 == Use case: Browsing feed
 
 *MSS*
@@ -1041,6 +1042,7 @@ Use case ends.
 +
 Use case resumes from step 4.
 
+[discrete]
 == Use case: Browsing articles
 
 *MSS*
@@ -1070,6 +1072,7 @@ Use case resumes from step 5.
 +
 Use case resumes from step [2,6].
 
+[discrete]
 == Use case: Organising links in reading list
 
 *MSS*
