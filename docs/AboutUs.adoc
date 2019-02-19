@@ -5,8 +5,7 @@
 :stylesDir: stylesheets
 
 AddressBook - Level 4 was developed by the https://se-edu.github.io/docs/Team.html[se-edu] team. +
-_{The dummy content given below serves as a placeholder to be used by future forks of the project.}_ +
-{empty} +
+
 We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore].
 
 == Project Team
@@ -15,7 +14,7 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 === Thomas Tan
 image::thomastanck.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/thomastanck[github]]
 
 Role: Software Architect, Developer +
 Responsibilities:
@@ -24,7 +23,7 @@ Responsibilities:
 
 === Qi Ji
 image::qjqqyy.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/qjqqy[github]]
 
 Role: Quality Assurance Lead, Developer +
 Responsibilities:
@@ -33,7 +32,7 @@ Responsibilities:
 
 === Jonathan Cheng
 image::epicfailname.jpg[width="150", align="left"]
-{empty}[http://github.com/m133225[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/epicfailname[github]]
 
 Role: Technical Lead, Developer +
 Responsibilities:
@@ -42,7 +41,7 @@ Responsibilities:
 
 === Rayner Lim
 image::rlrh.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/rlrh[github]]
 
 Role: Team Lead, Developer +
 Responsibilities:
