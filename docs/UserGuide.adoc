@@ -18,8 +18,8 @@ By: `W10-1`      Since: `Feb 2019`      Licence: `MIT`
 
 == Introduction
 README helps you discover, curate and read more content you care about in less time.
-It is a combined bookmark manager and feed reader with features like offline capability, distraction-free reading view, powerful organization options and more.
-It is designed for heavy content consumers with irregular internet access, whether because of having to fly often or internet access being too expensive.
+It is an integrated bookmark manager and feed reader desktop application for saving web pages and feeds to read later on your personal computer.
+You’ll love README if you’re a heavy consumer of web content but don’t have regular internet access, whether because you often head off on long flights or you love working in cafes, and refuse to pay exorbitant prices for Internet access anywhere.
 README is for those who *prefer to use a desktop app for managing links*.
 More importantly, README is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, README can get your link management tasks done faster than traditional GUI apps.
@@ -154,7 +154,7 @@ Examples:
 - `searchfeeds` Shows some starter feeds you can add
 - `searchfeeds Tech Business` Searches for `Tech` or `Business` feeds
 
-=== Showing reading statistics: `stats`
+=== Showing reading statistics: `stats` `[coming in v2.0]`
 
 Shows helpful and fun statistics about your reading progress and habits.
 
@@ -310,6 +310,20 @@ Examples:
 Clears all saved links from the manager.
 
 Format: `clear`
+
+=== List links in reader: `readerlist` `[coming in v2.0]`
+
+Lists all the hyperlinks in the reader.
+
+Format: `readerlist`
+
+Examples:
+
+- `readerlist` Lists all the hyperlinks in the reader.
+
+=== Share link: `share` `[coming in v2.0]`
+
+Shares link through connected social media
 
 == In `search` context (displays link list)
 
@@ -494,6 +508,16 @@ Examples:
 
 - `select 2` Selects the 2nd feed in the manager and displays its links
 
+=== Show recommended feeds: `recommend` `[coming in v2.0]`
+
+Based on user's current preferences, display a list of recommended feeds.
+
+Format: `recommend`
+
+Examples:
+
+- `recommend` A list of recommended feeds will be displayed, similar to searching a feed.
+
 == In `archives` context (displays link list)
 
 === Unarchiving links: `unarchive`
@@ -537,7 +561,7 @@ Format: `clear`
 == Non-contextual commands
 These commands can be called from any context.
 
-=== Custom user command macro: `macro`
+=== Custom user command macro: `macro` `[coming in v2.0]`
 Creates macros that compose commands together.
 
 Format: `macro MACRO_NAME NUM_ARGS command1; command2; ... commandN`
