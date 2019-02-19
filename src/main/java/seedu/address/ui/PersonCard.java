@@ -81,7 +81,11 @@ public class PersonCard extends UiPart<Region> {
      * Returns the color style for {@code tagName}'s label.
      */
     private String getTagColorStyleFor(String tagName) {
-        // use hash code of tag name to generate random color, so color remains consistent between different runs
+        /* Use hash code of tag name to generate random color, so color remains consistent between different runs.
+         * Java only guarantees the hashCode method must consistently return the same integer whenever it is invoked on
+         * the same object more than once during an execution of a Java application, but for practical purposes it
+         * remains consistent from one execution of an application to another execution of the same application.
+         */
         return TAG_COLOR_STYLES[Math.abs(tagName.hashCode()) % TAG_COLOR_STYLES.length];
     }
 

@@ -41,7 +41,7 @@ public class GuiTestAssert {
         assertEquals(expectedPerson.getPhone().value, actualCard.getPhone());
         assertEquals(expectedPerson.getEmail().value, actualCard.getEmail());
         assertEquals(expectedPerson.getAddress().value, actualCard.getAddress());
-        assertTagsEqual(expectedPerson, actualCard);
+        assertTagsAndTagColorStylesEqual(expectedPerson, actualCard);
     }
 
     /**
@@ -118,17 +118,18 @@ public class GuiTestAssert {
      * Asserts that the tags in {@code actualCard} matches all the tags in {@code expectedPerson} with the correct
      * color.
      */
-    private static void assertTagsEqual(Person expectedPerson, PersonCardHandle actualCard) {
+    private static void assertTagsAndTagColorStylesEqual(Person expectedPerson, PersonCardHandle actualCard) {
 
+        // assert tags equal
         List<String> expectedTags = expectedPerson
                 .getTags()
                 .stream()
                 .map(tag -> tag.tagName)
                 .collect(Collectors.toList());
         List<String> actualTags = actualCard.getTags();
-
         assertEquals(expectedTags, actualTags);
 
+        // assert tag color styles correct
         expectedTags.forEach(tag -> {
             List<String> expectedTagStyleClasses = Arrays.asList(LABEL_BASE_STYLE, getTagColorStyleFor(tag));
             List<String> actualTagStyleClasses = actualCard.getTagStyleClasses(tag);
