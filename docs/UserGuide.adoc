@@ -321,17 +321,6 @@ Examples:
 
 - `readerlist` Lists all the hyperlinks in the reader.
 
-=== Add reader links: `readeradd` `[coming in v2.0]`
-
-Adds a hyperlink displayed in the reader.
-
-Format: `readeradd INDEX`
-
-Examples:
-
-- `readerlist` Lists all the hyperlinks in the reader. +
-`readeradd 3` Adds the 3rd hyperlink shown in the reader.
-
 === Share link: `share` `[coming in v2.0]`
 
 Shares link through connected social media
