@@ -10,11 +10,18 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 == Project Team
 
+=== Rayner Lim
+image::rlrh.png[width="150", align="left"]
+{empty}[https://github.com/rlrh[github]]
+
+Role: Team Lead, Developer +
+Responsibilities:
+
 '''
 
 === Thomas Tan
 image::thomastanck.png[width="150", align="left"]
-{empty}[http://github.com/thomastanck[github]]
+{empty}[https://github.com/thomastanck[github]]
 
 Role: Software Architect, Developer +
 Responsibilities:
@@ -23,7 +30,7 @@ Responsibilities:
 
 === Qi Ji
 image::qjqqyy.png[width="150", align="left"]
-{empty}[http://github.com/qjqqyy[github]]
+{empty}[https://github.com/qjqqyy[github]]
 
 Role: Quality Assurance Lead, Developer +
 Responsibilities:
@@ -32,18 +39,9 @@ Responsibilities:
 
 === Jonathan Cheng
 image::epicfailname.png[width="150", align="left"]
-{empty}[http://github.com/epicfailname[github]]
+{empty}[https://github.com/epicfailname[github]]
 
 Role: Technical Lead, Developer +
-Responsibilities:
-
-'''
-
-=== Rayner Lim
-image::rlrh.png[width="150", align="left"]
-{empty}[http://github.com/rlrh[github]]
-
-Role: Team Lead, Developer +
 Responsibilities:
 
 '''
