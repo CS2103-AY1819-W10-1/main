@@ -168,6 +168,7 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
         }
 
         assertCommandBoxShowsDefaultStyle();
+        assertResultDisplayShowsDefaultStyle();
         assertStatusBarUnchangedExceptSyncStatus();
     }
 
@@ -188,6 +189,7 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
         assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
         assertSelectedCardUnchanged();
         assertCommandBoxShowsErrorStyle();
+        assertResultDisplayShowsErrorStyle();
         assertStatusBarUnchanged();
     }
 }
