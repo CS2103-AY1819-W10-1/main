@@ -45,15 +45,12 @@ public class ResultDisplay extends UiPart<Region> {
 
     public void setFeedbackErrorToUser(String feedbackToUser) {
         setStyleToIndicateCommandFailure();
-        setFeedbackToUser(feedbackToUser);
+        requireNonNull(feedbackToUser);
+        resultDisplay.setText(feedbackToUser);
     }
 
     public void setFeedbackSuccessToUser(String feedbackToUser) {
         setStyleToDefault();
-        setFeedbackToUser(feedbackToUser);
-    }
-
-    private void setFeedbackToUser(String feedbackToUser) {
         requireNonNull(feedbackToUser);
         resultDisplay.setText(feedbackToUser);
     }
