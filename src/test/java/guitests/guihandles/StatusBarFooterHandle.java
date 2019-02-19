@@ -45,7 +45,9 @@ public class StatusBarFooterHandle extends NodeHandle<Node> {
     /**
      * Returns the text of the 'targets counter' section of the status bar.
      */
-    public String getTargetCount() { return targetCountNode.getText(); }
+    public String getTargetCount() {
+        return targetCountNode.getText();
+    }
 
     /**
      * Remembers the content of the sync status portion of the status bar.
