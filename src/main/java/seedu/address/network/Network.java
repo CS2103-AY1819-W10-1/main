@@ -1,10 +1,15 @@
 package seedu.address.network;
 
 /**
- * API of Network component
+ * Manager of Network component
  */
-public interface Network {
-    static String fetch(String targetUrl) {
+public abstract class Network {
+
+    public static String fetch(String targetUrl) {
+        return lookupUrl(targetUrl);
+    }
+
+    private static String lookupUrl(String targetUrl) {
         return "Hello World";
     }
 }
