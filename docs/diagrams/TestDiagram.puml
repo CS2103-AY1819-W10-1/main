@@ -1,0 +1,8 @@
+@startuml
+class Class13 {
+ + hi
+ - that thing : Blah
+}
+
+Class13 ---> Class14
+@enduml
