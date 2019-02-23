@@ -8,11 +8,14 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'checkstyle'
+    id 'de.gafertp.plantuml' version '1.2.0'
     id 'com.github.kt3k.coveralls' version '2.4.0'
     id 'com.github.johnrengelman.shadow' version '2.0.3'
     id 'org.asciidoctor.convert' version '1.5.6'
     id 'application'
 }
+
+apply plugin: 'de.gafertp.plantuml'
 
 if (JavaVersion.current() == JavaVersion.VERSION_1_10
         && System.getProperty('os.name').startsWith('Windows')) {
@@ -178,6 +181,10 @@ task headless {
             ]
         }
     }
+}
+
+plantUml {
+    render input: 'docs/diagrams/*.puml', output: "${project.buildDir.absolutePath}/docs/html5/images/", format: 'png'
 }
 
 // Makes sure that headless properties are set before running tests
