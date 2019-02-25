@@ -8,8 +8,8 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Comment;
-import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Entry;
+import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Title;
 import seedu.address.model.tag.Tag;
 

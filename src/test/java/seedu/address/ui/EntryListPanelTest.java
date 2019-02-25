@@ -19,8 +19,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Comment;
-import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Entry;
+import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Title;
 
 public class EntryListPanelTest extends GuiUnitTest {

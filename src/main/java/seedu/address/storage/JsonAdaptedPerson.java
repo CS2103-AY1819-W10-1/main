@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Comment;
+import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Title;
-import seedu.address.model.entry.Entry;
 import seedu.address.model.tag.Tag;
 
 /**

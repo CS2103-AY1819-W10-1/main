@@ -5,8 +5,8 @@ import java.util.Set;
 
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Comment;
-import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Entry;
+import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Title;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
