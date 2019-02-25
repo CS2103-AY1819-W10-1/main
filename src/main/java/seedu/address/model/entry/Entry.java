@@ -72,8 +72,10 @@ public class Entry {
     /**
      * Returns an immutable feed set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
+     */
+    /*
      public Set<Feed> getFeed() {
-     return Collections.unmodifiableSet(feeds);
+        return Collections.unmodifiableSet(feeds);
      }
      */
 
@@ -142,10 +144,12 @@ public class Entry {
                 .append(getLink())
                 .append(" Comment: ")
                 .append(getComment());
-                // .append(" SitName: ")
-                // .append(getSitName())
-                // .append(" Description: ")
-                // .append(getDescription())
+        /*
+                .append(" SitName: ")
+                .append(getSitName())
+                .append(" Description: ")
+                .append(getDescription())
+                */
         builder.append(" Tags: ");
         getTags().forEach(builder::append);
         // builder.append(" Feeds: ");
