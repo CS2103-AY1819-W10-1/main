@@ -4,10 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.entry.Address;
+import seedu.address.model.entry.Comment;
 import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.Title;
-import seedu.address.model.entry.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -22,14 +22,14 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Title title;
-    private Phone phone;
+    private Comment comment;
     private Link link;
     private Address address;
     private Set<Tag> tags;
 
     public PersonBuilder() {
         title = new Title(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
+        comment = new Comment(DEFAULT_PHONE);
         link = new Link(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
@@ -40,7 +40,7 @@ public class PersonBuilder {
      */
     public PersonBuilder(Entry entryToCopy) {
         title = entryToCopy.getTitle();
-        phone = entryToCopy.getPhone();
+        comment = entryToCopy.getComment();
         link = entryToCopy.getLink();
         address = entryToCopy.getAddress();
         tags = new HashSet<>(entryToCopy.getTags());
@@ -71,10 +71,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Entry} that we are building.
+     * Sets the {@code Comment} of the {@code Entry} that we are building.
      */
     public PersonBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+        this.comment = new Comment(phone);
         return this;
     }
 
@@ -87,7 +87,7 @@ public class PersonBuilder {
     }
 
     public Entry build() {
-        return new Entry(title, phone, link, address, tags);
+        return new Entry(title, comment, link, address, tags);
     }
 
 }

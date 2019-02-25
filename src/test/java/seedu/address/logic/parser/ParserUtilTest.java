@@ -19,7 +19,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Title;
-import seedu.address.model.entry.Phone;
+import seedu.address.model.entry.Comment;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.Assert;
 
@@ -99,15 +99,15 @@ public class ParserUtilTest {
 
     @Test
     public void parsePhone_validValueWithoutWhitespace_returnsPhone() throws Exception {
-        Phone expectedPhone = new Phone(VALID_PHONE);
-        assertEquals(expectedPhone, ParserUtil.parsePhone(VALID_PHONE));
+        Comment expectedComment = new Comment(VALID_PHONE);
+        assertEquals(expectedComment, ParserUtil.parsePhone(VALID_PHONE));
     }
 
     @Test
     public void parsePhone_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {
         String phoneWithWhitespace = WHITESPACE + VALID_PHONE + WHITESPACE;
-        Phone expectedPhone = new Phone(VALID_PHONE);
-        assertEquals(expectedPhone, ParserUtil.parsePhone(phoneWithWhitespace));
+        Comment expectedComment = new Comment(VALID_PHONE);
+        assertEquals(expectedComment, ParserUtil.parsePhone(phoneWithWhitespace));
     }
 
     @Test

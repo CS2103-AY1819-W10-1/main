@@ -10,9 +10,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.entry.Address;
+import seedu.address.model.entry.Comment;
 import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Title;
-import seedu.address.model.entry.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -51,18 +51,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
+     * Parses a {@code String phone} into a {@code Comment}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code phone} is invalid.
      */
-    public static Phone parsePhone(String phone) throws ParseException {
+    public static Comment parsePhone(String phone) throws ParseException {
         requireNonNull(phone);
         String trimmedPhone = phone.trim();
-        if (!Phone.isValidPhone(trimmedPhone)) {
-            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
+        if (!Comment.isValidPhone(trimmedPhone)) {
+            throw new ParseException(Comment.MESSAGE_CONSTRAINTS);
         }
-        return new Phone(trimmedPhone);
+        return new Comment(trimmedPhone);
     }
 
     /**

@@ -17,14 +17,14 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private static final String ID_FIELD_ID = "#id";
     private static final String TITLE_FIELD_ID = "#title";
     private static final String ADDRESS_FIELD_ID = "#address";
-    private static final String PHONE_FIELD_ID = "#phone";
+    private static final String COMMENT_FIELD_ID = "#comment";
     private static final String LINK_FIELD_ID = "#link";
     private static final String TAGS_FIELD_ID = "#tags";
 
     private final Label idLabel;
     private final Label titleLabel;
     private final Label addressLabel;
-    private final Label phoneLabel;
+    private final Label commentLabel;
     private final Label linkLabel;
     private final List<Label> tagLabels;
 
@@ -34,7 +34,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
         idLabel = getChildNode(ID_FIELD_ID);
         titleLabel = getChildNode(TITLE_FIELD_ID);
         addressLabel = getChildNode(ADDRESS_FIELD_ID);
-        phoneLabel = getChildNode(PHONE_FIELD_ID);
+        commentLabel = getChildNode(COMMENT_FIELD_ID);
         linkLabel = getChildNode(LINK_FIELD_ID);
 
         Region tagsContainer = getChildNode(TAGS_FIELD_ID);
@@ -58,7 +58,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     }
 
     public String getPhone() {
-        return phoneLabel.getText();
+        return commentLabel.getText();
     }
 
     public String getLink() {
@@ -87,7 +87,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     public boolean equals(Entry entry) {
         return getTitle().equals(entry.getTitle().fullName)
                 && getAddress().equals(entry.getAddress().value)
-                && getPhone().equals(entry.getPhone().value)
+                && getPhone().equals(entry.getComment().value)
                 && getLink().equals(entry.getLink().value)
                 && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(entry.getTags().stream()
                         .map(tag -> tag.tagName)

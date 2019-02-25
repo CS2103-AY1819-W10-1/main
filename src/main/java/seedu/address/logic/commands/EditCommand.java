@@ -21,10 +21,10 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.entry.Address;
+import seedu.address.model.entry.Comment;
 import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.Title;
-import seedu.address.model.entry.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -97,12 +97,12 @@ public class EditCommand extends Command {
         assert entryToEdit != null;
 
         Title updatedTitle = editPersonDescriptor.getTitle().orElse(entryToEdit.getTitle());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(entryToEdit.getPhone());
+        Comment updatedComment = editPersonDescriptor.getComment().orElse(entryToEdit.getComment());
         Link updatedLink = editPersonDescriptor.getLink().orElse(entryToEdit.getLink());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(entryToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(entryToEdit.getTags());
 
-        return new Entry(updatedTitle, updatedPhone, updatedLink, updatedAddress, updatedTags);
+        return new Entry(updatedTitle, updatedComment, updatedLink, updatedAddress, updatedTags);
     }
 
     @Override
@@ -129,7 +129,7 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Title title;
-        private Phone phone;
+        private Comment comment;
         private Link link;
         private Address address;
         private Set<Tag> tags;
@@ -142,7 +142,7 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setTitle(toCopy.title);
-            setPhone(toCopy.phone);
+            setComment(toCopy.comment);
             setLink(toCopy.link);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
@@ -152,7 +152,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, phone, link, address, tags);
+            return CollectionUtil.isAnyNonNull(title, comment, link, address, tags);
         }
 
         public void setTitle(Title title) {
@@ -163,12 +163,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(title);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setComment(Comment comment) {
+            this.comment = comment;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
+        public Optional<Comment> getComment() {
+            return Optional.ofNullable(comment);
         }
 
         public void setLink(Link link) {
@@ -220,7 +220,7 @@ public class EditCommand extends Command {
             EditPersonDescriptor e = (EditPersonDescriptor) other;
 
             return getTitle().equals(e.getTitle())
-                    && getPhone().equals(e.getPhone())
+                    && getComment().equals(e.getComment())
                     && getLink().equals(e.getLink())
                     && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());

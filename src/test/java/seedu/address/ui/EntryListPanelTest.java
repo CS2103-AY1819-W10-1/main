@@ -18,10 +18,10 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.entry.Address;
+import seedu.address.model.entry.Comment;
 import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.Title;
-import seedu.address.model.entry.Phone;
 
 public class EntryListPanelTest extends GuiUnitTest {
     private static final ObservableList<Entry> TYPICAL_ENTRIES =
@@ -80,10 +80,10 @@ public class EntryListPanelTest extends GuiUnitTest {
         ObservableList<Entry> backingList = FXCollections.observableArrayList();
         for (int i = 0; i < personCount; i++) {
             Title title = new Title(i + "a");
-            Phone phone = new Phone("000");
+            Comment comment = new Comment("000");
             Link link = new Link("a@aa");
             Address address = new Address("a");
-            Entry entry = new Entry(title, phone, link, address, Collections.emptySet());
+            Entry entry = new Entry(title, comment, link, address, Collections.emptySet());
             backingList.add(entry);
         }
         return backingList;

@@ -17,7 +17,7 @@ public class Entry {
 
     // Identity fields
     private final Title title;
-    private final Phone phone;
+    private final Comment comment;
     private final Link link;
 
     // Data fields
@@ -27,10 +27,10 @@ public class Entry {
     /**
      * Every field must be present and not null.
      */
-    public Entry(Title title, Phone phone, Link link, Address address, Set<Tag> tags) {
-        requireAllNonNull(title, phone, link, address, tags);
+    public Entry(Title title, Comment comment, Link link, Address address, Set<Tag> tags) {
+        requireAllNonNull(title, comment, link, address, tags);
         this.title = title;
-        this.phone = phone;
+        this.comment = comment;
         this.link = link;
         this.address = address;
         this.tags.addAll(tags);
@@ -40,8 +40,8 @@ public class Entry {
         return title;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Comment getComment() {
+        return comment;
     }
 
     public Link getLink() {
@@ -71,7 +71,7 @@ public class Entry {
 
         return otherEntry != null
                 && otherEntry.getTitle().equals(getTitle())
-                && (otherEntry.getPhone().equals(getPhone()) || otherEntry.getLink().equals(getLink()));
+                && (otherEntry.getComment().equals(getComment()) || otherEntry.getLink().equals(getLink()));
     }
 
     /**
@@ -90,7 +90,7 @@ public class Entry {
 
         Entry otherEntry = (Entry) other;
         return otherEntry.getTitle().equals(getTitle())
-                && otherEntry.getPhone().equals(getPhone())
+                && otherEntry.getComment().equals(getComment())
                 && otherEntry.getLink().equals(getLink())
                 && otherEntry.getAddress().equals(getAddress())
                 && otherEntry.getTags().equals(getTags());
@@ -99,15 +99,15 @@ public class Entry {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, phone, link, address, tags);
+        return Objects.hash(title, comment, link, address, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-                .append(" Phone: ")
-                .append(getPhone())
+                .append(" Comment: ")
+                .append(getComment())
                 .append(" Link: ")
                 .append(getLink())
                 .append(" Address: ")
