@@ -15,7 +15,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Email;
 import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.Name;
+import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -38,13 +38,13 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Title title = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Entry entry = new Entry(name, phone, email, address, tagList);
+        Entry entry = new Entry(title, phone, email, address, tagList);
 
         return new AddCommand(entry);
     }

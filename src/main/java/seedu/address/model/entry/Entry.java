@@ -16,7 +16,7 @@ import seedu.address.model.tag.Tag;
 public class Entry {
 
     // Identity fields
-    private final Name name;
+    private final Title title;
     private final Phone phone;
     private final Email email;
 
@@ -27,17 +27,17 @@ public class Entry {
     /**
      * Every field must be present and not null.
      */
-    public Entry(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
-        this.name = name;
+    public Entry(Title title, Phone phone, Email email, Address address, Set<Tag> tags) {
+        requireAllNonNull(title, phone, email, address, tags);
+        this.title = title;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
     }
 
-    public Name getName() {
-        return name;
+    public Title getTitle() {
+        return title;
     }
 
     public Phone getPhone() {
@@ -61,7 +61,7 @@ public class Entry {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
+     * Returns true if both persons of the same title have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Entry otherEntry) {
@@ -70,7 +70,7 @@ public class Entry {
         }
 
         return otherEntry != null
-                && otherEntry.getName().equals(getName())
+                && otherEntry.getTitle().equals(getTitle())
                 && (otherEntry.getPhone().equals(getPhone()) || otherEntry.getEmail().equals(getEmail()));
     }
 
@@ -89,7 +89,7 @@ public class Entry {
         }
 
         Entry otherEntry = (Entry) other;
-        return otherEntry.getName().equals(getName())
+        return otherEntry.getTitle().equals(getTitle())
                 && otherEntry.getPhone().equals(getPhone())
                 && otherEntry.getEmail().equals(getEmail())
                 && otherEntry.getAddress().equals(getAddress())
@@ -99,13 +99,13 @@ public class Entry {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(title, phone, email, address, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(getTitle())
                 .append(" Phone: ")
                 .append(getPhone())
                 .append(" Email: ")

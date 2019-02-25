@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Email;
 import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.Name;
+import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Phone;
 
 public class EntryListPanelTest extends GuiUnitTest {
@@ -79,11 +79,11 @@ public class EntryListPanelTest extends GuiUnitTest {
     private ObservableList<Entry> createBackingList(int personCount) {
         ObservableList<Entry> backingList = FXCollections.observableArrayList();
         for (int i = 0; i < personCount; i++) {
-            Name name = new Name(i + "a");
+            Title title = new Title(i + "a");
             Phone phone = new Phone("000");
             Email email = new Email("a@aa");
             Address address = new Address("a");
-            Entry entry = new Entry(name, phone, email, address, Collections.emptySet());
+            Entry entry = new Entry(title, phone, email, address, Collections.emptySet());
             backingList.add(entry);
         }
         return backingList;

@@ -15,14 +15,14 @@ import seedu.address.model.entry.Entry;
  */
 public class PersonCardHandle extends NodeHandle<Node> {
     private static final String ID_FIELD_ID = "#id";
-    private static final String NAME_FIELD_ID = "#name";
+    private static final String TITLE_FIELD_ID = "#title";
     private static final String ADDRESS_FIELD_ID = "#address";
     private static final String PHONE_FIELD_ID = "#phone";
     private static final String EMAIL_FIELD_ID = "#email";
     private static final String TAGS_FIELD_ID = "#tags";
 
     private final Label idLabel;
-    private final Label nameLabel;
+    private final Label titleLabel;
     private final Label addressLabel;
     private final Label phoneLabel;
     private final Label emailLabel;
@@ -32,7 +32,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
         super(cardNode);
 
         idLabel = getChildNode(ID_FIELD_ID);
-        nameLabel = getChildNode(NAME_FIELD_ID);
+        titleLabel = getChildNode(TITLE_FIELD_ID);
         addressLabel = getChildNode(ADDRESS_FIELD_ID);
         phoneLabel = getChildNode(PHONE_FIELD_ID);
         emailLabel = getChildNode(EMAIL_FIELD_ID);
@@ -50,7 +50,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     }
 
     public String getName() {
-        return nameLabel.getText();
+        return titleLabel.getText();
     }
 
     public String getAddress() {
@@ -85,7 +85,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
      * Returns true if this handle contains {@code entry}.
      */
     public boolean equals(Entry entry) {
-        return getName().equals(entry.getName().fullName)
+        return getName().equals(entry.getTitle().fullName)
                 && getAddress().equals(entry.getAddress().value)
                 && getPhone().equals(entry.getPhone().value)
                 && getEmail().equals(entry.getEmail().value)

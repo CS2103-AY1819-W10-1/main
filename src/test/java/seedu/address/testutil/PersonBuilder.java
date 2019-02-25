@@ -6,7 +6,7 @@ import java.util.Set;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Email;
 import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.Name;
+import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -21,14 +21,14 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
-    private Name name;
+    private Title title;
     private Phone phone;
     private Email email;
     private Address address;
     private Set<Tag> tags;
 
     public PersonBuilder() {
-        name = new Name(DEFAULT_NAME);
+        title = new Title(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
@@ -39,7 +39,7 @@ public class PersonBuilder {
      * Initializes the PersonBuilder with the data of {@code entryToCopy}.
      */
     public PersonBuilder(Entry entryToCopy) {
-        name = entryToCopy.getName();
+        title = entryToCopy.getTitle();
         phone = entryToCopy.getPhone();
         email = entryToCopy.getEmail();
         address = entryToCopy.getAddress();
@@ -47,10 +47,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code Entry} that we are building.
+     * Sets the {@code Title} of the {@code Entry} that we are building.
      */
     public PersonBuilder withName(String name) {
-        this.name = new Name(name);
+        this.title = new Title(name);
         return this;
     }
 
@@ -87,7 +87,7 @@ public class PersonBuilder {
     }
 
     public Entry build() {
-        return new Entry(name, phone, email, address, tags);
+        return new Entry(title, phone, email, address, tags);
     }
 
 }

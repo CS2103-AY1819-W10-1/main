@@ -37,7 +37,7 @@ public class PersonUtil {
      */
     public static String getPersonDetails(Entry entry) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + entry.getName().fullName + " ");
+        sb.append(PREFIX_NAME + entry.getTitle().fullName + " ");
         sb.append(PREFIX_PHONE + entry.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + entry.getEmail().value + " ");
         sb.append(PREFIX_ADDRESS + entry.getAddress().value + " ");
@@ -52,7 +52,7 @@ public class PersonUtil {
      */
     public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
+        descriptor.getTitle().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));

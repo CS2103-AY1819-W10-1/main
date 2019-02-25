@@ -42,7 +42,7 @@ import seedu.address.model.Model;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Email;
 import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.Name;
+import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.PersonBuilder;
@@ -164,7 +164,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: invalid name -> rejected */
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_NAME_DESC,
-                Name.MESSAGE_CONSTRAINTS);
+                Title.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid phone -> rejected */
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_PHONE_DESC,

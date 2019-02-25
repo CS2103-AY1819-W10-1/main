@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Email;
-import seedu.address.model.entry.Name;
+import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.Phone;
 import seedu.address.model.tag.Tag;
@@ -50,7 +50,7 @@ class JsonAdaptedPerson {
      * Converts a given {@code Entry} into this class for Jackson use.
      */
     public JsonAdaptedPerson(Entry source) {
-        name = source.getName().fullName;
+        name = source.getTitle().fullName;
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
@@ -71,12 +71,12 @@ class JsonAdaptedPerson {
         }
 
         if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        if (!Title.isValidName(name)) {
+            throw new IllegalValueException(Title.MESSAGE_CONSTRAINTS);
         }
-        final Name modelName = new Name(name);
+        final Title modelTitle = new Title(name);
 
         if (phone == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
@@ -103,7 +103,7 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Entry(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Entry(modelTitle, modelPhone, modelEmail, modelAddress, modelTags);
     }
 
 }

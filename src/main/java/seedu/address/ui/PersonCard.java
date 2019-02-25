@@ -32,7 +32,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label title;
     @FXML
     private Label id;
     @FXML
@@ -48,7 +48,7 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.entry = entry;
         id.setText(displayedIndex + ". ");
-        name.setText(entry.getName().fullName);
+        title.setText(entry.getTitle().fullName);
         phone.setText(entry.getPhone().value);
         address.setText(entry.getAddress().value);
         email.setText(entry.getEmail().value);
@@ -81,7 +81,7 @@ public class PersonCard extends UiPart<Region> {
      * Returns the color style for {@code tagName}'s label.
      */
     private String getTagColorStyleFor(String tagName) {
-        /* Use hash code of tag name to generate random color, so color remains consistent between different runs.
+        /* Use hash code of tag title to generate random color, so color remains consistent between different runs.
          * Java only guarantees the hashCode method must consistently return the same integer whenever it is invoked on
          * the same object more than once during an execution of a Java application, but for practical purposes it
          * remains consistent from one execution of an application to another execution of the same application.

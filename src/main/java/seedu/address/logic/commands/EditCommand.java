@@ -23,7 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Email;
 import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.Name;
+import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -96,13 +96,13 @@ public class EditCommand extends Command {
     private static Entry createEditedPerson(Entry entryToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert entryToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(entryToEdit.getName());
+        Title updatedTitle = editPersonDescriptor.getTitle().orElse(entryToEdit.getTitle());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(entryToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(entryToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(entryToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(entryToEdit.getTags());
 
-        return new Entry(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Entry(updatedTitle, updatedPhone, updatedEmail, updatedAddress, updatedTags);
     }
 
     @Override
@@ -128,7 +128,7 @@ public class EditCommand extends Command {
      * corresponding field value of the entry.
      */
     public static class EditPersonDescriptor {
-        private Name name;
+        private Title title;
         private Phone phone;
         private Email email;
         private Address address;
@@ -141,7 +141,7 @@ public class EditCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setName(toCopy.name);
+            setTitle(toCopy.title);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
@@ -152,15 +152,15 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(title, phone, email, address, tags);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setTitle(Title title) {
+            this.title = title;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Title> getTitle() {
+            return Optional.ofNullable(title);
         }
 
         public void setPhone(Phone phone) {
@@ -219,7 +219,7 @@ public class EditCommand extends Command {
             // state check
             EditPersonDescriptor e = (EditPersonDescriptor) other;
 
-            return getName().equals(e.getName())
+            return getTitle().equals(e.getTitle())
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
