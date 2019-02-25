@@ -53,7 +53,7 @@ public class UniqueEntryList implements Iterable<Entry> {
      * {@code target} must exist in the list.
      * The entry identity of {@code editedEntry} must not be the same as another existing entry in the list.
      */
-    public void setPerson(Entry target, Entry editedEntry) {
+    public void setEntry(Entry target, Entry editedEntry) {
         requireAllNonNull(target, editedEntry);
 
         int index = internalList.indexOf(target);
