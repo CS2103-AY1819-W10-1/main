@@ -1,10 +1,10 @@
-package seedu.address.model.person;
+package seedu.address.model.entry;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's phone number in the address book.
+ * Represents a Entry's phone number in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}
  */
 public class Phone {

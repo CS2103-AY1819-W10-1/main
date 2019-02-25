@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.entry;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

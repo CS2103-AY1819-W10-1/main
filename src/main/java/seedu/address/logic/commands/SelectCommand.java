@@ -9,10 +9,10 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.entry.Entry;
 
 /**
- * Selects a person identified using it's displayed index from the address book.
+ * Selects a entry identified using it's displayed index from the address book.
  */
 public class SelectCommand extends Command {
 
@@ -20,11 +20,11 @@ public class SelectCommand extends Command {
     public static final String COMMAND_ALIAS = "s";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Selects the person identified by the index number used in the displayed person list.\n"
+            + ": Selects the entry identified by the index number used in the displayed entry list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_SELECT_PERSON_SUCCESS = "Selected Person: %1$s";
+    public static final String MESSAGE_SELECT_PERSON_SUCCESS = "Selected Entry: %1$s";
 
     private final Index targetIndex;
 
@@ -36,13 +36,13 @@ public class SelectCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        List<Person> filteredPersonList = model.getFilteredPersonList();
+        List<Entry> filteredEntryList = model.getFilteredPersonList();
 
-        if (targetIndex.getZeroBased() >= filteredPersonList.size()) {
+        if (targetIndex.getZeroBased() >= filteredEntryList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        model.setSelectedPerson(filteredPersonList.get(targetIndex.getZeroBased()));
+        model.setSelectedPerson(filteredEntryList.get(targetIndex.getZeroBased()));
         return new CommandResult(String.format(MESSAGE_SELECT_PERSON_SUCCESS, targetIndex.getOneBased()));
 
     }

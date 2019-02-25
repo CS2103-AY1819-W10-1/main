@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Person;
+import seedu.address.model.entry.Entry;
 
 /**
  * A ui for the status bar that is displayed at the footer of the application.
@@ -42,19 +42,19 @@ public class StatusBarFooter extends UiPart<Region> {
     private Label targetCountStatus;
 
 
-    public StatusBarFooter(Path saveLocation, ReadOnlyAddressBook addressBook, ObservableList<Person> personList) {
+    public StatusBarFooter(Path saveLocation, ReadOnlyAddressBook addressBook, ObservableList<Entry> entryList) {
         super(FXML);
         addressBook.addListener(observable -> updateSyncStatus());
         syncStatus.setText(SYNC_STATUS_INITIAL);
         saveLocationStatus.setText(Paths.get(".").resolve(saveLocation).toString());
-        personList.addListener(this::updateTargetCount);
-        targetCountStatus.setText(String.format(TARGET_COUNT_STATUS, personList.size()));
+        entryList.addListener(this::updateTargetCount);
+        targetCountStatus.setText(String.format(TARGET_COUNT_STATUS, entryList.size()));
     }
 
     /**
-     * Updates the target count whenever the displayed person list changes.
+     * Updates the target count whenever the displayed entry list changes.
      */
-    private void updateTargetCount(ListChangeListener.Change<? extends Person> change) {
+    private void updateTargetCount(ListChangeListener.Change<? extends Entry> change) {
         targetCountStatus.setText(String.format(TARGET_COUNT_STATUS, change.getList().size()));
     }
 

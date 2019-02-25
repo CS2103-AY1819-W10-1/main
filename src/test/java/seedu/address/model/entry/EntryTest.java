@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.entry;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -16,15 +16,15 @@ import org.junit.rules.ExpectedException;
 
 import seedu.address.testutil.PersonBuilder;
 
-public class PersonTest {
+public class EntryTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        Person person = new PersonBuilder().build();
+        Entry entry = new PersonBuilder().build();
         thrown.expect(UnsupportedOperationException.class);
-        person.getTags().remove(0);
+        entry.getTags().remove(0);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class PersonTest {
         assertFalse(ALICE.isSamePerson(null));
 
         // different phone and email -> returns false
-        Person editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
+        Entry editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // different name -> returns false
@@ -61,7 +61,7 @@ public class PersonTest {
     @Test
     public void equals() {
         // same values -> returns true
-        Person aliceCopy = new PersonBuilder(ALICE).build();
+        Entry aliceCopy = new PersonBuilder(ALICE).build();
         assertTrue(ALICE.equals(aliceCopy));
 
         // same object -> returns true
@@ -73,11 +73,11 @@ public class PersonTest {
         // different type -> returns false
         assertFalse(ALICE.equals(5));
 
-        // different person -> returns false
+        // different entry -> returns false
         assertFalse(ALICE.equals(BOB));
 
         // different name -> returns false
-        Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        Entry editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different phone -> returns false

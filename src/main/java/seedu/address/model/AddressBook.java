@@ -7,8 +7,8 @@ import java.util.List;
 import javafx.beans.InvalidationListener;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.entry.Entry;
+import seedu.address.model.entry.UniquePersonList;
 
 /**
  * Wraps all data at the address-book level
@@ -43,11 +43,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of the entry list with {@code entries}.
+     * {@code entries} must not contain duplicate entries.
      */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
+    public void setPersons(List<Entry> entries) {
+        this.persons.setPersons(entries);
         indicateModified();
     }
 
@@ -60,34 +60,34 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPersons(newData.getPersonList());
     }
 
-    //// person-level operations
+    //// entry-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a entry with the same identity as {@code entry} exists in the address book.
      */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
+    public boolean hasPerson(Entry entry) {
+        requireNonNull(entry);
+        return persons.contains(entry);
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds a entry to the address book.
+     * The entry must not already exist in the address book.
      */
-    public void addPerson(Person p) {
+    public void addPerson(Entry p) {
         persons.add(p);
         indicateModified();
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * Replaces the given entry {@code target} in the list with {@code editedEntry}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * The entry identity of {@code editedEntry} must not be the same as another existing entry in the address book.
      */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
+    public void setPerson(Entry target, Entry editedEntry) {
+        requireNonNull(editedEntry);
 
-        persons.setPerson(target, editedPerson);
+        persons.setPerson(target, editedEntry);
         indicateModified();
     }
 
@@ -95,7 +95,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Person key) {
+    public void removePerson(Entry key) {
         persons.remove(key);
         indicateModified();
     }
@@ -126,7 +126,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
-    public ObservableList<Person> getPersonList() {
+    public ObservableList<Entry> getPersonList() {
         return persons.asUnmodifiableObservableList();
     }
 
