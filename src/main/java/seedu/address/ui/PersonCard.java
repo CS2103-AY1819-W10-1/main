@@ -40,7 +40,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label address;
     @FXML
-    private Label email;
+    private Label link;
     @FXML
     private FlowPane tags;
 
@@ -51,7 +51,7 @@ public class PersonCard extends UiPart<Region> {
         title.setText(entry.getTitle().fullName);
         phone.setText(entry.getPhone().value);
         address.setText(entry.getAddress().value);
-        email.setText(entry.getEmail().value);
+        link.setText(entry.getLink().value);
         entry.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
             tagLabel.getStyleClass().add(getTagColorStyleFor(tag.tagName));

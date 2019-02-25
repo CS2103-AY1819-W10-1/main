@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.entry.Address;
-import seedu.address.model.entry.Email;
+import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Phone;
@@ -23,14 +23,14 @@ public class PersonBuilder {
 
     private Title title;
     private Phone phone;
-    private Email email;
+    private Link link;
     private Address address;
     private Set<Tag> tags;
 
     public PersonBuilder() {
         title = new Title(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
-        email = new Email(DEFAULT_EMAIL);
+        link = new Link(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
     }
@@ -41,7 +41,7 @@ public class PersonBuilder {
     public PersonBuilder(Entry entryToCopy) {
         title = entryToCopy.getTitle();
         phone = entryToCopy.getPhone();
-        email = entryToCopy.getEmail();
+        link = entryToCopy.getLink();
         address = entryToCopy.getAddress();
         tags = new HashSet<>(entryToCopy.getTags());
     }
@@ -79,15 +79,15 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Entry} that we are building.
+     * Sets the {@code Link} of the {@code Entry} that we are building.
      */
     public PersonBuilder withEmail(String email) {
-        this.email = new Email(email);
+        this.link = new Link(email);
         return this;
     }
 
     public Entry build() {
-        return new Entry(title, phone, email, address, tags);
+        return new Entry(title, phone, link, address, tags);
     }
 
 }

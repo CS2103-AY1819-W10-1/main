@@ -21,7 +21,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.entry.Address;
-import seedu.address.model.entry.Email;
+import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Phone;
@@ -98,11 +98,11 @@ public class EditCommand extends Command {
 
         Title updatedTitle = editPersonDescriptor.getTitle().orElse(entryToEdit.getTitle());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(entryToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(entryToEdit.getEmail());
+        Link updatedLink = editPersonDescriptor.getLink().orElse(entryToEdit.getLink());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(entryToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(entryToEdit.getTags());
 
-        return new Entry(updatedTitle, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Entry(updatedTitle, updatedPhone, updatedLink, updatedAddress, updatedTags);
     }
 
     @Override
@@ -130,7 +130,7 @@ public class EditCommand extends Command {
     public static class EditPersonDescriptor {
         private Title title;
         private Phone phone;
-        private Email email;
+        private Link link;
         private Address address;
         private Set<Tag> tags;
 
@@ -143,7 +143,7 @@ public class EditCommand extends Command {
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setTitle(toCopy.title);
             setPhone(toCopy.phone);
-            setEmail(toCopy.email);
+            setLink(toCopy.link);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
@@ -152,7 +152,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(title, phone, link, address, tags);
         }
 
         public void setTitle(Title title) {
@@ -171,12 +171,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(phone);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setLink(Link link) {
+            this.link = link;
         }
 
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<Link> getLink() {
+            return Optional.ofNullable(link);
         }
 
         public void setAddress(Address address) {
@@ -221,7 +221,7 @@ public class EditCommand extends Command {
 
             return getTitle().equals(e.getTitle())
                     && getPhone().equals(e.getPhone())
-                    && getEmail().equals(e.getEmail())
+                    && getLink().equals(e.getLink())
                     && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());
         }

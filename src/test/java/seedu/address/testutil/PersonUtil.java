@@ -39,7 +39,7 @@ public class PersonUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + entry.getTitle().fullName + " ");
         sb.append(PREFIX_PHONE + entry.getPhone().value + " ");
-        sb.append(PREFIX_EMAIL + entry.getEmail().value + " ");
+        sb.append(PREFIX_EMAIL + entry.getLink().value + " ");
         sb.append(PREFIX_ADDRESS + entry.getAddress().value + " ");
         entry.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
@@ -54,7 +54,7 @@ public class PersonUtil {
         StringBuilder sb = new StringBuilder();
         descriptor.getTitle().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
-        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
+        descriptor.getLink().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();

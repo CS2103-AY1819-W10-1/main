@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.entry.Address;
-import seedu.address.model.entry.Email;
+import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Title;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.Phone;
@@ -52,7 +52,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(Entry source) {
         name = source.getTitle().fullName;
         phone = source.getPhone().value;
-        email = source.getEmail().value;
+        email = source.getLink().value;
         address = source.getAddress().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -87,12 +87,12 @@ class JsonAdaptedPerson {
         final Phone modelPhone = new Phone(phone);
 
         if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Link.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!Link.isValidEmail(email)) {
+            throw new IllegalValueException(Link.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final Link modelLink = new Link(email);
 
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
@@ -103,7 +103,7 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Entry(modelTitle, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Entry(modelTitle, modelPhone, modelLink, modelAddress, modelTags);
     }
 
 }

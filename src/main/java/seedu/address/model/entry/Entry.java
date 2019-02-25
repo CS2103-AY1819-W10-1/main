@@ -18,7 +18,7 @@ public class Entry {
     // Identity fields
     private final Title title;
     private final Phone phone;
-    private final Email email;
+    private final Link link;
 
     // Data fields
     private final Address address;
@@ -27,11 +27,11 @@ public class Entry {
     /**
      * Every field must be present and not null.
      */
-    public Entry(Title title, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(title, phone, email, address, tags);
+    public Entry(Title title, Phone phone, Link link, Address address, Set<Tag> tags) {
+        requireAllNonNull(title, phone, link, address, tags);
         this.title = title;
         this.phone = phone;
-        this.email = email;
+        this.link = link;
         this.address = address;
         this.tags.addAll(tags);
     }
@@ -44,8 +44,8 @@ public class Entry {
         return phone;
     }
 
-    public Email getEmail() {
-        return email;
+    public Link getLink() {
+        return link;
     }
 
     public Address getAddress() {
@@ -71,7 +71,7 @@ public class Entry {
 
         return otherEntry != null
                 && otherEntry.getTitle().equals(getTitle())
-                && (otherEntry.getPhone().equals(getPhone()) || otherEntry.getEmail().equals(getEmail()));
+                && (otherEntry.getPhone().equals(getPhone()) || otherEntry.getLink().equals(getLink()));
     }
 
     /**
@@ -91,7 +91,7 @@ public class Entry {
         Entry otherEntry = (Entry) other;
         return otherEntry.getTitle().equals(getTitle())
                 && otherEntry.getPhone().equals(getPhone())
-                && otherEntry.getEmail().equals(getEmail())
+                && otherEntry.getLink().equals(getLink())
                 && otherEntry.getAddress().equals(getAddress())
                 && otherEntry.getTags().equals(getTags());
     }
@@ -99,7 +99,7 @@ public class Entry {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, phone, email, address, tags);
+        return Objects.hash(title, phone, link, address, tags);
     }
 
     @Override
@@ -108,8 +108,8 @@ public class Entry {
         builder.append(getTitle())
                 .append(" Phone: ")
                 .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
+                .append(" Link: ")
+                .append(getLink())
                 .append(" Address: ")
                 .append(getAddress())
                 .append(" Tags: ");
