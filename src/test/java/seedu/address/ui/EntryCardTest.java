@@ -9,20 +9,20 @@ import org.junit.Test;
 
 import guitests.guihandles.EntryCardHandle;
 import seedu.address.model.entry.Entry;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.EntryBuilder;
 
 public class EntryCardTest extends GuiUnitTest {
 
     @Test
     public void display() {
         // no tags
-        Entry entryWithNoTags = new PersonBuilder().withTags(new String[0]).build();
+        Entry entryWithNoTags = new EntryBuilder().withTags(new String[0]).build();
         EntryCard entryCard = new EntryCard(entryWithNoTags, 1);
         uiPartRule.setUiPart(entryCard);
         assertCardDisplay(entryCard, entryWithNoTags, 1);
 
         // with tags
-        Entry entryWithTags = new PersonBuilder().build();
+        Entry entryWithTags = new EntryBuilder().build();
         entryCard = new EntryCard(entryWithTags, 2);
         uiPartRule.setUiPart(entryCard);
         assertCardDisplay(entryCard, entryWithTags, 2);
@@ -30,7 +30,7 @@ public class EntryCardTest extends GuiUnitTest {
 
     @Test
     public void equals() {
-        Entry entry = new PersonBuilder().build();
+        Entry entry = new EntryBuilder().build();
         EntryCard entryCard = new EntryCard(entry, 0);
 
         // same entry, same index -> returns true
@@ -47,7 +47,7 @@ public class EntryCardTest extends GuiUnitTest {
         assertFalse(entryCard.equals(0));
 
         // different entry, same index -> returns false
-        Entry differentEntry = new PersonBuilder().withName("differentName").build();
+        Entry differentEntry = new EntryBuilder().withName("differentName").build();
         assertFalse(entryCard.equals(new EntryCard(differentEntry, 0)));
 
         // same entry, different index -> returns false

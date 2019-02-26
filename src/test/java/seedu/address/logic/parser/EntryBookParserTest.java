@@ -31,8 +31,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.TitleContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
-import seedu.address.testutil.PersonBuilder;
-import seedu.address.testutil.PersonUtil;
+import seedu.address.testutil.EntryBuilder;
+import seedu.address.testutil.EntryUtil;
 
 public class EntryBookParserTest {
     @Rule
@@ -42,10 +42,10 @@ public class EntryBookParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Entry entry = new PersonBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(entry));
+        Entry entry = new EntryBuilder().build();
+        AddCommand command = (AddCommand) parser.parseCommand(EntryUtil.getAddCommand(entry));
         assertEquals(new AddCommand(entry), command);
-        AddCommand aliasCommand = (AddCommand) parser.parseCommand(PersonUtil.getAddAliasCommand(entry));
+        AddCommand aliasCommand = (AddCommand) parser.parseCommand(EntryUtil.getAddAliasCommand(entry));
         assertEquals(new AddCommand(entry), aliasCommand);
     }
 
@@ -64,13 +64,13 @@ public class EntryBookParserTest {
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Entry entry = new PersonBuilder().build();
+        Entry entry = new EntryBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(entry).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+                + INDEX_FIRST_PERSON.getOneBased() + " " + EntryUtil.getEditPersonDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
         EditCommand aliasCommand = (EditCommand) parser.parseCommand(EditCommand.COMMAND_ALIAS + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+                + INDEX_FIRST_PERSON.getOneBased() + " " + EntryUtil.getEditPersonDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), aliasCommand);
     }
 

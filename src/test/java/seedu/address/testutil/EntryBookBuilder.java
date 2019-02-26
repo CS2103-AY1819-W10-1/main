@@ -6,24 +6,24 @@ import seedu.address.model.entry.Entry;
 /**
  * A utility class to help with building Addressbook objects.
  * Example usage: <br>
- *     {@code EntryBook ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
+ *     {@code EntryBook ab = new EntryBookBuilder().withPerson("John", "Doe").build();}
  */
-public class AddressBookBuilder {
+public class EntryBookBuilder {
 
     private EntryBook addressBook;
 
-    public AddressBookBuilder() {
+    public EntryBookBuilder() {
         addressBook = new EntryBook();
     }
 
-    public AddressBookBuilder(EntryBook addressBook) {
+    public EntryBookBuilder(EntryBook addressBook) {
         this.addressBook = addressBook;
     }
 
     /**
      * Adds a new {@code Entry} to the {@code EntryBook} that we are building.
      */
-    public AddressBookBuilder withPerson(Entry entry) {
+    public EntryBookBuilder withPerson(Entry entry) {
         addressBook.addPerson(entry);
         return this;
     }

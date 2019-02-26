@@ -16,7 +16,7 @@ import seedu.address.model.tag.Tag;
 /**
  * A utility class for Entry.
  */
-public class PersonUtil {
+public class EntryUtil {
 
     /**
      * Returns an add command string for adding the {@code entry}.

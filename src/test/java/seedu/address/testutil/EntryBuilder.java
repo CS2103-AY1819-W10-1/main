@@ -14,7 +14,7 @@ import seedu.address.model.util.SampleDataUtil;
 /**
  * A utility class to help with building Entry objects.
  */
-public class PersonBuilder {
+public class EntryBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_PHONE = "85355255";
@@ -27,7 +27,7 @@ public class PersonBuilder {
     private Address address;
     private Set<Tag> tags;
 
-    public PersonBuilder() {
+    public EntryBuilder() {
         title = new Title(DEFAULT_NAME);
         comment = new Comment(DEFAULT_PHONE);
         link = new Link(DEFAULT_EMAIL);
@@ -36,9 +36,9 @@ public class PersonBuilder {
     }
 
     /**
-     * Initializes the PersonBuilder with the data of {@code entryToCopy}.
+     * Initializes the EntryBuilder with the data of {@code entryToCopy}.
      */
-    public PersonBuilder(Entry entryToCopy) {
+    public EntryBuilder(Entry entryToCopy) {
         title = entryToCopy.getTitle();
         comment = entryToCopy.getComment();
         link = entryToCopy.getLink();
@@ -49,7 +49,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Title} of the {@code Entry} that we are building.
      */
-    public PersonBuilder withName(String name) {
+    public EntryBuilder withName(String name) {
         this.title = new Title(name);
         return this;
     }
@@ -57,7 +57,7 @@ public class PersonBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Entry} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
+    public EntryBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
@@ -65,7 +65,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Address} of the {@code Entry} that we are building.
      */
-    public PersonBuilder withAddress(String address) {
+    public EntryBuilder withAddress(String address) {
         this.address = new Address(address);
         return this;
     }
@@ -73,7 +73,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Comment} of the {@code Entry} that we are building.
      */
-    public PersonBuilder withPhone(String phone) {
+    public EntryBuilder withPhone(String phone) {
         this.comment = new Comment(phone);
         return this;
     }
@@ -81,7 +81,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Link} of the {@code Entry} that we are building.
      */
-    public PersonBuilder withEmail(String email) {
+    public EntryBuilder withEmail(String email) {
         this.link = new Link(email);
         return this;
     }

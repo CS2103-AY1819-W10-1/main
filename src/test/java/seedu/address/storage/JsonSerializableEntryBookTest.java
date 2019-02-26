@@ -12,7 +12,7 @@ import org.junit.rules.ExpectedException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.EntryBook;
-import seedu.address.testutil.TypicalPersons;
+import seedu.address.testutil.TypicalEntries;
 
 public class JsonSerializableEntryBookTest {
 
@@ -29,7 +29,7 @@ public class JsonSerializableEntryBookTest {
         JsonSerializableEntryBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
                 JsonSerializableEntryBook.class).get();
         EntryBook addressBookFromFile = dataFromFile.toModelType();
-        EntryBook typicalPersonsAddressBook = TypicalPersons.getTypicalAddressBook();
+        EntryBook typicalPersonsAddressBook = TypicalEntries.getTypicalAddressBook();
         assertEquals(addressBookFromFile, typicalPersonsAddressBook);
     }
 
