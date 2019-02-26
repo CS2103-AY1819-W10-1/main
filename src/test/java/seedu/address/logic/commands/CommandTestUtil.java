@@ -18,7 +18,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.NameContainsKeywordsPredicate;
+import seedu.address.model.entry.TitleContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -136,7 +136,7 @@ public class CommandTestUtil {
 
         Entry entry = model.getFilteredPersonList().get(targetIndex.getZeroBased());
         final String[] splitName = entry.getTitle().fullName.split("\\s+");
-        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredPersonList(new TitleContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredPersonList().size());
     }
