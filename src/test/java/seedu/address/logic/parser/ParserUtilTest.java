@@ -16,7 +16,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.entry.Address;
+// No longer valid with the optionality of the (invisible) address field
+// import seedu.address.model.entry.Address;
 import seedu.address.model.entry.Comment;
 import seedu.address.model.entry.Link;
 import seedu.address.model.entry.Title;
@@ -110,6 +111,8 @@ public class ParserUtilTest {
         assertEquals(expectedComment, ParserUtil.parsePhone(phoneWithWhitespace));
     }
 
+    // No longer valid with the optionality of the (invisible) address field
+    /*
     @Test
     public void parseAddress_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
@@ -132,6 +135,7 @@ public class ParserUtilTest {
         Address expectedAddress = new Address(VALID_ADDRESS);
         assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithWhitespace));
     }
+    */
 
     @Test
     public void parseEmail_null_throwsNullPointerException() {

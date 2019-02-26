@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional; // To be removed with address field
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -66,13 +67,19 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses a {@code Optional<String> address} into an {@code Address}.
+     * Modified from original as address is now optional (and invisible) field.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
+    public static Address parseAddress(Optional<String> maybeAddress) throws ParseException {
+        // We de-restrict nullability of address as it is an unused field.
+        // requireNonNull(address);
+        String address = "Default placeholder";
+        if (maybeAddress.isPresent()) {
+            address = maybeAddress.get();
+        }
         String trimmedAddress = address.trim();
         if (!Address.isValidAddress(trimmedAddress)) {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
