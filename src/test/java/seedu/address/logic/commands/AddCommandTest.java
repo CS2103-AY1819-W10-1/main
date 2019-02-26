@@ -19,9 +19,10 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.*;
 import seedu.address.model.EntryBook;
+import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyEntryBook;
+import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.entry.Entry;
 import seedu.address.testutil.PersonBuilder;
 
