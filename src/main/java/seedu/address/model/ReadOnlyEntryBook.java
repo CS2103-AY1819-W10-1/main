@@ -7,7 +7,7 @@ import seedu.address.model.entry.Entry;
 /**
  * Unmodifiable view of an address book
  */
-public interface ReadOnlyAddressBook extends Observable {
+public interface ReadOnlyEntryBook extends Observable {
 
     /**
      * Returns an unmodifiable view of the persons list.

@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyEntryBook;
 import seedu.address.model.entry.Entry;
 
 /**
@@ -42,7 +42,7 @@ public class StatusBarFooter extends UiPart<Region> {
     private Label targetCountStatus;
 
 
-    public StatusBarFooter(Path saveLocation, ReadOnlyAddressBook addressBook, ObservableList<Entry> entryList) {
+    public StatusBarFooter(Path saveLocation, ReadOnlyEntryBook addressBook, ObservableList<Entry> entryList) {
         super(FXML);
         addressBook.addListener(observable -> updateSyncStatus());
         syncStatus.setText(SYNC_STATUS_INITIAL);

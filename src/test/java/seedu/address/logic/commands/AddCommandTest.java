@@ -19,10 +19,9 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.*;
+import seedu.address.model.EntryBook;
+import seedu.address.model.ReadOnlyEntryBook;
 import seedu.address.model.entry.Entry;
 import seedu.address.testutil.PersonBuilder;
 
@@ -128,12 +127,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setAddressBook(ReadOnlyEntryBook newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyEntryBook getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -245,8 +244,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyEntryBook getAddressBook() {
+            return new EntryBook();
         }
     }
 
