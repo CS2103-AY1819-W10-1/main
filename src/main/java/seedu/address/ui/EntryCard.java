@@ -51,6 +51,7 @@ public class EntryCard extends UiPart<Region> {
         title.setText(entry.getTitle().fullName);
         comment.setText(entry.getComment().value);
         address.setText(entry.getAddress().value);
+        address.setManaged(false);
         link.setText(entry.getLink().value);
         entry.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
