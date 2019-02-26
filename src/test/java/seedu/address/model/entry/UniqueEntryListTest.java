@@ -16,8 +16,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.address.model.entry.exceptions.DuplicatePersonException;
-import seedu.address.model.entry.exceptions.PersonNotFoundException;
+import seedu.address.model.entry.exceptions.DuplicateEntryException;
+import seedu.address.model.entry.exceptions.EntryNotFoundException;
 import seedu.address.testutil.PersonBuilder;
 
 public class UniqueEntryListTest {
@@ -60,7 +60,7 @@ public class UniqueEntryListTest {
     @Test
     public void add_duplicatePerson_throwsDuplicatePersonException() {
         uniquePersonList.add(ALICE);
-        thrown.expect(DuplicatePersonException.class);
+        thrown.expect(DuplicateEntryException.class);
         uniquePersonList.add(ALICE);
     }
 
@@ -78,7 +78,7 @@ public class UniqueEntryListTest {
 
     @Test
     public void setPerson_targetPersonNotInList_throwsPersonNotFoundException() {
-        thrown.expect(PersonNotFoundException.class);
+        thrown.expect(EntryNotFoundException.class);
         uniquePersonList.setPerson(ALICE, ALICE);
     }
 
@@ -115,7 +115,7 @@ public class UniqueEntryListTest {
     public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
         uniquePersonList.add(ALICE);
         uniquePersonList.add(BOB);
-        thrown.expect(DuplicatePersonException.class);
+        thrown.expect(DuplicateEntryException.class);
         uniquePersonList.setPerson(ALICE, BOB);
     }
 
@@ -127,7 +127,7 @@ public class UniqueEntryListTest {
 
     @Test
     public void remove_personDoesNotExist_throwsPersonNotFoundException() {
-        thrown.expect(PersonNotFoundException.class);
+        thrown.expect(EntryNotFoundException.class);
         uniquePersonList.remove(ALICE);
     }
 
@@ -173,7 +173,7 @@ public class UniqueEntryListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<Entry> listWithDuplicateEntries = Arrays.asList(ALICE, ALICE);
-        thrown.expect(DuplicatePersonException.class);
+        thrown.expect(DuplicateEntryException.class);
         uniquePersonList.setPersons(listWithDuplicateEntries);
     }
 

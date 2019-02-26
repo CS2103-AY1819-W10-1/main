@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.entry.exceptions.DuplicatePersonException;
-import seedu.address.model.entry.exceptions.PersonNotFoundException;
+import seedu.address.model.entry.exceptions.DuplicateEntryException;
+import seedu.address.model.entry.exceptions.EntryNotFoundException;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
@@ -43,7 +43,7 @@ public class UniquePersonList implements Iterable<Entry> {
     public void add(Entry toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateEntryException();
         }
         internalList.add(toAdd);
     }
@@ -58,11 +58,11 @@ public class UniquePersonList implements Iterable<Entry> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new EntryNotFoundException();
         }
 
         if (!target.isSamePerson(editedEntry) && contains(editedEntry)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateEntryException();
         }
 
         internalList.set(index, editedEntry);
@@ -75,7 +75,7 @@ public class UniquePersonList implements Iterable<Entry> {
     public void remove(Entry toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new EntryNotFoundException();
         }
     }
 
@@ -91,7 +91,7 @@ public class UniquePersonList implements Iterable<Entry> {
     public void setPersons(List<Entry> entries) {
         requireAllNonNull(entries);
         if (!personsAreUnique(entries)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateEntryException();
         }
 
         internalList.setAll(entries);
