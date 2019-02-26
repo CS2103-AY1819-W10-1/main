@@ -20,7 +20,7 @@ public class StatusBarFooter extends UiPart<Region> {
 
     public static final String SYNC_STATUS_INITIAL = "Not updated yet in this session";
     public static final String SYNC_STATUS_UPDATED = "Last Updated: %s";
-    public static final String TARGET_COUNT_STATUS = "Found %d persons";
+    public static final String TARGET_COUNT_STATUS = "Found %d entries";
 
     /**
      * Used to generate time stamps.
