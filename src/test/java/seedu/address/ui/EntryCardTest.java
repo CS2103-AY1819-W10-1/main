@@ -7,7 +7,7 @@ import static seedu.address.ui.testutil.GuiTestAssert.assertCardDisplaysPerson;
 
 import org.junit.Test;
 
-import guitests.guihandles.PersonCardHandle;
+import guitests.guihandles.EntryCardHandle;
 import seedu.address.model.entry.Entry;
 import seedu.address.testutil.PersonBuilder;
 
@@ -17,56 +17,56 @@ public class EntryCardTest extends GuiUnitTest {
     public void display() {
         // no tags
         Entry entryWithNoTags = new PersonBuilder().withTags(new String[0]).build();
-        PersonCard personCard = new PersonCard(entryWithNoTags, 1);
-        uiPartRule.setUiPart(personCard);
-        assertCardDisplay(personCard, entryWithNoTags, 1);
+        EntryCard entryCard = new EntryCard(entryWithNoTags, 1);
+        uiPartRule.setUiPart(entryCard);
+        assertCardDisplay(entryCard, entryWithNoTags, 1);
 
         // with tags
         Entry entryWithTags = new PersonBuilder().build();
-        personCard = new PersonCard(entryWithTags, 2);
-        uiPartRule.setUiPart(personCard);
-        assertCardDisplay(personCard, entryWithTags, 2);
+        entryCard = new EntryCard(entryWithTags, 2);
+        uiPartRule.setUiPart(entryCard);
+        assertCardDisplay(entryCard, entryWithTags, 2);
     }
 
     @Test
     public void equals() {
         Entry entry = new PersonBuilder().build();
-        PersonCard personCard = new PersonCard(entry, 0);
+        EntryCard entryCard = new EntryCard(entry, 0);
 
         // same entry, same index -> returns true
-        PersonCard copy = new PersonCard(entry, 0);
-        assertTrue(personCard.equals(copy));
+        EntryCard copy = new EntryCard(entry, 0);
+        assertTrue(entryCard.equals(copy));
 
         // same object -> returns true
-        assertTrue(personCard.equals(personCard));
+        assertTrue(entryCard.equals(entryCard));
 
         // null -> returns false
-        assertFalse(personCard.equals(null));
+        assertFalse(entryCard.equals(null));
 
         // different types -> returns false
-        assertFalse(personCard.equals(0));
+        assertFalse(entryCard.equals(0));
 
         // different entry, same index -> returns false
         Entry differentEntry = new PersonBuilder().withName("differentName").build();
-        assertFalse(personCard.equals(new PersonCard(differentEntry, 0)));
+        assertFalse(entryCard.equals(new EntryCard(differentEntry, 0)));
 
         // same entry, different index -> returns false
-        assertFalse(personCard.equals(new PersonCard(entry, 1)));
+        assertFalse(entryCard.equals(new EntryCard(entry, 1)));
     }
 
     /**
-     * Asserts that {@code personCard} displays the details of {@code expectedEntry} correctly and matches
+     * Asserts that {@code entryCard} displays the details of {@code expectedEntry} correctly and matches
      * {@code expectedId}.
      */
-    private void assertCardDisplay(PersonCard personCard, Entry expectedEntry, int expectedId) {
+    private void assertCardDisplay(EntryCard entryCard, Entry expectedEntry, int expectedId) {
         guiRobot.pauseForHuman();
 
-        PersonCardHandle personCardHandle = new PersonCardHandle(personCard.getRoot());
+        EntryCardHandle entryCardHandle = new EntryCardHandle(entryCard.getRoot());
 
         // verify id is displayed correctly
-        assertEquals(Integer.toString(expectedId) + ". ", personCardHandle.getId());
+        assertEquals(Integer.toString(expectedId) + ". ", entryCardHandle.getId());
 
         // verify entry details are displayed correctly
-        assertCardDisplaysPerson(expectedEntry, personCardHandle);
+        assertCardDisplaysPerson(expectedEntry, entryCardHandle);
     }
 }

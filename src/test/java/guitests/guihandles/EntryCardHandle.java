@@ -13,7 +13,7 @@ import seedu.address.model.entry.Entry;
 /**
  * Provides a handle to a entry card in the entry list panel.
  */
-public class PersonCardHandle extends NodeHandle<Node> {
+public class EntryCardHandle extends NodeHandle<Node> {
     private static final String ID_FIELD_ID = "#id";
     private static final String TITLE_FIELD_ID = "#title";
     private static final String ADDRESS_FIELD_ID = "#address";
@@ -28,7 +28,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private final Label linkLabel;
     private final List<Label> tagLabels;
 
-    public PersonCardHandle(Node cardNode) {
+    public EntryCardHandle(Node cardNode) {
         super(cardNode);
 
         idLabel = getChildNode(ID_FIELD_ID);
@@ -57,7 +57,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
         return addressLabel.getText();
     }
 
-    public String getPhone() {
+    public String getComment() {
         return commentLabel.getText();
     }
 
@@ -87,7 +87,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     public boolean equals(Entry entry) {
         return getTitle().equals(entry.getTitle().fullName)
                 && getAddress().equals(entry.getAddress().value)
-                && getPhone().equals(entry.getComment().value)
+                && getComment().equals(entry.getComment().value)
                 && getLink().equals(entry.getLink().value)
                 && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(entry.getTags().stream()
                         .map(tag -> tag.tagName)

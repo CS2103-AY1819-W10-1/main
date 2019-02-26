@@ -12,8 +12,8 @@ import java.util.Collections;
 
 import org.junit.Test;
 
-import guitests.guihandles.PersonCardHandle;
-import guitests.guihandles.PersonListPanelHandle;
+import guitests.guihandles.EntryCardHandle;
+import guitests.guihandles.EntryListPanelHandle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,16 +30,16 @@ public class EntryListPanelTest extends GuiUnitTest {
     private static final long CARD_CREATION_AND_DELETION_TIMEOUT = 2500;
 
     private final SimpleObjectProperty<Entry> selectedPerson = new SimpleObjectProperty<>();
-    private PersonListPanelHandle personListPanelHandle;
+    private EntryListPanelHandle entryListPanelHandle;
 
     @Test
     public void display() {
         initUi(TYPICAL_ENTRIES);
 
         for (int i = 0; i < TYPICAL_ENTRIES.size(); i++) {
-            personListPanelHandle.navigateToCard(TYPICAL_ENTRIES.get(i));
+            entryListPanelHandle.navigateToCard(TYPICAL_ENTRIES.get(i));
             Entry expectedEntry = TYPICAL_ENTRIES.get(i);
-            PersonCardHandle actualCard = personListPanelHandle.getPersonCardHandle(i);
+            EntryCardHandle actualCard = entryListPanelHandle.getPersonCardHandle(i);
 
             assertCardDisplaysPerson(expectedEntry, actualCard);
             assertEquals(Integer.toString(i + 1) + ". ", actualCard.getId());
@@ -53,13 +53,13 @@ public class EntryListPanelTest extends GuiUnitTest {
         guiRobot.interact(() -> selectedPerson.set(secondEntry));
         guiRobot.pauseForHuman();
 
-        PersonCardHandle expectedPerson = personListPanelHandle.getPersonCardHandle(INDEX_SECOND_PERSON.getZeroBased());
-        PersonCardHandle selectedPerson = personListPanelHandle.getHandleToSelectedCard();
+        EntryCardHandle expectedPerson = entryListPanelHandle.getPersonCardHandle(INDEX_SECOND_PERSON.getZeroBased());
+        EntryCardHandle selectedPerson = entryListPanelHandle.getHandleToSelectedCard();
         assertCardEquals(expectedPerson, selectedPerson);
     }
 
     /**
-     * Verifies that creating and deleting large number of persons in {@code PersonListPanel} requires lesser than
+     * Verifies that creating and deleting large number of persons in {@code EntryListPanel} requires lesser than
      * {@code CARD_CREATION_AND_DELETION_TIMEOUT} milliseconds to execute.
      */
     @Test
@@ -74,7 +74,7 @@ public class EntryListPanelTest extends GuiUnitTest {
 
     /**
      * Returns a list of persons containing {@code personCount} persons that is used to populate the
-     * {@code PersonListPanel}.
+     * {@code EntryListPanel}.
      */
     private ObservableList<Entry> createBackingList(int personCount) {
         ObservableList<Entry> backingList = FXCollections.observableArrayList();
@@ -90,15 +90,15 @@ public class EntryListPanelTest extends GuiUnitTest {
     }
 
     /**
-     * Initializes {@code personListPanelHandle} with a {@code PersonListPanel} backed by {@code backingList}.
-     * Also shows the {@code Stage} that displays only {@code PersonListPanel}.
+     * Initializes {@code entryListPanelHandle} with a {@code EntryListPanel} backed by {@code backingList}.
+     * Also shows the {@code Stage} that displays only {@code EntryListPanel}.
      */
     private void initUi(ObservableList<Entry> backingList) {
-        PersonListPanel personListPanel =
-                new PersonListPanel(backingList, selectedPerson, selectedPerson::set);
-        uiPartRule.setUiPart(personListPanel);
+        EntryListPanel entryListPanel =
+                new EntryListPanel(backingList, selectedPerson, selectedPerson::set);
+        uiPartRule.setUiPart(entryListPanel);
 
-        personListPanelHandle = new PersonListPanelHandle(getChildNode(personListPanel.getRoot(),
-                PersonListPanelHandle.PERSON_LIST_VIEW_ID));
+        entryListPanelHandle = new EntryListPanelHandle(getChildNode(entryListPanel.getRoot(),
+                EntryListPanelHandle.ENTRY_LIST_VIEW_ID));
     }
 }

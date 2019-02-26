@@ -16,19 +16,19 @@ import seedu.address.model.entry.Entry;
 /**
  * Panel containing the list of persons.
  */
-public class PersonListPanel extends UiPart<Region> {
-    private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+public class EntryListPanel extends UiPart<Region> {
+    private static final String FXML = "EntryListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(EntryListPanel.class);
 
     @FXML
-    private ListView<Entry> personListView;
+    private ListView<Entry> entryListView;
 
-    public PersonListPanel(ObservableList<Entry> entryList, ObservableValue<Entry> selectedPerson,
-                           Consumer<Entry> onSelectedPersonChange) {
+    public EntryListPanel(ObservableList<Entry> entryList, ObservableValue<Entry> selectedPerson,
+                          Consumer<Entry> onSelectedPersonChange) {
         super(FXML);
-        personListView.setItems(entryList);
-        personListView.setCellFactory(listView -> new PersonListViewCell());
-        personListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        entryListView.setItems(entryList);
+        entryListView.setCellFactory(listView -> new PersonListViewCell());
+        entryListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             logger.fine("Selection in entry list panel changed to : '" + newValue + "'");
             onSelectedPersonChange.accept(newValue);
         });
@@ -37,22 +37,22 @@ public class PersonListPanel extends UiPart<Region> {
 
             // Don't modify selection if we are already selecting the selected entry,
             // otherwise we would have an infinite loop.
-            if (Objects.equals(personListView.getSelectionModel().getSelectedItem(), newValue)) {
+            if (Objects.equals(entryListView.getSelectionModel().getSelectedItem(), newValue)) {
                 return;
             }
 
             if (newValue == null) {
-                personListView.getSelectionModel().clearSelection();
+                entryListView.getSelectionModel().clearSelection();
             } else {
-                int index = personListView.getItems().indexOf(newValue);
-                personListView.scrollTo(index);
-                personListView.getSelectionModel().clearAndSelect(index);
+                int index = entryListView.getItems().indexOf(newValue);
+                entryListView.scrollTo(index);
+                entryListView.getSelectionModel().clearAndSelect(index);
             }
         });
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code EntryCard}.
      */
     class PersonListViewCell extends ListCell<Entry> {
         @Override
@@ -63,7 +63,7 @@ public class PersonListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PersonCard(entry, getIndex() + 1).getRoot());
+                setGraphic(new EntryCard(entry, getIndex() + 1).getRoot());
             }
         }
     }
