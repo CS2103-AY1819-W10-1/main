@@ -5,24 +5,24 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.LINK_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.LINK_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_LINK_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_COMMENT_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.COMMENT_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.COMMENT_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_TECH;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_COMMENT_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_LINK_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.LINK_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.LINK_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_SCIENCE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_TECH;
+import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMMENT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LINK_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SCIENCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_COMMENT_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SCIENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.TypicalEntries.AMY;
@@ -77,7 +77,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, model, expectedResultMessage);
 
         /* Case: edit a entry with new values same as existing values -> edited */
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_BOB
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_BOB
                 + ADDRESS_DESC_BOB + TAG_DESC_TECH + TAG_DESC_SCIENCE;
         assertCommandSuccess(command, index, BOB);
 
@@ -85,7 +86,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         assertTrue(getModel().getAddressBook().getPersonList().contains(BOB));
         index = INDEX_SECOND_PERSON;
         assertNotEquals(getModel().getFilteredPersonList().get(index.getZeroBased()), BOB);
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_AMY + COMMENT_DESC_BOB + LINK_DESC_BOB
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_AMY + COMMENT_DESC_BOB + LINK_DESC_BOB
                 + ADDRESS_DESC_BOB + TAG_DESC_TECH + TAG_DESC_SCIENCE;
         editedEntry = new EntryBuilder(BOB).withName(VALID_TITLE_AMY).build();
         assertCommandSuccess(command, index, editedEntry);
@@ -94,7 +96,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
          * -> edited
          */
         index = INDEX_SECOND_PERSON;
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_BOB + COMMENT_DESC_AMY + LINK_DESC_AMY
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_BOB + COMMENT_DESC_AMY + LINK_DESC_AMY
                 + ADDRESS_DESC_BOB + TAG_DESC_TECH + TAG_DESC_SCIENCE;
         editedEntry = new EntryBuilder(BOB).withPhone(VALID_COMMENT_AMY).withEmail(VALID_LINK_AMY).build();
         assertCommandSuccess(command, index, editedEntry);
@@ -133,7 +136,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         showAllPersons();
         index = INDEX_FIRST_PERSON;
         selectPerson(index);
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_AMY + COMMENT_DESC_AMY + LINK_DESC_AMY
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_AMY + COMMENT_DESC_AMY + LINK_DESC_AMY
                 + ADDRESS_DESC_AMY + TAG_DESC_TECH;
         // this can be misleading: card selection actually remains unchanged but the
         // browser's url is updated to reflect the new entry's name
@@ -163,23 +167,28 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
                 EditCommand.MESSAGE_NOT_EDITED);
 
         /* Case: invalid name -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_TITLE_DESC,
+        assertCommandFailure(EditCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + INVALID_TITLE_DESC,
                 Title.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid phone -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_COMMENT_DESC,
+        assertCommandFailure(EditCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + INVALID_COMMENT_DESC,
                 Comment.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid email -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_LINK_DESC,
+        assertCommandFailure(EditCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + INVALID_LINK_DESC,
                 Link.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid address -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_ADDRESS_DESC,
+        assertCommandFailure(EditCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + INVALID_ADDRESS_DESC,
                 Address.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid tag -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_TAG_DESC,
+        assertCommandFailure(EditCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + INVALID_TAG_DESC,
                 Tag.MESSAGE_CONSTRAINTS);
 
         /* Case: edit a entry with new values same as another entry's values -> rejected */
@@ -187,27 +196,32 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         assertTrue(getModel().getAddressBook().getPersonList().contains(BOB));
         index = INDEX_FIRST_PERSON;
         assertFalse(getModel().getFilteredPersonList().get(index.getZeroBased()).equals(BOB));
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_BOB
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_BOB
                 + ADDRESS_DESC_BOB + TAG_DESC_TECH + TAG_DESC_SCIENCE;
         assertCommandFailure(command, EditCommand.MESSAGE_DUPLICATE_PERSON);
 
         /* Case: edit a entry with new values same as another entry's values but with different tags -> rejected */
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_BOB
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_BOB
                 + ADDRESS_DESC_BOB + TAG_DESC_SCIENCE;
         assertCommandFailure(command, EditCommand.MESSAGE_DUPLICATE_PERSON);
 
         /* Case: edit a entry with new values same as another entry's values but with different address -> rejected */
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_BOB
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_BOB
                 + ADDRESS_DESC_AMY + TAG_DESC_TECH + TAG_DESC_SCIENCE;
         assertCommandFailure(command, EditCommand.MESSAGE_DUPLICATE_PERSON);
 
         /* Case: edit a entry with new values same as another entry's values but with different phone -> rejected */
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_BOB + COMMENT_DESC_AMY + LINK_DESC_BOB
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_BOB + COMMENT_DESC_AMY + LINK_DESC_BOB
                 + ADDRESS_DESC_BOB + TAG_DESC_TECH + TAG_DESC_SCIENCE;
         assertCommandFailure(command, EditCommand.MESSAGE_DUPLICATE_PERSON);
 
         /* Case: edit a entry with new values same as another entry's values but with different email -> rejected */
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_AMY
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased()
+                + TITLE_DESC_BOB + COMMENT_DESC_BOB + LINK_DESC_AMY
                 + ADDRESS_DESC_BOB + TAG_DESC_TECH + TAG_DESC_SCIENCE;
         assertCommandFailure(command, EditCommand.MESSAGE_DUPLICATE_PERSON);
     }
