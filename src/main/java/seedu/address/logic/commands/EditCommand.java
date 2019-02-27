@@ -39,18 +39,17 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed entry list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_TITLE + "NAME] "
-            + "[" + PREFIX_COMMENT + "PHONE] "
-            + "[" + PREFIX_LINK + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_TITLE + "TITLE] "
+            + "[" + PREFIX_COMMENT + "COMMENT] "
+            + "[" + PREFIX_LINK + "LINK] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_COMMENT + "91234567 "
-            + PREFIX_LINK + "johndoe@example.com";
+            + PREFIX_COMMENT + "New comment "
+            + PREFIX_LINK + "https://new-link.com";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Entry: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This entry already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This entry already exists in the entry book.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;

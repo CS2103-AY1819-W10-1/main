@@ -20,23 +20,21 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
     public static final String COMMAND_ALIAS = "a";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a entry to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a entry to the entry book. "
             + "Parameters: "
-            + PREFIX_TITLE + "NAME "
-            + PREFIX_COMMENT + "PHONE "
-            + PREFIX_LINK + "EMAIL "
-            + PREFIX_ADDRESS + "ADDRESS "
+            + PREFIX_TITLE + "TITLE "
+            + PREFIX_COMMENT + "COMMENT "
+            + PREFIX_LINK + "LINK "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TITLE + "John Doe "
-            + PREFIX_COMMENT + "98765432 "
-            + PREFIX_LINK + "johnd@example.com "
-            + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_TAG + "friends "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_TITLE + "Title example "
+            + PREFIX_COMMENT + "Comment example "
+            + PREFIX_LINK + "https://example.com "
+            + PREFIX_TAG + "science "
+            + PREFIX_TAG + "tech";
 
     public static final String MESSAGE_SUCCESS = "New entry added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This entry already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This entry already exists in the entry book";
 
     private final Entry toAdd;
 
