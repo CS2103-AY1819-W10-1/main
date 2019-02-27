@@ -31,7 +31,7 @@ public class CommandTestUtil {
     public static final String VALID_COMMENT_AMY = "Bad investments??";
     public static final String VALID_COMMENT_BOB = "The answer will shock you!";
     public static final String VALID_LINK_AMY = "https://amy.example.com";
-    public static final String VALID_LINK_BOB = "file://bob/example/file";
+    public static final String VALID_LINK_BOB = "file:///bob/example/file";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_SCIENCE = "science";

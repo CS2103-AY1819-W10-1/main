@@ -28,7 +28,7 @@ public class SampleDataUtil {
             new Entry(
                 new Title("Filler - "),
                 new Comment("or is it...?"),
-                new Link("file://example/folder/file"),
+                new Link("file:///example/folder/file"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
                 getTagSet()),
             new Entry(
@@ -52,7 +52,7 @@ public class SampleDataUtil {
             new Entry(
                 new Title("Rayner - the new CEO of Amazon"),
                 new Comment("Says \"I couldn't have done it without CS2103!\""),
-                new Link("https://github.com/rlrhi"),
+                new Link("https://github.com/rlrh"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
                 getTagSet("nus", "soc", "amazon"))
         };
