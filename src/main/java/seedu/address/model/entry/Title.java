@@ -4,56 +4,52 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Entry's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Represents a Entry's title in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidTitle(String)}
  */
 public class Title {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Titles can take any values, and it should not be blank";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String fullName;
+    public final String fullTitle;
 
     /**
      * Constructs a {@code Title}.
      *
-     * @param name A valid name.
+     * @param title A valid title.
      */
-    public Title(String name) {
-        requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        fullName = name;
+    public Title(String title) {
+        requireNonNull(title);
+        checkArgument(isValidTitle(title), MESSAGE_CONSTRAINTS);
+        fullTitle = title;
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid title.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidTitle(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
 
     @Override
     public String toString() {
-        return fullName;
+        return fullTitle;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Title // instanceof handles nulls
-                && fullName.equals(((Title) other).fullName)); // state check
+                && fullTitle.equals(((Title) other).fullTitle)); // state check
     }
 
     @Override
     public int hashCode() {
-        return fullName.hashCode();
+        return fullTitle.hashCode();
     }
 
 }

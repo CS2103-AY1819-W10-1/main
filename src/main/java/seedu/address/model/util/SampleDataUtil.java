@@ -19,24 +19,42 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Entry[] getSamplePersons() {
         return new Entry[] {
-            new Entry(new Title("Alex Yeoh"), new Comment("87438807"), new Link("alexyeoh@example.com"),
+            new Entry(
+                new Title("CS2103 the best mod ever?"),
+                new Comment("CS2101 disagrees!"),
+                new Link("https://www.comp.nus.edu.sg/programmes/ug/cs/"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
-                getTagSet("friends")),
-            new Entry(new Title("Bernice Yu"), new Comment("99272758"), new Link("berniceyu@example.com"),
+                getTagSet("nus", "soc")),
+            new Entry(
+                new Title("Filler - "),
+                new Comment("or is it...?"),
+                new Link("file://example/folder/file"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                getTagSet("colleagues", "friends")),
-            new Entry(new Title("Charlotte Oliveiro"), new Comment("93210283"), new Link("charlotte@example.com"),
+                getTagSet()),
+            new Entry(
+                new Title("Qiji trivalises all engineering majors!"),
+                new Comment("Has he taken it too far?"),
+                new Link("https://github.com/qjqqyy"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                getTagSet("neighbours")),
-            new Entry(new Title("David Li"), new Comment("91031282"), new Link("lidavid@example.com"),
+                getTagSet("engineering")),
+            new Entry(
+                new Title("Jonathan voted best in procrastination!"),
+                new Comment("The 22-time winner says \"I don't want to win anymore...\"!"),
+                new Link("https://github.com/epicfailname"),
                 new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                getTagSet("family")),
-            new Entry(new Title("Irfan Ibrahim"), new Comment("92492021"), new Link("irfan@example.com"),
+                getTagSet("award")),
+            new Entry(
+                new Title("Thomas invents time travel!"),
+                new Comment("Still can't finish his work.."),
+                new Link("https://github.com/thomastanck"),
                 new Address("Blk 47 Tampines Street 20, #17-35"),
-                getTagSet("classmates")),
-            new Entry(new Title("Roy Balakrishnan"), new Comment("92624417"), new Link("royb@example.com"),
+                getTagSet("science", "tech")),
+            new Entry(
+                new Title("Rayner - the new CEO of Amazon"),
+                new Comment("Says \"I couldn't have done it without CS2103!\""),
+                new Link("https://github.com/rlrhi"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
-                getTagSet("colleagues"))
+                getTagSet("nus", "soc", "amazon"))
         };
     }
 

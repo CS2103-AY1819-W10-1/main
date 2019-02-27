@@ -50,7 +50,7 @@ class JsonAdaptedEntry {
      * Converts a given {@code Entry} into this class for Jackson use.
      */
     public JsonAdaptedEntry(Entry source) {
-        name = source.getTitle().fullName;
+        name = source.getTitle().fullTitle;
         phone = source.getComment().value;
         email = source.getLink().value;
         address = source.getAddress().value;
@@ -73,7 +73,7 @@ class JsonAdaptedEntry {
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
-        if (!Title.isValidName(name)) {
+        if (!Title.isValidTitle(name)) {
             throw new IllegalValueException(Title.MESSAGE_CONSTRAINTS);
         }
         final Title modelTitle = new Title(name);
@@ -81,7 +81,7 @@ class JsonAdaptedEntry {
         if (phone == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Comment.class.getSimpleName()));
         }
-        if (!Comment.isValidPhone(phone)) {
+        if (!Comment.isValidComment(phone)) {
             throw new IllegalValueException(Comment.MESSAGE_CONSTRAINTS);
         }
         final Comment modelComment = new Comment(phone);
@@ -89,7 +89,7 @@ class JsonAdaptedEntry {
         if (email == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Link.class.getSimpleName()));
         }
-        if (!Link.isValidEmail(email)) {
+        if (!Link.isValidLink(email)) {
             throw new IllegalValueException(Link.MESSAGE_CONSTRAINTS);
         }
         final Link modelLink = new Link(email);

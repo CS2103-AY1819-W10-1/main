@@ -3,7 +3,7 @@ package seedu.address.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LINK_BOB;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.TypicalEntries.ALICE;
 import static seedu.address.testutil.TypicalEntries.BENSON;
@@ -124,7 +124,7 @@ public class ModelManagerTest {
     public void setPerson_personIsSelected_selectedPersonUpdated() {
         modelManager.addPerson(ALICE);
         modelManager.setSelectedPerson(ALICE);
-        Entry updatedAlice = new EntryBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
+        Entry updatedAlice = new EntryBuilder(ALICE).withEmail(VALID_LINK_BOB).build();
         modelManager.setPerson(ALICE, updatedAlice);
         assertEquals(updatedAlice, modelManager.getSelectedPerson());
     }
@@ -173,7 +173,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = ALICE.getTitle().fullName.split("\\s+");
+        String[] keywords = ALICE.getTitle().fullTitle.split("\\s+");
         modelManager.updateFilteredPersonList(new TitleContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
 

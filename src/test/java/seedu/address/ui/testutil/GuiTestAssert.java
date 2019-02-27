@@ -37,7 +37,7 @@ public class GuiTestAssert {
      * Asserts that {@code actualCard} displays the details of {@code expectedEntry}.
      */
     public static void assertCardDisplaysPerson(Entry expectedEntry, EntryCardHandle actualCard) {
-        assertEquals(expectedEntry.getTitle().fullName, actualCard.getTitle());
+        assertEquals(expectedEntry.getTitle().fullTitle, actualCard.getTitle());
         assertEquals(expectedEntry.getComment().value, actualCard.getComment());
         assertEquals(expectedEntry.getLink().value, actualCard.getLink());
         assertEquals(expectedEntry.getAddress().value, actualCard.getAddress());
@@ -107,6 +107,27 @@ public class GuiTestAssert {
             return "lightBlue";
 
         case "husband":
+            return "gray";
+
+        case "tech":
+            return "cyan";
+
+        case "science":
+            return "pink";
+
+        case "nus":
+            return "yellow";
+
+        case "soc":
+            return "gray";
+
+        case "engineering":
+            return "amber";
+
+        case "award":
+            return "gray";
+
+        case "amazon":
             return "gray";
 
         default:

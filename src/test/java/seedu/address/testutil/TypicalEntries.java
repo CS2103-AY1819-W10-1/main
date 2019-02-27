@@ -2,14 +2,14 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMMENT_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMMENT_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LINK_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LINK_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SCIENCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_TECH;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,36 +23,80 @@ import seedu.address.model.entry.Entry;
  */
 public class TypicalEntries {
 
-    public static final Entry ALICE = new EntryBuilder().withName("Alice Pauline")
-            .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-            .withPhone("94351253")
-            .withTags("friends").build();
-    public static final Entry BENSON = new EntryBuilder().withName("Benson Meier")
+    public static final Entry ALICE = new EntryBuilder()
+            .withName("Alice Pauline")
+            .withAddress("123, Jurong West Ave 6, #08-111")
+            .withEmail("https://alice.example.com")
+            .withPhone("Comment place-holder")
+            .withTags("friends")
+            .build();
+    public static final Entry BENSON = new EntryBuilder()
+            .withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
-            .withEmail("johnd@example.com").withPhone("98765432")
-            .withTags("owesMoney", "friends").build();
-    public static final Entry CARL = new EntryBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@example.com").withAddress("wall street").build();
-    public static final Entry DANIEL = new EntryBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withEmail("cornelia@example.com").withAddress("10th street").withTags("friends").build();
-    public static final Entry ELLE = new EntryBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@example.com").withAddress("michegan ave").build();
-    public static final Entry FIONA = new EntryBuilder().withName("Fiona Kunz").withPhone("9482427")
-            .withEmail("lydia@example.com").withAddress("little tokyo").build();
-    public static final Entry GEORGE = new EntryBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@example.com").withAddress("4th street").build();
+            .withEmail("https://johnd.example.com")
+            .withPhone("Comment place-holder")
+            .withTags("owesMoney", "friends")
+            .build();
+    public static final Entry CARL = new EntryBuilder()
+            .withName("Carl Kurz")
+            .withPhone("Comment place-holder")
+            .withEmail("https://heinz.example.com")
+            .withAddress("wall street")
+            .build();
+    public static final Entry DANIEL = new EntryBuilder()
+            .withName("Daniel Meier")
+            .withPhone("Comment place-holder")
+            .withEmail("https://cornelia.example.com")
+            .withAddress("10th street")
+            .withTags("friends")
+            .build();
+    public static final Entry ELLE = new EntryBuilder()
+            .withName("Elle Meyer")
+            .withPhone("Comment place-holder")
+            .withEmail("https://werner.example.com")
+            .withAddress("michegan ave")
+            .build();
+    public static final Entry FIONA = new EntryBuilder()
+            .withName("Fiona Kunz")
+            .withPhone("Comment place-holder")
+            .withEmail("https://lydia.example.com")
+            .withAddress("little tokyo")
+            .build();
+    public static final Entry GEORGE = new EntryBuilder()
+            .withName("George Best")
+            .withPhone("Comment place-holder")
+            .withEmail("https://anna.example.com")
+            .withAddress("4th street")
+            .build();
 
     // Manually added
-    public static final Entry HOON = new EntryBuilder().withName("Hoon Meier").withPhone("8482424")
-            .withEmail("stefan@example.com").withAddress("little india").build();
-    public static final Entry IDA = new EntryBuilder().withName("Ida Mueller").withPhone("8482131")
-            .withEmail("hans@example.com").withAddress("chicago ave").build();
+    public static final Entry HOON = new EntryBuilder()
+            .withName("Hoon Meier")
+            .withPhone("Comment place-holder")
+            .withEmail("https://stefan.example.com")
+            .withAddress("little india")
+            .build();
+    public static final Entry IDA = new EntryBuilder()
+            .withName("Ida Mueller")
+            .withPhone("Comment place-holder")
+            .withEmail("https://hans.example.com")
+            .withAddress("chicago ave")
+            .build();
 
     // Manually added - Entry's details found in {@code CommandTestUtil}
-    public static final Entry AMY = new EntryBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
-    public static final Entry BOB = new EntryBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+    public static final Entry AMY = new EntryBuilder()
+            .withName(VALID_TITLE_AMY)
+            .withPhone(VALID_COMMENT_AMY)
+            .withEmail(VALID_LINK_AMY)
+            .withAddress(VALID_ADDRESS_AMY)
+            .withTags(VALID_TAG_TECH)
+            .build();
+    public static final Entry BOB = new EntryBuilder()
+            .withName(VALID_TITLE_BOB)
+            .withPhone(VALID_COMMENT_BOB)
+            .withEmail(VALID_LINK_BOB)
+            .withAddress(VALID_ADDRESS_BOB)
+            .withTags(VALID_TAG_SCIENCE, VALID_TAG_TECH)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

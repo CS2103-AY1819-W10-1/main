@@ -39,9 +39,9 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Title title = ParserUtil.parseName(argMultimap.getValue(PREFIX_TITLE).get());
-        Comment comment = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_COMMENT).get());
-        Link link = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_LINK).get());
+        Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
+        Comment comment = ParserUtil.parseComment(argMultimap.getValue(PREFIX_COMMENT).get());
+        Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).get());
         // Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));

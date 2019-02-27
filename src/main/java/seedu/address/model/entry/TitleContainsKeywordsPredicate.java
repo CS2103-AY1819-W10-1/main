@@ -18,7 +18,7 @@ public class TitleContainsKeywordsPredicate implements Predicate<Entry> {
     @Override
     public boolean test(Entry entry) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(entry.getTitle().fullName, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(entry.getTitle().fullTitle, keyword));
     }
 
     @Override

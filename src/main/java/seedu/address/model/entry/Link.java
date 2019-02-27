@@ -4,21 +4,15 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Entry's email in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
+ * Represents a Entry's link in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidLink(String)}
  */
 public class Link {
 
+    public static final String MESSAGE_CONSTRAINTS = "Links should be of the format protocol://domain/filename.";
+
+    /*
     private static final String SPECIAL_CHARACTERS = "!#$%&'*+/=?`{|}~^.-";
-    public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain "
-            + "and adhere to the following constraints:\n"
-            + "1. The local-part should only contain alphanumeric characters and these special characters, excluding "
-            + "the parentheses, (" + SPECIAL_CHARACTERS + ") .\n"
-            + "2. This is followed by a '@' and then a domain name. "
-            + "The domain name must:\n"
-            + "    - be at least 2 characters long\n"
-            + "    - start and end with alphanumeric characters\n"
-            + "    - consist of alphanumeric characters, a period or a hyphen for the characters in between, if any.";
     // alphanumeric and special characters
     private static final String LOCAL_PART_REGEX = "^[\\w" + SPECIAL_CHARACTERS + "]+";
     private static final String DOMAIN_FIRST_CHARACTER_REGEX = "[^\\W_]"; // alphanumeric characters except underscore
@@ -26,24 +20,27 @@ public class Link {
     private static final String DOMAIN_LAST_CHARACTER_REGEX = "[^\\W_]$";
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@"
             + DOMAIN_FIRST_CHARACTER_REGEX + DOMAIN_MIDDLE_REGEX + DOMAIN_LAST_CHARACTER_REGEX;
+            */
+    private static final String PATH = "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+    public static final String VALIDATION_REGEX = "^(https?|ftp|file)://" + PATH;
 
     public final String value;
 
     /**
      * Constructs an {@code Link}.
      *
-     * @param email A valid email address.
+     * @param link A valid link address.
      */
-    public Link(String email) {
-        requireNonNull(email);
-        checkArgument(isValidEmail(email), MESSAGE_CONSTRAINTS);
-        value = email;
+    public Link(String link) {
+        requireNonNull(link);
+        checkArgument(isValidLink(link), MESSAGE_CONSTRAINTS);
+        value = link;
     }
 
     /**
-     * Returns if a given string is a valid email.
+     * Returns if a given string is a valid link.
      */
-    public static boolean isValidEmail(String test) {
+    public static boolean isValidLink(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 

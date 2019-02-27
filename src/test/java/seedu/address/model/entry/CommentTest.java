@@ -23,19 +23,23 @@ public class CommentTest {
     @Test
     public void isValidPhone() {
         // null phone number
-        Assert.assertThrows(NullPointerException.class, () -> Comment.isValidPhone(null));
+        Assert.assertThrows(NullPointerException.class, () -> Comment.isValidComment(null));
 
         // invalid phone numbers
-        assertFalse(Comment.isValidPhone("")); // empty string
-        assertFalse(Comment.isValidPhone(" ")); // spaces only
-        assertFalse(Comment.isValidPhone("91")); // less than 3 numbers
-        assertFalse(Comment.isValidPhone("phone")); // non-numeric
-        assertFalse(Comment.isValidPhone("9011p041")); // alphabets within digits
-        assertFalse(Comment.isValidPhone("9312 1534")); // spaces within digits
+        assertFalse(Comment.isValidComment("")); // empty string
+        assertFalse(Comment.isValidComment(" ")); // spaces only
 
         // valid phone numbers
-        assertTrue(Comment.isValidPhone("911")); // exactly 3 numbers
-        assertTrue(Comment.isValidPhone("93121534"));
-        assertTrue(Comment.isValidPhone("124293842033123")); // long phone numbers
+        assertTrue(Comment.isValidComment("comment")); // non-numeric
+        assertTrue(Comment.isValidComment("comment comment")); // non-numeric with spaces
+        assertTrue(Comment.isValidComment("comment?")); // non-numeric with symbols
+        assertTrue(Comment.isValidComment("comment@")); // non-numeric with symbols
+        assertTrue(Comment.isValidComment("comment!")); // non-numeric with symbols
+        assertTrue(Comment.isValidComment("comment-comment")); // non-numeric with spaces
+        assertTrue(Comment.isValidComment("93121534")); // numeric
+        assertTrue(Comment.isValidComment("9312153asd4asd219")); // alphanumeric
+        assertTrue(Comment.isValidComment("9312153asd4 asd219")); // alphanumeric
+        assertTrue(Comment.isValidComment("Five reasons why your best-friend is eating grass. 3# will shock you!"));
+
     }
 }

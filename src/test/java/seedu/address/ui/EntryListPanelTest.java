@@ -81,7 +81,7 @@ public class EntryListPanelTest extends GuiUnitTest {
         for (int i = 0; i < personCount; i++) {
             Title title = new Title(i + "a");
             Comment comment = new Comment("000");
-            Link link = new Link("a@aa");
+            Link link = new Link("https://a.aa");
             Address address = new Address("a");
             Entry entry = new Entry(title, comment, link, address, Collections.emptySet());
             backingList.add(entry);

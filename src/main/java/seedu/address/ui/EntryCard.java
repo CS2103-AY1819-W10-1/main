@@ -48,7 +48,7 @@ public class EntryCard extends UiPart<Region> {
         super(FXML);
         this.entry = entry;
         id.setText(displayedIndex + ". ");
-        title.setText(entry.getTitle().fullName);
+        title.setText(entry.getTitle().fullTitle);
         comment.setText(entry.getComment().value);
         address.setText(entry.getAddress().value);
         address.setManaged(false);
@@ -58,6 +58,12 @@ public class EntryCard extends UiPart<Region> {
             tagLabel.getStyleClass().add(getTagColorStyleFor(tag.tagName));
             tags.getChildren().add(tagLabel);
         });
+
+        System.out.println("nus: " + getTagColorStyleFor("nus"));
+        System.out.println("soc: " + getTagColorStyleFor("soc"));
+        System.out.println("engineering: " + getTagColorStyleFor("engineering"));
+        System.out.println("award: " + getTagColorStyleFor("award"));
+        System.out.println("amazon: " + getTagColorStyleFor("amazon"));
     }
 
     @Override

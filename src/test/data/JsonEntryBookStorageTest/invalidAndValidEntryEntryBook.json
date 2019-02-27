@@ -1,12 +1,12 @@
 {
   "persons": [ {
-    "name": "Valid Person",
-    "phone": "9482424",
-    "email": "hans@example.com",
+    "name": "Valid Title!",
+    "phone": "Val1d-C@mment! ~ !",
+    "email": "https://hans.example.com",
     "address": "4th street"
   }, {
-    "name": "Person With Invalid Phone Field",
-    "phone": "948asdf2424",
+    "name": "Entry With Invalid Link Field",
+    "phone": "Oh no!",
     "email": "hans@example.com",
     "address": "4th street"
   } ]

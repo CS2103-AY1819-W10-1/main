@@ -85,7 +85,7 @@ public class EntryCardHandle extends NodeHandle<Node> {
      * Returns true if this handle contains {@code entry}.
      */
     public boolean equals(Entry entry) {
-        return getTitle().equals(entry.getTitle().fullName)
+        return getTitle().equals(entry.getTitle().fullTitle)
                 && getAddress().equals(entry.getAddress().value)
                 && getComment().equals(entry.getComment().value)
                 && getLink().equals(entry.getLink().value)

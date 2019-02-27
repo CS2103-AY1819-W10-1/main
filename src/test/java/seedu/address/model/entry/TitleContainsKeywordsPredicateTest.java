@@ -70,8 +70,8 @@ public class TitleContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new EntryBuilder().withName("Alice Bob").build()));
 
         // Keywords match phone, email and address, but does not match name
-        predicate = new TitleContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
+        predicate = new TitleContainsKeywordsPredicate(Arrays.asList("12345", "https://example.com", "Main", "Street"));
         assertFalse(predicate.test(new EntryBuilder().withName("Alice").withPhone("12345")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+                .withEmail("https://example.com").withAddress("Main Street").build()));
     }
 }

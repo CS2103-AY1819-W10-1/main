@@ -1,14 +1,14 @@
 {
   "persons": [ {
     "name": "Alice Pauline",
-    "phone": "94351253",
-    "email": "alice@example.com",
+    "phone": "Comment1",
+    "email": "https://alice.example.com",
     "address": "123, Jurong West Ave 6, #08-111",
     "tagged": [ "friends" ]
   }, {
     "name": "Alice Pauline",
-    "phone": "94351253",
-    "email": "pauline@example.com",
+    "phone": "Comment2",
+    "email": "https://alice.example.com",
     "address": "4th street"
   } ]
 }
