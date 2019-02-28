@@ -43,7 +43,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Comment comment = ParserUtil.parseComment(argMultimap.getValue(PREFIX_COMMENT).get());
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).get());
         // Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS));
+        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).orElse("Default Address"));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Entry entry = new Entry(title, comment, link, address, tagList);

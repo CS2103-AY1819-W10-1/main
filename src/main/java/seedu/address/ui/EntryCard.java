@@ -51,7 +51,7 @@ public class EntryCard extends UiPart<Region> {
         title.setText(entry.getTitle().fullTitle);
         comment.setText(entry.getComment().value);
         address.setText(entry.getAddress().value);
-        address.setManaged(false);
+        address.setManaged(false); // Makes address label invisible, graphic pipeline will not manage it.
         link.setText(entry.getLink().value);
         entry.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
