@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.time.Clock;
 import java.util.Date;
 
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -55,7 +56,9 @@ public class StatusBarFooter extends UiPart<Region> {
      * Updates the target count whenever the displayed entry list changes.
      */
     private void updateTargetCount(ListChangeListener.Change<? extends Entry> change) {
-        targetCountStatus.setText(String.format(TARGET_COUNT_STATUS, change.getList().size()));
+        Platform.runLater(() -> {
+            targetCountStatus.setText(String.format(TARGET_COUNT_STATUS, change.getList().size()));
+        });
     }
 
     /**
@@ -76,9 +79,11 @@ public class StatusBarFooter extends UiPart<Region> {
      * Updates "last updated" status to the current time.
      */
     private void updateSyncStatus() {
-        long now = clock.millis();
-        String lastUpdated = new Date(now).toString();
-        syncStatus.setText(String.format(SYNC_STATUS_UPDATED, lastUpdated));
+        Platform.runLater(() -> {
+            long now = clock.millis();
+            String lastUpdated = new Date(now).toString();
+            syncStatus.setText(String.format(SYNC_STATUS_UPDATED, lastUpdated));
+        });
     }
 
 }

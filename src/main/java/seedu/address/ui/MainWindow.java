@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -131,11 +132,15 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
         this.logic.commandResultProperty().addListener((observable, oldCommandResult, newCommandResult) -> {
-            processManualSuccess(newCommandResult);
+            Platform.runLater(() -> {
+                processManualSuccess(newCommandResult);
+            });
         });
 
         this.logic.exceptionProperty().addListener((observable, oldException, newException) -> {
-            processManualFailure(newException);
+            Platform.runLater(() -> {
+                processManualFailure(newException);
+            });
         });
     }
 
