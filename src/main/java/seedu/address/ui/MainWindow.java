@@ -132,15 +132,11 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
         this.logic.commandResultProperty().addListener((observable, oldCommandResult, newCommandResult) -> {
-            Platform.runLater(() -> {
-                processManualSuccess(newCommandResult);
-            });
+            processManualSuccess(newCommandResult);
         });
 
         this.logic.exceptionProperty().addListener((observable, oldException, newException) -> {
-            Platform.runLater(() -> {
-                processManualFailure(newException);
-            });
+            processManualFailure(newException);
         });
     }
 
