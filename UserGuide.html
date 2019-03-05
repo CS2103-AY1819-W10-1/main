@@ -217,10 +217,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="showing-links-code-list-code-displays-link-list"><a class="link" href="#showing-links-code-list-code-displays-link-list">5.1. Showing links: <code>list</code> (displays link list)</a></h3>
 <div class="paragraph">
-<p>Shows your reading list of saved links, optionally finding links with headlines containing any of the given keywords, and filtering by read status, date added and tags.</p>
+<p>Shows your reading list of saved links, optionally finding links with titles containing any of the given keywords, and filtering by read status, date added and tags.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>list [KEYWORD]&#8230;&#8203; [r/READ_STATUS] [d/DATE_ADDED] [t/TAG]&#8230;&#8203; [s/SORT_BY]</code></p>
+<p>Format: <code>list [KEYWORDS]&#8230;&#8203; [r/READ_STATUS] [d/DATE_ADDED] [t/TAG]&#8230;&#8203; [s/SORT_BY]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -230,16 +230,19 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+<p>Keywords are comma separated. e.g. <code>Hello world, foo bar</code></p>
 </li>
 <li>
-<p>Only the headline is searched.</p>
+<p>The order of the keywords does not matter. e.g. <code>Hans, Bo</code> will match <code>Bo, Hans</code></p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+<p>Only the title is searched.</p>
 </li>
 <li>
-<p>Links matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Only full words will be matched e.g. <code>Hans Solo</code> will not match <code>Hans Solos</code></p>
+</li>
+<li>
+<p>Links matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans, Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
 </li>
 </ul>
 </div>
@@ -254,10 +257,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><code>list</code> Lists all links</p>
 </li>
 <li>
-<p><code>list Apple r/read tech</code> Lists links with headlines containing <code>apple</code> which are already read and tagged with <code>Tech</code></p>
+<p><code>list Apple r/read tech</code> Lists links with titles containing <code>apple</code> which are already read and tagged with <code>Tech</code></p>
 </li>
 <li>
-<p><code>list Trump</code> Lists links with headlines containing <code>trump</code> and <code>Donald Trump</code> etc.</p>
+<p><code>list Trump</code> Lists links with titles containing <code>trump</code> and <code>Donald Trump</code> etc.</p>
 </li>
 <li>
 <p><code>list r/unread</code> Lists only unread links</p>
@@ -304,10 +307,10 @@ Format: <code>search ARTICLE_URL</code></p>
 <div class="sect2">
 <h3 id="showing-archived-links-code-archives-code-displays-link-list"><a class="link" href="#showing-archived-links-code-archives-code-displays-link-list">5.3. Showing archived links: <code>archives</code> (displays link list)</a></h3>
 <div class="paragraph">
-<p>Shows a list of archived links, optionally finding links with headlines containing any of the given keywords, and filtering by read status, date added and tags.</p>
+<p>Shows a list of archived links, optionally finding links with titles containing any of the given keywords, and filtering by read status, date added and tags.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>archives [KEYWORD]&#8230;&#8203; [r/READ_STATUS] [d/DATE_ADDED] [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>archives [KEYWORDS]&#8230;&#8203; [r/READ_STATUS] [d/DATE_ADDED] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -317,16 +320,19 @@ Format: <code>search ARTICLE_URL</code></p>
 <p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+<p>Keywords are comma separated. e.g. <code>Hello world, foo bar</code></p>
 </li>
 <li>
-<p>Only the headline is searched.</p>
+<p>The order of the keywords does not matter. e.g. <code>Hans, Bo</code> will match <code>Bo, Hans</code></p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+<p>Only the title is searched.</p>
 </li>
 <li>
-<p>Links matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Only full words will be matched e.g. <code>Hans Solo</code> will not match <code>Hans Solos</code></p>
+</li>
+<li>
+<p>Links matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans, Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
 </li>
 </ul>
 </div>
@@ -341,10 +347,10 @@ Format: <code>search ARTICLE_URL</code></p>
 <p><code>archives</code> Lists all archived links</p>
 </li>
 <li>
-<p><code>archives Apple r/read t/Tech</code> Lists archived links with headlines containing <code>apple</code> which are already read and tagged with <code>Tech</code></p>
+<p><code>archives Apple r/read t/Tech</code> Lists archived links with titles containing <code>apple</code> which are already read and tagged with <code>Tech</code></p>
 </li>
 <li>
-<p><code>archives Trump</code> Lists archived links with headlines containing <code>trump</code> and <code>Donald Trump</code> etc.</p>
+<p><code>archives Trump</code> Lists archived links with titles containing <code>trump</code> and <code>Donald Trump</code> etc.</p>
 </li>
 <li>
 <p><code>archives r/unread</code> Lists only unread archived links</p>
@@ -422,7 +428,7 @@ Format: <code>search ARTICLE_URL</code></p>
 <p>Adds a single link from a URL to the manager. Content is automatically downloaded to disk.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add URL [h/HEADLINE_OVERRIDE] [c/COMMENT] [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>add URL [ti/TITLE_OVERRIDE] [c/COMMENT] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -432,7 +438,7 @@ Format: <code>search ARTICLE_URL</code></p>
 </td>
 <td class="content">
 A link can have any number of tags (including 0).
-Headline will be automatically filled by parsing the link if you do not provide it.
+Title will be automatically filled by parsing the link if you do not provide it.
 </td>
 </tr>
 </table>
@@ -454,7 +460,7 @@ Headline will be automatically filled by parsing the link if you do not provide 
 <p>Edits an existing link in the manager.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit INDEX [u/URL] [h/HEADLINE_OVERRIDE] [s/STATUS] [c/COMMENT] [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>edit INDEX [u/URL] [ti/TITLE_OVERRIDE] [s/STATUS] [c/COMMENT] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -530,7 +536,7 @@ Headline will be automatically filled by parsing the link if you do not provide 
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1,2-6</code> Deletes the 1st, and 2nd to 6th links</p>
+<p><code>delete 1,6-10</code> Deletes the 1st, and 2nd to 6th links</p>
 </li>
 </ul>
 </div>
@@ -604,7 +610,7 @@ Headline will be automatically filled by parsing the link if you do not provide 
 <p><code>read all</code> Marks all shown links as read</p>
 </li>
 <li>
-<p><code>read 1,2,4-6</code> Marks the 1st, 2nd and 4th to 6th links as read</p>
+<p><code>read 1,2,6-10</code> Marks the 1st, 2nd and 4th to 6th links as read</p>
 </li>
 </ul>
 </div>
@@ -640,7 +646,7 @@ Headline will be automatically filled by parsing the link if you do not provide 
 <p><code>unread all</code> Marks all shown links as unread</p>
 </li>
 <li>
-<p><code>unread 1,2,4-6</code> Marks the 1st, 2nd and 4th to 6th links as unread</p>
+<p><code>unread 1,2,6-10</code> Marks the 1st, 2nd and 4th to 6th links as unread</p>
 </li>
 </ul>
 </div>
@@ -782,7 +788,7 @@ Headline will be automatically filled by parsing the link if you do not provide 
 <p>Adds links from search results to the manager. Content is automatically downloaded to disk.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add INDEX [h/HEADLINE_OVERRIDE] [c/COMMENT] [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>add INDEX [ti/TITLE_OVERRIDE] [c/COMMENT] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>add INDICES [c/COMMENT] [t/TAG]&#8230;&#8203;</code></p>
@@ -799,7 +805,7 @@ Headline will be automatically filled by parsing the link if you do not provide 
 <td class="content">
 <div class="paragraph">
 <p>A link can have any number of tags (including 0).
-Headline will be automatically filled by parsing the link if you do not provide it.</p>
+Title will be automatically filled by parsing the link if you do not provide it.</p>
 </div>
 </td>
 </tr>
@@ -927,7 +933,7 @@ Headline will be automatically filled by parsing the link if you do not provide 
 <div class="sect2">
 <h3 id="updating-links-from-feeds-code-update-code"><a class="link" href="#updating-links-from-feeds-code-update-code">8.2. Updating links from feeds: <code>update</code></a></h3>
 <div class="paragraph">
-<p>Checks feeds for new links and adds them to the manager.</p>
+<p>Refreshes all feeds.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>update INDICES</code></p>
@@ -1506,4 +1512,4 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-05 14:21:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-05 14:36:46 UTC</div></div></div></body></html>
