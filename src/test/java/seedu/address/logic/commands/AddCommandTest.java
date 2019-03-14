@@ -188,31 +188,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean canUndoEntryBook() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean canRedoEntryBook() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void undoEntryBook() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void redoEntryBook() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void commitEntryBook() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ReadOnlyProperty<Entry> selectedEntryProperty() {
             throw new AssertionError("This method should not be called.");
         }
@@ -312,11 +287,6 @@ public class AddCommandTest {
         public void addEntry(Entry entry) {
             requireNonNull(entry);
             personsAdded.add(entry);
-        }
-
-        @Override
-        public void commitEntryBook() {
-            // called by {@code AddCommand#execute()}
         }
 
         @Override

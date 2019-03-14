@@ -18,7 +18,6 @@ public class ClearCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
         model.clearEntryBook();
-        model.commitEntryBook();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

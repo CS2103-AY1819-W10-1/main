@@ -32,8 +32,6 @@ import org.junit.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.RedoCommand;
-import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 import seedu.address.model.entry.Description;
 import seedu.address.model.entry.Entry;
@@ -58,17 +56,6 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
         String command = "   " + AddCommand.COMMAND_WORD + "  " + TITLE_DESC_AMY + "  " + DESCRIPTION_DESC_AMY + " "
                 + LINK_DESC_AMY + "   " + ADDRESS_DESC_AMY + "   " + TAG_DESC_TECH + " ";
         assertCommandSuccess(command, toAdd);
-
-        /* Case: undo adding Amy to the list -> Amy deleted */
-        command = UndoCommand.COMMAND_WORD;
-        String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
-        assertCommandSuccess(command, model, expectedResultMessage);
-
-        /* Case: redo adding Amy to the list -> Amy added again */
-        command = RedoCommand.COMMAND_WORD;
-        model.addEntry(toAdd);
-        expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
-        assertCommandSuccess(command, model, expectedResultMessage);
 
         /* Case: add a entry with all fields same as another entry in the entry book except link -> added */
         toAdd = new EntryBuilder(AMY).withLink(VALID_LINK_BOB).build();

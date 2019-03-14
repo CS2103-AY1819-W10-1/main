@@ -109,31 +109,6 @@ public interface Model {
     void updateFilteredEntryList(Predicate<Entry> predicate);
 
     /**
-     * Returns true if the model has previous entry book states to restore.
-     */
-    boolean canUndoEntryBook();
-
-    /**
-     * Returns true if the model has undone entry book states to restore.
-     */
-    boolean canRedoEntryBook();
-
-    /**
-     * Restores the model's entry book to its previous state.
-     */
-    void undoEntryBook();
-
-    /**
-     * Restores the model's entry book to its previously undone state.
-     */
-    void redoEntryBook();
-
-    /**
-     * Saves the current entry book state for undo/redo.
-     */
-    void commitEntryBook();
-
-    /**
      * Selected entry in the filtered entry list.
      * null if no entry is selected.
      */

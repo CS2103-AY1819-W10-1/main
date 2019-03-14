@@ -31,8 +31,6 @@ import org.junit.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.RedoCommand;
-import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 import seedu.address.model.entry.Description;
 import seedu.address.model.entry.Entry;
@@ -58,17 +56,6 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
                 + DESCRIPTION_DESC_BOB + " " + LINK_DESC_BOB + "  " + ADDRESS_DESC_BOB + " " + TAG_DESC_SCIENCE + " ";
         Entry editedEntry = new EntryBuilder(BOB).withTags(VALID_TAG_SCIENCE).build();
         assertCommandSuccess(command, index, editedEntry);
-
-        /* Case: undo editing the last entry in the list -> last entry restored */
-        command = UndoCommand.COMMAND_WORD;
-        String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
-        assertCommandSuccess(command, model, expectedResultMessage);
-
-        /* Case: redo editing the last entry in the list -> last entry edited again */
-        command = RedoCommand.COMMAND_WORD;
-        expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
-        model.setEntry(getModel().getFilteredEntryList().get(INDEX_FIRST_ENTRY.getZeroBased()), editedEntry);
-        assertCommandSuccess(command, model, expectedResultMessage);
 
         /* Case: edit a entry with new values same as existing values -> edited */
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased()

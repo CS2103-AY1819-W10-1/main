@@ -56,7 +56,6 @@ public class FeedCommand extends Command {
             InputStream inputStream = Network.fetchAsStream(feedUrl);
             SyndFeed syndFeed = new SyndFeedInput().build(new XmlReader(inputStream));
             convertToEntryList(syndFeed).forEach(model::addEntry);
-            model.commitEntryBook();
         } catch (IOException e) {
             throw new CommandException(String.format(MESSAGE_FAILURE_NET, e), e);
         } catch (FeedException e) {

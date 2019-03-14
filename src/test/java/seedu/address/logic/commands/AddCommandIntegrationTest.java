@@ -25,7 +25,6 @@ public class AddCommandIntegrationTest {
 
         Model expectedModel = model.clone();
         expectedModel.addEntry(validEntry);
-        expectedModel.commitEntryBook();
 
         assertCommandSuccess(new AddCommand(validEntry), model, commandHistory,
                 String.format(AddCommand.MESSAGE_SUCCESS, validEntry), expectedModel);

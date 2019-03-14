@@ -17,9 +17,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.ViewModeCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -86,14 +84,6 @@ public class EntryBookParser {
         case HelpCommand.COMMAND_WORD:
         case HelpCommand.COMMAND_ALIAS:
             return new HelpCommand();
-
-        case UndoCommand.COMMAND_WORD:
-        case UndoCommand.COMMAND_ALIAS:
-            return new UndoCommand();
-
-        case RedoCommand.COMMAND_WORD:
-        case RedoCommand.COMMAND_ALIAS:
-            return new RedoCommand();
 
         case ViewModeCommand.COMMAND_WORD:
         case ViewModeCommand.COMMAND_ALIAS:
