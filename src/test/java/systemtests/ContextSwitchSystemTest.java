@@ -55,7 +55,7 @@ public class ContextSwitchSystemTest extends AddressBookSystemTest {
 
     /**
      * Archives the {@code Entry} at the specified {@code index} in {@code model}'s entry book.
-     * @return the removed entry
+     * @return the archived entry
      */
     private Entry archiveEntry(Model model, Index index) {
         Entry targetEntry = getPerson(model, index);
@@ -64,8 +64,8 @@ public class ContextSwitchSystemTest extends AddressBookSystemTest {
     }
 
     /**
-     * Archives the {@code Entry} at the specified {@code index} in {@code model}'s entry book.
-     * @return the removed entry
+     * Un-archives the {@code Entry} at the specified {@code index} in {@code model}'s entry book.
+     * @return the un-archived entry
      */
     private Entry unarchiveEntry(Model model, Index index) {
         Entry targetEntry = getPerson(model, index);
@@ -74,7 +74,7 @@ public class ContextSwitchSystemTest extends AddressBookSystemTest {
     }
 
     /**
-     * Executes the context-switching command that changes the context of model.
+     * Executes the given command.
      * 1. Command box displays an empty string.<br>
      * 2. Command box has the default style class.<br>
      * 3. Result display box displays the success message of executing {@code Command}. <br>
