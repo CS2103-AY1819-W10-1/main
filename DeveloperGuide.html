@@ -34,11 +34,12 @@
 <li><a href="#context-specific-commands">3.3. Context-specific commands</a></li>
 <li><a href="#autofill-missing-title-or-description-when-adding-a-link">3.4. Autofill missing title or description when adding a link</a></li>
 <li><a href="#reader-view-mode">3.5. Reader view mode</a></li>
-<li><a href="#feed-subscription">3.6. Feed subscription</a></li>
-<li><a href="#code-network-code-design">3.7. <code>Network</code> design</a></li>
-<li><a href="#offline-mode">3.8. Offline mode</a></li>
-<li><a href="#logging">3.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
+<li><a href="#context-specific-commands-2">3.6. Context-specific commands</a></li>
+<li><a href="#feed-subscription">3.7. Feed subscription</a></li>
+<li><a href="#code-network-code-design">3.8. <code>Network</code> design</a></li>
+<li><a href="#offline-mode">3.9. Offline mode</a></li>
+<li><a href="#logging">3.10. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1028,9 +1029,134 @@ These are combined into a new HTML document, which is styled using Bootstrap and
 </div>
 </div>
 <div class="sect2">
-<h3 id="feed-subscription"><a class="link" href="#feed-subscription">3.6. Feed subscription</a></h3>
+<h3 id="context-specific-commands-2"><a class="link" href="#context-specific-commands-2">3.6. Context-specific commands</a></h3>
 <div class="sect3">
 <h4 id="planned-implementation-2"><a class="link" href="#planned-implementation-2">3.6.1. Planned implementation</a></h4>
+<div class="paragraph">
+<p>In order to implement the multiple commands for the application, we require
+a way to disallow certain commands in certain contexts. For example, when the
+user is viewing the archives, he should not be allowed to use the <code>archive</code>
+command since every entry listed is already archive. Vice-versa, when a user is
+uses the <code>list</code> command, <code>unarchive</code> should be registered as an unknown command.</p>
+</div>
+<div class="sect4">
+<h5 id="modular-parser-classes-2"><a class="link" href="#modular-parser-classes-2">Modular Parser classes</a></h5>
+<div class="paragraph">
+<p>We require individual Parser classes for each context.
+Each Parser class should only parse commands allowed for the context it represents.</p>
+</div>
+<div class="paragraph">
+<p>The following classes were created to support this feature.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>EntryBookParser</code> — the base abstract class all Parsers extend from</p>
+</li>
+<li>
+<p><code>EntryBookListParser</code> — Parser for the list context.</p>
+</li>
+<li>
+<p><code>EntryBookArchivesParser</code> —  Parser for the archives context.</p>
+</li>
+<li>
+<p><code>EntryBookFeedsParser</code> —  Parser for the feeds context.</p>
+</li>
+<li>
+<p><code>EntryBookSearchParser</code> —  Parser for the search context.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each Parser class has a <code>parseCommand(String)</code> operation that parses the string command.
+<code>EntryBookParser#parseCommand(String)</code> is the fallback operation used when it&#8217;s children
+fail to parse the command. It parses commands that is common in any context.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="context-state-for-model-2"><a class="link" href="#context-state-for-model-2">Context state for Model</a></h5>
+<div class="paragraph">
+<p>Context is represented by the enum class <code>ModelContext</code>.
+<code>Model</code> to holds this information of the context the application is in, which decides
+Parser class <code>Logic</code> should use when a command is executed.
+Each <code>ModelContext</code> holds a static Parser class that parses commands for the context it represents.</p>
+</div>
+<div class="paragraph">
+<p>The following operations are implemented
+* <code>Model#getContext()</code> — gets the context the application is in.
+* <code>Model#setContext(ModelContext)</code> — sets the context the application is in.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how this mechanism behaves.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user launches the application. The <code>ModelManager</code> will default
+to <code>ModelContext.CONTEXT_LIST</code> context.</p>
+</li>
+<li>
+<p>The user executes the <code>archive</code> command to archive entries.</p>
+</li>
+<li>
+<p>The user erroneously executes the <code>unarchive</code> command, and the application reports
+it as an "Unknown command".</p>
+</li>
+<li>
+<p>The user executes the <code>archives</code> command to view his archives. In the execution of
+of this <code>ArchivesCommand</code>, <code>model.setContext(ModelContext)</code> is called to change the
+context to <code>ModelContext.CONTEXT_ARCHIVES</code> context.</p>
+</li>
+<li>
+<p>The user executes the <code>unarchive</code> command with correct arguments, and the
+application successfully executes the command.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Context information is held by <code>Model</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: makes the most sense for the context to change only if a context-switching command
+is successfully executed, and <code>Command</code> only has a reference to <code>Model</code>, not <code>Logic</code>.</p>
+</li>
+<li>
+<p>Cons: <code>Model</code> is slightly more dependent on <code>Logic</code> since it has an indirect reference
+to Parser classes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Context information is held by <code>Logic</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: weakens the dependency of <code>Model</code> on <code>Logic</code>. Context can then be thought of as a
+state for the <code>Logic</code> module.</p>
+</li>
+<li>
+<p>Cons: making this work will involve architectural changes since only the <code>UI</code> module has
+a reference to <code>Logic</code> module class (Parser).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feed-subscription"><a class="link" href="#feed-subscription">3.7. Feed subscription</a></h3>
+<div class="sect3">
+<h4 id="planned-implementation-3"><a class="link" href="#planned-implementation-3">3.7.1. Planned implementation</a></h4>
 <div class="paragraph">
 <p>The feed subscription system requires <code>ModelManager</code> to contain more
 than one <code>EntryBook</code>. Since we should only show a single <code>EntryBook</code> at
@@ -1086,7 +1212,7 @@ named <code>EntryBook</code>’s with their own accessors.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1125,7 +1251,7 @@ which is not robust.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="code-network-code-design"><a class="link" href="#code-network-code-design">3.7. <code>Network</code> design</a></h3>
+<h3 id="code-network-code-design"><a class="link" href="#code-network-code-design">3.8. <code>Network</code> design</a></h3>
 <div class="paragraph">
 <p>As many components have to make network calls
 to retrieve resources from the Internet,
@@ -1134,7 +1260,7 @@ The following sections describe the different design patterns we considered
 and their pros and cons.</p>
 </div>
 <div class="sect3">
-<h4 id="singleton-pattern-chosen-pattern"><a class="link" href="#singleton-pattern-chosen-pattern">3.7.1. Singleton pattern (chosen pattern)</a></h4>
+<h4 id="singleton-pattern-chosen-pattern"><a class="link" href="#singleton-pattern-chosen-pattern">3.8.1. Singleton pattern (chosen pattern)</a></h4>
 <div class="paragraph">
 <p>This pattern is to create a new class named <code>Network</code>.
 This class is abstract so it cannot be instantiated,
@@ -1169,20 +1295,20 @@ which encourages coupling with everything else in the codebase</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="todo-some-other-pattern-we-considered-but-we-forgot"><a class="link" href="#todo-some-other-pattern-we-considered-but-we-forgot">3.7.2. TODO: Some other pattern we considered but we forgot</a></h4>
+<h4 id="todo-some-other-pattern-we-considered-but-we-forgot"><a class="link" href="#todo-some-other-pattern-we-considered-but-we-forgot">3.8.2. TODO: Some other pattern we considered but we forgot</a></h4>
 <div class="paragraph">
 <p>TODO: Add details here</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="todo-comparison-of-methods-and-why-we-went-with-singleton"><a class="link" href="#todo-comparison-of-methods-and-why-we-went-with-singleton">3.7.3. TODO: Comparison of methods and why we went with Singleton</a></h4>
+<h4 id="todo-comparison-of-methods-and-why-we-went-with-singleton"><a class="link" href="#todo-comparison-of-methods-and-why-we-went-with-singleton">3.8.3. TODO: Comparison of methods and why we went with Singleton</a></h4>
 <div class="paragraph">
 <p>TODO: Details</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="offline-mode"><a class="link" href="#offline-mode">3.8. Offline mode</a></h3>
+<h3 id="offline-mode"><a class="link" href="#offline-mode">3.9. Offline mode</a></h3>
 <div class="paragraph">
 <p>Offline mode requires many changes to the architecture as a whole.
 The main point of conflict is that we need to store many articles to disk
@@ -1192,7 +1318,7 @@ The following sections describe
 the design decisions made to support offline mode.</p>
 </div>
 <div class="sect3">
-<h4 id="architectural-changes"><a class="link" href="#architectural-changes">3.8.1. Architectural changes</a></h4>
+<h4 id="architectural-changes"><a class="link" href="#architectural-changes">3.9.1. Architectural changes</a></h4>
 <div class="sect4">
 <h5 id="removing-undo-redo-feature"><a class="link" href="#removing-undo-redo-feature">Removing undo/redo feature</a></h5>
 <div class="paragraph">
@@ -1224,7 +1350,7 @@ to improve cohesion at the expense of worsening coupling.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="planned-implementation-3"><a class="link" href="#planned-implementation-3">3.8.2. Planned implementation</a></h4>
+<h4 id="planned-implementation-4"><a class="link" href="#planned-implementation-4">3.9.2. Planned implementation</a></h4>
 <div class="paragraph">
 <p>After the architectural changes were made,
 there are a few design considerations that needed to be made:</p>
@@ -1255,14 +1381,14 @@ This is described in section <a href="#network-design">[network-design]</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.10. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.11, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1293,7 +1419,7 @@ This is described in section <a href="#network-design">[network-design]</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.11. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3119,4 +3245,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 15:57:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 16:01:49 UTC</div></div></div></body></html>
