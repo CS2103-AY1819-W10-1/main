@@ -31,8 +31,9 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#feed-subscription">3.3. Feed subscription</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -775,14 +776,111 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="feed-subscription"><a class="link" href="#feed-subscription">3.3. Feed subscription</a></h3>
+<div class="sect3">
+<h4 id="planned-implementation"><a class="link" href="#planned-implementation">3.3.1. Planned implementation</a></h4>
+<div class="paragraph">
+<p>The feed subscription system requires <code>ModelManager</code> to contain more
+than one <code>EntryBook</code>. Since we should only show a single <code>EntryBook</code> at
+a time, we have to decouple the <code>EntryBook</code> that is displayed from the
+ones that are in <code>ModelManager</code>.</p>
+</div>
+<div class="sect4">
+<h5 id="decoupling-displayed-code-entrybook-code"><a class="link" href="#decoupling-displayed-code-entrybook-code">Decoupling displayed <code>EntryBook</code></a></h5>
+<div class="paragraph">
+<p>Decoupling the displayed <code>EntryBook</code> means that the following additional
+methods are implemented</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Model#displayEntryBook(EntryBook)</code> — shows the <code>EntryBook</code> provided
+in the user interface</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how this mechanism behaves.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user launches the application. The <code>ModelManager</code> will default
+to displaying the <code>EntryBook</code> which corresponds to the default (list)
+context.</p>
+</li>
+<li>
+<p>The user executes the <code>feed [valid_feed_url]</code> command to view a web
+feed. The <code>feed</code> command fetches and parses the web feed into an
+<code>EntryBook</code> and calls <code>Model#displayEntryBook</code> with it.</p>
+</li>
+<li>
+<p>In the case of the <code>feed</code> command, the context changes to <code>search</code>
+(internal working name). In the <code>search</code> context the <code>EntryBook</code> is
+read-only, and you can import links from the currently displayed
+<code>EntryBook</code> into the <code>list</code> context <code>EntryBook</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="multiple-code-entrybook-code-s"><a class="link" href="#multiple-code-entrybook-code-s">Multiple <code>EntryBook</code>’s</a></h5>
+<div class="paragraph">
+<p>Some contexts (such as <code>feed</code> and <code>archive</code> context) requires
+maintaining a separate <code>EntryBook</code> each. Since we will only need at most
+4 separate <code>EntryBook</code>’s, <code>Model</code> will basically contain differently
+named <code>EntryBook</code>’s with their own accessors.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> multiple differently named
+<code>EntryBook</code>’s with differently-named accessors each</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: easy to implement</p>
+</li>
+<li>
+<p>Cons: accessors are basically duplicated code</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Each <code>EntryBook</code> belongs to a <code>ModelContext</code>,
+modifiers overloaded to be context-sensitive</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: less code duplication due to polymorphism</p>
+</li>
+<li>
+<p>Cons: writing to an <code>EntryBook</code> that does not belong the current
+state change will either involve an extra accessor (basically
+Alternative 1), or changing state (specifically <code>Model#setContext</code>),
+which is not robust.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -813,7 +911,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2639,4 +2737,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 14:46:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 14:55:17 UTC</div></div></div></body></html>
