@@ -1134,7 +1134,47 @@ The following sections describe the different design patterns we considered
 and their pros and cons.</p>
 </div>
 <div class="sect3">
-<h4 id="singleton-pattern-chosen-pattern"><a class="link" href="#singleton-pattern-chosen-pattern">3.7.1. Singleton pattern (chosen pattern)</a></h4>
+<h4 id="considerations"><a class="link" href="#considerations">3.7.1. Considerations</a></h4>
+<div class="paragraph">
+<p>This component is depended on by the following components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AddCommand (when adding articles so that they can be saved to disk)</p>
+</li>
+<li>
+<p>BrowserPanel (when viewing articles or feeds)</p>
+</li>
+<li>
+<p>Feeds management system (for fetching subscriptions, or saving feeds)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Thus, our design needs to take into consideration how it is going to be used.</p>
+</div>
+<div class="paragraph">
+<p>Because it&#8217;s possible that the settings we use to fetch resources
+may need to be changed over time
+(e.g. timeouts, request headers, cookies, etc.),
+we should centralise the design to one component
+so that these can easily be changed.
+Obviously, this component should be easily accessible
+from all the components listed above.
+Finally, the interface for this component should be general
+and apply to all use cases
+because we have a large mix of possible requests:
+articles, feeds, or other resources.</p>
+</div>
+<div class="paragraph">
+<p>The only way we can make this component easily accessible is to make it global.
+However, there are a couple of ways to design a global component.
+The following sections describe the patterns considered.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="static-class-pattern-chosen-pattern"><a class="link" href="#static-class-pattern-chosen-pattern">3.7.2. Static class pattern (chosen pattern)</a></h4>
 <div class="paragraph">
 <p>This pattern is to create a new class named <code>Network</code>.
 This class is abstract so it cannot be instantiated,
@@ -1145,7 +1185,7 @@ and all its methods are marked <code>private</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Allows for convenient access to the <code>Network</code></p>
+<p>Convenient access to the network</p>
 </li>
 <li>
 <p>Good cohesion: everything with networking details in one file</p>
@@ -1169,15 +1209,125 @@ which encourages coupling with everything else in the codebase</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="todo-some-other-pattern-we-considered-but-we-forgot"><a class="link" href="#todo-some-other-pattern-we-considered-but-we-forgot">3.7.2. TODO: Some other pattern we considered but we forgot</a></h4>
+<h4 id="singleton-pattern"><a class="link" href="#singleton-pattern">3.7.3. Singleton pattern</a></h4>
 <div class="paragraph">
-<p>TODO: Add details here</p>
+<p>This pattern is very similar to the pattern above.
+We create a new class named <code>Network</code>,
+and a static getter method that returns a single instance of <code>Network</code>.
+This allows us the flexibility of working with objects
+rather than with static methods.</p>
+</div>
+<div class="sect4">
+<h5 id="pros-2"><a class="link" href="#pros-2">Pros</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Convenient access to the network</p>
+</li>
+<li>
+<p>Good cohesion: everything with networking details in one file</p>
+</li>
+<li>
+<p>A little bit harder to write, as we need to include the Singleton logic,
+but still easy</p>
+</li>
+<li>
+<p>Objects allow you to perform dependency-injection,
+so the calling class can obtain the <code>Network</code> instance and pass it down</p>
+</li>
+<li>
+<p>Has the option of extending the class to possibly allowing multiple instances
+in the future</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cons-2"><a class="link" href="#cons-2">Cons</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>More work than the static class pattern</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="todo-comparison-of-methods-and-why-we-went-with-singleton"><a class="link" href="#todo-comparison-of-methods-and-why-we-went-with-singleton">3.7.3. TODO: Comparison of methods and why we went with Singleton</a></h4>
+<h4 id="ad-hoc-aka-no-pattern"><a class="link" href="#ad-hoc-aka-no-pattern">3.7.4. Ad-hoc aka no pattern</a></h4>
 <div class="paragraph">
-<p>TODO: Details</p>
+<p>We could also choose to directly call the network API
+from whatever calling methods would have called <code>Network</code> before.
+This is the simplest "pattern" as it involves not writing any code.</p>
+</div>
+<div class="sect4">
+<h5 id="pros-3"><a class="link" href="#pros-3">Pros</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>No need to write any code</p>
+</li>
+<li>
+<p>No coupling since there&#8217;s no code</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cons-3"><a class="link" href="#cons-3">Cons</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Bad cohesion: networking related code will be thrown all over the codebase.
+If we were to switch to using a different API
+or needing to change a particular detail in how the network API is called,
+then we would need to change them in all the places
+where the network API got called.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="comparison-of-methods-and-why-we-went-with-the-static-class-pattern"><a class="link" href="#comparison-of-methods-and-why-we-went-with-the-static-class-pattern">3.7.5. Comparison of methods and why we went with the static class pattern</a></h4>
+<div class="paragraph">
+<p>Ranking the patterns from least effort to most effort,
+we have ad-hoc being the easiest,
+followed by static class,
+and finally singleton.</p>
+</div>
+<div class="paragraph">
+<p>Generally, the less code, the better.
+This is usually the primary consideration.
+This means if there are two patterns
+where both meet some minimum quality standard
+but one takes more effort,
+we should go with the one that takes less effort to write.</p>
+</div>
+<div class="paragraph">
+<p>We did not choose the ad-hoc pattern
+because we anticipate future changes to the networking code
+as we take into account more details
+like timeouts, asynchronicity, cookies, etc.
+In other words,
+this led us to prioritise good cohesion in our desired pattern.</p>
+</div>
+<div class="paragraph">
+<p>However, aside from this, both singleton and static class pattern
+have roughly the same benefits.
+We do not yet need to consider things like dependency inversion
+because <code>Network</code> calls are decidedly a very global concept
+which makes it less applicable.
+Using the singleton pattern would have improved testability of our code,
+but it would have required rewriting many of our classes
+to use dependency inversion,
+and this makes the code more complex.</p>
+</div>
+<div class="paragraph">
+<p>So this is why we went with the static class pattern,
+which has effectively the same benefits as singleton
+after ruling out dependency inversion,
+and the static class pattern is easier to write than the singleton pattern.</p>
 </div>
 </div>
 </div>
@@ -3119,4 +3269,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-28 14:50:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 14:40:30 UTC</div></div></div></body></html>
