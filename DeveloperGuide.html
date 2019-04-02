@@ -29,16 +29,15 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#context-specific-commands">3.3. Context-specific commands</a></li>
-<li><a href="#autofill-missing-title-or-description-when-adding-a-link">3.4. Autofill missing title or description when adding a link</a></li>
-<li><a href="#reader-view-mode">3.5. Reader view mode</a></li>
-<li><a href="#feed-subscription">3.6. Feed subscription</a></li>
-<li><a href="#code-network-code-design">3.7. <code>Network</code> design</a></li>
-<li><a href="#offline-mode">3.8. Offline mode</a></li>
-<li><a href="#logging">3.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
+<li><a href="#context-specific-commands">3.1. Context-specific commands</a></li>
+<li><a href="#autofill-missing-title-or-description-when-adding-a-link">3.2. Autofill missing title or description when adding a link</a></li>
+<li><a href="#reader-view-mode">3.3. Reader view mode</a></li>
+<li><a href="#multiple-entrybooks">3.4. Multiple EntryBooks</a></li>
+<li><a href="#code-network-code-design">3.5. <code>Network</code> design</a></li>
+<li><a href="#offline-mode">3.6. Offline mode</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#proposed-data-encryption">3.9. [Proposed] Data Encryption</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -83,7 +82,7 @@
 <li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
+<li><a href="#deleting-a-entry">H.2. Deleting a entry</a></li>
 <li><a href="#saving-data">H.3. Saving data</a></li>
 </ul>
 </li>
@@ -238,26 +237,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
-<div class="paragraph">
-<p>After forking the repo, the documentation will still have the SE-EDU branding and refer to the <code>se-edu/addressbook-level4</code> repo.</p>
-</div>
-<div class="paragraph">
-<p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code>se-edu/addressbook-level4</code>), you should do the following:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Configure the <a href="#Docs-SiteWideDocSettings">site-wide documentation settings</a> in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/build.gradle"><code>build.gradle</code></a>, such as the <code>site-name</code>, to suit your own project.</p>
-</li>
-<li>
-<p>Replace the URL in the attribute <code>repoURL</code> in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/docs/DeveloperGuide.adoc"><code>DeveloperGuide.adoc</code></a> and <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/docs/UserGuide.adoc"><code>UserGuide.adoc</code></a> with the URL of your fork.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">1.4.3. Setting up CI</a></h4>
+<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">1.4.2. Setting up CI</a></h4>
 <div class="paragraph">
 <p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
 </div>
@@ -293,7 +273,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 </div>
 </div>
 <div class="sect3">
-<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.4. Getting started with coding</a></h4>
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.3. Getting started with coding</a></h4>
 <div class="paragraph">
 <p>When you are ready to start coding,</p>
 </div>
@@ -428,7 +408,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>EntryListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -462,13 +442,16 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>EntryBookParser</code> has several children classes that represent parsers for a specific context.</p>
+</li>
+<li>
+<p><code>Logic</code> uses the <code>EntryBookParser</code> children classes to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding an entry).</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -511,7 +494,7 @@ The following class plays an important role at the architecture level:</p>
 <p>stores the Address Book data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Entry&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -525,7 +508,7 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Entry</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Entry</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
 <br>
 <span class="image"><img src="images/ModelClassBetterOopDiagram.png" alt="ModelClassBetterOopDiagram" width="800"></span>
 </td>
@@ -573,217 +556,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
+<h3 id="context-specific-commands"><a class="link" href="#context-specific-commands">3.1. Context-specific commands</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="context-specific-commands"><a class="link" href="#context-specific-commands">3.3. Context-specific commands</a></h3>
-<div class="sect3">
-<h4 id="planned-implementation"><a class="link" href="#planned-implementation">3.3.1. Planned implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>In order to implement the multiple commands for the application, we require
 a way to disallow certain commands in certain contexts. For example, when the
@@ -791,6 +566,13 @@ user is viewing the archives, he should not be allowed to use the <code>archive<
 command since every entry listed is already archive. Vice-versa, when a user is
 uses the <code>list</code> command, <code>unarchive</code> should be registered as an unknown command.</p>
 </div>
+<div class="paragraph">
+<p>This presents two main problems; the need for separate command parsers for each context,
+and a way for the application to keep track of its context.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.1.2. Current Implementation</a></h4>
 <div class="sect4">
 <h5 id="modular-parser-classes"><a class="link" href="#modular-parser-classes">Modular Parser classes</a></h5>
 <div class="paragraph">
@@ -821,7 +603,7 @@ Each Parser class should only parse commands allowed for the context it represen
 </div>
 <div class="paragraph">
 <p>Each Parser class has a <code>parseCommand(String)</code> operation that parses the string command.
-<code>EntryBookParser#parseCommand(String)</code> is the fallback operation used when it&#8217;s children
+<code>EntryBookParser#parseCommand(String)</code> is the fallback operation used when any of its children
 fail to parse the command. It parses commands that is common in any context.</p>
 </div>
 </div>
@@ -868,7 +650,7 @@ application successfully executes the command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.3. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -881,7 +663,7 @@ is successfully executed, and <code>Command</code> only has a reference to <code
 </li>
 <li>
 <p>Cons: <code>Model</code> is slightly more dependent on <code>Logic</code> since it has an indirect reference
-to Parser classes.</p>
+to Parser classes. This causes more coupling.</p>
 </li>
 </ul>
 </div>
@@ -892,7 +674,7 @@ to Parser classes.</p>
 <ul>
 <li>
 <p>Pros: weakens the dependency of <code>Model</code> on <code>Logic</code>. Context can then be thought of as a
-state for the <code>Logic</code> module.</p>
+state for the <code>Logic</code> module, which is also responsible for parsing commands.</p>
 </li>
 <li>
 <p>Cons: making this work will involve architectural changes since only the <code>UI</code> module has
@@ -903,34 +685,49 @@ a reference to <code>Logic</code> module class (Parser).</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Ultimately, Alternative 1 was chosen because we later decided that context should have a one-to-one
+correspondence to which entrybook to display to the user (refer to <a href="#Multiple-EntryBooks">[Multiple-EntryBooks]</a>),
+in addition to being the option which required the least modification to the rest
+of the code base to implement.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autofill-missing-title-or-description-when-adding-a-link"><a class="link" href="#autofill-missing-title-or-description-when-adding-a-link">3.4. Autofill missing title or description when adding a link</a></h3>
+<h3 id="autofill-missing-title-or-description-when-adding-a-link"><a class="link" href="#autofill-missing-title-or-description-when-adding-a-link">3.2. Autofill missing title or description when adding a link</a></h3>
 <div class="paragraph">
 <p>When adding a link using the <code>add</code> command, users only need to specify the <code>URL</code> field.
 If the <code>Title</code> or <code>Description</code> field is not specified, they are automatically filled.
 This makes adding links much faster and more convenient for users.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>If both <code>Title</code> and <code>Description</code> are already specified by the user, <code>AddCommand</code> just adds the <code>Entry</code> to the <code>Model</code>.
-Otherwise, <code>AddCommand</code> attempts to find replacement candidates for a missing <code>Title</code> or <code>Description</code> heuristically, then updates the <code>Entry</code> with the best replacement and adds it to the <code>Model</code>.</p>
+<p>Autofill-related code lies in the <code>EntryAutofill</code> utility class.
+The constructor takes in the original <code>Title</code> and <code>Description</code>,
+and there are methods to parse URL and HTML in order to extract replacement candidates,
+as well as to get the best <code>Title</code> and <code>Description</code> candidates.</p>
 </div>
 <div class="paragraph">
 <p>The fallback is a default <code>Title</code> and <code>Description</code> guaranteed to work.
 The first attempt to find replacement candidates is by parsing just the URL.
 This will work even if there is no Internet access, whereas the following attempts require Internet access.
 The next attempt is by using the Jsoup library to parse the raw HTML into a Document object and obtain information likely to be present,
-and the last attempt is by using the Crux library to process the Document object and extract metadata.
+and the last attempt is by using the Readability4J library to process the Document object and extract metadata.
 In this way, the last successful attempt to replace <code>Title</code> and <code>Description</code> becomes their current best replacement candidate.
 Since we cascade from the last choice to the first choice for <code>Title</code> and <code>Description</code> separately,
-by the end we have found the best possible replacement candidate for each of them given the circumstances.</p>
+by the end we have found the best possible replacement candidate for each of them given the circumstances.
+However, replacement candidates are only chosen if the original <code>Title</code> and <code>Description</code> are empty,
+so the original user input is still the first choice, followed by the best replacement candidates found.</p>
+</div>
+<div class="paragraph">
+<p>This means that if both <code>Title</code> and <code>Description</code> are already specified by the user, <code>AddCommand</code> just adds the <code>Entry</code> to the <code>Model</code>.
+Otherwise, <code>AddCommand</code> attempts to find replacement candidates for a missing <code>Title</code> or <code>Description</code> heuristically,
+then updates the <code>Entry</code> with the best replacement and adds it to the <code>Model</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-where-autofill-should-be-carried-out"><a class="link" href="#aspect-where-autofill-should-be-carried-out">Aspect: Where autofill should be carried out</a></h5>
 <div class="ulist">
@@ -961,37 +758,94 @@ by the end we have found the best possible replacement candidate for each of the
 </ul>
 </div>
 </li>
+<li>
+<p><strong>Why current choice:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>It is more important to follow the existing design conventions since it is not hard to include autofill logic in other areas using the <code>EntryAutofill</code> utility class.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-replacement-candidates-should-be-cascaded"><a class="link" href="#aspect-how-replacement-candidates-should-be-cascaded">Aspect: How replacement candidates should be cascaded</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Check candidates are non-null and non-empty before replacing best candidate so far directly within <code>EntryAutofill</code> methods</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simple to implement.</p>
+</li>
+<li>
+<p>Cons: Messy and hard-to-read code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice):</strong> Create and use a new <code>Candidate</code> class that generalizes this idea to any type and any function that checks for candidate validity</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can be reused in many places, more elegant code.</p>
+</li>
+<li>
+<p>Cons: Abstraction may be unnecessary.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Why current choice:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>It is not hard to implement the <code>Candidate</code> class and the semantic beauty and elegance it affords is worth the small extra effort.</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="reader-view-mode"><a class="link" href="#reader-view-mode">3.5. Reader view mode</a></h3>
+<h3 id="reader-view-mode"><a class="link" href="#reader-view-mode">3.3. Reader view mode</a></h3>
 <div class="paragraph">
-<p>The reader view gives users a more focused and comfortable reading experience by removing clutter and formatting content into a clean and easy-to-read layout.</p>
+<p>The reader view gives users a more focused reading experience by removing clutter and formatting content into a clean and easy-to-read layout.
+Letting users choose a colour scheme that fits their lighting environment also makes their reading experience more comfortable.</p>
 </div>
 <div class="paragraph">
-<p>Using the <code>view</code> command, users can switch between the <code>browser</code> and <code>reader</code> view modes.</p>
+<p>Using the <code>view</code> command, users can switch between the <code>browser</code> and <code>reader</code> view modes, as well as choose a colour scheme using the optional <code>s/STYLE</code> parameter.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The two available view modes are specified in the <code>ViewMode</code> enum.
+<p>Available view types are specified in the <code>ViewType</code> enum, and available reader view styles are specified in the <code>ReaderViewStyle</code> enum.
+The <code>ViewMode</code> object encapsulates a <code>ViewType</code> and <code>ReaderViewStyle</code> and represents a user setting.
 The <code>Model</code> exposes an observable <code>viewModeProperty</code>, which is set by <code>ViewModeCommand</code> and observed by <code>BrowserPanel</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>BrowserPanel</code> keeps track of whether an original web page or a reader view version is loaded.
-If an original web page is loaded but the <code>reader</code> view mode is selected, the reader view is generated and loaded,
+If an original web page is loaded but the <code>reader</code> view mode is selected,
+the CSS stylesheet is changed accordingly and the reader view is generated and loaded,
 except when the currently loaded web page is the default blank page or error page.</p>
 </div>
 <div class="paragraph">
-<p>The Crux and Jsoup external libraries do the heavy lifting of parsing the raw HTML currently loaded in the <code>WebView</code> to extract useful metadata and content.
+<p>The Jsoup and Readability4J external libraries do the heavy lifting of parsing the raw HTML currently loaded in the <code>WebView</code> to extract useful metadata and content.
+Jsoup was chosen as it is a mature HTML parser library while Readability4J was chosen as it is a port of port of Mozilla&#8217;s excellent Readability.js.
 These are combined into a new HTML document, which is styled using Bootstrap and then loaded in the <code>WebView</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-when-reader-view-should-be-generated"><a class="link" href="#aspect-when-reader-view-should-be-generated">Aspect: When reader view should be generated</a></h5>
 <div class="ulist">
@@ -1022,32 +876,78 @@ These are combined into a new HTML document, which is styled using Bootstrap and
 </ul>
 </div>
 </li>
+<li>
+<p><strong>Why current choice:</strong></p>
+</li>
+<li>
+<p>Since users might be browsing the Internet using our application&#8217;s online search features,
+it is not practical to download and save every page when users are likely to be at a particular page only for a short time.
+Therefore, generating reader view on-the-fly will open up reader view to our application&#8217;s online search features and add value to them.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-reader-view-styles-should-be-specified"><a class="link" href="#aspect-how-reader-view-styles-should-be-specified">Aspect: How reader view styles should be specified</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Hard-code reader view styles in the app.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement, more control over user experience.</p>
+</li>
+<li>
+<p>Cons: Users may not like the hard-coded reader view styles.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Let users add custom stylesheets.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Gives users customization options.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement, stylesheets still need to be based on Bootstrap.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Why current choice:</strong></p>
+</li>
+<li>
+<p>It is a case of diminishing returns.
+It is not difficult for us to add a few reader view styles for users to choose from, which gives them a lot more flexibility compared to not having any styles to choose from.
+but making the design support custom user stylesheets would require much more effort while not giving users a lot more benefit.
+The current design makes it very simple for us to add another reader view style, in case many users demand a particular style.</p>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="feed-subscription"><a class="link" href="#feed-subscription">3.6. Feed subscription</a></h3>
+<h3 id="multiple-entrybooks"><a class="link" href="#multiple-entrybooks">3.4. Multiple EntryBooks</a></h3>
 <div class="sect3">
-<h4 id="planned-implementation-2"><a class="link" href="#planned-implementation-2">3.6.1. Planned implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.4.1. Current implementation</a></h4>
 <div class="paragraph">
-<p>The feed subscription system requires <code>ModelManager</code> to contain more
-than one <code>EntryBook</code>. Since we should only show a single <code>EntryBook</code> at
-a time, we have to decouple the <code>EntryBook</code> that is displayed from the
-ones that are in <code>ModelManager</code>.</p>
+<p>ModelManager used to have only a single <code>EntryBook</code>. However, managing feeds and archives subscription system means that we need to deal with multiple <code>EntryBook`s.
+Since we should only show a single `EntryBook</code> at a time, our first task is to decouple the <code>EntryBook</code> that is displayed from the ones that we will be adding to <code>ModelManager</code>.</p>
 </div>
 <div class="sect4">
 <h5 id="decoupling-displayed-code-entrybook-code"><a class="link" href="#decoupling-displayed-code-entrybook-code">Decoupling displayed <code>EntryBook</code></a></h5>
 <div class="paragraph">
-<p>Decoupling the displayed <code>EntryBook</code> means that the following additional
-methods are implemented</p>
+<p>Decoupling the displayed <code>EntryBook</code> means that the following additional methods are implemented</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Model#displayEntryBook(EntryBook)</code> — shows the <code>EntryBook</code> provided
-in the user interface</p>
+<p><code>ModelManager#displayEntryBook(EntryBook)</code> — shows the <code>EntryBook</code> provided in the user interface</p>
 </li>
 </ul>
 </div>
@@ -1057,41 +957,70 @@ in the user interface</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The user launches the application. The <code>ModelManager</code> will default
-to displaying the <code>EntryBook</code> which corresponds to the default (list)
-context.</p>
+<p>The user launches the application. The <code>ModelManager</code> will default to displaying the <code>EntryBook</code> which corresponds to the default (list) context.</p>
 </li>
 <li>
-<p>The user executes the <code>feed [valid_feed_url]</code> command to view a web
-feed. The <code>feed</code> command fetches and parses the web feed into an
-<code>EntryBook</code> and calls <code>Model#displayEntryBook</code> with it.</p>
+<p>The user executes the <code>feed [valid_feed_url]</code> command to view a web feed. The <code>feed</code> command fetches and parses the web feed into an <code>EntryBook</code> which is used for <code>ModelManager#setSearchEntryBook</code> to replace the search context <code>EntryBook</code>.</p>
 </li>
 <li>
-<p>In the case of the <code>feed</code> command, the context changes to <code>search</code>
-(internal working name). In the <code>search</code> context the <code>EntryBook</code> is
-read-only, and you can import links from the currently displayed
-<code>EntryBook</code> into the <code>list</code> context <code>EntryBook</code>.</p>
+<p>It then sets the <code>ModelContext</code> to <code>search</code>. In the <code>search</code> context the <code>EntryBook</code> is read-only, and you can import links from the currently displayed <code>EntryBook</code> into the <code>list</code> context <code>EntryBook</code>.</p>
 </li>
 </ol>
 </div>
 </div>
-<div class="sect4">
-<h5 id="multiple-code-entrybook-code-s"><a class="link" href="#multiple-code-entrybook-code-s">Multiple <code>EntryBook</code>’s</a></h5>
-<div class="paragraph">
-<p>Some contexts (such as <code>feed</code> and <code>archive</code> context) requires
-maintaining a separate <code>EntryBook</code> each. Since we will only need at most
-4 separate <code>EntryBook</code>’s, <code>Model</code> will basically contain differently
-named <code>EntryBook</code>’s with their own accessors.</p>
-</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="decoupling-displayed-code-entrybook-code-2"><a class="link" href="#decoupling-displayed-code-entrybook-code-2">Decoupling displayed <code>EntryBook</code></a></h5>
+<div class="paragraph">
+<p>We decided to have a <code>SimpleListProperty&lt;Entry&gt;</code> called <code>displayedEntryList</code> which is used to provide the base list for <code>filteredEntries</code>.
+The implementation of <code>ModelManager#displayEntryBook</code> will then just be a <code>displayedEntryList.setValue</code>. However we decided to keep <code>displayEntryBook</code> private and not expose it via the <code>Model</code> interface.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> multiple differently named
-<code>EntryBook</code>’s with differently-named accessors each</p>
+<p><strong>Alternative 1 (current choice):</strong> Keep <code>displayEntryBook</code> private,
+it only gets called when <code>ModelContext</code> changes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: more defensive&#8201;&#8212;&#8201;a rogue command cannot easily display junk.</p>
+</li>
+<li>
+<p>Cons: In the context of the <code>feed</code> command, where the <code>EntryBook</code> used is in fact ephemeral. When the <code>ModelContext</code> switches away from <code>search</code>, the ephemeral <code>EntryBook</code> still lives in <code>ModelManager</code>, using extra memory.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Add <code>displayEntryBook</code> under the <code>Model</code> interface so that other classes (such as various commands) could use it.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: easier implementation for some commands, slightly reduced memory usage.</p>
+</li>
+<li>
+<p>Cons: decoupling displayed <code>EntryBook</code> from <code>ModelContext</code> could allow buggy commands to place <code>ModelManager</code> in an inconsistent state.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 since it is more robust and only entails a slight additional cognitive load.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="multiple-entrybooks-2"><a class="link" href="#multiple-entrybooks-2">Multiple EntryBooks</a></h5>
+<div class="paragraph">
+<p>To support multiple EntryBooks, we decided to have multiple differently named EntryBooks each with their own accessors.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> multiple differently named <code>EntryBook</code>’s with differently-named accessors each</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1124,8 +1053,9 @@ which is not robust.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="code-network-code-design"><a class="link" href="#code-network-code-design">3.7. <code>Network</code> design</a></h3>
+<h3 id="code-network-code-design"><a class="link" href="#code-network-code-design">3.5. <code>Network</code> design</a></h3>
 <div class="paragraph">
 <p>As many components have to make network calls
 to retrieve resources from the Internet,
@@ -1134,7 +1064,7 @@ The following sections describe the different design patterns we considered
 and their pros and cons.</p>
 </div>
 <div class="sect3">
-<h4 id="considerations"><a class="link" href="#considerations">3.7.1. Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p>This component is depended on by the following components:</p>
 </div>
@@ -1174,7 +1104,7 @@ The following sections describe the patterns considered.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="static-class-pattern-chosen-pattern"><a class="link" href="#static-class-pattern-chosen-pattern">3.7.2. Static class pattern (chosen pattern)</a></h4>
+<h4 id="static-class-pattern-chosen-pattern"><a class="link" href="#static-class-pattern-chosen-pattern">3.5.2. Static class pattern (chosen pattern)</a></h4>
 <div class="paragraph">
 <p>This pattern is to create a new class named <code>Network</code>.
 This class is abstract so it cannot be instantiated,
@@ -1209,7 +1139,7 @@ which encourages coupling with everything else in the codebase</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="singleton-pattern"><a class="link" href="#singleton-pattern">3.7.3. Singleton pattern</a></h4>
+<h4 id="singleton-pattern"><a class="link" href="#singleton-pattern">3.5.3. Singleton pattern</a></h4>
 <div class="paragraph">
 <p>This pattern is very similar to the pattern above.
 We create a new class named <code>Network</code>,
@@ -1254,7 +1184,7 @@ in the future</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="ad-hoc-aka-no-pattern"><a class="link" href="#ad-hoc-aka-no-pattern">3.7.4. Ad-hoc aka no pattern</a></h4>
+<h4 id="ad-hoc-aka-no-pattern"><a class="link" href="#ad-hoc-aka-no-pattern">3.5.4. Ad-hoc aka no pattern</a></h4>
 <div class="paragraph">
 <p>We could also choose to directly call the network API
 from whatever calling methods would have called <code>Network</code> before.
@@ -1289,7 +1219,7 @@ where the network API got called.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="comparison-of-methods-and-why-we-went-with-the-static-class-pattern"><a class="link" href="#comparison-of-methods-and-why-we-went-with-the-static-class-pattern">3.7.5. Comparison of methods and why we went with the static class pattern</a></h4>
+<h4 id="comparison-of-methods-and-why-we-went-with-the-static-class-pattern"><a class="link" href="#comparison-of-methods-and-why-we-went-with-the-static-class-pattern">3.5.5. Comparison of methods and why we went with the static class pattern</a></h4>
 <div class="paragraph">
 <p>Ranking the patterns from least effort to most effort,
 we have ad-hoc being the easiest,
@@ -1332,7 +1262,7 @@ and the static class pattern is easier to write than the singleton pattern.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="offline-mode"><a class="link" href="#offline-mode">3.8. Offline mode</a></h3>
+<h3 id="offline-mode"><a class="link" href="#offline-mode">3.6. Offline mode</a></h3>
 <div class="paragraph">
 <p>Offline mode requires many changes to the architecture as a whole.
 The main point of conflict is that we need to store many articles to disk
@@ -1342,7 +1272,7 @@ The following sections describe
 the design decisions made to support offline mode.</p>
 </div>
 <div class="sect3">
-<h4 id="architectural-changes"><a class="link" href="#architectural-changes">3.8.1. Architectural changes</a></h4>
+<h4 id="architectural-changes"><a class="link" href="#architectural-changes">3.6.1. Architectural changes</a></h4>
 <div class="sect4">
 <h5 id="removing-undo-redo-feature"><a class="link" href="#removing-undo-redo-feature">Removing undo/redo feature</a></h5>
 <div class="paragraph">
@@ -1374,7 +1304,7 @@ to improve cohesion at the expense of worsening coupling.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="planned-implementation-3"><a class="link" href="#planned-implementation-3">3.8.2. Planned implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>After the architectural changes were made,
 there are a few design considerations that needed to be made:</p>
@@ -1405,14 +1335,14 @@ This is described in section <a href="#network-design">[network-design]</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1443,9 +1373,15 @@ This is described in section <a href="#network-design">[network-design]</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.9. [Proposed] Data Encryption</a></h3>
+<div class="paragraph">
+<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 </div>
@@ -1901,7 +1837,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a shorthand equivalent alias for each of the individual commands. For example, besides typing <code>clear</code>, the user can also type <code>c</code> to remove all persons in the list.</p>
+<p>Add a shorthand equivalent alias for each of the individual commands. For example, besides typing <code>clear</code>, the user can also type <code>c</code> to remove all entries in the list.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -1980,7 +1916,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <p>Think about how you can use SLAP to design the method. Where should we place the main logic of deleting tags?</p>
 </li>
 <li>
-<p>Find out which of the existing API methods in  <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
+<p>Find out which of the existing API methods in  <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/entry/Entry.java"><code>Entry</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a entry, and <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/entry/Entry.java"><code>Entry</code></a> allows you to update the tags.</p>
 </li>
 </ul>
 </div>
@@ -1990,7 +1926,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
+<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each entry, and remove the <code>tag</code> from each entry.</p>
 </li>
 <li>
 <p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
@@ -2013,7 +1949,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 </div>
 <h4 id="code-ui-code-component" class="discrete"><code>Ui</code> component</h4>
 <div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>ui</code>. During a beta testing session, your team is observing how the users use your address book application. You realize that one of the users occasionally tries to delete non-existent tags from a contact, because the tags all look the same visually, and the user got confused. Another user made a typing mistake in his command, but did not realize he had done so because the error message wasn&#8217;t prominent enough. A third user keeps scrolling down the list, because he keeps forgetting the index of the last person in the list. Your job is to implement improvements to the UI to solve all these problems.</p>
+<p><strong>Scenario:</strong> You are in charge of <code>ui</code>. During a beta testing session, your team is observing how the users use your address book application. You realize that one of the users occasionally tries to delete non-existent tags from a contact, because the tags all look the same visually, and the user got confused. Another user made a typing mistake in his command, but did not realize he had done so because the error message wasn&#8217;t prominent enough. A third user keeps scrolling down the list, because he keeps forgetting the index of the last entry in the list. Your job is to implement improvements to the UI to solve all these problems.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2030,7 +1966,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use different colors for different tags inside person cards. For example, <code>friends</code> tags can be all in brown, and <code>colleagues</code> tags can be all in yellow.</p>
+<p>Use different colors for different tags inside entry cards. For example, <code>friends</code> tags can be all in brown, and <code>colleagues</code> tags can be all in yellow.</p>
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
@@ -2056,7 +1992,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>The tag labels are created inside <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
+<p>The tag labels are created inside <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/EntryCard.java">the <code>EntryCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
 </li>
 <li>
 <p>Use the .css attribute <code>-fx-background-color</code> to add a color.</p>
@@ -2072,7 +2008,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>You can modify the existing test methods for <code>PersonCard</code> 's to include testing the tag&#8217;s color as well.</p>
+<p>You can modify the existing test methods for <code>EntryCard</code> 's to include testing the tag&#8217;s color as well.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/798">PR</a> for the full solution.</p>
@@ -2208,16 +2144,16 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the constructor of <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
+<p>Modify the constructor of <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of entries when the application just started.</p>
 </li>
 <li>
-<p>Use <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
+<p>Use <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of entries whenever there are new changes to the addressbook.</p>
 </li>
 <li>
 <p>For tests, modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
 </li>
 <li>
-<p>For system tests, modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
+<p>For system tests, modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of entries status bar.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
@@ -2298,7 +2234,7 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <div class="sect3">
 <h4 id="description"><a class="link" href="#description">A.2.1. Description</a></h4>
 <div class="paragraph">
-<p>Edits the remark for a person specified in the <code>INDEX</code>.<br>
+<p>Edits the remark for a entry specified in the <code>INDEX</code>.<br>
 Format: <code>remark INDEX r/[REMARK]</code></p>
 </div>
 <div class="paragraph">
@@ -2308,11 +2244,11 @@ Format: <code>remark INDEX r/[REMARK]</code></p>
 <ul>
 <li>
 <p><code>remark 1 r/Likes to drink coffee.</code><br>
-Edits the remark for the first person to <code>Likes to drink coffee.</code></p>
+Edits the remark for the first entry to <code>Likes to drink coffee.</code></p>
 </li>
 <li>
 <p><code>remark 1 r/</code><br>
-Removes the remark for the first person.</p>
+Removes the remark for the first entry.</p>
 </li>
 </ul>
 </div>
@@ -2391,9 +2327,9 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code"><a class="link" href="#step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code">[Step 3] Ui: Add a placeholder for remark in <code>PersonCard</code></a></h5>
+<h5 id="step-3-ui-add-a-placeholder-for-remark-in-code-entrycard-code"><a class="link" href="#step-3-ui-add-a-placeholder-for-remark-in-code-entrycard-code">[Step 3] Ui: Add a placeholder for remark in <code>EntryCard</code></a></h5>
 <div class="paragraph">
-<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
+<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/EntryCard.java"><code>EntryCard</code></a> s to display a remark for each entry later.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2401,10 +2337,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a <code>Label</code> with any random text inside <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
+<p>Add a <code>Label</code> with any random text inside <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/resources/view/EntryListCard.fxml"><code>EntryListCard.fxml</code></a>.</p>
 </li>
 <li>
-<p>Add FXML annotation in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
+<p>Add FXML annotation in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/EntryCard.java"><code>EntryCard</code></a> to tie the variable to the actual label.</p>
 </li>
 </ol>
 </div>
@@ -2414,7 +2350,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/guitests/guihandles/EntryCardHandle.java"><code>EntryCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
 </li>
 </ol>
 </div>
@@ -2422,7 +2358,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-4-model-add-code-remark-code-class"><a class="link" href="#step-4-model-add-code-remark-code-class">[Step 4] Model: Add <code>Remark</code> class</a></h5>
 <div class="paragraph">
-<p>We have to properly encapsulate the remark in our <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
+<p>We have to properly encapsulate the remark in our <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/entry/Entry.java"><code>Entry</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2430,7 +2366,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
+<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/entry/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
 </li>
 <li>
 <p>Modify <code>RemarkCommand</code> to now take in a <code>Remark</code> instead of a <code>String</code>.</p>
@@ -2449,9 +2385,9 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-5-model-modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-person-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Person</code> to support a <code>Remark</code> field</a></h5>
+<h5 id="step-5-model-modify-code-entry-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-entry-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Entry</code> to support a <code>Remark</code> field</a></h5>
 <div class="paragraph">
-<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/entry/Entry.java"><code>Entry</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2459,10 +2395,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>getRemark()</code> in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Add <code>getRemark()</code> in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/entry/Entry.java"><code>Entry</code></a>.</p>
 </li>
 <li>
-<p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the person will be created without a remark).</p>
+<p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the entry will be created without a remark).</p>
 </li>
 <li>
 <p>Modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>data/addressbook.json</code> so that the application will load the sample data when you launch it.)</p>
@@ -2471,9 +2407,9 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-6-storage-add-code-remark-code-field-to-code-jsonadaptedperson-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-jsonadaptedperson-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>JsonAdaptedPerson</code> class</a></h5>
+<h5 id="step-6-storage-add-code-remark-code-field-to-code-jsonadaptedentry-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-jsonadaptedentry-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>JsonAdaptedEntry</code> class</a></h5>
 <div class="paragraph">
-<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/storage/JsonAdaptedPerson.java"><code>JsonAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
+<p>We now have <code>Remark</code> s for <code>Entry</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/storage/JsonAdaptedEntry.java"><code>JsonAdaptedEntry</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2491,15 +2427,15 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Fix <code>invalidAndValidPersonAddressBook.json</code>, <code>typicalPersonsAddressBook.json</code>, <code>validAddressBook.json</code> etc., such that the JSON tests will not fail due to a missing <code>remark</code> field.</p>
+<p>Fix <code>invalidAndValidEntryAddressBook.json</code>, <code>typicalEntriesAddressBook.json</code>, <code>validAddressBook.json</code> etc., such that the JSON tests will not fail due to a missing <code>remark</code> field.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-6b-test-add-withremark-for-code-personbuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-personbuilder-code">[Step 6b] Test: Add withRemark() for <code>PersonBuilder</code></a></h5>
+<h5 id="step-6b-test-add-withremark-for-code-entrybuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-entrybuilder-code">[Step 6b] Test: Add withRemark() for <code>EntryBuilder</code></a></h5>
 <div class="paragraph">
-<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Since <code>Entry</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/seedu/address/testutil/EntryBuilder.java"><code>EntryBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/model/entry/Entry.java"><code>Entry</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Tests:</strong></p>
@@ -2507,18 +2443,18 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
+<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/seedu/address/testutil/EntryBuilder.java"><code>EntryBuilder</code></a>. This method will create a new <code>Remark</code> for the entry that it is currently building.</p>
 </li>
 <li>
-<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
+<p>Try and use the method on any sample <code>Entry</code> in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/seedu/address/testutil/TypicalEntries.java"><code>TypicalEntries</code></a>.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-7-ui-connect-code-remark-code-field-to-code-personcard-code"><a class="link" href="#step-7-ui-connect-code-remark-code-field-to-code-personcard-code">[Step 7] Ui: Connect <code>Remark</code> field to <code>PersonCard</code></a></h5>
+<h5 id="step-7-ui-connect-code-remark-code-field-to-code-entrycard-code"><a class="link" href="#step-7-ui-connect-code-remark-code-field-to-code-entrycard-code">[Step 7] Ui: Connect <code>Remark</code> field to <code>EntryCard</code></a></h5>
 <div class="paragraph">
-<p>Our remark label in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
+<p>Our remark label in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/EntryCard.java"><code>EntryCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2526,7 +2462,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/main/java/seedu/address/ui/EntryCard.java"><code>EntryCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Entry</code> 's remark.</p>
 </li>
 </ol>
 </div>
@@ -2536,7 +2472,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S2-W10-1/main/tree/master/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysEntry(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
 </li>
 </ol>
 </div>
@@ -2552,7 +2488,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Replace the logic in <code>RemarkCommand#execute()</code> (that currently just throws an <code>Exception</code>), with the actual logic to modify the remarks of a person.</p>
+<p>Replace the logic in <code>RemarkCommand#execute()</code> (that currently just throws an <code>Exception</code>), with the actual logic to modify the remarks of a entry.</p>
 </li>
 </ol>
 </div>
@@ -3088,7 +3024,7 @@ System removes the links from the archive list and adds them to the reading list
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 1000 entries without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
@@ -3217,15 +3153,15 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
+<h3 id="deleting-a-entry"><a class="link" href="#deleting-a-entry">H.2. Deleting a entry</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Deleting a entry while all entries are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: List all entries using the <code>list</code> command. Multiple entries in the list.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
@@ -3233,7 +3169,7 @@ Expected: First contact is deleted from the list. Details of the deleted contact
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No entry is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
 <p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
@@ -3269,4 +3205,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:26:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:44:04 UTC</div></div></div></body></html>
