@@ -108,6 +108,199 @@ via context-switching commands.</p>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="context-switching-commands"><a class="link" href="#context-switching-commands">Context-switching commands</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>These commands can be used from any context but change the context in which only allowed commands are recognised (e.g. <code>archive</code>, <code>unarchive</code>, <code>feed</code>).</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-your-reading-list-code-list-code"><a class="link" href="#showing-your-reading-list-code-list-code">Showing your Reading List: <code>list</code></a></h4>
+<div class="paragraph">
+<p>Shows your Reading List of all saved entries.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Reading List context.
+Refer to <a href="#List-Context">[List-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-your-archives-code-archives-code-code-since-v1-3-code"><a class="link" href="#showing-your-archives-code-archives-code-code-since-v1-3-code">Showing your Archives: <code>archives</code> <code>[since v1.3]</code></a></h4>
+<div class="paragraph">
+<p>Shows your Archives of all archived entries.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Archives context.
+Refer to <a href="#Archives-Context">[Archives-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>archives</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-the-web-code-bing-code-code-since-v1-3-code"><a class="link" href="#searching-the-web-code-bing-code-code-since-v1-3-code">Searching the web: <code>bing</code> <code>[since v1.3]</code></a></h4>
+<div class="paragraph">
+<p>Searches <a href="https://www.bing.com">Bing</a> for entries that you can subsequently add.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Search Results context.
+Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>bing [KEYWORD]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>bing Trump</code> Returns entries containing the <code>Trump</code> keyword</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-for-news-code-googlenews-code-code-since-v1-3-code"><a class="link" href="#searching-for-news-code-googlenews-code-code-since-v1-3-code">Searching for news: <code>googlenews</code> <code>[since v1.3]</code></a></h4>
+<div class="paragraph">
+<p>Searches <a href="https://news.google.com/">Google News</a> for entries that you can subsequently add.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Search Results context.
+Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>googlenews [KEYWORD]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>googlenews</code> Returns top stories</p>
+</li>
+<li>
+<p><code>googlenews Trump</code> Returns news articles containing the <code>Trump</code> keyword</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-a-web-feed-code-feed-code-code-since-v1-2-code"><a class="link" href="#searching-a-web-feed-code-feed-code-code-since-v1-2-code">Searching a web feed: <code>feed</code> <code>[since v1.2]</code></a></h4>
+<div class="paragraph">
+<p>Opens a web feed at the URL for previewing.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Search Results context.
+Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>feed [FEED URL]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>feed <a href="https://live.engadget.com/rss.xml" class="bare">https://live.engadget.com/rss.xml</a></code> Shows entries from this feed</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-a-web-page-for-links-code-links-code-code-coming-in-v2-0-code"><a class="link" href="#searching-a-web-page-for-links-code-links-code-code-coming-in-v2-0-code">Searching a web page for links: <code>links</code> <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Lists all the links in a URL, or the currently displayed web page.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Search Results context.
+Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>links</code>
+Format: <code>links [URL]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>links</code></p>
+</li>
+<li>
+<p><code>links <a href="https://live.engadget.com/2019/02/08/microsoft-internet-explorer-technical-debt/" class="bare">https://live.engadget.com/2019/02/08/microsoft-internet-explorer-technical-debt/</a></code> Shows all entries from this article</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-feeds-code-feeds-code-code-since-v1-3-code"><a class="link" href="#showing-feeds-code-feeds-code-code-since-v1-3-code">Showing feeds: <code>feeds</code> <code>[since v1.3]</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of feeds being followed.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Feeds context.
+Refer to <a href="#Feeds-Context">[Feeds-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>feeds</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>feeds</code> Lists all feeds</p>
+</li>
+<li>
+<p><code>feeds t/Business</code> Lists all feeds tagged with “Business” <code>[coming in v2.0]</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-online-for-feeds-code-searchfeeds-code-code-coming-in-v2-0-code"><a class="link" href="#searching-online-for-feeds-code-searchfeeds-code-code-coming-in-v2-0-code">Searching online for feeds: <code>searchfeeds</code> <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Searches online for feeds that you can subsequently follow.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Feed Search context.
+Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>searchfeeds [KEYWORD]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>searchfeeds</code> Shows some starter feeds you can add</p>
+</li>
+<li>
+<p><code>searchfeeds Tech Business</code> Searches for <code>Tech</code> or <code>Business</code> feeds</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-reading-statistics-code-stats-code-code-coming-in-v2-0-code"><a class="link" href="#showing-reading-statistics-code-stats-code-code-coming-in-v2-0-code">Showing reading statistics: <code>stats</code> <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Shows helpful and fun statistics about your reading progress and habits.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>stats</code></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -124,4 +317,4 @@ via context-switching commands.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:44:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:47:32 UTC</div></div></div></body></html>
