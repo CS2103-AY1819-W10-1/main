@@ -316,5 +316,143 @@ Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available 
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="context-specific-commands"><a class="link" href="#context-specific-commands">Context-specific commands</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
+<div class="paragraph">
+<p>In order to implement the multiple commands for the application, we require
+a way to disallow certain commands in certain contexts. For example, when the
+user is viewing the archives, he should not be allowed to use the <code>archive</code>
+command since every entry listed is already archive. Vice-versa, when a user is
+uses the <code>list</code> command, <code>unarchive</code> should be registered as an unknown command.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:56:34 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>This presents two main problems; the need for separate command parsers for each context,
+and a way for the application to keep track of its context.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="modular-parser-classes"><a class="link" href="#modular-parser-classes">Modular Parser classes</a></h5>
+<div class="paragraph">
+<p>We require individual Parser classes for each context.
+Each Parser class should only parse commands allowed for the context it represents.</p>
+</div>
+<div class="paragraph">
+<p>The following classes were created to support this feature.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>EntryBookParser</code> — the base abstract class all Parsers extend from</p>
+</li>
+<li>
+<p><code>EntryBookListParser</code> — Parser for the list context.</p>
+</li>
+<li>
+<p><code>EntryBookArchivesParser</code> —  Parser for the archives context.</p>
+</li>
+<li>
+<p><code>EntryBookFeedsParser</code> —  Parser for the feeds context.</p>
+</li>
+<li>
+<p><code>EntryBookSearchParser</code> —  Parser for the search context.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each Parser class has a <code>parseCommand(String)</code> operation that parses the string command.
+<code>EntryBookParser#parseCommand(String)</code> is the fallback operation used when any of its children
+fail to parse the command. It parses commands that is common in any context.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="context-state-for-model"><a class="link" href="#context-state-for-model">Context state for Model</a></h5>
+<div class="paragraph">
+<p>Context is represented by the enum class <code>ModelContext</code>.
+<code>Model</code> to holds this information of the context the application is in, which decides
+Parser class <code>Logic</code> should use when a command is executed.
+Each <code>ModelContext</code> holds a static Parser class that parses commands for the context it represents.</p>
+</div>
+<div class="paragraph">
+<p>The following operations are implemented
+* <code>Model#getContext()</code> — gets the context the application is in.
+* <code>Model#setContext(ModelContext)</code> — sets the context the application is in.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how this mechanism behaves.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user launches the application. The <code>ModelManager</code> will default
+to <code>ModelContext.CONTEXT_LIST</code> context.</p>
+</li>
+<li>
+<p>The user executes the <code>archive</code> command to archive entries.</p>
+</li>
+<li>
+<p>The user erroneously executes the <code>unarchive</code> command, and the application reports
+it as an "Unknown command".</p>
+</li>
+<li>
+<p>The user executes the <code>archives</code> command to view his archives. In the execution of
+of this <code>ArchivesCommand</code>, <code>model.setContext(ModelContext)</code> is called to change the
+context to <code>ModelContext.CONTEXT_ARCHIVES</code> context.</p>
+</li>
+<li>
+<p>The user executes the <code>unarchive</code> command with correct arguments, and the
+application successfully executes the command.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Context information is held by <code>Model</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: makes the most sense for the context to change only if a context-switching command
+is successfully executed, and <code>Command</code> only has a reference to <code>Model</code>, not <code>Logic</code>.</p>
+</li>
+<li>
+<p>Cons: <code>Model</code> is slightly more dependent on <code>Logic</code> since it has an indirect reference
+to Parser classes. This causes more coupling.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Context information is held by <code>Logic</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: weakens the dependency of <code>Model</code> on <code>Logic</code>. Context can then be thought of as a
+state for the <code>Logic</code> module, which is also responsible for parsing commands.</p>
+</li>
+<li>
+<p>Cons: making this work will involve architectural changes since only the <code>UI</code> module has
+a reference to <code>Logic</code> module class (Parser).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ultimately, Alternative 1 was chosen because we later decided that context should have a one-to-one
+correspondence to which entrybook to display to the user (refer to <a href="#Multiple-EntryBooks">[Multiple-EntryBooks]</a>),
+in addition to being the option which required the least modification to the rest
+of the code base to implement.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 03:21:39 UTC</div></div></div></body></html>
