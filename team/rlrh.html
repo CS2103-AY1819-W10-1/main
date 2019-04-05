@@ -10,8 +10,36 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>README is a desktop integrated bookmark manager and web feed reader application.
-Users interact with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>My team and I were tasked with enhancing a basic address book desktop application with a command line interface (CLI) for our Software Engineering project. We decided to morph it into an integrated bookmark manager and web feed aggregator called README.</p>
+</div>
+<div class="paragraph">
+<p>This product helps heavy web content consumers read more efficiently by keeping everything they want to read in one place.</p>
+</div>
+<div class="paragraph">
+<p>Feature highlights:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Powerful organization options enable users to effectively manage all their content</p>
+</li>
+<li>
+<p>Offline support frees users to read anywhere and anytime</p>
+</li>
+<li>
+<p>Web feed aggregation keeps users up to date with the all the content that matters to them</p>
+</li>
+<li>
+<p>Clean, minimalist reading experience lets users focus on content without distractions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Users interact with it using a command line interface (CLI), and it has a graphical user interface (GUI) created with JavaFX. It is written in Java, and has about 10,000 lines of code.</p>
+</div>
+<div class="paragraph">
+<p>My role was to design and implement the Reader View feature as well as the user interface (UI).
+The following sections illustrate these enhancements in more detail, as well as the relevant sections I have added to the user and developer guides in relation to these enhancements.</p>
 </div>
 </div>
 </div>
@@ -21,45 +49,45 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added the <strong>Reader View</strong> feature</p>
+<p><strong>Major enhancement</strong>: I added the <strong>Reader View</strong> feature</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Strips out all the visual clutter from web pages and presents content in a perfectly formatted, clean layout, with user-selectable colour schemes</p>
+<p>What it does: The <strong>Reader View</strong> provides a clean, minimalist reading experience by stripping out all the visual clutter from web pages and presents content in a perfectly formatted, clean layout, with user-selectable colour schemes.</p>
 </li>
 <li>
-<p>Justification: This feature improves the user experience significantly because users can focus on the content without any unnecessary distractions and read more comfortably.</p>
+<p>Justification: This feature improves the user experience significantly because it lets users focus on consuming content without any unnecessary distractions and helps them read more comfortably, thus improving productivity.</p>
 </li>
 <li>
-<p>Highlights: This enhancement is designed to be used by many other commands. It required an in-depth analysis of design alternatives to enable this. The implementation was challenging as it required understanding exactly how the JavaFX WebView works.</p>
+<p>Highlights: This enhancement required analysis of design alternatives to open it up for usage in as many scenarios as possible. The implementation was challenging as it required an in-depth understanding of the JavaFX WebView component, as well as knowledge of the HTML Document Object Model and CSS styling.</p>
 </li>
 <li>
-<p>Credits: Jsoup, Readability4J</p>
+<p>Credits: The <a href="https://github.com/dankito/Readability4J">Readability4J</a> library does the heavy lifting of extracting a web page‘s relevant content and removing clutter from it. I used the <a href="https://jsoup.org/">Jsoup</a> library to extract additional useful metadata, and combined this with the results from Readability4J into a new web page, where I used the <a href="https://getbootstrap.com/">Bootstrap</a> framework to layout content and adapted the <a href="https://bootswatch.com/litera/">Bootswatch Litera</a> theme into different colour schemes for presenting content.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added an autofill utility that lets users specify just a link when adding a new entry and have the title and description fields automatically filled.</p>
+<p><strong>Minor enhancement</strong>: I added an autofill utility that lets users specify just a link when adding a new entry and have the title and description fields automatically filled. This makes adding links to our application very convenient for users.</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: I modified the existing design from supporting only synchronous commands to supporting asynchronous commands that can return an initial result first, do some long-running work, and then return another final result. This keeps the user interface responsive while a command is in the progress of doing some work.</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/44">Reader view</a></p>
+<p>Reader View: <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/44">#44</a>, <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/98">#98</a>, <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/111">#111</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/111">Reader view styles</a></p>
+<p>Autofill Entry: <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/76">#76</a>, <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/116">#116</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/98">Reader view test</a></p>
+<p>Design change: <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/31">#31</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/76">Autofill entry</a></p>
-</li>
-<li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/101">Status bar</a></p>
+<p>Status bar footer: <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/101">#101</a></p>
 </li>
 </ul>
 </div>
@@ -73,7 +101,7 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 <div class="ulist">
 <ul>
 <li>
-<p>Managed release <code>v1.2</code> on GitHub</p>
+<p>There were a total of 5 releases, from version <code>1.1</code> to <code>1.4</code>. I managed release <code>v1.2</code> on <a href="https://github.com/CS2103-AY1819S2-W10-1/main/releases/tag/v1.2">GitHub</a>.</p>
 </li>
 </ul>
 </div>
@@ -83,7 +111,7 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the status bar footer with context information (Pull request <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/101">#101</a>)</p>
+<p>Redesigned the status bar footer to include context information (Pull request <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/101">#101</a>)</p>
 </li>
 </ul>
 </div>
@@ -103,7 +131,7 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments):</p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/21">#21</a>, <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/33">#33</a>, <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/35">#35</a>, <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/80">#80</a>,</p>
 </li>
 <li>
 <p>Contributed to forum discussions (example:  <a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/39">1</a>, <a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/43">2</a>)</p>
@@ -116,7 +144,7 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party libraries Jsoup and Readability4J to the project (<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/111">#111</a>)</p>
+<p>Integrated a third party library Readability4J to the project (<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/111">#111</a>)</p>
 </li>
 </ul>
 </div>
@@ -157,4 +185,4 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 04:09:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 14:20:28 UTC</div></div></div></body></html>
