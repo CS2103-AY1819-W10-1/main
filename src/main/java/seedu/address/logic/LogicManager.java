@@ -60,6 +60,7 @@ public class LogicManager implements Logic {
 
         try {
             CommandResult commandResult = command.execute(model, history);
+            setCommandResult(new CommandResult(""));
             setCommandResult(commandResult);
         } catch (CommandException ce) {
             setException(ce);
