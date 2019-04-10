@@ -64,7 +64,7 @@ public class EntryCardTest extends GuiUnitTest {
         EntryCardHandle entryCardHandle = new EntryCardHandle(entryCard.getRoot());
 
         // verify id is displayed correctly
-        assertEquals(Integer.toString(expectedId) + ". ", entryCardHandle.getId());
+        assertEquals(expectedId + ".", entryCardHandle.getId());
 
         // verify entry details are displayed correctly
         assertCardDisplaysEntry(expectedEntry, entryCardHandle);

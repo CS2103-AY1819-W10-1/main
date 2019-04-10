@@ -26,7 +26,7 @@ public class GoogleNewsCommandParser implements Parser<GoogleNewsCommand> {
         } catch (UnsupportedEncodingException uee) {
             throw new ParseException("UTF-8 encoding not supported by system!", uee);
         } catch (MalformedURLException mue) {
-            throw new ParseException("Invalid link format! " + mue.getMessage(), mue);
+            throw new ParseException("Sorry, Google News is unavailable. " + mue.getMessage(), mue);
         }
     }
 

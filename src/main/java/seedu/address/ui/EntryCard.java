@@ -14,10 +14,9 @@ public class EntryCard extends UiPart<Region> {
 
     private static final String FXML = "EntryListCard.fxml";
 
-    private static final String[] TAG_COLOR_STYLES = { "red", "pink", "purple", "deepPurple", "indigo", "blue",
-                                                       "lightBlue", "cyan", "teal", "green", "lightGreen", "lime",
-                                                       "yellow", "amber", "orange", "deepOrange", "brown", "gray",
-                                                       "blueGray" };
+    private static final String[] TAG_COLOR_STYLES = { "red", "pink", "pinkPurple", "purple", "deepPurple", "indigo",
+                                                       "blue", "lightBlue", "cyan", "teal", "green", "lightGreen",
+                                                       "lime", "yellow", "amber", "orange", "deepOrange" };
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -45,7 +44,7 @@ public class EntryCard extends UiPart<Region> {
     public EntryCard(Entry entry, int displayedIndex) {
         super(FXML);
         this.entry = entry;
-        id.setText(displayedIndex + ". ");
+        id.setText(displayedIndex + ".");
         title.setText(entry.getTitle().fullTitle);
         description.setText(entry.getDescription().value);
         link.setText(entry.getLink().value.toString());

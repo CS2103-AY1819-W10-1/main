@@ -12,7 +12,7 @@ public class FeedsCommand extends Command {
 
     public static final String COMMAND_WORD = "feeds";
 
-    public static final String MESSAGE_SUCCESS = "Context switched to feeds. Listing all feeds";
+    public static final String MESSAGE_SUCCESS = "Switched to Feeds context. Listing all subscribed feeds.";
 
 
     @Override

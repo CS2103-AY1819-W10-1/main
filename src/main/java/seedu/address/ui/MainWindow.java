@@ -16,6 +16,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ModelContext;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -37,6 +38,7 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private CommandBox commandBox;
     private StatusBarFooter statusBarFooter;
+    private NavigationBar navigationBar;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -55,6 +57,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane navigationBarPlaceholder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -130,13 +135,24 @@ public class MainWindow extends UiPart<Stage> {
         commandBox = new CommandBox(this::executeCommand, logic.getHistory());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        this.logic.commandResultProperty().addListener((observable, oldCommandResult, newCommandResult) -> {
+        navigationBar = new NavigationBar(logic::executeContextSwitch, logic.contextProperty());
+        navigationBarPlaceholder.getChildren().add(navigationBar.getRoot());
+
+        logic.commandResultProperty().addListener((observable, oldCommandResult, newCommandResult) -> {
             processManualSuccess(newCommandResult);
         });
 
-        this.logic.exceptionProperty().addListener((observable, oldException, newException) -> {
+        logic.exceptionProperty().addListener((observable, oldException, newException) -> {
             processManualFailure(newException);
         });
+
+        logic.contextProperty().addListener(((observable, oldContext, newContext) -> {
+            if (newContext.equals(ModelContext.CONTEXT_FEEDS)) {
+                browserPlaceholder.getChildren().remove(browserPanel.getRoot());
+            } else if (!browserPlaceholder.getChildren().contains(browserPanel.getRoot())) {
+                browserPlaceholder.getChildren().add(browserPanel.getRoot());
+            }
+        }));
     }
 
     /**
@@ -239,4 +255,5 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay.setFeedbackErrorToUser(e.getMessage());
         commandBox.processCommandFailure();
     }
+
 }

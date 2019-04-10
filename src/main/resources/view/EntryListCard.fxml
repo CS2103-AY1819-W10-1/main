@@ -14,22 +14,27 @@
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
     </columnConstraints>
-    <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
-      <padding>
-        <Insets top="5" right="5" bottom="5" left="15" />
-      </padding>
-      <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label fx:id="id" styleClass="cell_big_label">
+    <HBox alignment="CENTER_LEFT" spacing="15" GridPane.columnIndex="0">
+      <VBox alignment="CENTER_LEFT">
+        <padding>
+          <Insets top="15" right="0" bottom="15" left="15" />
+        </padding>
+        <Label fx:id="id" styleClass="cell_index_label">
           <minWidth>
             <!-- Ensures that the label text is never truncated -->
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
+      </VBox>
+      <VBox alignment="CENTER_LEFT">
+        <padding>
+          <Insets top="15" right="15" bottom="15" left="0" />
+        </padding>
         <Label fx:id="title" text="\$first" styleClass="cell_big_label" />
-      </HBox>
-      <FlowPane fx:id="tags" />
-      <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
-      <Label fx:id="link" styleClass="cell_small_label" text="\$link" />
-    </VBox>
+        <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
+        <Label fx:id="link" styleClass="cell_small_label, italic" text="\$link" />
+        <FlowPane fx:id="tags" />
+      </VBox>
+    </HBox>
   </GridPane>
 </HBox>

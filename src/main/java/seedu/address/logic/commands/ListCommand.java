@@ -15,7 +15,7 @@ public class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
     public static final String COMMAND_ALIAS = "l";
 
-    public static final String MESSAGE_SUCCESS = "Context switched to list-context. Listed all entries";
+    public static final String MESSAGE_SUCCESS = "Switched to Reading List context. Listing all entries.";
 
 
     @Override

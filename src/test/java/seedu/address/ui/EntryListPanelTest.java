@@ -42,7 +42,7 @@ public class EntryListPanelTest extends GuiUnitTest {
             EntryCardHandle actualCard = entryListPanelHandle.getEntryCardHandle(i);
 
             assertCardDisplaysEntry(expectedEntry, actualCard);
-            assertEquals(Integer.toString(i + 1) + ". ", actualCard.getId());
+            assertEquals(i + 1 + ".", actualCard.getId());
         }
     }
 

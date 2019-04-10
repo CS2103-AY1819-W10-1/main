@@ -1,5 +1,6 @@
 package seedu.address.logic;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -9,8 +10,12 @@ import javafx.beans.property.ReadOnlyProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.commands.ArchivesCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.FeedsCommand;
+import seedu.address.logic.commands.GoogleNewsCommand;
+import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -47,6 +52,43 @@ public class LogicManager implements Logic {
         }
 
         return commandResult;
+    }
+
+    @Override
+    public void executeCommand(Command command) {
+        logger.info("----------------[COMMAND][" + command + "]");
+
+        try {
+            CommandResult commandResult = command.execute(model, history);
+            setCommandResult(commandResult);
+        } catch (CommandException ce) {
+            setException(ce);
+        }
+    }
+
+    @Override
+    public void executeContextSwitch(ModelContext context) {
+        switch (context) {
+        case CONTEXT_SEARCH:
+            try {
+                executeCommand(new GoogleNewsCommand());
+            } catch (MalformedURLException mue) {
+                setException(new CommandException("Sorry, Google News is unavailable."));
+                executeCommand(new ListCommand());
+            }
+            break;
+        case CONTEXT_LIST:
+            executeCommand(new ListCommand());
+            break;
+        case CONTEXT_ARCHIVES:
+            executeCommand(new ArchivesCommand());
+            break;
+        case CONTEXT_FEEDS:
+            executeCommand(new FeedsCommand());
+            break;
+        default:
+            break;
+        }
     }
 
     @Override

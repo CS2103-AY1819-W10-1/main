@@ -22,7 +22,7 @@ public class FeedCommand extends Command {
 
     public static final String COMMAND_WORD = "feed";
 
-    public static final String MESSAGE_SUCCESS = "Opened feed %s";
+    public static final String MESSAGE_SUCCESS = "Reading feed: %s";
     public static final String MESSAGE_FAILURE_NET = "Network connection failed:\n%s";
     public static final String MESSAGE_FAILURE_XML = "%s is not a valid RSS/Atom feed!";
 

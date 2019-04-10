@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+
+<VBox fx:id="navigationBar" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <Button fx:id="listButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="${navigationBar.height}" prefWidth="${navigationBar.width}" text="${'Reading\nList'}" textAlignment="CENTER">
+        <graphic>
+            <FontAwesomeIconView glyphName="LIST_OL" size="30" />
+        </graphic>
+    </Button>
+    <Button fx:id="archivesButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="${navigationBar.height}" prefWidth="${navigationBar.width}" text="Archives" textAlignment="CENTER">
+        <graphic>
+            <FontAwesomeIconView glyphName="ARCHIVE" size="30" />
+        </graphic>
+    </Button>
+    <Button fx:id="discoverButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="${navigationBar.height}" prefWidth="${navigationBar.width}" text="Discover" textAlignment="CENTER">
+        <graphic>
+            <FontAwesomeIconView glyphName="SEARCH" size="30" />
+        </graphic>
+    </Button>
+    <Button fx:id="feedsButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="${navigationBar.height}" prefWidth="${navigationBar.width}" text="Feeds" textAlignment="CENTER">
+        <graphic>
+            <FontAwesomeIconView glyphName="RSS" size="30" />
+        </graphic>
+    </Button>
+</VBox>

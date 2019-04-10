@@ -25,6 +25,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.exceptions.EntryNotFoundException;
+import seedu.address.model.util.ForceNotifyObjectProperty;
 import seedu.address.storage.Storage;
 import seedu.address.ui.ViewMode;
 import seedu.address.util.Network;
@@ -47,8 +48,8 @@ public class ModelManager implements Model {
     private final FilteredList<Entry> filteredEntries;
     private final SimpleObjectProperty<Entry> selectedEntry = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<ViewMode> currentViewMode = new SimpleObjectProperty<>(new ViewMode());
-    private final SimpleObjectProperty<Exception> exception = new SimpleObjectProperty<>();
-    private final SimpleObjectProperty<CommandResult> commandResult = new SimpleObjectProperty<>();
+    private final ForceNotifyObjectProperty<Exception> exception = new ForceNotifyObjectProperty<>();
+    private final ForceNotifyObjectProperty<CommandResult> commandResult = new ForceNotifyObjectProperty<>();
     private final SimpleObjectProperty<ModelContext> context = new SimpleObjectProperty<>(ModelContext.CONTEXT_LIST);
     private final Storage storage;
 
@@ -449,7 +450,8 @@ public class ModelManager implements Model {
 
     @Override
     public void setCommandResult(CommandResult result) {
-        commandResult.setValue(result);
+        this.commandResult.set(result);
+        this.commandResult.fireValueChangedEvent();
     }
 
     //=========== Context ===========================================================================

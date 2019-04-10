@@ -15,7 +15,7 @@ public class ArchivesCommand extends Command {
     public static final String COMMAND_WORD = "archives";
     public static final String COMMAND_ALIAS = "archs";
 
-    public static final String MESSAGE_SUCCESS = "Context switched to archive-context. Listed all entries in archives.";
+    public static final String MESSAGE_SUCCESS = "Switched to Archives context. Listing all archived entries.";
 
 
     @Override
