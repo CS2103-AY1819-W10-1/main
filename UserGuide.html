@@ -984,12 +984,15 @@ Clears all existing tags from the 2nd entry.</p>
 <p>Finds entries whose fields contain any of the given keyphrases.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit [ti/TITLE_SEARCH_PHRASE] [d/DESCRIPTION_SEARCH_PHRASE] [l/LINK_SEARCH_PHRASE] [t/TAG_TO_SEARCH]&#8230;&#8203;</code></p>
+<p>Format: <code>find [a/SEARCH_PHRASE] [ti/TITLE_SEARCH_PHRASE] [d/DESCRIPTION_SEARCH_PHRASE] [l/LINK_SEARCH_PHRASE] [t/TAG_TO_SEARCH]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
 <li>
 <p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
@@ -1000,7 +1003,24 @@ Clears all existing tags from the 2nd entry.</p>
 <p>The search matches exactly for tags. e.g. 'science' will match 'science', but not 'scienceandtech'</p>
 </li>
 <li>
-<p>Entries matching at least one keyphrase will be returned (i.e. <code>OR</code> search). e.g. <code>Hans, Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>The search phrase with prefix <code>a/</code> will try to match with every field in the entry according to the above rules.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i.e. <code>find a/keyphrase</code> is equivalent to <code>find ti/keyphrase d/keyphrase l/keyphrase t/keyphrase</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Entries matching at least one field will be returned (i.e. <code>OR</code> search).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>find ti/aaa d/bbb l/ccc t/ddd</code> will match an entry with title <code>Aaawesome</code> and an entry with description <code>abbbA</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1012,12 +1032,12 @@ Clears all existing tags from the 2nd entry.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find Trump</code><br>
-Returns entries with titles containing <code>trump</code> and <code>Donald Trump</code> etc.</p>
+<p><code>find ti/Trump</code><br>
+Returns entries with titles containing the phrase <code>trump</code> such as <code>Donald Trump</code> or <code>CS average salary trumps again</code></p>
 </li>
 <li>
-<p><code>find Boeing FAA</code><br>
-Returns any entry having titles <code>Boeing</code> or <code>FAA</code></p>
+<p><code>find l/cnn t/science</code><br>
+Returns any entries having links containing the phrase <code>cnn</code> and entries with the exact tag <code>science</code>.</p>
 </li>
 </ul>
 </div>
@@ -1827,4 +1847,4 @@ All entries in the subscribed feed will be added to the reading list.</p>
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-11 07:38:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-11 16:25:13 UTC</div></div></div></body></html>
