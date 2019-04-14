@@ -8,11 +8,13 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.exceptions.DuplicateEntryCommandException;
 import seedu.address.model.Model;
 import seedu.address.model.entry.Entry;
+import seedu.address.model.entry.exceptions.DuplicateEntryException;
 
 /**
- * Lists all entries in the archives to the user.
+ * Archives an entry in the reading list.
  */
 public class ArchiveCommand extends Command {
 
@@ -41,7 +43,11 @@ public class ArchiveCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX);
         }
         Entry entryToArchive = lastShownList.get(targetIndex.getZeroBased());
-        model.archiveEntry(entryToArchive);
+        try {
+            model.archiveEntry(entryToArchive);
+        } catch (DuplicateEntryException dee) {
+            throw new DuplicateEntryCommandException();
+        }
         return new CommandResult(String.format(MESSAGE_ARCHIVE_ENTRY_SUCCESS, entryToArchive));
     }
 

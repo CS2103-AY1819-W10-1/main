@@ -73,6 +73,11 @@ public interface Model {
     Path getArticleDataDirectoryPath();
 
     /**
+     * Returns true if the model has an offline copy of the given link.
+     */
+    boolean hasOfflineCopy(URL url);
+
+    /**
      * Returns the link to the offline copy of the url given if it exists.
      */
     Optional<URL> getOfflineLink(URL url);

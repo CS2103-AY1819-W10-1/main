@@ -39,7 +39,7 @@ import javafx.beans.property.ReadOnlyProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.exceptions.DuplicateEntryCommandException;
 import seedu.address.model.EntryBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelContext;
@@ -84,8 +84,8 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validEntry);
         ModelStub modelStub = new ModelStubWithEntry(validEntry);
 
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(AddCommand.MESSAGE_DUPLICATE_ENTRY);
+        thrown.expect(DuplicateEntryCommandException.class);
+        thrown.expectMessage(DuplicateEntryCommandException.MESSAGE_DUPLICATE_ENTRY);
         addCommand.execute(modelStub, commandHistory);
     }
 
@@ -252,6 +252,11 @@ public class AddCommandTest {
 
         @Override
         public void setArticleDataDirectoryPath(Path articleDataDirectoryPath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasOfflineCopy(URL url) {
             throw new AssertionError("This method should not be called.");
         }
 

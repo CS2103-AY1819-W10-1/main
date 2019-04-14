@@ -11,6 +11,7 @@ import java.util.Optional;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.exceptions.DuplicateEntryCommandException;
 import seedu.address.model.Model;
 import seedu.address.model.entry.Entry;
 import seedu.address.model.entry.exceptions.DuplicateEntryException;
@@ -39,7 +40,6 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "tech";
 
     public static final String MESSAGE_SUCCESS = "New entry added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the entry book";
 
     private final Entry toAdd;
 
@@ -68,7 +68,7 @@ public class AddCommand extends Command {
         try {
             model.addListEntry(updatedEntry, articleContent);
         } catch (DuplicateEntryException dee) {
-            throw new CommandException(MESSAGE_DUPLICATE_ENTRY);
+            throw new DuplicateEntryCommandException();
         }
         return new CommandResult(String.format(MESSAGE_SUCCESS, updatedEntry));
     }

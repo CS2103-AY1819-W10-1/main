@@ -165,7 +165,8 @@ public class ModelManager implements Model {
         userPrefs.setArchivesEntryBookFilePath(archivesEntryBookFilePath);
     }
 
-    private boolean hasOfflineCopy(URL url) {
+    @Override
+    public boolean hasOfflineCopy(URL url) {
         return getOfflineLink(url).isPresent();
     }
 

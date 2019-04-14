@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ArchiveAllCommand;
 import seedu.address.logic.commands.ArchiveCommand;
 import seedu.address.logic.commands.ArchivesCommand;
 import seedu.address.logic.commands.BingWebSearchCommand;
@@ -64,6 +65,19 @@ public class EntryBookListParserTest {
         ArchiveCommand command = (ArchiveCommand) parser.parseCommand(
             ArchiveCommand.COMMAND_WORD + " " + INDEX_FIRST_ENTRY.getOneBased());
         assertEquals(new ArchiveCommand(INDEX_FIRST_ENTRY), command);
+        command = (ArchiveCommand) parser.parseCommand(
+            ArchiveCommand.COMMAND_ALIAS + " " + INDEX_FIRST_ENTRY.getOneBased());
+        assertEquals(new ArchiveCommand(INDEX_FIRST_ENTRY), command);
+    }
+
+    @Test
+    public void parseCommand_archiveall() throws Exception {
+        ArchiveAllCommand command = (ArchiveAllCommand) parser.parseCommand(
+            ArchiveAllCommand.COMMAND_WORD);
+        assertEquals(new ArchiveAllCommand(), command);
+        command = (ArchiveAllCommand) parser.parseCommand(
+            ArchiveAllCommand.COMMAND_ALIAS);
+        assertEquals(new ArchiveAllCommand(), command);
     }
 
     @Test

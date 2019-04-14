@@ -36,6 +36,7 @@ import org.junit.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.exceptions.DuplicateEntryCommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelContext;
 import seedu.address.model.entry.Description;
@@ -107,21 +108,21 @@ public class AddCommandSystemTest extends EntryBookSystemTest {
 
         /* Case: add a duplicate entry -> rejected */
         command = EntryUtil.getAddCommand(HOON);
-        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_ENTRY);
+        assertCommandFailure(command, DuplicateEntryCommandException.MESSAGE_DUPLICATE_ENTRY);
 
         /* Case: add a duplicate entry except with different description -> rejected */
         toAdd = new EntryBuilder(HOON).withDescription(VALID_DESCRIPTION_BOB).build();
         command = EntryUtil.getAddCommand(toAdd);
-        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_ENTRY);
+        assertCommandFailure(command, DuplicateEntryCommandException.MESSAGE_DUPLICATE_ENTRY);
 
         /* Case: add a duplicate entry except with different title -> rejected */
         toAdd = new EntryBuilder(HOON).withTitle(VALID_TITLE_BOB).build();
         command = EntryUtil.getAddCommand(toAdd);
-        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_ENTRY);
+        assertCommandFailure(command, DuplicateEntryCommandException.MESSAGE_DUPLICATE_ENTRY);
 
         /* Case: add a duplicate entry except with different tags -> rejected */
         command = EntryUtil.getAddCommand(HOON) + " " + PREFIX_TAG.getPrefix() + "friends";
-        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_ENTRY);
+        assertCommandFailure(command, DuplicateEntryCommandException.MESSAGE_DUPLICATE_ENTRY);
 
         /* Case: missing link -> rejected */
         command = AddCommand.COMMAND_WORD + TITLE_DESC_AMY + DESCRIPTION_DESC_AMY;

@@ -9,8 +9,10 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.exceptions.DuplicateEntryCommandException;
 import seedu.address.model.Model;
 import seedu.address.model.entry.Entry;
+import seedu.address.model.entry.exceptions.DuplicateEntryException;
 import seedu.address.util.Network;
 
 /**
@@ -45,7 +47,11 @@ public class UnarchiveCommand extends Command {
 
         Entry entryToUnarchive = lastShownList.get(targetIndex.getZeroBased());
         Optional<byte[]> articleContent = Network.fetchArticleOptional(entryToUnarchive.getLink().value);
-        model.unarchiveEntry(entryToUnarchive, articleContent);
+        try {
+            model.unarchiveEntry(entryToUnarchive, articleContent);
+        } catch (DuplicateEntryException dee) {
+            throw new DuplicateEntryCommandException();
+        }
         return new CommandResult(String.format(MESSAGE_UNARCHIVE_ENTRY_SUCCESS, entryToUnarchive));
     }
 

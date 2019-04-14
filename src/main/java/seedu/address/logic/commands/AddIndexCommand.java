@@ -28,6 +28,7 @@ public class AddIndexCommand extends Command {
     private final Index targetIndex;
 
     public AddIndexCommand(Index targetIndex) {
+        requireNonNull(targetIndex);
         this.targetIndex = targetIndex;
     }
 

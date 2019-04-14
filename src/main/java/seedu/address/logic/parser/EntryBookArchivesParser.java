@@ -9,6 +9,7 @@ import seedu.address.logic.commands.DeleteArchiveEntryCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.UnarchiveAllCommand;
 import seedu.address.logic.commands.UnarchiveCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ModelContext;
@@ -52,6 +53,10 @@ public class EntryBookArchivesParser extends EntryBookParser {
         case UnarchiveCommand.COMMAND_WORD:
         case UnarchiveCommand.COMMAND_ALIAS:
             return new UnarchiveCommandParser().parse(arguments);
+
+        case UnarchiveAllCommand.COMMAND_WORD:
+        case UnarchiveAllCommand.COMMAND_ALIAS:
+            return new UnarchiveAllCommand();
 
         default:
             return super.parseCommand(userInput, ModelContext.CONTEXT_ARCHIVES);

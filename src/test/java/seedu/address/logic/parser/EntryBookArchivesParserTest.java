@@ -14,6 +14,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.UnarchiveAllCommand;
 import seedu.address.logic.commands.UnarchiveCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ModelContext;
@@ -66,6 +67,16 @@ public class EntryBookArchivesParserTest {
         UnarchiveCommand command = (UnarchiveCommand) parser.parseCommand(
             UnarchiveCommand.COMMAND_WORD + " " + INDEX_FIRST_ENTRY.getOneBased());
         assertEquals(new UnarchiveCommand(INDEX_FIRST_ENTRY), command);
+    }
+
+    @Test
+    public void parseCommand_unarchiveall() throws Exception {
+        UnarchiveAllCommand command = (UnarchiveAllCommand) parser.parseCommand(
+            UnarchiveAllCommand.COMMAND_WORD);
+        assertEquals(new UnarchiveAllCommand(), command);
+        command = (UnarchiveAllCommand) parser.parseCommand(
+            UnarchiveAllCommand.COMMAND_ALIAS);
+        assertEquals(new UnarchiveAllCommand(), command);
     }
 
     @Test

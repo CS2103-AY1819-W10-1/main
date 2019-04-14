@@ -25,6 +25,7 @@ import org.junit.rules.TemporaryFolder;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.exceptions.DuplicateEntryCommandException;
 import seedu.address.mocks.TemporaryStorageManager;
 import seedu.address.mocks.TypicalModelManagerStub;
 import seedu.address.model.Model;
@@ -84,7 +85,7 @@ public class AddCommandIntegrationTest {
     public void execute_duplicateEntry_throwsCommandException() {
         Entry entryInList = model.getListEntryBook().getEntryList().get(0);
         assertCommandFailure(new AddCommand(entryInList), model, commandHistory,
-                AddCommand.MESSAGE_DUPLICATE_ENTRY);
+                DuplicateEntryCommandException.MESSAGE_DUPLICATE_ENTRY);
     }
 
     @Test
