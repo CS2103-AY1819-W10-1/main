@@ -55,6 +55,25 @@ public class AbsoluteUrlDocumentConverterTest {
                 "<!doctype html><head></head><body><script src=\"%s\" junk=\"foo\"></body>");
     }
 
+    @Test
+    public void convert_styleUrlsProperlyConverted() {
+        // Buggy rules are left untouched
+        String buggyDoc =
+            "<!doctype html><body><div style=\"background-image: url('; background-image: url(\"??')\"></div></body>";
+        assertSuccessfulConversion(buggyDoc, baseUrl, buggyDoc);
+
+        // Converts url(...) in CSS properly
+        assertLinkConversion(
+            "<!doctype html><head></head><body><div style=\"background-image: url(%s)\"></div></body>");
+        assertLinkConversion(
+            "<!doctype html><head></head><body><div style=\"color: red; background-image: url(%s)\"></div></body>");
+        assertLinkConversion(
+            "<!doctype html><head></head><body><div style=\"background-image: url(%s); color: red\"></div></body>");
+
+        // Cases like url('...') and url("...") are transparently handled by CSS parser,
+        // No need to test.
+    }
+
     /**
      * Asserts that using the given format string to substitute in various links,
      * that the document will undergo the conversion to absolute links correctly.
