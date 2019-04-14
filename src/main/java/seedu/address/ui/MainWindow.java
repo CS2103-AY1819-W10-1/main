@@ -118,7 +118,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        browserPanel = new BrowserPanel(logic.selectedEntryProperty(), logic.viewModeProperty(), logic::getOfflineLink);
+        browserPanel = new BrowserPanel(logic.selectedEntryProperty(), logic.viewModeProperty(),
+                logic::getOfflineLink, logic::getArticle);
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
         entryListPanel = new EntryListPanel(logic.getFilteredEntryList(), logic.selectedEntryProperty(),

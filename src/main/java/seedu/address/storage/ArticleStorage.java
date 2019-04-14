@@ -39,4 +39,9 @@ public interface ArticleStorage {
      * Converts a given url to a Path where the article is stored if it exists.
      */
     Optional<Path> getOfflineLink(URL url);
+
+    /**
+     * Gets the stored article associated with the given url if it exists.
+     */
+    Optional<String> getArticle(URL url);
 }

@@ -337,6 +337,11 @@ public class ModelManager implements Model {
         return storage.addArticle(url, articleContent);
     }
 
+    @Override
+    public Optional<String> getArticle(URL url) {
+        return storage.getArticle(url);
+    }
+
     //=========== Displayed Entry List ================================================================================
 
     private void displayEntryBook(ReadOnlyEntryBook entryBook) {

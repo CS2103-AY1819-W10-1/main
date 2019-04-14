@@ -59,6 +59,13 @@ public interface Logic {
     Optional<URL> getOfflineLink(URL url);
 
     /**
+     * Returns the article content associated with the given url if it exists.
+     *
+     * @see seedu.address.model.Model#getArticle(URL url)
+     */
+    Optional<String> getArticle(URL url);
+
+    /**
      * Returns an unmodifiable view of the list of commands entered by the user.
      * The list is ordered from the least recent command to the most recent command.
      */

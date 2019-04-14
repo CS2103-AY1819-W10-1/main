@@ -26,11 +26,11 @@ public class StorageManager implements Storage {
 
 
     public StorageManager(
-        EntryBookStorage listEntryBookStorage,
-        EntryBookStorage archivesEntryBookStorage,
-        EntryBookStorage feedsEntryBookStorage,
-        UserPrefsStorage userPrefsStorage,
-        ArticleStorage articleStorage) {
+            EntryBookStorage listEntryBookStorage,
+            EntryBookStorage archivesEntryBookStorage,
+            EntryBookStorage feedsEntryBookStorage,
+            UserPrefsStorage userPrefsStorage,
+            ArticleStorage articleStorage) {
         super();
         this.listEntryBookStorage = listEntryBookStorage;
         this.userPrefsStorage = userPrefsStorage;
@@ -58,7 +58,9 @@ public class StorageManager implements Storage {
 
     // ================= General EntryBook methods ========================
 
-    /** Saves an entryBook to the given entryBookStorage. */
+    /**
+     * Saves an entryBook to the given entryBookStorage.
+     */
     private static void saveEntryBook(ReadOnlyEntryBook entryBook, EntryBookStorage entryBookStorage)
             throws IOException {
 
@@ -67,7 +69,9 @@ public class StorageManager implements Storage {
         entryBookStorage.saveEntryBook(entryBook, filePath);
     }
 
-    /** Reads an EntryBook from the EntryBookStorage. */
+    /**
+     * Reads an EntryBook from the EntryBookStorage.
+     */
     private static Optional<ReadOnlyEntryBook> readEntryBook(EntryBookStorage entryBookStorage)
             throws IOException, DataConversionException {
 
@@ -154,4 +158,10 @@ public class StorageManager implements Storage {
     public Optional<Path> getOfflineLink(URL url) {
         return articleStorage.getOfflineLink(url);
     }
+
+    @Override
+    public Optional<String> getArticle(URL url) {
+        return articleStorage.getArticle(url);
+    }
+
 }

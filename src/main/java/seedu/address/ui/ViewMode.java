@@ -59,4 +59,12 @@ public class ViewMode {
         return this.viewType.equals(other.viewType) && this.readerViewStyle.equals(other.readerViewStyle);
 
     }
+
+    public boolean hasBrowserViewType() {
+        return this.viewType.equals(ViewType.BROWSER);
+    }
+
+    public boolean hasReaderViewType() {
+        return this.viewType.equals(ViewType.READER);
+    }
 }

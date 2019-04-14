@@ -34,7 +34,7 @@ public class BrowserPanelTest extends GuiUnitTest {
     @Before
     public void setUp() {
         guiRobot.interact(() -> {
-            browserPanel = new BrowserPanel(selectedEntry, viewMode, (url) -> Optional.empty());
+            browserPanel = new BrowserPanel(selectedEntry, viewMode, url -> Optional.empty(), url -> Optional.empty());
         });
         uiPartRule.setUiPart(browserPanel);
 
