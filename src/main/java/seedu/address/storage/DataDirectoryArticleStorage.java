@@ -33,6 +33,7 @@ public class DataDirectoryArticleStorage implements ArticleStorage {
 
     @Override
     public void deleteArticle(URL url) throws IOException {
+        logger.info("Deleting article from disk: " + url);
         Path targetPath = getArticlePath(url);
 
         FileUtil.deleteFile(targetPath);
@@ -40,6 +41,7 @@ public class DataDirectoryArticleStorage implements ArticleStorage {
 
     @Override
     public Optional<Path> addArticle(URL url, byte[] articleContent) throws IOException {
+        logger.info("Adding article to disk: " + url + " (" + articleContent.length + " bytes)");
         Path targetPath = getArticlePath(url);
 
         // Ensure data directory exists

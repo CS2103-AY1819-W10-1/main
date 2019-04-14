@@ -18,6 +18,8 @@ import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ArchiveCommand;
+import seedu.address.logic.commands.ArchivesCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelContext;
@@ -125,6 +127,26 @@ public class SelectCommandSystemTest extends EntryBookSystemTest {
         assertFalse(getOfflineLink(aliceurl).isPresent());
         assertCommandSuccess(command, validIndex);
         assertFalse(getOfflineLink(aliceurl).isPresent());
+
+        /* Case: Non-downloaded entry in non-list context is NOT downloaded after selection */
+        // First add the entry, then we delete the article
+        command = AddCommand.COMMAND_WORD + " l/" + wikiurl.toString();
+        executeCommand(command);
+        command = ArchiveCommand.COMMAND_WORD + " " + getLastIndex(getModel()).getOneBased();
+        executeCommand(command);
+        command = ArchivesCommand.COMMAND_WORD;
+        executeCommand(command);
+
+        // Now we check that it's not downloaded
+        assertFalse(getOfflineLink(wikiurl).isPresent());
+
+        // Select
+        validIndex = getLastIndex(getModel());
+        command = SelectCommand.COMMAND_WORD + " " + validIndex.getOneBased();
+        assertCommandSuccess(command, validIndex);
+
+        // Check that it's NOT downloaded
+        assertFalse(getOfflineLink(wikiurl).isPresent());
 
     }
 
