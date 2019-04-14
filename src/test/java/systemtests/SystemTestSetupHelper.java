@@ -24,15 +24,19 @@ public class SystemTestSetupHelper {
     public TestApp setupApplication(
         Supplier<ReadOnlyEntryBook> listEntryBook,
         Supplier<ReadOnlyEntryBook> archivesEntryBook,
+        Supplier<ReadOnlyEntryBook> feedsEntryBook,
         Path saveFileLocationListEntryBook,
-        Path saveFileLocationArchivesEntryBook) {
+        Path saveFileLocationArchivesEntryBook,
+        Path saveFileLocationFeedsEntryBook) {
         try {
             FxToolkit.registerStage(Stage::new);
             FxToolkit.setupApplication(() -> testApp = new TestApp(
                                                             listEntryBook,
                                                             archivesEntryBook,
+                                                            feedsEntryBook,
                                                             saveFileLocationListEntryBook,
-                                                            saveFileLocationArchivesEntryBook));
+                                                            saveFileLocationArchivesEntryBook,
+                                                            saveFileLocationFeedsEntryBook));
         } catch (TimeoutException te) {
             throw new AssertionError("Application takes too long to set up.", te);
         }

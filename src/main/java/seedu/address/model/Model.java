@@ -161,6 +161,11 @@ public interface Model {
      */
     void clearArchivesEntryBook();
 
+    /**
+     * Replaces feeds entry book data with the data in {@code feedsEntryBook}.
+     */
+    void setFeedsEntryBook(ReadOnlyEntryBook feedsEntryBook);
+
     /** Returns the feeds entry book. */
     ReadOnlyEntryBook getFeedsEntryBook();
 

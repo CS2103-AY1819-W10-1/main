@@ -10,7 +10,7 @@ import seedu.address.mocks.TypicalModelManagerStub;
 import seedu.address.model.EntryBook;
 import seedu.address.model.Model;
 
-public class ClearCommandTest {
+public class ClearListCommandTest {
 
     private CommandHistory commandHistory = new CommandHistory();
 
@@ -19,7 +19,12 @@ public class ClearCommandTest {
         Model model = new ModelManagerStub();
         Model expectedModel = new ModelManagerStub();
 
-        assertCommandSuccess(new ClearCommand(), model, commandHistory, ClearCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(
+            new ClearListCommand(),
+            model,
+            commandHistory,
+            ClearListCommand.MESSAGE_SUCCESS,
+            expectedModel);
     }
 
     @Test
@@ -28,7 +33,12 @@ public class ClearCommandTest {
         Model expectedModel = new TypicalModelManagerStub();
         expectedModel.setListEntryBook(new EntryBook());
 
-        assertCommandSuccess(new ClearCommand(), model, commandHistory, ClearCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(
+            new ClearListCommand(),
+            model,
+            commandHistory,
+            ClearListCommand.MESSAGE_SUCCESS,
+            expectedModel);
     }
 
 }

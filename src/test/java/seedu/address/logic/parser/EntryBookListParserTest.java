@@ -18,7 +18,7 @@ import seedu.address.logic.commands.ArchiveAllCommand;
 import seedu.address.logic.commands.ArchiveCommand;
 import seedu.address.logic.commands.ArchivesCommand;
 import seedu.address.logic.commands.BingWebSearchCommand;
-import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.ClearListCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
@@ -92,8 +92,8 @@ public class EntryBookListParserTest {
 
     @Test
     public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
+        assertTrue(parser.parseCommand(ClearListCommand.COMMAND_WORD) instanceof ClearListCommand);
+        assertTrue(parser.parseCommand(ClearListCommand.COMMAND_WORD + " 3") instanceof ClearListCommand);
     }
 
     @Test

@@ -289,6 +289,11 @@ public class ModelManager implements Model {
     //=========== Feeds EntryBook ============================================================================
 
     @Override
+    public void setFeedsEntryBook(ReadOnlyEntryBook feedsEntryBook) {
+        this.feedsEntryBook.resetData(feedsEntryBook);
+    }
+
+    @Override
     public ReadOnlyEntryBook getFeedsEntryBook() {
         return feedsEntryBook;
     }

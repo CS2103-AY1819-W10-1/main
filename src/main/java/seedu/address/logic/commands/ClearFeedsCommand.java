@@ -6,18 +6,17 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 
 /**
- * Clears the address book.
+ * Clears the feeds list
  */
-public class ClearCommand extends Command {
+public class ClearFeedsCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "Entry book has been cleared!";
-
+    public static final String MESSAGE_SUCCESS = "Feeds list has been cleared!";
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
-        model.clearListEntryBook();
+        model.clearFeedsEntryBook();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

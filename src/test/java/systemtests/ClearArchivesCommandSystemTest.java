@@ -4,34 +4,40 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 import org.junit.Test;
 
-import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.ArchivesCommand;
+import seedu.address.logic.commands.ClearArchivesCommand;
 import seedu.address.mocks.ModelManagerStub;
 import seedu.address.model.Model;
 import seedu.address.model.ModelContext;
 
-public class ClearCommandSystemTest extends EntryBookSystemTest {
+public class ClearArchivesCommandSystemTest extends EntryBookSystemTest {
 
     @Test
     public void clear() {
         final Model defaultModel = getModel();
 
-        /* Case: clear non-empty address book, command with leading spaces and trailing alphanumeric characters and
+        // Switch to archives context
+        executeCommand(ArchivesCommand.COMMAND_WORD);
+
+        /* Case: clear non-empty archives entry book,
+         * command with leading spaces and trailing alphanumeric characters and
          * spaces -> cleared
          */
-        assertCommandSuccess("   " + ClearCommand.COMMAND_WORD + " ab12   ");
+        assertCommandSuccess("   " + ClearArchivesCommand.COMMAND_WORD + " ab12   ");
         assertSelectedCardUnchanged();
 
         /* Case: clear empty address book -> cleared */
-        assertCommandSuccess(ClearCommand.COMMAND_WORD);
+        assertCommandSuccess(ClearArchivesCommand.COMMAND_WORD);
         assertSelectedCardUnchanged();
 
         /* Case: mixed case command word -> rejected */
-        assertCommandFailure("ClEaR", String.format(MESSAGE_UNKNOWN_COMMAND, ModelContext.CONTEXT_LIST));
+        assertCommandFailure("ClEaR", String.format(MESSAGE_UNKNOWN_COMMAND, ModelContext.CONTEXT_ARCHIVES));
     }
 
     /**
      * Executes {@code command} and verifies that the command box displays an empty string, the result display
-     * box displays {@code ClearCommand#MESSAGE_SUCCESS} and the model related components equal to an empty model.
+     * box displays {@code ClearArchivesCommand#MESSAGE_SUCCESS}
+     * and the model related components equal to an empty model.
      * These verifications are done by
      * {@code EntryBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
      * Also verifies that the command box has the default style class and the status bar's sync status changes.
@@ -39,21 +45,23 @@ public class ClearCommandSystemTest extends EntryBookSystemTest {
      */
     private void assertCommandSuccess(String command) {
         Model expectedModel = new ModelManagerStub();
-        expectedModel.setArchivesEntryBook(getModel().getArchivesEntryBook());
-        assertCommandSuccess(command, ClearCommand.MESSAGE_SUCCESS, expectedModel);
+        expectedModel.setContext(ModelContext.CONTEXT_ARCHIVES);
+        expectedModel.setListEntryBook(getModel().getListEntryBook());
+        expectedModel.setFeedsEntryBook(getModel().getFeedsEntryBook());
+        assertCommandSuccess(command, ClearArchivesCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     /**
      * Performs the same verification as {@code assertCommandSuccess(String)} except that the result box displays
      * {@code expectedResultMessage} and the model related components equal to {@code expectedModel}.
-     * @see ClearCommandSystemTest#assertCommandSuccess(String)
+     * @see ClearArchivesCommandSystemTest#assertCommandSuccess(String)
      */
     private void assertCommandSuccess(String command, String expectedResultMessage, Model expectedModel) {
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
         assertCommandBoxShowsDefaultStyle();
         assertResultDisplayShowsDefaultStyle();
-        assertStatusBarUnchangedExceptSyncStatusExcludingCount();
+        assertStatusBarExcludingCountUnchanged();
     }
 
     /**
@@ -67,6 +75,7 @@ public class ClearCommandSystemTest extends EntryBookSystemTest {
      */
     private void assertCommandFailure(String command, String expectedResultMessage) {
         Model expectedModel = getModel();
+        expectedModel.setContext(ModelContext.CONTEXT_ARCHIVES);
 
         executeCommand(command);
         assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);

@@ -35,13 +35,18 @@ public class TestApp extends MainApp {
     public static final Path SAVE_LOCATION_ARCHIVES_ENTRYBOOK_FOR_TESTING =
         TestUtil.getFilePathInSandboxFolder("sampleArchiveEntryBookData.json");
 
+    public static final Path SAVE_LOCATION_FEEDS_ENTRYBOOK_FOR_TESTING =
+        TestUtil.getFilePathInSandboxFolder("sampleFeedsEntryBookData.json");
+
     protected static final Path DEFAULT_PREF_FILE_LOCATION_FOR_TESTING =
             TestUtil.getFilePathInSandboxFolder("pref_testing.json");
 
     protected Supplier<ReadOnlyEntryBook> initialListEntryBookDataSupplier = () -> null;
     protected Supplier<ReadOnlyEntryBook> initialArchivesEntryBookDataSupplier = () -> null;
+    protected Supplier<ReadOnlyEntryBook> initialFeedsEntryBookDataSupplier = () -> null;
     protected Path saveFileLocationListEntryBook = SAVE_LOCATION_LIST_ENTRYBOOK_FOR_TESTING;
     protected Path saveFileLocationArchivesEntryBook = SAVE_LOCATION_ARCHIVES_ENTRYBOOK_FOR_TESTING;
+    protected Path saveFileLocationFeedsEntryBook = SAVE_LOCATION_FEEDS_ENTRYBOOK_FOR_TESTING;
 
     public TestApp() {
     }
@@ -49,13 +54,17 @@ public class TestApp extends MainApp {
     public TestApp(
         Supplier<ReadOnlyEntryBook> initialListEntryBookDataSupplier,
         Supplier<ReadOnlyEntryBook> initialArchivesEntryBookDataSupplier,
+        Supplier<ReadOnlyEntryBook> initialFeedsEntryBookDataSupplier,
         Path saveFileLocationListEntryBook,
-        Path saveFileLocationArchivesEntryBook) {
+        Path saveFileLocationArchivesEntryBook,
+        Path saveFileLocationFeedsEntryBook) {
         super();
         this.initialListEntryBookDataSupplier = initialListEntryBookDataSupplier;
         this.initialArchivesEntryBookDataSupplier = initialArchivesEntryBookDataSupplier;
+        this.initialFeedsEntryBookDataSupplier = initialFeedsEntryBookDataSupplier;
         this.saveFileLocationListEntryBook = saveFileLocationListEntryBook;
         this.saveFileLocationArchivesEntryBook = saveFileLocationArchivesEntryBook;
+        this.saveFileLocationFeedsEntryBook = saveFileLocationFeedsEntryBook;
 
         // If some initial local data has been provided, write those to the file
         if (initialListEntryBookDataSupplier.get() != null) {
@@ -70,6 +79,14 @@ public class TestApp extends MainApp {
             JsonEntryBookStorage jsonEntryBookStorage = new JsonEntryBookStorage(saveFileLocationArchivesEntryBook);
             try {
                 jsonEntryBookStorage.saveEntryBook(initialArchivesEntryBookDataSupplier.get());
+            } catch (IOException ioe) {
+                throw new AssertionError(ioe);
+            }
+        }
+        if (initialFeedsEntryBookDataSupplier.get() != null) {
+            JsonEntryBookStorage jsonEntryBookStorage = new JsonEntryBookStorage(saveFileLocationFeedsEntryBook);
+            try {
+                jsonEntryBookStorage.saveEntryBook(initialFeedsEntryBookDataSupplier.get());
             } catch (IOException ioe) {
                 throw new AssertionError(ioe);
             }
@@ -91,6 +108,7 @@ public class TestApp extends MainApp {
         userPrefs.setGuiSettings(new GuiSettings(600.0, 600.0, (int) x, (int) y));
         userPrefs.setListEntryBookFilePath(saveFileLocationListEntryBook);
         userPrefs.setArchivesEntryBookFilePath(saveFileLocationArchivesEntryBook);
+        userPrefs.setFeedsEntryBookFilePath(saveFileLocationFeedsEntryBook);
         return userPrefs;
     }
 
@@ -121,6 +139,19 @@ public class TestApp extends MainApp {
     }
 
     /**
+     * Returns a defensive copy of the feeds entry book data stored inside the storage file.
+     */
+    public EntryBook readStorageFeedsEntryBook() {
+        try {
+            return new EntryBook(storage.readFeedsEntryBook().get());
+        } catch (DataConversionException dce) {
+            throw new AssertionError("Data is not in the EntryBook format.", dce);
+        } catch (IOException ioe) {
+            throw new AssertionError("Storage file cannot be found.", ioe);
+        }
+    }
+
+    /**
      * Returns the file path of the storage file for the list entry book.
      */
     public Path getListEntryBookStorageSaveLocation() {
@@ -132,6 +163,13 @@ public class TestApp extends MainApp {
      */
     public Path getArchivesEntryBookStorageSaveLocation() {
         return storage.getArchivesEntryBookFilePath();
+    }
+
+    /**
+     * Returns the file path of the storage file for the feeds entry book.
+     */
+    public Path getFeedsEntryBookStorageSaveLocation() {
+        return storage.getFeedsEntryBookFilePath();
     }
 
     /**
