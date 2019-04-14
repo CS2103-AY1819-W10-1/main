@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+
+<channel>
+<title>An empty feed</title>
+<link>https://empty.feed/</link>
+<description>
+Very empty feed
+</description>
+<lastBuildDate>Sun May 27 04:15:47 EEST 2018</lastBuildDate>
+</channel>
+</rss>

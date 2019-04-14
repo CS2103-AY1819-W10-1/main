@@ -320,6 +320,11 @@ public class TypicalEntries {
             .withDescription("Wikipedia test web page")
             .withLink(MainApp.class.getResource("/view/BrowserPanelTest/wikipedia.html"))
             .build();
+    public static final Entry REMOTE_WIKIPEDIA_ENTRY = new EntryBuilder()
+        .withTitle("Wikipedia Test Web Page")
+        .withDescription("Wikipedia test web page")
+        .withLink(WIKIPEDIA_ENTRY_BASE_URL)
+        .build();
 
     // bunch of RSS feeds
     public static final Entry KATTIS_FEED_ENTRY = new EntryBuilder()
@@ -328,11 +333,29 @@ public class TypicalEntries {
             .withLink("https://open.kattis.com/rss/new-problems")
             .build();
 
+    public static final Entry EMPTY_FEED_ENTRY = new EntryBuilder()
+        .withTitle("An empty feed")
+        .withDescription("Very empty feed")
+        .withLink(MainApp.class.getResource("/RssFeedTest/emptyrss.xml"))
+        .build();
+
+    public static final Entry ONE_ITEM_FEED_ENTRY = new EntryBuilder()
+        .withTitle("One item feed")
+        .withDescription("Almost empty feed")
+        .withLink(MainApp.class.getResource("/RssFeedTest/oneitemrss.xml"))
+        .build();
+
     public static final Entry LOCAL_FEED_ENTRY = new EntryBuilder()
             .withTitle("Tsutsukakushi's anime reviews - local copy")
             .withDescription("anime reviews")
             .withLink(MainApp.class.getResource("/RssFeedTest/rss.xml"))
             .build();
+
+    public static final Entry NOT_A_FEED_ENTRY = new EntryBuilder()
+        .withTitle("Not a feed")
+        .withDescription("Not a feed")
+        .withLink(MainApp.class.getResource("/RssFeedTest/notafeed.notxml"))
+        .build();
 
     public static final Entry ANIMEREVIEW_FEED_ENTRY = new EntryBuilder()
             .withTitle("Tsutsukakushi's anime reviews - remote mirror")

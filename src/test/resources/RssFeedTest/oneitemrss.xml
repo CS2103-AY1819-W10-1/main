@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+
+<channel>
+<title>One item feed</title>
+<link>https://one.item.feed/</link>
+<description>
+Almost empty feed
+</description>
+<lastBuildDate>Sun May 27 04:15:47 EEST 2018</lastBuildDate>
+<item>
+<title>The only item in this feed</title>
+<link>http://en.wikipedia.org/wiki/Therapsids</link>
+<pubDate>Wed Jan 10 03:01:02 2018 +0200</pubDate>
+<description><![CDATA[
+Wikipedia
+]]></description>
+</item>
+</channel>
+</rss>
