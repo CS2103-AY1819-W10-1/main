@@ -38,12 +38,16 @@ public class UnarchiveAllCommand extends Command {
 
         int numUnarchived = 0;
         for (int i = lastShownList.size(); i > 0; i--) {
-            Command unarchiveCommand = new UnarchiveCommand(Index.fromOneBased(i));
+            Index index = Index.fromOneBased(i);
+            Entry entryToUnarchive = lastShownList.get(index.getZeroBased());
+            Command unarchiveCommand = new UnarchiveCommand(index);
             try {
                 unarchiveCommand.execute(model, history);
                 numUnarchived++;
             } catch (DuplicateEntryCommandException dece) {
-                logger.info("Skipping duplicate entry at index " + Index.fromOneBased(i));
+                logger.warning("Removing duplicate entry at index " + index.getOneBased()
+                    + " which is already in reading list:\n"
+                    + entryToUnarchive);
                 // Ignore duplicate entry errors
                 // Rethrow other errors
             }

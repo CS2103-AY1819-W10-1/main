@@ -38,12 +38,16 @@ public class ArchiveAllCommand extends Command {
 
         int numArchived = 0;
         for (int i = lastShownList.size(); i > 0; i--) {
-            Command archiveCommand = new ArchiveCommand(Index.fromOneBased(i));
+            Index index = Index.fromOneBased(i);
+            Entry entryToArchive = lastShownList.get(index.getZeroBased());
+            Command archiveCommand = new ArchiveCommand(index);
             try {
                 archiveCommand.execute(model, history);
                 numArchived++;
             } catch (DuplicateEntryCommandException dece) {
-                logger.info("Skipping duplicate entry at index " + Index.fromOneBased(i));
+                logger.warning("Removing duplicate entry at index " + index.getOneBased()
+                    + " which is already in archives list:\n"
+                    + entryToArchive);
                 // Ignore duplicate entry errors
                 // Rethrow other errors
             }

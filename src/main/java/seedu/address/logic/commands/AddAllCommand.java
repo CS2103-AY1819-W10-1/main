@@ -3,7 +3,9 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.exceptions.DuplicateEntryCommandException;
@@ -25,6 +27,8 @@ public class AddAllCommand extends Command {
     public static final String MESSAGE_SUCCESS = "All entries added (%s entries)\n"
         + "Some entries may have been skipped if they were already present in the reading list";
 
+    private static final Logger logger = LogsCenter.getLogger(UnarchiveAllCommand.class);
+
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
@@ -37,6 +41,8 @@ public class AddAllCommand extends Command {
                 addCommand.execute(model, history);
                 numAdded++;
             } catch (DuplicateEntryCommandException dece) {
+                logger.warning("Skipping entry which is already in reading list:\n"
+                    + entryToAdd);
                 // Ignore duplicate entry errors
                 // Rethrow other errors
             }
