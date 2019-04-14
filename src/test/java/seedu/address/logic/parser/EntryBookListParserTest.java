@@ -31,7 +31,9 @@ import seedu.address.logic.commands.GoogleNewsCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.RefreshEntryCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.SubscribeCommand;
 import seedu.address.logic.commands.ViewModeCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ModelContext;
@@ -192,6 +194,13 @@ public class EntryBookListParserTest {
     }
 
     @Test
+    public void parseCommand_refresh() throws Exception {
+        RefreshEntryCommand command = (RefreshEntryCommand) parser.parseCommand(
+            RefreshEntryCommand.COMMAND_WORD + " " + INDEX_FIRST_ENTRY.getOneBased());
+        assertEquals(new RefreshEntryCommand(INDEX_FIRST_ENTRY), command);
+    }
+
+    @Test
     public void parseCommand_select() throws Exception {
         SelectCommand command = (SelectCommand) parser.parseCommand(
                 SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_ENTRY.getOneBased());
@@ -209,6 +218,17 @@ public class EntryBookListParserTest {
         ViewModeCommand aliasCommand = (ViewModeCommand) parser.parseCommand(
                 ViewModeCommand.COMMAND_ALIAS + " " + VALID_VIEWTYPE_READER + STYLE_DESC_DARK);
         assertEquals(new ViewModeCommand(new ViewMode(ViewType.READER, ReaderViewStyle.DARK)), aliasCommand);
+    }
+
+    @Test
+    public void parseCommand_subscribe() throws Exception {
+        Entry entry = new EntryBuilder().build();
+        SubscribeCommand command = (SubscribeCommand) parser.parseCommand(
+            SubscribeCommand.COMMAND_WORD + " " + EntryUtil.getEntryDetails(entry));
+        assertEquals(new SubscribeCommand(entry), command);
+        SubscribeCommand commandAlias = (SubscribeCommand) parser.parseCommand(
+            SubscribeCommand.COMMAND_ALIAS + " " + EntryUtil.getEntryDetails(entry));
+        assertEquals(new SubscribeCommand(entry), commandAlias);
     }
 
     @Test

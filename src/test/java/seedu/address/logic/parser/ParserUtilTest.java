@@ -51,10 +51,29 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseIndex_outOfRangeInput_throwsParseException() throws Exception {
+    public void parseIndex_invalidInputNonNumeric_throwsParseException() throws Exception {
+        thrown.expect(ParseException.class);
+        ParserUtil.parseIndex("abc");
+    }
+
+    @Test
+    public void parseIndex_invalidInputOnlyDecimal_throwsParseException() throws Exception {
+        thrown.expect(ParseException.class);
+        ParserUtil.parseIndex("0x1");
+    }
+
+    @Test
+    public void parseIndex_outOfRangeInputTooBig_throwsParseException() throws Exception {
         thrown.expect(ParseException.class);
         thrown.expectMessage(MESSAGE_INVALID_INDEX);
-        ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1));
+        ParserUtil.parseIndex(Long.toString(((long) Integer.MAX_VALUE) + 1));
+    }
+
+    @Test
+    public void parseIndex_outOfRangeInputNegative_throwsParseException() throws Exception {
+        thrown.expect(ParseException.class);
+        thrown.expectMessage(MESSAGE_INVALID_INDEX);
+        ParserUtil.parseIndex("-1");
     }
 
     @Test
@@ -123,38 +142,6 @@ public class ParserUtilTest {
         Description expectedDescription = new Description(VALID_COMMENT);
         assertEquals(expectedDescription, ParserUtil.parseDescription(Optional.of(descriptionWithWhitespace)));
     }
-
-    // No longer valid with the optionality of the (invisible) address field
-    /*
-    @Test
-    public void parseAddress_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
-    }
-
-    @Test
-    public void parseAddress_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
-    }
-
-    @Test
-    public void parseAddress_emptyValue_returnsDefaultAddress() throws Exception {
-        Address expectedAddress = new Address(Address.DEFAULT_ADDRESS);
-        assertEquals(expectedAddress, ParserUtil.parseAddress(Optional.empty()));
-    }
-
-    @Test
-    public void parseAddress_validValueWithoutWhitespace_returnsAddress() throws Exception {
-        Address expectedAddress = new Address(VALID_ADDRESS);
-        assertEquals(expectedAddress, ParserUtil.parseAddress(VALID_ADDRESS));
-    }
-
-    @Test
-    public void parseAddress_validValueWithWhitespace_returnsTrimmedAddress() throws Exception {
-        String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
-        Address expectedAddress = new Address(VALID_ADDRESS);
-        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithWhitespace));
-    }
-    */
 
     @Test
     public void parseLink_null_throwsNullPointerException() {

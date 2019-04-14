@@ -10,10 +10,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import seedu.address.logic.commands.DeleteArchiveEntryCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UnarchiveAllCommand;
 import seedu.address.logic.commands.UnarchiveCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -24,6 +26,13 @@ public class EntryBookArchivesParserTest {
     public ExpectedException thrown = ExpectedException.none();
 
     private final EntryBookArchivesParser parser = new EntryBookArchivesParser();
+
+    @Test
+    public void parseCommand_emptyString_throwsParseException() throws ParseException {
+        thrown.expect(ParseException.class);
+        thrown.expectMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+        parser.parseCommand("");
+    }
 
     @Test
     public void parseCommand_exit() throws Exception {
@@ -77,6 +86,27 @@ public class EntryBookArchivesParserTest {
         command = (UnarchiveAllCommand) parser.parseCommand(
             UnarchiveAllCommand.COMMAND_ALIAS);
         assertEquals(new UnarchiveAllCommand(), command);
+    }
+
+    @Test
+    public void parseCommand_select() throws Exception {
+        SelectCommand command = (SelectCommand) parser.parseCommand(
+            SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_ENTRY.getOneBased());
+        assertEquals(new SelectCommand(INDEX_FIRST_ENTRY), command);
+    }
+
+    @Test
+    public void parseCommand_select_alias() throws Exception {
+        SelectCommand command = (SelectCommand) parser.parseCommand(
+            SelectCommand.COMMAND_ALIAS + " " + INDEX_FIRST_ENTRY.getOneBased());
+        assertEquals(new SelectCommand(INDEX_FIRST_ENTRY), command);
+    }
+
+    @Test
+    public void parseCommand_deleteArchiveEntry() throws Exception {
+        DeleteArchiveEntryCommand command = (DeleteArchiveEntryCommand) parser.parseCommand(
+            DeleteArchiveEntryCommand.COMMAND_WORD + " " + INDEX_FIRST_ENTRY.getOneBased());
+        assertEquals(new DeleteArchiveEntryCommand(INDEX_FIRST_ENTRY), command);
     }
 
     @Test
