@@ -147,11 +147,6 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public void setViewMode(ViewMode viewMode) {
-        model.setViewMode(viewMode);
-    }
-
-    @Override
     public ReadOnlyProperty<Exception> exceptionProperty() {
         return model.exceptionProperty();
     }
@@ -174,11 +169,6 @@ public class LogicManager implements Logic {
     @Override
     public ReadOnlyProperty<ModelContext> contextProperty() {
         return model.contextProperty();
-    }
-
-    @Override
-    public void setContext(ModelContext context) {
-        model.setContext(context);
     }
 
 }

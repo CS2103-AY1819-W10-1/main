@@ -20,7 +20,9 @@ import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ArchivesCommand;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.FeedsCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -139,6 +141,46 @@ public class LogicManagerTest {
     public void getFilteredEntryList_modifyList_throwsUnsupportedOperationException() {
         thrown.expect(UnsupportedOperationException.class);
         logic.getFilteredEntryList().remove(0);
+    }
+
+    @Test
+    public void executeContextSwitch_success() {
+        logic.executeContextSwitch(ModelContext.CONTEXT_LIST);
+        assertEquals(ListCommand.MESSAGE_SUCCESS, model.getCommandResult().getFeedbackToUser());
+        assertEquals(model.getContext(), ModelContext.CONTEXT_LIST);
+
+        logic.executeContextSwitch(ModelContext.CONTEXT_ARCHIVES);
+        assertEquals(ArchivesCommand.MESSAGE_SUCCESS, model.getCommandResult().getFeedbackToUser());
+        assertEquals(model.getContext(), ModelContext.CONTEXT_ARCHIVES);
+
+        logic.executeContextSwitch(ModelContext.CONTEXT_FEEDS);
+        assertEquals(FeedsCommand.MESSAGE_SUCCESS, model.getCommandResult().getFeedbackToUser());
+        assertEquals(model.getContext(), ModelContext.CONTEXT_FEEDS);
+
+        // Test switching back to list context in case first one wasn't an accurate test
+        logic.executeContextSwitch(ModelContext.CONTEXT_LIST);
+        assertEquals(ListCommand.MESSAGE_SUCCESS, model.getCommandResult().getFeedbackToUser());
+        assertEquals(model.getContext(), ModelContext.CONTEXT_LIST);
+    }
+
+    /**
+     * Tests switching to search context,
+     * which does network calls (google news command),
+     * so we test this separately from above.
+     */
+    @Test
+    public void executeContextSwitchToSearchContext_success() {
+        logic.executeContextSwitch(ModelContext.CONTEXT_LIST);
+        assertEquals(ListCommand.MESSAGE_SUCCESS, model.getCommandResult().getFeedbackToUser());
+        assertEquals(model.getContext(), ModelContext.CONTEXT_LIST);
+
+        logic.executeContextSwitch(ModelContext.CONTEXT_SEARCH);
+        assertEquals(model.getContext(), ModelContext.CONTEXT_SEARCH);
+
+        // Test switching back to list context in case first one wasn't an accurate test
+        logic.executeContextSwitch(ModelContext.CONTEXT_LIST);
+        assertEquals(ListCommand.MESSAGE_SUCCESS, model.getCommandResult().getFeedbackToUser());
+        assertEquals(model.getContext(), ModelContext.CONTEXT_LIST);
     }
 
     /**

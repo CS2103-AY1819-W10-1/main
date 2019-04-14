@@ -109,13 +109,6 @@ public interface Logic {
     ReadOnlyProperty<ViewMode> viewModeProperty();
 
     /**
-     * Sets the view mode.
-     *
-     * @see seedu.address.model.Model#setViewMode(ViewMode)
-     */
-    void setViewMode(ViewMode viewMode);
-
-    /**
      * Propagated exception.
      * null if no exception.
      *
@@ -152,12 +145,5 @@ public interface Logic {
      * @see seedu.address.model.Model#contextProperty()
      */
     ReadOnlyProperty<ModelContext> contextProperty();
-
-    /**
-     * Sets the context in the model.
-     *
-     * @see seedu.address.model.Model#setContext(ModelContext)
-     */
-    void setContext(ModelContext context);
 
 }
