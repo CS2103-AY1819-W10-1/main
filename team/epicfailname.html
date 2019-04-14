@@ -1,6 +1,14 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Jonathan Cheng - Project Portfolio for README</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Jonathan Cheng - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">README</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S2-W10-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Jonathan Cheng - Project Portfolio for README</h1></div><div id="content"><div class="sect1">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">README</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S2-W10-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Jonathan Cheng - Project Portfolio</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hello there! I am Computer Science undergraduate student studying at National University of Singapore (NUS).
+This document highlights all the projects I have contributed to over the course of the studies, and I hope it gives you a better idea of what I can do!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="project-readme"><a class="link" href="#project-readme">PROJECT: README</a></h2>
 <div class="sectionbody">
 
@@ -10,42 +18,82 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>README is a desktop bookmark manager/rss feed reader application.</p>
+<p>README is a desktop bookmark manager/RSS feed reader application.
+README lets users store webpages for offline reading, in addition to subscribig to feeds so that their favourite content is automatically downloaded and delivered to them.</p>
+</div>
+<div class="paragraph">
+<p>The application is the product of a brownfield project for the NUS module CS2103T.
+We built our application from an existing <a href="https://github.com/nus-cs2103-AY1819S2/addressbook-level4/">addressbook application</a>.</p>
+</div>
+<div class="paragraph">
+<p>We envision users to use our application to store a large number of entries (which refers to links in the application), so it is vital that they have a way to navigate these many entries.
+As such, my responsibility in this project is to develop a powerful system to organise and manage entries in README.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are contributions that I made to this application.</em></p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect2">
 <h3 id="strong-major-enhancement-strong-entry-management-system"><a class="link" href="#strong-major-enhancement-strong-entry-management-system"><strong>Major enhancement</strong>: Entry management system</a></h3>
 <div class="paragraph">
-<p>I implemented a collection of several commands that allow users to manage a large number of entries in the entrybook.
-<strong> Justification: Essential for heavy users so that they can navigate large numbers of entries efficiently, and allows
-them to partition their entries into groups using tags and the archive.
-</strong> Highlights: Updated commands from addressbook application and added new ones.
-<strong>* Archives command: Users can archive links they have read.
-</strong>* Find command: Updated so users can search for links in the list of currently displayed entries using any of the fields and/or tags.
-<strong>*</strong> Context switching: Users can make the application display different entries (archive entries, search result entries etc.)
-via context-switching commands.</p>
+<p>I implemented a collection of several commands that allow users to navigate their large number of entries in the application.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="strong-minor-enhancement-strong-morphing-addressbook-to-entrybook"><a class="link" href="#strong-minor-enhancement-strong-morphing-addressbook-to-entrybook"><strong>Minor enhancement</strong>: Morphing addressbook to entrybook</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>I contributed significantly to refactors and renames of codebase to fit the context of our application.</p>
+<p>Justification: Essential for heavy users so that they can search for and navigate their large numbers of entries efficiently, and allows them to partition their entries into groups using tags and the archive.</p>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Archives command: Users can archive (instead of delete) entries they have read for future reference.</p>
+</li>
+<li>
+<p>Find command: Enhanced so users can search for entries in the list of currently displayed entries using any of the fields and/or tags.</p>
+</li>
+<li>
+<p>Context switching: Users can make the application display different entries (saved entries, archived entries etc.) via context-switching commands.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
+<h3 id="strong-minor-enhancement-strong-morphing-addressbook-to-entrybook"><a class="link" href="#strong-minor-enhancement-strong-morphing-addressbook-to-entrybook"><strong>Minor enhancement</strong>: Morphing addressbook to entrybook</a></h3>
+<div class="paragraph">
+<p>I contributed significantly to refactors and renames of codebase to fit the context of our application.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="strong-code-contributed-strong"><a class="link" href="#strong-code-contributed-strong"><strong>Code contributed</strong>:</a></h3>
+<div class="paragraph">
+<p>For an overview of all of code contributed by me, refer to the <a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=epicfailname">CS2103T module dashboard</a>!</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, refer to the links below to relevant pull requests for each enhancement.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/106">Archives</a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/126">Find Command Enhancement</a></p>
 </li>
 <li>
 <p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/77">Context switching</a></p>
@@ -65,7 +113,7 @@ via context-switching commands.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>.</p>
+<p>I managed the release of <a href="https://github.com/CS2103-AY1819S2-W10-1/main/releases/tag/v1.3.1">version 1.3.1</a> of our application.</p>
 </li>
 </ul>
 </div>
@@ -75,14 +123,30 @@ via context-switching commands.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments):</p>
+<p>Regularly review pull requests (PR). See <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+reviewed-by%3Aepicfailname">here</a> for the complete list.</p>
+</li>
+<li>
+<p>Otherwise, look below for PRs with non-trivial comments!</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/107">#107</a></p>
+<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/76">#76</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/76">#76</a></p>
+<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/107">#107</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Reported bugs and gave suggestions for another group&#8217;s project, <a href="https://github.com/CS2103-AY1819S2-W11-3/main">TravelBuddy</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-W11-3/main/issues/156">#156</a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-W11-3/main/issues/158">#158</a></p>
 </li>
 </ul>
 </div>
@@ -108,6 +172,7 @@ via context-switching commands.</p>
 </tr>
 </tbody>
 </table>
+<hr>
 <div class="sect2">
 <h3 id="context-switching-commands"><a class="link" href="#context-switching-commands">Context-switching commands</a></h3>
 <div class="exampleblock">
@@ -299,6 +364,71 @@ Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available 
 <div class="paragraph">
 <p>Format: <code>stats</code></p>
 </div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="finding-entries-by-title-code-find-code"><a class="link" href="#finding-entries-by-title-code-find-code">Finding entries by title: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Finds entries whose fields contain any of the given keyphrases.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find [a/SEARCH_PHRASE] [ti/TITLE_SEARCH_PHRASE] [d/DESCRIPTION_SEARCH_PHRASE] [l/LINK_SEARCH_PHRASE] [t/TAG_TO_SEARCH]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search matches anywhere for title, description and link. e.g. <code>ans B</code> will match <code>Hans Bo</code></p>
+</li>
+<li>
+<p>The search matches exactly for tags. e.g. 'science' will match 'science', but not 'scienceandtech'</p>
+</li>
+<li>
+<p>The search phrase with prefix <code>a/</code> will try to match with every field in the entry according to the above rules.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i.e. <code>find a/keyphrase</code> is equivalent to <code>find ti/keyphrase d/keyphrase l/keyphrase t/keyphrase</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Entries matching at least one field will be returned (i.e. <code>OR</code> search).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>find ti/aaa d/bbb l/ccc t/ddd</code> will match an entry with title <code>Aaawesome</code> and an entry with description <code>abbbA</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find ti/Trump</code><br>
+Returns entries with titles containing the phrase <code>trump</code> such as <code>Donald Trump</code> or <code>CS average salary trumps again</code></p>
+</li>
+<li>
+<p><code>find l/cnn t/science</code><br>
+Returns any entries having links containing the phrase <code>cnn</code> and entries with the exact tag <code>science</code>.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -316,6 +446,52 @@ Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available 
 </tr>
 </tbody>
 </table>
+<hr>
+<div class="sect2">
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">Logic component</a></h3>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
+</div>
+<div class="title">Figure 1. Structure of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> :
+<a href="{repoURL}/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>EntryBookParser</code> has several children classes that represent parsers for a specific context.</p>
+</li>
+<li>
+<p><code>Logic</code> uses the <code>EntryBookParser</code> children classes to parse the user command.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding an entry).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
+</div>
+<div class="title">Figure 2. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+</div>
+<hr>
+</div>
 <div class="sect2">
 <h3 id="context-specific-commands"><a class="link" href="#context-specific-commands">Context-specific commands</a></h3>
 <div class="sect3">
@@ -366,7 +542,7 @@ Each Parser class should only parse commands allowed for the context it represen
 <div class="content">
 <img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 1. Class Diagram of the Logic Component with parser classes.</div>
+<div class="title">Figure 3. Class Diagram of the Logic Component with parser classes.</div>
 </div>
 <div class="paragraph">
 <p>Each Parser class has a <code>parseCommand(String)</code> operation that parses the string command.
@@ -406,7 +582,7 @@ Each <code>ModelContext</code> holds a static Parser class that parses commands 
 <div class="content">
 <img src="../images/ChangeContextSdForModel.png" alt="ChangeContextSdForModel" width="800">
 </div>
-<div class="title">Figure 2. Sequence diagram for the <code>archives</code> command.</div>
+<div class="title">Figure 4. Sequence diagram for the <code>archives</code> command.</div>
 </div>
 </div>
 <div class="sect4">
@@ -496,4 +672,4 @@ of the code base to implement.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 16:10:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 16:39:38 UTC</div></div></div></body></html>
