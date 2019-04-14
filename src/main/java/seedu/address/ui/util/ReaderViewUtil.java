@@ -87,18 +87,6 @@ public class ReaderViewUtil {
     }
 
     /**
-     * Resolves relative links to absolute links.
-     * @param document Jsoup document parsed from raw HTML
-     */
-    public static void resolveRelativeLinksToAbsoluteLinks(Document document) {
-        document.select(ANCHOR_TAG)
-                .forEach(link -> {
-                    String absoluteUrl = link.absUrl("href");
-                    link.attr("href", absoluteUrl);
-                });
-    }
-
-    /**
      * Creates empty Jsoup document with given base URL
      * @param baseUrl base URL
      */
@@ -214,19 +202,6 @@ public class ReaderViewUtil {
                 .filter(title -> !title.isEmpty())
                 .map(title ->
                         new Element(Tag.valueOf(HEADER_TAG), "").text(title).addClass(TITLE_STYLE_CLASS)
-                );
-    }
-
-    /**
-     * Attempts to create an excerpt element.
-     * @param article Readability4J article
-     * @return optional excerpt element
-     */
-    private static Optional<Element> createExcerptElement(Article article) {
-        return Optional.ofNullable(article.getExcerpt())
-                .filter(excerpt -> !excerpt.isEmpty())
-                .map(excerpt ->
-                        new Element(Tag.valueOf(PARAGRAPH_TAG), "").text(excerpt).addClass(LEAD_STYLE_CLASS)
                 );
     }
 
