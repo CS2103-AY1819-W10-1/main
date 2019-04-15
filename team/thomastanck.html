@@ -1,51 +1,156 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Thomas Tan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">README</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S2-W10-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Thomas Tan - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">README</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S2-W10-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Thomas Tan - Project Portfolio</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Good day!
+I am a Computer Science undergraduate
+at the National University of Singapore (NUS).
+This document showcases the contributions I made for a group term project.
+I hope this shows you my abilities engineering software!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="project-readme"><a class="link" href="#project-readme">PROJECT: README</a></h2>
 <div class="sectionbody">
-<hr>
+
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>README is a desktop bookmark manager/rss feed reader application.</p>
+<p>README is a desktop bookmark manager/RSS feed reader application.
+README lets users store webpages for offline reading,
+in addition to subscribing to feeds
+so that their favourite content is automatically downloaded and delivered to them.</p>
+</div>
+<div class="paragraph">
+<p>When looking at many other applications on the market for inspiration,
+we found a big hole.
+Most other applications do not support reading your saved links while offline,
+and as such we decided it was a critical feature,
+and I was placed in charge of this feature.
+However, this requires integrating <code>Storage</code> and <code>Network</code> together,
+which lie on opposite ends of the design.
+This makes it a technically challenging feature,
+interacting with most other components such as the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p>Thus, the bulk of my contributions lie in figuring out
+a good way to architect the overall design
+so that it is easy to support this feature.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are contributions that I made to this application.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="strong-major-enhancement-strong-offline-mode"><a class="link" href="#strong-major-enhancement-strong-offline-mode"><strong>Major enhancement</strong>: Offline mode</a></h3>
+<div class="paragraph">
+<p>I implemented a local data store that stores articles so that they can be retrieved later even while offline.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>support for offline mode</strong></p>
+<p>Justification: Dramatically makes the application more useful
+for users who are often on the go,
+without an internet connection.</p>
+</li>
+<li>
+<p>Highlights:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to continue using the application even while offline.</p>
+<p>Automatic download: A copy of every article saved to the reading list
+is saved so it can be viewed offline.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because being able to read articles offline allows users to read more seamlessly while also being a selling point that other competing products do not support.</p>
+<p>Refresh command: When pages get out of date,
+the user can execute a command
+to download an updated copy.</p>
 </li>
 <li>
-<p>Highlights: This enhancement needed to support saving many possibly large articles on the disk without keeping them in memory. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands as well as a large scale refactor of the architecture itself.</p>
+<p>Absolute link conversion: Ensures most pages will continue to work properly
+even while offline by converting relative links
+that stop working when viewing pages offline,
+to absolute links that work everywhere.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="strong-minor-enhancement-strong-adding-code-all-code-variants-of-commands"><a class="link" href="#strong-minor-enhancement-strong-adding-code-all-code-variants-of-commands"><strong>Minor enhancement</strong>: Adding <code>all</code> variants of commands</a></h4>
+<div class="paragraph">
+<p>Many commands like <code>refresh</code> and <code>archive</code> (by Jonathan)
+only operate on single entries.
+I added new commands such as <code>refreshall</code> and <code>archiveall</code>
+that operate on all currently displayed entries for ease of use.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strong-code-contributed-strong"><a class="link" href="#strong-code-contributed-strong"><strong>Code contributed</strong>:</a></h3>
+<div class="paragraph">
+<p>For an overview of all of code contributed by me, refer to the <a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=thomastanck">CS2103T module dashboard</a>!</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, refer to the links below to relevant pull requests for each enhancement.
+Some enhancements are done over several pull requests, so all relevant ones are linked.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Offline mode</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Network:
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/35">PR #35</a>,
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/36">PR #36</a>,
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/81">PR #81</a>,
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/203">PR #203</a></p>
 </li>
 <li>
-<p>Credits: .</p>
+<p>Absolute link conversion:
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/102">PR #102</a>,
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/186">PR #186</a></p>
+</li>
+<li>
+<p>Automatic download:
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/39">PR #39</a>,
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/113">PR #113</a></p>
+</li>
+<li>
+<p>Refresh:
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/133">PR #133</a>,
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/170">PR #170</a></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>:</p>
+<p><code>all</code> commands:
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/190">PR #190</a></p>
 </li>
-<li>
-<p><strong>Code contributed</strong>:</p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="strong-other-contributions-strong"><a class="link" href="#strong-other-contributions-strong"><strong>Other contributions</strong>:</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -69,17 +174,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>.</p>
-</li>
-</ul>
-</div>
+<p>Automatically scroll the list panel to the location of the added entry when adding links.</p>
 </li>
 <li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>.</p>
+<p>Automatically fill in a default tag when subscribing to a feed.</p>
 </li>
 </ul>
 </div>
@@ -89,13 +187,37 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/9">#9</a></p>
+<p>Regularly review pull requests (PR).
+While we mainly review through our private chat,
+some are done directly on Github.
+See <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+reviewed-by%3Athomastanck">here</a> for the complete list.</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples: )</p>
+<p>Otherwise, look below for PRs with non-trivial comments!</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/44">#44</a>
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/184">#184</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/49#issuecomment-471154226">1</a>)</p>
+<p>Reported bugs and gave suggestions for another group&#8217;s project, <a href="https://github.com/CS2103-AY1819S2-W13-3/main">The Infinity Machine</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-W13-3/main/issues/161">#161</a>
+<a href="https://github.com/CS2103-AY1819S2-W13-3/main/issues/163">#163</a>
+<a href="https://github.com/CS2103-AY1819S2-W13-3/main/issues/166">#166</a>
+<a href="https://github.com/CS2103-AY1819S2-W13-3/main/issues/168">#168</a>
+<a href="https://github.com/CS2103-AY1819S2-W13-3/main/issues/171">#171</a>
+<a href="https://github.com/CS2103-AY1819S2-W13-3/main/issues/172">#172</a>
+<a href="https://github.com/CS2103-AY1819S2-W13-3/main/issues/177">#177</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -112,8 +234,7 @@
 </li>
 </ul>
 </div>
-</li>
-</ul>
+</div>
 </div>
 </div>
 </div>
@@ -126,10 +247,65 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide.
+  They showcase my ability to write documentation targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
+<hr>
+<div class="sect3">
+<h4 id="refreshing-an-entry-code-refresh-code-code-since-v1-3-code"><a class="link" href="#refreshing-an-entry-code-refresh-code-code-since-v1-3-code">Refreshing an entry: <code>refresh</code> <code>[since v1.3]</code></a></h4>
+<div class="paragraph">
+<p>Refreshes the specified entry to get the latest version of its content.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>refresh INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Refreshes the content of the entry at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed entry list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Refresh the content of the 2nd entry in the reading list.<br></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>refresh 2</code><br></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="refreshing-all-entries-code-refreshall-code"><a class="link" href="#refreshing-all-entries-code-refreshall-code">Refreshing all entries: <code>refreshall</code></a></h4>
+<div class="paragraph">
+<p>Dummy content</p>
+</div>
+<hr>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -141,9 +317,218 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide.
+  They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
+<hr>
+<div class="sect2">
+<h3 id="code-network-code-design"><a class="link" href="#code-network-code-design"><code>Network</code> design</a></h3>
+<div class="paragraph">
+<p>As many components have to make network calls
+to retrieve resources from the Internet,
+we decided to centralise it in a "singleton" class named <code>Network</code>.
+The following sections describe the different design patterns we considered
+and their pros and cons.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:50:53 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>This component is depended on by the following components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AddCommand (when adding articles so that they can be saved to disk)</p>
+</li>
+<li>
+<p>BrowserPanel (when viewing articles or feeds)</p>
+</li>
+<li>
+<p>Feeds management system (for fetching subscriptions, or saving feeds)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Thus, our design needs to take into consideration how it is going to be used.</p>
+</div>
+<div class="paragraph">
+<p>Because it&#8217;s possible that the settings we use to fetch resources
+may need to be changed over time
+(e.g. timeouts, request headers, cookies, etc.),
+we should centralise the design to one component
+so that these can easily be changed.
+Obviously, this component should be easily accessible
+from all the components listed above.
+Finally, the interface for this component should be general
+and apply to all use cases
+because we have a large mix of possible requests:
+articles, feeds, or other resources.</p>
+</div>
+<div class="paragraph">
+<p>The only way we can make this component easily accessible is to make it global.
+However, there are a couple of ways to design a global component.
+The following sections describe the patterns considered.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="static-class-pattern-chosen-pattern"><a class="link" href="#static-class-pattern-chosen-pattern">Static class pattern (chosen pattern)</a></h4>
+<div class="paragraph">
+<p>This pattern is to create a new class named <code>Network</code>.
+This class is abstract so it cannot be instantiated,
+and all its methods are marked <code>private</code>.</p>
+</div>
+<div class="sect4">
+<h5 id="pros"><a class="link" href="#pros">Pros</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Convenient access to the network</p>
+</li>
+<li>
+<p>Good cohesion: everything with networking details in one file</p>
+</li>
+<li>
+<p>Easy to write and subsequently modify</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cons"><a class="link" href="#cons">Cons</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Global variable,
+which encourages coupling with everything else in the codebase</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="singleton-pattern"><a class="link" href="#singleton-pattern">Singleton pattern</a></h4>
+<div class="paragraph">
+<p>This pattern is very similar to the pattern above.
+We create a new class named <code>Network</code>,
+and a static getter method that returns a single instance of <code>Network</code>.
+This allows us the flexibility of working with objects
+rather than with static methods.</p>
+</div>
+<div class="sect4">
+<h5 id="pros-2"><a class="link" href="#pros-2">Pros</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Convenient access to the network</p>
+</li>
+<li>
+<p>Good cohesion: everything with networking details in one file</p>
+</li>
+<li>
+<p>A little bit harder to write, as we need to include the Singleton logic,
+but still easy</p>
+</li>
+<li>
+<p>Objects allow you to perform dependency-injection,
+so the calling class can obtain the <code>Network</code> instance and pass it down</p>
+</li>
+<li>
+<p>Has the option of extending the class to possibly allowing multiple instances
+in the future</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cons-2"><a class="link" href="#cons-2">Cons</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>More work than the static class pattern</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ad-hoc-aka-no-pattern"><a class="link" href="#ad-hoc-aka-no-pattern">Ad-hoc aka no pattern</a></h4>
+<div class="paragraph">
+<p>We could also choose to directly call the network API
+from whatever calling methods would have called <code>Network</code> before.
+This is the simplest "pattern" as it involves not writing any code.</p>
+</div>
+<div class="sect4">
+<h5 id="pros-3"><a class="link" href="#pros-3">Pros</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>No need to write any code</p>
+</li>
+<li>
+<p>No coupling since there&#8217;s no code</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cons-3"><a class="link" href="#cons-3">Cons</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Bad cohesion: networking related code will be thrown all over the codebase.
+If we were to switch to using a different API
+or needing to change a particular detail in how the network API is called,
+then we would need to change them in all the places
+where the network API got called.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="comparison-of-methods-and-why-we-went-with-the-static-class-pattern"><a class="link" href="#comparison-of-methods-and-why-we-went-with-the-static-class-pattern">Comparison of methods and why we went with the static class pattern</a></h4>
+<div class="paragraph">
+<p>Ranking the patterns from least effort to most effort,
+we have ad-hoc being the easiest,
+followed by static class,
+and finally singleton.</p>
+</div>
+<div class="paragraph">
+<p>Generally, the less code, the better.
+This is usually the primary consideration.
+This means if there are two patterns
+where both meet some minimum quality standard
+but one takes more effort,
+we should go with the one that takes less effort to write.</p>
+</div>
+<div class="paragraph">
+<p>We did not choose the ad-hoc pattern
+because we anticipate future changes to the networking code
+as we take into account more details
+like timeouts, asynchronicity, cookies, etc.
+In other words,
+this led us to prioritise good cohesion in our desired pattern.</p>
+</div>
+<div class="paragraph">
+<p>However, aside from this, both singleton and static class pattern
+have roughly the same benefits.
+We do not yet need to consider things like dependency inversion
+because <code>Network</code> calls are decidedly a very global concept
+which makes it less applicable.
+Using the singleton pattern would have improved testability of our code,
+but it would have required rewriting many of our classes
+to use dependency inversion,
+and this makes the code more complex.</p>
+</div>
+<div class="paragraph">
+<p>So this is why we went with the static class pattern,
+which has effectively the same benefits as singleton
+after ruling out dependency inversion,
+and the static class pattern is easier to write than the singleton pattern.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:37:37 UTC</div></div></div></body></html>
