@@ -561,10 +561,22 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>In order to implement the multiple commands for the application, we require
-a way to disallow certain commands in certain contexts. For example, when the
-user is viewing the archives, he should not be allowed to use the <code>archive</code>
-command since every entry listed is already archive. Vice-versa, when a user is
-uses the <code>list</code> command, <code>unarchive</code> should be registered as an unknown command.</p>
+a way to disallow certain commands in certain contexts.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ContextSpecificCommandActivityDiagram.png" alt="ContextSpecificCommandActivityDiagram" width="800">
+</div>
+<div class="title">Figure 9. Activity diagram for command execution</div>
+</div>
+<div class="paragraph">
+<p>For example, when the user is viewing the archives, commands he enter are parsed in the "Archive context" as shown above.
+If he enters the <code>archive</code> command, it will not be recognised as a valid command since every entry shown is already archived.</p>
+</div>
+<div class="paragraph">
+<p>When a user is uses the <code>list</code> command, he switches to the "List context".
+Now, when he enters the <code>archive</code> command with valid arguments, it is successfully executed.
+However, the <code>unarchive</code> command will now not be recognised.</p>
 </div>
 <div class="paragraph">
 <p>This presents two main problems; the need for separate command parsers for each context,
@@ -585,7 +597,7 @@ Each Parser class should only parse commands allowed for the context it represen
 <div class="ulist">
 <ul>
 <li>
-<p><code>EntryBookParser</code> — the base abstract class all Parsers extend from</p>
+<p><code>EntryBookParser</code> — the base abstract class all Parsers extend from.</p>
 </li>
 <li>
 <p><code>EntryBookListParser</code> — Parser for the list context.</p>
@@ -605,12 +617,12 @@ Each Parser class should only parse commands allowed for the context it represen
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 9. Class Diagram of the Logic Component with parser classes.</div>
+<div class="title">Figure 10. Class Diagram of the Logic Component with parser classes.</div>
 </div>
 <div class="paragraph">
 <p>Each Parser class has a <code>parseCommand(String)</code> operation that parses the string command.
 <code>EntryBookParser#parseCommand(String)</code> is the fallback operation used when any of its children
-fail to parse the command. It parses commands that is common in any context.</p>
+fail to parse the command. It successfully parses commands that is common in any context (e.g. <code>exit</code>, <code>help</code>).</p>
 </div>
 </div>
 <div class="sect4">
@@ -645,13 +657,7 @@ Each <code>ModelContext</code> holds a static Parser class that parses commands 
 <div class="content">
 <img src="images/ChangeContextSdForModel.png" alt="ChangeContextSdForModel" width="800">
 </div>
-<div class="title">Figure 10. Sequence diagram for the <code>archives</code> command.</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="example-usage"><a class="link" href="#example-usage">Example usage</a></h5>
-<div class="paragraph">
-<p>Given below is an example usage scenario of how the contexts and parsers restrict available commands.</p>
+<div class="title">Figure 11. Sequence diagram for the <code>archives</code> command.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -662,29 +668,22 @@ Each <code>ModelContext</code> holds a static Parser class that parses commands 
 <p>The <code>ModelManager</code> will default to <code>ModelContext.CONTEXT_LIST</code> context.</p>
 </li>
 <li>
-<p>The user executes the <code>archive</code> command with correct arguments.</p>
+<p>The user enters the <code>archives</code> command.</p>
 </li>
 <li>
-<p><code>EntryBookListParser</code> parses the command successfully. Command executes</p>
+<p>The current context, <code>ModelContext.CONTEXT_LIST</code>, is retrieved from the <code>ModelManager</code>.</p>
 </li>
 <li>
-<p>The user erroneously executes the <code>unarchive</code> command.</p>
+<p>Static parser class <code>EntryBookListParser</code> in the <code>ModelContext.CONTEXT_LIST</code> is used to parse the command.</p>
 </li>
 <li>
-<p><code>EntryBookListParser</code> tries to parse it and fails. The application reports it as an "Unknown command".</p>
+<p>Command is parsed successfully, and <code>ArchivesCommand</code> created.</p>
 </li>
 <li>
-<p>The user executes the <code>archives</code> command to view his archives.</p>
+<p>When the command is executed, context in <code>ModelManager</code> is set to <code>ModelContext.CONTEXT_ARCHIVES</code>.</p>
 </li>
 <li>
-<p>In the execution of this <code>ArchivesCommand</code>, <code>model.setContext(ModelContext)</code> is called to change the
-context to <code>ModelContext.CONTEXT_ARCHIVES</code>.</p>
-</li>
-<li>
-<p>The user executes the <code>unarchive</code> command with correct arguments.</p>
-</li>
-<li>
-<p><code>EntryBookArchivesParser</code> parses the command successfully. Command executes</p>
+<p>This triggers the <code>ModelManager</code> to display the <code>EntryBook</code> for the archives, via listeners.</p>
 </li>
 </ol>
 </div>
@@ -1486,7 +1485,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 12. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3246,4 +3245,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 08:00:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:15:08 UTC</div></div></div></body></html>

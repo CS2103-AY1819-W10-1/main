@@ -123,10 +123,10 @@ As such, my responsibility in this project is to develop a powerful system to or
 <div class="ulist">
 <ul>
 <li>
-<p>Regularly review pull requests (PR). See <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+reviewed-by%3Aepicfailname">here</a> for the complete list.</p>
+<p>Regularly review pull requests (PR). See <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+reviewed-by%3Aepicfailname">here</a> for the complete list!</p>
 </li>
 <li>
-<p>Otherwise, look below for PRs with non-trivial comments!</p>
+<p>Otherwise, look below for PRs with non-trivial comments:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -134,6 +134,9 @@ As such, my responsibility in this project is to develop a powerful system to or
 </li>
 <li>
 <p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/107">#107</a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/193">#107</a></p>
 </li>
 </ul>
 </div>
@@ -173,291 +176,6 @@ As such, my responsibility in this project is to develop a powerful system to or
 </tbody>
 </table>
 <hr>
-<div class="sect2">
-<h3 id="context-switching-commands"><a class="link" href="#context-switching-commands">Context-switching commands</a></h3>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>These commands can be used from any context but change the context in which only allowed commands are recognised (e.g. <code>archive</code>, <code>unarchive</code>, <code>feed</code>).</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="showing-your-reading-list-code-list-code"><a class="link" href="#showing-your-reading-list-code-list-code">Showing your Reading List: <code>list</code></a></h4>
-<div class="paragraph">
-<p>Shows your Reading List of all saved entries.</p>
-</div>
-<div class="paragraph">
-<p>This command also enters the Reading List context.
-Refer to <a href="#List-Context">[List-Context]</a> for available commands in this context.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>list</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ug-context/ug-contextx-list.png" alt="ug contextx list" width="790">
-</div>
-<div class="title">Figure 1. Switch to the list context to see all your saved entries</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="showing-your-archives-code-archives-code-code-since-v1-3-code"><a class="link" href="#showing-your-archives-code-archives-code-code-since-v1-3-code">Showing your Archives: <code>archives</code> <code>[since v1.3]</code></a></h4>
-<div class="paragraph">
-<p>Shows your Archives of all archived entries.</p>
-</div>
-<div class="paragraph">
-<p>This command also enters the Archives context.
-Refer to <a href="#Archives-Context">[Archives-Context]</a> for available commands in this context.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>archives</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ug-context/ug-contextx-archives.png" alt="ug contextx archives" width="790">
-</div>
-<div class="title">Figure 2. Switch to the archives context to see all your archived entries</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="searching-the-web-code-bing-code-code-since-v1-3-code"><a class="link" href="#searching-the-web-code-bing-code-code-since-v1-3-code">Searching the web: <code>bing</code> <code>[since v1.3]</code></a></h4>
-<div class="paragraph">
-<p>Searches <a href="https://www.bing.com">Bing</a> for entries that you can subsequently add.</p>
-</div>
-<div class="paragraph">
-<p>This command also enters the Search Results context.
-Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>bing [KEYWORD]&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Examples</span>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Bing search the web for entries containing the <code>Trump</code> keyword</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>bing Trump</code><br></p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ug-context/ug-contextx-bing.png" alt="ug contextx bing" width="790">
-</div>
-<div class="title">Figure 3. Bing search for the phrase <code>Trump</code></div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="searching-for-news-code-googlenews-code-code-since-v1-3-code"><a class="link" href="#searching-for-news-code-googlenews-code-code-since-v1-3-code">Searching for news: <code>googlenews</code> <code>[since v1.3]</code></a></h4>
-<div class="paragraph">
-<p>Searches <a href="https://news.google.com/">Google News</a> for entries that you can subsequently add.</p>
-</div>
-<div class="paragraph">
-<p>This command also enters the Search Results context.
-Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>googlenews [KEYWORD]&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Examples</span>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>View the current top stories on Google News.</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>googlenews</code><br></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Search for news articles containing the <code>Trump</code> keyword</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>googlenews Trump</code><br></p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ug-context/ug-contextx-gnews.png" alt="ug contextx gnews" width="790">
-</div>
-<div class="title">Figure 4. View the latest top news on google news using the <code>googlenews</code> command</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="searching-a-web-feed-code-feed-code-code-since-v1-2-code"><a class="link" href="#searching-a-web-feed-code-feed-code-code-since-v1-2-code">Searching a web feed: <code>feed</code> <code>[since v1.2]</code></a></h4>
-<div class="paragraph">
-<p>Opens a web feed at the URL for previewing.</p>
-</div>
-<div class="paragraph">
-<p>This command also enters the Search Results context.
-Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>feed [FEED URL]</code></p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Examples</span>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Display entries from this feed<br></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>feed <a href="https://live.engadget.com/rss.xml" class="bare">https://live.engadget.com/rss.xml</a></code><br></p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ug-context/ug-contextx-feed.png" alt="ug contextx feed" width="790">
-</div>
-<div class="title">Figure 5. Open any feed and view its contents as a list of entries</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="searching-a-web-page-for-links-code-links-code-code-coming-in-v2-0-code"><a class="link" href="#searching-a-web-page-for-links-code-links-code-code-coming-in-v2-0-code">Searching a web page for links: <code>links</code> <code>[coming in v2.0]</code></a></h4>
-<div class="paragraph">
-<p>Lists all the links in a URL, or the currently displayed web page.</p>
-</div>
-<div class="paragraph">
-<p>This command also enters the Search Results context.
-Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>links</code>
-<span class="underline">Format</span>: <code>links [URL]</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>links</code></p>
-</li>
-<li>
-<p><code>links <a href="https://live.engadget.com/2019/02/08/microsoft-internet-explorer-technical-debt/" class="bare">https://live.engadget.com/2019/02/08/microsoft-internet-explorer-technical-debt/</a></code> Shows all entries from this article</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="showing-feeds-code-feeds-code-code-since-v1-3-code"><a class="link" href="#showing-feeds-code-feeds-code-code-since-v1-3-code">Showing feeds: <code>feeds</code> <code>[since v1.3]</code></a></h4>
-<div class="paragraph">
-<p>Shows a list of feeds being followed.</p>
-</div>
-<div class="paragraph">
-<p>This command also enters the Feeds context.
-Refer to <a href="#Feeds-Context">[Feeds-Context]</a> for available commands in this context.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>feeds</code></p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Examples</span>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>List all feeds</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>feeds</code><br></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>List all feeds tagged with “Business” <code>[coming in v2.0]</code></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>feeds t/Business</code><br></p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ug-context/ug-contextx-feeds.png" alt="ug contextx feeds" width="790">
-</div>
-<div class="title">Figure 6. Switch to the feeds context to view your subscribed feeds</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="searching-online-for-feeds-code-searchfeeds-code-code-coming-in-v2-0-code"><a class="link" href="#searching-online-for-feeds-code-searchfeeds-code-code-coming-in-v2-0-code">Searching online for feeds: <code>searchfeeds</code> <code>[coming in v2.0]</code></a></h4>
-<div class="paragraph">
-<p>Searches online for feeds that you can subsequently follow.</p>
-</div>
-<div class="paragraph">
-<p>This command also enters the Feed Search context.
-Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available commands in this context.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>searchfeeds [KEYWORD]&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Examples</span>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Shows some starter feeds you can add</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>searchfeeds</code><br></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Searches for <code>Tech</code> or <code>Business</code> feeds</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>searchfeeds Tech Business</code><br></p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="showing-reading-statistics-code-stats-code-code-coming-in-v2-0-code"><a class="link" href="#showing-reading-statistics-code-stats-code-code-coming-in-v2-0-code">Showing reading statistics: <code>stats</code> <code>[coming in v2.0]</code></a></h4>
-<div class="paragraph">
-<p>Shows helpful and fun statistics about your reading progress and habits.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>stats</code></p>
-</div>
-<hr>
-</div>
 <div class="sect3">
 <h4 id="finding-entries-by-title-code-find-code"><a class="link" href="#finding-entries-by-title-code-find-code">Finding entries by title: <code>find</code></a></h4>
 <div class="paragraph">
@@ -527,13 +245,13 @@ Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available 
 <div class="content">
 <img src="../images/ug-find/ug-fieldx-1.png" alt="ug fieldx 1" width="800">
 </div>
-<div class="title">Figure 7. Before: Entering the find command with search terms</div>
+<div class="title">Figure 1. Before: Entering the find command with search terms</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/ug-find/ug-fieldx-2.png" alt="ug fieldx 2" width="800">
 </div>
-<div class="title">Figure 8. After: Only entries with title containing <code>lambda</code> (red) or link containing <code>github</code> (orange) shown</div>
+<div class="title">Figure 2. After: Only entries with title containing <code>lambda</code> (red) or link containing <code>github</code> (orange) shown</div>
 </div>
 <div class="ulist">
 <ul>
@@ -553,15 +271,77 @@ Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available 
 <div class="content">
 <img src="../images/ug-find/ug-tagx-1.png" alt="ug tagx 1" width="800">
 </div>
-<div class="title">Figure 9. Before: Entering the find command for specific tags</div>
+<div class="title">Figure 3. Before: Entering the find command for specific tags</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/ug-find/ug-tagx-2.png" alt="ug tagx 2" width="800">
 </div>
-<div class="title">Figure 10. After: Only entries with tag <code>infoTheory</code> shown</div>
+<div class="title">Figure 4. After: Only entries with tag <code>infoTheory</code> shown</div>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="archiving-an-entry-code-archive-code-code-since-v1-3-code"><a class="link" href="#archiving-an-entry-code-archive-code-code-since-v1-3-code">Archiving an entry: <code>archive</code> <code>[since v1.3]</code></a></h4>
+<div class="paragraph">
+<p>Moves the specified entry to the archive and removes its downloaded content.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>archive INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Archives the entry at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed entry list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Move the 2nd entry in the reading list to the archives and remove its downloaded content.<br></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>archive 2</code><br></p>
+</li>
+<li>
+<p><code>archives</code><br></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug-archive/ug-archivex-1.png" alt="ug archivex 1" width="800">
+</div>
+<div class="title">Figure 5. Archiving the second entry<br></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug-archive/ug-archivex-2.png" alt="ug archivex 2" width="350">
+</div>
+<div class="title">Figure 6. Entry is saved in the archives</div>
+</div>
+<hr>
 </div>
 </div>
 </div>
@@ -585,7 +365,7 @@ Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available 
 <div class="content">
 <img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 11. Structure of the Logic Component</div>
+<div class="title">Figure 7. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -620,7 +400,7 @@ Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available 
 <div class="content">
 <img src="../images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 12. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 <hr>
 </div>
@@ -630,10 +410,22 @@ Refer to <a href="#Searchfeeds-Context">[Searchfeeds-Context]</a> for available 
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
 <div class="paragraph">
 <p>In order to implement the multiple commands for the application, we require
-a way to disallow certain commands in certain contexts. For example, when the
-user is viewing the archives, he should not be allowed to use the <code>archive</code>
-command since every entry listed is already archive. Vice-versa, when a user is
-uses the <code>list</code> command, <code>unarchive</code> should be registered as an unknown command.</p>
+a way to disallow certain commands in certain contexts.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ContextSpecificCommandActivityDiagram.png" alt="ContextSpecificCommandActivityDiagram" width="800">
+</div>
+<div class="title">Figure 9. Activity diagram for command execution</div>
+</div>
+<div class="paragraph">
+<p>For example, when the user is viewing the archives, commands he enter are parsed in the "Archive context" as shown above.
+If he enters the <code>archive</code> command, it will not be recognised as a valid command since every entry shown is already archived.</p>
+</div>
+<div class="paragraph">
+<p>When a user is uses the <code>list</code> command, he switches to the "List context".
+Now, when he enters the <code>archive</code> command with valid arguments, it is successfully executed.
+However, the <code>unarchive</code> command will now not be recognised.</p>
 </div>
 <div class="paragraph">
 <p>This presents two main problems; the need for separate command parsers for each context,
@@ -654,7 +446,7 @@ Each Parser class should only parse commands allowed for the context it represen
 <div class="ulist">
 <ul>
 <li>
-<p><code>EntryBookParser</code> — the base abstract class all Parsers extend from</p>
+<p><code>EntryBookParser</code> — the base abstract class all Parsers extend from.</p>
 </li>
 <li>
 <p><code>EntryBookListParser</code> — Parser for the list context.</p>
@@ -674,12 +466,12 @@ Each Parser class should only parse commands allowed for the context it represen
 <div class="content">
 <img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 13. Class Diagram of the Logic Component with parser classes.</div>
+<div class="title">Figure 10. Class Diagram of the Logic Component with parser classes.</div>
 </div>
 <div class="paragraph">
 <p>Each Parser class has a <code>parseCommand(String)</code> operation that parses the string command.
 <code>EntryBookParser#parseCommand(String)</code> is the fallback operation used when any of its children
-fail to parse the command. It parses commands that is common in any context.</p>
+fail to parse the command. It successfully parses commands that is common in any context (e.g. <code>exit</code>, <code>help</code>).</p>
 </div>
 </div>
 <div class="sect4">
@@ -714,13 +506,7 @@ Each <code>ModelContext</code> holds a static Parser class that parses commands 
 <div class="content">
 <img src="../images/ChangeContextSdForModel.png" alt="ChangeContextSdForModel" width="800">
 </div>
-<div class="title">Figure 14. Sequence diagram for the <code>archives</code> command.</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="example-usage"><a class="link" href="#example-usage">Example usage</a></h5>
-<div class="paragraph">
-<p>Given below is an example usage scenario of how the contexts and parsers restrict available commands.</p>
+<div class="title">Figure 11. Sequence diagram for the <code>archives</code> command.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -731,29 +517,22 @@ Each <code>ModelContext</code> holds a static Parser class that parses commands 
 <p>The <code>ModelManager</code> will default to <code>ModelContext.CONTEXT_LIST</code> context.</p>
 </li>
 <li>
-<p>The user executes the <code>archive</code> command with correct arguments.</p>
+<p>The user enters the <code>archives</code> command.</p>
 </li>
 <li>
-<p><code>EntryBookListParser</code> parses the command successfully. Command executes</p>
+<p>The current context, <code>ModelContext.CONTEXT_LIST</code>, is retrieved from the <code>ModelManager</code>.</p>
 </li>
 <li>
-<p>The user erroneously executes the <code>unarchive</code> command.</p>
+<p>Static parser class <code>EntryBookListParser</code> in the <code>ModelContext.CONTEXT_LIST</code> is used to parse the command.</p>
 </li>
 <li>
-<p><code>EntryBookListParser</code> tries to parse it and fails. The application reports it as an "Unknown command".</p>
+<p>Command is parsed successfully, and <code>ArchivesCommand</code> created.</p>
 </li>
 <li>
-<p>The user executes the <code>archives</code> command to view his archives.</p>
+<p>When the command is executed, context in <code>ModelManager</code> is set to <code>ModelContext.CONTEXT_ARCHIVES</code>.</p>
 </li>
 <li>
-<p>In the execution of this <code>ArchivesCommand</code>, <code>model.setContext(ModelContext)</code> is called to change the
-context to <code>ModelContext.CONTEXT_ARCHIVES</code>.</p>
-</li>
-<li>
-<p>The user executes the <code>unarchive</code> command with correct arguments.</p>
-</li>
-<li>
-<p><code>EntryBookArchivesParser</code> parses the command successfully. Command executes</p>
+<p>This triggers the <code>ModelManager</code> to display the <code>EntryBook</code> for the archives, via listeners.</p>
 </li>
 </ol>
 </div>
@@ -801,7 +580,8 @@ correspondence to which entrybook to display to the user (refer to <a href="#Mul
 in addition to being the option which required the least modification to the rest
 of the code base to implement.</p>
 </div>
+<hr>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 08:00:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:15:08 UTC</div></div></div></body></html>
