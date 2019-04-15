@@ -159,6 +159,7 @@ As such, my responsibility in this project is to develop a powerful system to or
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -243,15 +244,9 @@ As such, my responsibility in this project is to develop a powerful system to or
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ug-find/ug-fieldx-1.png" alt="ug fieldx 1" width="800">
+<img src="../images/ug-find/ug-findfieldx.png" alt="ug findfieldx" width="800">
 </div>
-<div class="title">Figure 1. Before: Entering the find command with search terms</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ug-find/ug-fieldx-2.png" alt="ug fieldx 2" width="800">
-</div>
-<div class="title">Figure 2. After: Only entries with title containing <code>lambda</code> (red) or link containing <code>github</code> (orange) shown</div>
+<div class="title">Figure 1. Only entries with title containing <code>lambda</code> (red) or link containing <code>github</code> (orange) shown after find command</div>
 </div>
 <div class="ulist">
 <ul>
@@ -269,15 +264,12 @@ As such, my responsibility in this project is to develop a powerful system to or
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ug-find/ug-tagx-1.png" alt="ug tagx 1" width="800">
+<img src="../images/ug-find/ug-findtagx.png" alt="ug findtagx" width="800">
 </div>
-<div class="title">Figure 3. Before: Entering the find command for specific tags</div>
+<div class="title">Figure 2. Only entries with tag <code>infoTheory</code> shown after find command</div>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ug-find/ug-tagx-2.png" alt="ug tagx 2" width="800">
-</div>
-<div class="title">Figure 4. After: Only entries with tag <code>infoTheory</code> shown</div>
+<div class="paragraph">
+<p>&#160;<br></p>
 </div>
 <hr>
 </div>
@@ -333,15 +325,15 @@ As such, my responsibility in this project is to develop a powerful system to or
 <div class="content">
 <img src="../images/ug-archive/ug-archivex-1.png" alt="ug archivex 1" width="800">
 </div>
-<div class="title">Figure 5. Archiving the second entry<br></div>
+<div class="title">Figure 3. Archiving the second entry<br></div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/ug-archive/ug-archivex-2.png" alt="ug archivex 2" width="350">
 </div>
-<div class="title">Figure 6. Entry is saved in the archives</div>
+<div class="title">Figure 4. Entry is saved in the archives</div>
 </div>
-<hr>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -360,51 +352,6 @@ As such, my responsibility in this project is to develop a powerful system to or
 </table>
 <hr>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">Logic component</a></h3>
-<div id="fig-LogicClassDiagram" class="imageblock">
-<div class="content">
-<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
-</div>
-<div class="title">Figure 7. Structure of the Logic Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> :
-<a href="{repoURL}/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>EntryBookParser</code> has several children classes that represent parsers for a specific context.</p>
-</li>
-<li>
-<p><code>Logic</code> uses the <code>EntryBookParser</code> children classes to parse the user command.</p>
-</li>
-<li>
-<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
-</li>
-<li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding an entry).</p>
-</li>
-<li>
-<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
-</li>
-<li>
-<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
-</div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
-</div>
-<hr>
-</div>
-<div class="sect2">
 <h3 id="context-specific-commands"><a class="link" href="#context-specific-commands">Context-specific commands</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
@@ -416,7 +363,7 @@ a way to disallow certain commands in certain contexts.</p>
 <div class="content">
 <img src="../images/ContextSpecificCommandActivityDiagram.png" alt="ContextSpecificCommandActivityDiagram" width="800">
 </div>
-<div class="title">Figure 9. Activity diagram for command execution</div>
+<div class="title">Figure 5. Activity diagram for command execution</div>
 </div>
 <div class="paragraph">
 <p>For example, when the user is viewing the archives, commands he enter are parsed in the "Archive context" as shown above.
@@ -466,7 +413,7 @@ Each Parser class should only parse commands allowed for the context it represen
 <div class="content">
 <img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Class Diagram of the Logic Component with parser classes.</div>
+<div class="title">Figure 6. Class Diagram of the Logic Component with parser classes.</div>
 </div>
 <div class="paragraph">
 <p>Each Parser class has a <code>parseCommand(String)</code> operation that parses the string command.
@@ -506,7 +453,7 @@ Each <code>ModelContext</code> holds a static Parser class that parses commands 
 <div class="content">
 <img src="../images/ChangeContextSdForModel.png" alt="ChangeContextSdForModel" width="800">
 </div>
-<div class="title">Figure 11. Sequence diagram for the <code>archives</code> command.</div>
+<div class="title">Figure 7. Sequence diagram for the <code>archives</code> command.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -580,8 +527,7 @@ correspondence to which entrybook to display to the user (refer to <a href="#Mul
 in addition to being the option which required the least modification to the rest
 of the code base to implement.</p>
 </div>
-<hr>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:15:08 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 11:44:49 UTC</div></div></div></body></html>
