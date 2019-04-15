@@ -1,11 +1,19 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import com.google.common.collect.Lists;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.TransformationList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -27,7 +35,12 @@ public class EntryListPanel extends UiPart<Region> {
                           ObservableValue<Entry> selectedEntry,
                           Consumer<Entry> onSelectedEntryChange) {
         super(FXML);
-        entryListView.setItems(entryList);
+
+        entryListView.getItems().setAll(Lists.reverse(entryList));
+        entryList.addListener((ListChangeListener<Entry>) change ->
+            entryListView.getItems().setAll(Lists.reverse(entryList))
+        );
+
         entryListView.setCellFactory(listView -> new EntryListViewCell());
         entryListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             logger.fine("Selection in entry list panel changed to : '" + newValue + "'");
