@@ -86,11 +86,12 @@
 </li>
 <li><a href="#Archives-Context">6.5. <code>Archives</code> Context Commands</a>
 <ul class="sectlevel3">
-<li><a href="#unarchiving-an-entry-code-unarchive-code">6.5.1. Unarchiving an entry: <code>unarchive</code></a></li>
-<li><a href="#deleting-an-entry-code-delete-code-2">6.5.2. Deleting an entry: <code>delete</code></a></li>
-<li><a href="#deleting-all-displayed-entries-code-deleteall-code-2">6.5.3. Deleting all displayed entries: <code>deleteall</code></a></li>
-<li><a href="#selecting-an-entry-code-select-code-2">6.5.4. Selecting an entry: <code>select</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code-2">6.5.5. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#finding-entries-by-title-code-find-code">6.5.1. Finding entries by title: <code>find</code></a></li>
+<li><a href="#selecting-an-entry-code-select-code-2">6.5.2. Selecting an entry: <code>select</code></a></li>
+<li><a href="#unarchiving-an-entry-code-unarchive-code-code-since-v1-3-code">6.5.3. Unarchiving an entry: <code>unarchive</code> <code>[since v1.3]</code></a></li>
+<li><a href="#deleting-an-entry-code-delete-code-2">6.5.4. Deleting an entry: <code>delete</code></a></li>
+<li><a href="#deleting-all-displayed-entries-code-deleteall-code-2">6.5.5. Deleting all displayed entries: <code>deleteall</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code-2">6.5.6. Clearing all entries : <code>clear</code></a></li>
 </ul>
 </li>
 <li><a href="#Results-Context">6.6. <code>Search Results</code> Context Commands</a>
@@ -120,7 +121,15 @@
 </ul>
 </li>
 <li><a href="#faq">7. FAQ</a></li>
-<li><a href="#command-summary">8. Command Summary</a></li>
+<li><a href="#command-summary">8. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#anywhere">8.1. Anywhere</a></li>
+<li><a href="#reading-list-context">8.2. Reading List Context</a></li>
+<li><a href="#archives-context">8.3. Archives Context</a></li>
+<li><a href="#search-result-context">8.4. Search Result Context</a></li>
+<li><a href="#feeds-context">8.5. Feeds Context</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -237,8 +246,17 @@ Important information about potential issues that may occur.
 <h3 id="user-interface"><a class="link" href="#user-interface">3.2. User Interface</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/UiOverview.png" alt="UiOverview" width="790">
 </div>
+</div>
+<div class="paragraph">
+<p>This is how the application should look like!</p>
+</div>
+<div class="paragraph">
+<p>Enter your commands in the Command Box (B), and the execution result message will appear in the Result Display (C).<br></p>
+</div>
+<div class="paragraph">
+<p>Browse your saved entries from the List Panel (F), and select any one of them to view it in the Browser Panel (G).<br></p>
 </div>
 </div>
 <div class="sect2">
@@ -246,7 +264,7 @@ Important information about potential issues that may occur.
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
+<p>Type the command in the Command Box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
@@ -760,6 +778,18 @@ Content is automatically downloaded onto your personal computer.</p>
 </div>
 <div class="paragraph">
 <p><span class="underline">Format</span>: <code>add l/URL [ti/TITLE_OVERRIDE] [d/DESCRIPTION_OVERRIDE] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The entry&#8217;s URL must be unique. Duplicate entries with the same URL will not be added!
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1925,7 +1955,7 @@ you can archive parts of your reading list by a search criteria.</p>
 </div>
 </li>
 <li>
-<p>Archive all entries tagged “infoTheory”</p>
+<p>Archive all entries tagged “infoTheory” (you may refer to the figures below)</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1949,13 +1979,13 @@ you can archive parts of your reading list by a search criteria.</p>
 <div class="content">
 <img src="images/find_archiveall.png" alt="find archiveall" width="1200">
 </div>
-<div class="title">Figure 19. Filtering then archiving all infoTheory entries<br></div>
+<div class="title">Figure 19. Filtering then archiving all infoTheory entries (steps 1-3)</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/find_archiveall_list.png" alt="find archiveall list" width="290">
 </div>
-<div class="title">Figure 20. Reading list now no longer has any infoTheory entries</div>
+<div class="title">Figure 20. Reading list now no longer has any infoTheory entries (step 4)</div>
 </div>
 </div>
 <div class="sect3">
@@ -2116,7 +2146,94 @@ with other commands such as <a href="#findcommand"><code>find</code></a> to be m
 <div class="sect2">
 <h3 id="Archives-Context"><a class="link" href="#Archives-Context">6.5. <code>Archives</code> Context Commands</a></h3>
 <div class="sect3">
-<h4 id="unarchiving-an-entry-code-unarchive-code"><a class="link" href="#unarchiving-an-entry-code-unarchive-code">6.5.1. Unarchiving an entry: <code>unarchive</code></a></h4>
+<h4 id="finding-entries-by-title-code-find-code"><a class="link" href="#finding-entries-by-title-code-find-code">6.5.1. Finding entries by title: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Finds entries whose fields contain any of the given keyphrases.<br>
+This command behaves the same as the Reading List context <code>find</code> command equivalent.<br></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>find [a/SEARCH_PHRASE] [ti/TITLE_SEARCH_PHRASE] [d/DESCRIPTION_SEARCH_PHRASE] [l/LINK_SEARCH_PHRASE] [t/TAG_TO_SEARCH]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search matches anywhere for title, description and link. e.g. <code>ans B</code> will match <code>Hans Bo</code></p>
+</li>
+<li>
+<p>The search matches exactly for tags. e.g. 'science' will match 'science', but not 'scienceandtech'</p>
+</li>
+<li>
+<p>The search phrase with prefix <code>a/</code> will try to match with every field in the entry according to the above rules.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i.e. <code>find a/keyphrase</code> is equivalent to <code>find ti/keyphrase d/keyphrase l/keyphrase t/keyphrase</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Entries matching at least one field will be returned (i.e. <code>OR</code> search).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>find ti/aaa d/bbb l/ccc t/ddd</code> will match an entry with title <code>Aaawesome</code> and an entry with description <code>abbbA</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#findcommand">Section 6.4.2, &#8220;Finding entries (by title, description, etc.): <code>find</code>&#8221;</a> for examples!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-an-entry-code-select-code-2"><a class="link" href="#selecting-an-entry-code-select-code-2">6.5.2. Selecting an entry: <code>select</code></a></h4>
+<div class="paragraph">
+<p>Selects the entry identified by the index number used in the displayed entry list for reading.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>select INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the entry at the specified <code>INDEX</code> for reading.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed entry list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1`, 2, 3, &#8230;&#8203;`</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="paragraph">
+<p>Select the 2nd archived entry.
+. <code>archives</code><br>
+. <code>select 2</code><br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="unarchiving-an-entry-code-unarchive-code-code-since-v1-3-code"><a class="link" href="#unarchiving-an-entry-code-unarchive-code-code-since-v1-3-code">6.5.3. Unarchiving an entry: <code>unarchive</code> <code>[since v1.3]</code></a></h4>
 <div class="paragraph">
 <p>Moves the specified entry from the archives to the reading list.</p>
 </div>
@@ -2165,7 +2282,7 @@ with other commands such as <a href="#findcommand"><code>find</code></a> to be m
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-entry-code-delete-code-2"><a class="link" href="#deleting-an-entry-code-delete-code-2">6.5.2. Deleting an entry: <code>delete</code></a></h4>
+<h4 id="deleting-an-entry-code-delete-code-2"><a class="link" href="#deleting-an-entry-code-delete-code-2">6.5.4. Deleting an entry: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified entry from the archives.</p>
 </div>
@@ -2211,7 +2328,7 @@ with other commands such as <a href="#findcommand"><code>find</code></a> to be m
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-all-displayed-entries-code-deleteall-code-2"><a class="link" href="#deleting-all-displayed-entries-code-deleteall-code-2">6.5.3. Deleting all displayed entries: <code>deleteall</code></a></h4>
+<h4 id="deleting-all-displayed-entries-code-deleteall-code-2"><a class="link" href="#deleting-all-displayed-entries-code-deleteall-code-2">6.5.5. Deleting all displayed entries: <code>deleteall</code></a></h4>
 <div class="paragraph">
 <p>Deletes all currently displayed entries from the archives.</p>
 </div>
@@ -2297,41 +2414,7 @@ with other commands such as <a href="#findcommand"><code>find</code></a> to be m
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-an-entry-code-select-code-2"><a class="link" href="#selecting-an-entry-code-select-code-2">6.5.4. Selecting an entry: <code>select</code></a></h4>
-<div class="paragraph">
-<p>Selects the entry identified by the index number used in the displayed entry list for reading.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>select INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the entry at the specified <code>INDEX</code> for reading.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed entry list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1`, 2, 3, &#8230;&#8203;`</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><span class="underline">Examples</span>:</p>
-</div>
-<div class="paragraph">
-<p>Select the 2nd archived entry.
-. <code>archives</code><br>
-. <code>select 2</code><br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code-2"><a class="link" href="#clearing-all-entries-code-clear-code-2">6.5.5. Clearing all entries : <code>clear</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code-2"><a class="link" href="#clearing-all-entries-code-clear-code-2">6.5.6. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all archived entries from the manager.</p>
 </div>
@@ -2982,6 +3065,242 @@ with other commands such as <a href="#findcommand"><code>find</code></a> to be m
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">8. Command Summary</a></h2>
 <div class="sectionbody">
-
+<div class="sect2">
+<h3 id="anywhere"><a class="link" href="#anywhere">8.1. Anywhere</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add l/URL [ti/TITLE] [d/DESCRIPTION] [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a single entry.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subscribe l/URL [ti/TITLE] [d/DESCRIPTION] [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subscribes to a single feed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all commands entered previously in reverse order.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>offline MODE(enable, disable)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables internet connectivity.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opens the User Guide in a new window.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exits the application.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:53:40 UTC</div></div></div></body></html>
+<div class="sect2">
+<h3 id="reading-list-context"><a class="link" href="#reading-list-context">8.2. Reading List Context</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switches to list context.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit i/INDEX [ti/TITLE] [d/DESCRIPTION] [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edits the entry specified by the index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find [l/URL] [ti/TITLE] [d/DESCRIPTION] [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finds entries matching the given arguments.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Selects the entry specified by the index for viewing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>refresh INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Re-downloads the webpage content of the entry specified by the index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>refreshall</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Re-downloads the webpage content of the entry specified by the index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>archive INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Archives the entry specified by the index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>archiveall</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Archives all displayed entries.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the entry specified by the index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteall</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes all displayed entries.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes all entries.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view MODE(browser, reader) [s/STYLE(default, sepia, dark, black)]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes the view mode of the browser panel.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="archives-context"><a class="link" href="#archives-context">8.3. Archives Context</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>archives</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switches to archives context.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find [l/URL] [ti/TITLE] [d/DESCRIPTION] [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finds entries matching the given arguments.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Selects the entry specified by the index for viewing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>unarchive INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unarchives the entry specified by the index, adding it back to the reading list.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>unarchiveall</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unarchives all displayed entries, adding them back to the reading list.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the entry specified by the index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteall</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes all displayed entries.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes all entries.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="search-result-context"><a class="link" href="#search-result-context">8.4. Search Result Context</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bing [KEYWORD]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Searches Bing for entries that you can subsequently add.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>googlenews [KEYWORD]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Searches Google News for entries that you can subsequently add.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>feed [FEED URL]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opens a web feed at the URL for previewing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addindex INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds the entry specified by the index to the reading list.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addall</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds all displayed entries to the reading list.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Selects the entry specified by the index for viewing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view MODE(browser, reader) [s/STYLE(default, sepia, dark, black)]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes the view mode of the browser panel.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="feeds-context"><a class="link" href="#feeds-context">8.5. Feeds Context</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>feeds</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switches to feeds context.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>refresh INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Refreshes the feed specified by the index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>refreshall</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Refreshes all feeds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Selects the entry specified by the index for viewing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>unsubscribe INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unsubscribes and deletes the feed specified by the index.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:26:41 UTC</div></div></div></body></html>
