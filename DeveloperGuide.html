@@ -881,15 +881,73 @@ The <code>ViewMode</code> object encapsulates a <code>ViewType</code> and <code>
 The <code>Model</code> exposes an observable <code>viewModeProperty</code>, which is set by <code>ViewModeCommand</code> and observed by <code>BrowserPanel</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>BrowserPanel</code> keeps track of whether an original web page or a reader view version is loaded.
-If an original web page is loaded but the <code>reader</code> view mode is selected,
-the CSS stylesheet is changed accordingly and the reader view is generated and loaded,
-except when the currently loaded web page is the default blank page or error page.</p>
+<p>The <code>BrowserPanel</code> is a wrapper around the JavaFX <code>WebView</code> component, and is responsible for displaying web pages.
+It keeps track of whether an internal page, offline page, online page or HTML content is loaded,
+and reacts to events like changes in loading status, view mode and selected entry.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dg-readerview/BrowserStateDiagram.png" alt="BrowserStateDiagram" width="800">
+</div>
+<div class="title">Figure 12. General state diagram for BrowserPanel.</div>
+</div>
+<div class="paragraph">
+<p>There are two conditions which cause reader view to be generated and loaded:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If an original web page has successfully loaded but the <code>reader</code> view mode is selected,
+the reader view is generated from the currently displayed page and loaded, then the CSS stylesheet is changed.
+This mechanism is used for online URLs, and was chosen because using the other mechanism below would cause a performance
+bottleneck due to having to download online web pages.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dg-readerview/ReaderViewOfPageDiagram.png" alt="ReaderViewOfPageDiagram" width="800">
+</div>
+<div class="title">Figure 13. Sequence diagram for loading reader view from current page.</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Alternatively, if the <code>reader</code> view mode is already selected and an offline URL is selected (most probably an entry),
+the reader view is generated from directly reading the file pointed to by the offline URL and loaded, then the CSS stylesheet is changed.
+This mechanism is used for offline URLs,
+and is a performance enhancement as it bypasses waiting for the original web page to load before reader view is loaded.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dg-readerview/ReaderViewOfHtmlDiagram.png" alt="ReaderViewOfHtmlDiagram" width="800">
+</div>
+<div class="title">Figure 14. Sequence diagram for loading reader view from offline URL.</div>
 </div>
 <div class="paragraph">
 <p>The Jsoup and Readability4J external libraries do the heavy lifting of parsing the raw HTML currently loaded in the <code>WebView</code> to extract useful metadata and content.
 Jsoup was chosen as it is a mature HTML parser library while Readability4J was chosen as it is a port of port of Mozilla&#8217;s excellent Readability.js.
 These are combined into a new HTML document, which is styled using Bootstrap and then loaded in the <code>WebView</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dg-readerview/ReaderViewGenerationActivityDiagram.png" alt="ReaderViewGenerationActivityDiagram" width="400">
+</div>
+<div class="title">Figure 15. Activity diagram for generation of reader view.</div>
+</div>
+<div class="paragraph">
+<p>As Readability4J does not extract all available and useful metadata information, Jsoup is used to manually extract author information,
+as well as <a href="http://ogp.me">Open Graph metadata</a> like published datetime and section information if available.
+As Readability4J also does not provide the estimated reading time, Jsoup is used to extract text content from the HTML DOM
+Document Object, and reading time is estimated from the number of words present and the average human reading speed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dg-readerview/InsertMetadataElementActivityDiagram.png" alt="InsertMetadataElementActivityDiagram" width="400">
+</div>
+<div class="title">Figure 16. Activity diagram for insertion of metadata element.</div>
 </div>
 </div>
 <div class="sect3">
@@ -970,9 +1028,10 @@ Therefore, generating reader view on-the-fly will open up reader view to our app
 </li>
 <li>
 <p>It is a case of diminishing returns.
-It is not difficult for us to add a few reader view styles for users to choose from, which gives them a lot more flexibility compared to not having any styles to choose from.
-but making the design support custom user stylesheets would require much more effort while not giving users a lot more benefit.
-The current design makes it very simple for us to add another reader view style, in case many users demand a particular style.</p>
+It is not difficult to implement a design that allows us to add a few reader view styles for users to choose from, which gives them a lot more flexibility compared to not having any styles to choose from.
+However, making the design support custom user stylesheets would require much more effort while not giving users a lot more benefit.
+The current design makes it very simple for us to add another reader view style, in case many users demand a particular style.
+Nevertheless, this is a feature we can consider developing if there is demand for it.</p>
 </li>
 </ul>
 </div>
@@ -991,7 +1050,7 @@ Since we should only show a single <code>EntryBook</code> at a time, we have to 
 <div class="content">
 <img src="images/MultipleEntryBooksChosenApproach.png" alt="MultipleEntryBooksChosenApproach" width="293">
 </div>
-<div class="title">Figure 12. Class diagram illustrating a model supporting multiple EntryBooks.</div>
+<div class="title">Figure 17. Class diagram illustrating a model supporting multiple EntryBooks.</div>
 </div>
 <div class="paragraph">
 <p>To support multiple EntryBooks, we decided to have multiple differently named EntryBooks each with their own accessors.</p>
@@ -1019,7 +1078,7 @@ Since we should only show a single <code>EntryBook</code> at a time, we have to 
 <div class="content">
 <img src="images/MultipleEntryBooksAlternativeApproach.png" alt="MultipleEntryBooksAlternativeApproach" width="399">
 </div>
-<div class="title">Figure 13. Class diagram of alternative approach for supporting multiple EntryBooks.</div>
+<div class="title">Figure 18. Class diagram of alternative approach for supporting multiple EntryBooks.</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1064,7 +1123,7 @@ Decoupling the displayed <code>EntryBook</code> means that the following additio
 <div class="content">
 <img src="images/DisplayEntryBookSequenceDiagram.png" alt="DisplayEntryBookSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 14. Sequence diagram illustrating how <code>displayEntryBook</code> is used.</div>
+<div class="title">Figure 19. Sequence diagram illustrating how <code>displayEntryBook</code> is used.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1082,7 +1141,7 @@ Decoupling the displayed <code>EntryBook</code> means that the following additio
 <div class="sect4">
 <h5 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h5>
 <div class="paragraph">
-<p>With reference to <a href="#Current-ModelManager-Diagram">Figure 12, &#8220;Class diagram illustrating a model supporting multiple EntryBooks.&#8221;</a>, we decided to have a <code>SimpleListProperty&lt;Entry&gt;</code> called <code>displayedEntryList</code> which is used to provide the base list for <code>filteredEntries</code>.
+<p>With reference to <a href="#Current-ModelManager-Diagram">Figure 17, &#8220;Class diagram illustrating a model supporting multiple EntryBooks.&#8221;</a>, we decided to have a <code>SimpleListProperty&lt;Entry&gt;</code> called <code>displayedEntryList</code> which is used to provide the base list for <code>filteredEntries</code>.
 The implementation of <code>ModelManager#displayEntryBook</code> will then just be a <code>displayedEntryList.setValue</code>. However we decided to keep <code>displayEntryBook</code> a private method  and not expose it via the <code>Model</code> interface.</p>
 </div>
 <div class="ulist">
@@ -1546,7 +1605,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 15. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 20. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3306,4 +3365,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:26:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:34:52 UTC</div></div></div></body></html>
