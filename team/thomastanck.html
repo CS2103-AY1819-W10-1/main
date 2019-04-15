@@ -485,6 +485,39 @@ with other commands such as <a href="#findcommand"><code>find</code></a> to be m
 </table>
 <hr>
 <div class="sect2">
+<h3 id="storage-component"><a class="link" href="#storage-component">Storage component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+</div>
+<div class="title">Figure 3. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can save <code>UserPref</code> objects, and <code>EntryBook</code> data (for Reading List, Archives, and Feeds) in json format and read it back.</p>
+</li>
+<li>
+<p>can save .html articles in a data directory as individual files. The article contents are only read when required by the user.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unlike the <code>UserPref</code> and <code>EntryBook</code> data, we don&#8217;t store the articles in a flat file.
+This is because the file size of the article store is much larger than the file sizes of all the prefs and reading list/archives/etc. combined,
+so having it in a flat file would drastically slow down the application.</p>
+</div>
+<div class="paragraph">
+<p>Instead, the files are saved to disk and are not read until the user clicks on an entry and wants to view it offline.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="code-network-code-design"><a class="link" href="#code-network-code-design"><code>Network</code> design</a></h3>
 <div class="paragraph">
 <p>As many components have to make network calls
@@ -690,6 +723,36 @@ after ruling out dependency inversion,
 and the static class pattern is easier to write than the singleton pattern.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="asynchronous-network-calls"><a class="link" href="#asynchronous-network-calls">Asynchronous network calls</a></h4>
+<div class="paragraph">
+<p>As the entirety of addressbook-level4 (AB4) is written synchronously,
+it is a major undertaking to convert AB4 to use asynchronous (async) network calls.
+We did a small scale experiment to see how async might be done by making
+the <code>select</code> command download un-downloaded articles in the background.</p>
+</div>
+<div class="paragraph">
+<p>Here is a sequence diagram showing how the interaction works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SelectRefreshSdForStorage.png" alt="SelectRefreshSdForStorage" width="800">
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:20:51 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>Notice that when returning from the async network call,
+we wrap our code in <code>Platform.runLater(&#8230;&#8203;)</code> to ensure that the rest of the
+execution is done on the JavaFX Application Thread.
+This helps to prevent certain race conditions from potentially ruining the model.</p>
+</div>
+<div class="paragraph">
+<p>However, in the process of implementing this,
+we found that it made testing this unreliable
+as we could no longer be sure when the command has "truly" finished executing.
+Thus, we decided to defer the conversion of the rest of the AB4 to async
+to the v2.0 milestone.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:52:37 UTC</div></div></div></body></html>
