@@ -32,12 +32,13 @@
 <li><a href="#context-specific-commands">3.1. Context-specific commands</a></li>
 <li><a href="#autofill-missing-title-or-description-when-adding-a-link">3.2. Autofill missing title or description when adding a link</a></li>
 <li><a href="#reader-view-mode">3.3. Reader view mode</a></li>
-<li><a href="#Multiple-EntryBooks">3.4. Multiple EntryBooks</a></li>
-<li><a href="#network-design">3.5. <code>Network</code> design</a></li>
-<li><a href="#offline-mode">3.6. Offline mode</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
-<li><a href="#proposed-data-encryption">3.9. [Proposed] Data Encryption</a></li>
+<li><a href="#Feed-Support">3.4. Web Feed support</a></li>
+<li><a href="#Multiple-EntryBooks">3.5. Multiple EntryBooks</a></li>
+<li><a href="#network-design">3.6. <code>Network</code> design</a></li>
+<li><a href="#offline-mode">3.7. Offline mode</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#proposed-data-encryption">3.10. [Proposed] Data Encryption</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -735,7 +736,7 @@ a reference to <code>Logic</code> module class (Parser).</p>
 </div>
 <div class="paragraph">
 <p>Ultimately, Alternative 1 was chosen because we later decided that context should have a one-to-one
-correspondence to which entrybook to display to the user (refer to <a href="#Multiple-EntryBooks">Section 3.4, &#8220;Multiple EntryBooks&#8221;</a>),
+correspondence to which entrybook to display to the user (refer to <a href="#Multiple-EntryBooks">Section 3.5, &#8220;Multiple EntryBooks&#8221;</a>),
 in addition to being the option which required the least modification to the rest
 of the code base to implement.</p>
 </div>
@@ -1039,18 +1040,87 @@ Nevertheless, this is a feature we can consider developing if there is demand fo
 </div>
 </div>
 <div class="sect2">
-<h3 id="Multiple-EntryBooks"><a class="link" href="#Multiple-EntryBooks">3.4. Multiple EntryBooks</a></h3>
+<h3 id="Feed-Support"><a class="link" href="#Feed-Support">3.4. Web Feed support</a></h3>
+<div class="paragraph">
+<p>To support the reading and subscription of web feeds, we decided to centralise various feed-related operations in a static class <code>FeedUtil</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="static-class-chosen-approach"><a class="link" href="#static-class-chosen-approach">3.4.1. Static class (chosen approach)</a></h4>
+<div class="paragraph">
+<p>We define a new static class <code>FeedUtil</code> in <code>commons.util</code>.
+<code>FeedUtil</code> is primarily in charge of fetching a web feed from a URL and serializing its contents into an <code>EntryBook</code>.
+The advantage of this approach, which is why we decided to use it, is because keeping all the feed handling code in a single class restricts the dependency of ROME at the program boundary, which is more maintainable.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FeedUtilActivityDiagram.png" alt="FeedUtilActivityDiagram">
+</div>
+<div class="title">Figure 17. Activity diagram for feed fetching.</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Relatively easy to write, and we minimise the number of classes that depend on the external library.</p>
+</li>
+<li>
+<p>Cons: Increased coupling with the components that handle RSS feeds.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ad-hoc"><a class="link" href="#ad-hoc">3.4.2. Ad-hoc</a></h4>
+<div class="paragraph">
+<p>Another approach we can consider is to directly invoke ROME whenever we deal with web feeds.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Even easier to write, almost no code needed.</p>
+</li>
+<li>
+<p>Cons: Bad cohesion, if we were to change the library for RSS parsing it requires changes in multiple components.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="extending-and-generalising-storage-component"><a class="link" href="#extending-and-generalising-storage-component">3.4.3. Extending and generalising Storage component.</a></h4>
+<div class="paragraph">
+<p>Reading Entries from a web feed shares a major similarity with reading a stored EntryBook from disk. Both actions serialize an <code>EntryBook</code> from a source of external data.
+To apply this general observation we can consider the following design.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GeneralisedEntryBookSerializer.png" alt="GeneralisedEntryBookSerializer">
+</div>
+<div class="title">Figure 18. Class diagram illustrating more general design.</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Expresses the intention of the code better with a stronger separation of concerns. Also applies interface segregation principle.</p>
+</li>
+<li>
+<p>Cons: Large amounts of refactors and changes needed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Multiple-EntryBooks"><a class="link" href="#Multiple-EntryBooks">3.5. Multiple EntryBooks</a></h3>
 <div class="paragraph">
 <p>ModelManager used to have only a single <code>EntryBook</code>. However, managing feeds and archives subscription system means that we need to deal with more than a single <code>EntryBook</code>.
 Since we should only show a single <code>EntryBook</code> at a time, we have to make model contain multiple entrybooks.</p>
 </div>
 <div class="sect3">
-<h4 id="multiple-entrybooks"><a class="link" href="#multiple-entrybooks">3.4.1. Multiple EntryBooks</a></h4>
+<h4 id="multiple-entrybooks"><a class="link" href="#multiple-entrybooks">3.5.1. Multiple EntryBooks</a></h4>
 <div id="Current-ModelManager-Diagram" class="imageblock">
 <div class="content">
 <img src="images/MultipleEntryBooksChosenApproach.png" alt="MultipleEntryBooksChosenApproach" width="293">
 </div>
-<div class="title">Figure 17. Class diagram illustrating a model supporting multiple EntryBooks.</div>
+<div class="title">Figure 19. Class diagram illustrating a model supporting multiple EntryBooks.</div>
 </div>
 <div class="paragraph">
 <p>To support multiple EntryBooks, we decided to have multiple differently named EntryBooks each with their own accessors.</p>
@@ -1078,7 +1148,7 @@ Since we should only show a single <code>EntryBook</code> at a time, we have to 
 <div class="content">
 <img src="images/MultipleEntryBooksAlternativeApproach.png" alt="MultipleEntryBooksAlternativeApproach" width="399">
 </div>
-<div class="title">Figure 18. Class diagram of alternative approach for supporting multiple EntryBooks.</div>
+<div class="title">Figure 20. Class diagram of alternative approach for supporting multiple EntryBooks.</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1104,7 +1174,7 @@ modifiers overloaded to be context-sensitive</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="decoupling-displayed-code-entrybook-code"><a class="link" href="#decoupling-displayed-code-entrybook-code">3.4.2. Decoupling displayed <code>EntryBook</code></a></h4>
+<h4 id="decoupling-displayed-code-entrybook-code"><a class="link" href="#decoupling-displayed-code-entrybook-code">3.5.2. Decoupling displayed <code>EntryBook</code></a></h4>
 <div class="paragraph">
 <p>Another task is to decouple the <code>EntryBook</code> that is displayed from the ones that we added  to <code>ModelManager</code>.
 Decoupling the displayed <code>EntryBook</code> means that the following additional methods are implemented</p>
@@ -1123,7 +1193,7 @@ Decoupling the displayed <code>EntryBook</code> means that the following additio
 <div class="content">
 <img src="images/DisplayEntryBookSequenceDiagram.png" alt="DisplayEntryBookSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 19. Sequence diagram illustrating how <code>displayEntryBook</code> is used.</div>
+<div class="title">Figure 21. Sequence diagram illustrating how <code>displayEntryBook</code> is used.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1141,7 +1211,7 @@ Decoupling the displayed <code>EntryBook</code> means that the following additio
 <div class="sect4">
 <h5 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h5>
 <div class="paragraph">
-<p>With reference to <a href="#Current-ModelManager-Diagram">Figure 17, &#8220;Class diagram illustrating a model supporting multiple EntryBooks.&#8221;</a>, we decided to have a <code>SimpleListProperty&lt;Entry&gt;</code> called <code>displayedEntryList</code> which is used to provide the base list for <code>filteredEntries</code>.
+<p>With reference to <a href="#Current-ModelManager-Diagram">Figure 19, &#8220;Class diagram illustrating a model supporting multiple EntryBooks.&#8221;</a>, we decided to have a <code>SimpleListProperty&lt;Entry&gt;</code> called <code>displayedEntryList</code> which is used to provide the base list for <code>filteredEntries</code>.
 The implementation of <code>ModelManager#displayEntryBook</code> will then just be a <code>displayedEntryList.setValue</code>. However we decided to keep <code>displayEntryBook</code> a private method  and not expose it via the <code>Model</code> interface.</p>
 </div>
 <div class="ulist">
@@ -1182,7 +1252,7 @@ it only gets called when <code>ModelContext</code> changes.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="network-design"><a class="link" href="#network-design">3.5. <code>Network</code> design</a></h3>
+<h3 id="network-design"><a class="link" href="#network-design">3.6. <code>Network</code> design</a></h3>
 <div class="paragraph">
 <p>As many components have to make network calls
 to retrieve resources from the Internet,
@@ -1191,7 +1261,7 @@ The following sections describe the different design patterns we considered
 and their pros and cons.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p>This component is depended on by the following components:</p>
 </div>
@@ -1231,7 +1301,7 @@ The following sections describe the patterns considered.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="static-class-pattern-chosen-pattern"><a class="link" href="#static-class-pattern-chosen-pattern">3.5.2. Static class pattern (chosen pattern)</a></h4>
+<h4 id="static-class-pattern-chosen-pattern"><a class="link" href="#static-class-pattern-chosen-pattern">3.6.2. Static class pattern (chosen pattern)</a></h4>
 <div class="paragraph">
 <p>This pattern is to create a new class named <code>Network</code>.
 This class is abstract so it cannot be instantiated,
@@ -1266,7 +1336,7 @@ which encourages coupling with everything else in the codebase</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="singleton-pattern"><a class="link" href="#singleton-pattern">3.5.3. Singleton pattern</a></h4>
+<h4 id="singleton-pattern"><a class="link" href="#singleton-pattern">3.6.3. Singleton pattern</a></h4>
 <div class="paragraph">
 <p>This pattern is very similar to the pattern above.
 We create a new class named <code>Network</code>,
@@ -1311,7 +1381,7 @@ in the future</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="ad-hoc-aka-no-pattern"><a class="link" href="#ad-hoc-aka-no-pattern">3.5.4. Ad-hoc aka no pattern</a></h4>
+<h4 id="ad-hoc-aka-no-pattern"><a class="link" href="#ad-hoc-aka-no-pattern">3.6.4. Ad-hoc aka no pattern</a></h4>
 <div class="paragraph">
 <p>We could also choose to directly call the network API
 from whatever calling methods would have called <code>Network</code> before.
@@ -1346,7 +1416,7 @@ where the network API got called.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="comparison-of-methods-and-why-we-went-with-the-static-class-pattern"><a class="link" href="#comparison-of-methods-and-why-we-went-with-the-static-class-pattern">3.5.5. Comparison of methods and why we went with the static class pattern</a></h4>
+<h4 id="comparison-of-methods-and-why-we-went-with-the-static-class-pattern"><a class="link" href="#comparison-of-methods-and-why-we-went-with-the-static-class-pattern">3.6.5. Comparison of methods and why we went with the static class pattern</a></h4>
 <div class="paragraph">
 <p>Ranking the patterns from least effort to most effort,
 we have ad-hoc being the easiest,
@@ -1388,7 +1458,7 @@ and the static class pattern is easier to write than the singleton pattern.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="asynchronous-network-calls"><a class="link" href="#asynchronous-network-calls">3.5.6. Asynchronous network calls</a></h4>
+<h4 id="asynchronous-network-calls"><a class="link" href="#asynchronous-network-calls">3.6.6. Asynchronous network calls</a></h4>
 <div class="paragraph">
 <p>As the entirety of addressbook-level4 (AB4) is written synchronously,
 it is a major undertaking to convert AB4 to use asynchronous (async) network calls.
@@ -1419,7 +1489,7 @@ to the v2.0 milestone.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="offline-mode"><a class="link" href="#offline-mode">3.6. Offline mode</a></h3>
+<h3 id="offline-mode"><a class="link" href="#offline-mode">3.7. Offline mode</a></h3>
 <div class="paragraph">
 <p>Offline mode requires many changes to the architecture as a whole.
 The main point of conflict is that we need to store many articles to disk
@@ -1429,7 +1499,7 @@ The following sections describe
 the design decisions made to support offline mode.</p>
 </div>
 <div class="sect3">
-<h4 id="architectural-changes"><a class="link" href="#architectural-changes">3.6.1. Architectural changes</a></h4>
+<h4 id="architectural-changes"><a class="link" href="#architectural-changes">3.7.1. Architectural changes</a></h4>
 <div class="sect4">
 <h5 id="removing-undo-redo-feature"><a class="link" href="#removing-undo-redo-feature">Removing undo/redo feature</a></h5>
 <div class="paragraph">
@@ -1461,7 +1531,7 @@ to improve cohesion at the expense of worsening coupling.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.6.2. Current implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.7.2. Current implementation</a></h4>
 <div class="paragraph">
 <p>After the architectural changes were made,
 there are a few design considerations that needed to be made:</p>
@@ -1471,7 +1541,7 @@ there are a few design considerations that needed to be made:</p>
 <div class="paragraph">
 <p>As we need to save the articles to disk,
 we first need a way to obtain said articles from the Internet.
-This is described in section <a href="#network-design">Section 3.5, &#8220;<code>Network</code> design&#8221;</a></p>
+This is described in section <a href="#network-design">Section 3.6, &#8220;<code>Network</code> design&#8221;</a></p>
 </div>
 </div>
 <div class="sect4">
@@ -1495,14 +1565,14 @@ This is described in section <a href="#Design-Storage">Section 2.5, &#8220;Stora
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1533,13 +1603,13 @@ This is described in section <a href="#Design-Storage">Section 2.5, &#8220;Stora
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.9. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.10. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
@@ -1605,7 +1675,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 20. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 22. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3365,4 +3435,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:42:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:50:28 UTC</div></div></div></body></html>

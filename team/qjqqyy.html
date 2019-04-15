@@ -3,17 +3,18 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">README</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S2-W10-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Qi Ji - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-readme"><a class="link" href="#project-readme">PROJECT: README</a></h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Hi, I&#8217;m a second-year computer science undergraduate in NUS.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>README is an integrated link manager and web feed aggregator application.</p>
-</div>
-<div class="paragraph">
-<p>RSS and Atom are common ways of allowing an user to access updates to online content.
+<p>README is an integrated link manager and web feed aggregator application.
+My main contribution involved adding support for web feeds to README.
+RSS and Atom are common technologies of allowing an user to access updates to online content.
 When supported by websites, subscribing to the feed removes the need for users to manually check the website in question, offering greater convenience to the user.</p>
 </div>
 </div>
@@ -56,24 +57,16 @@ is a quality-of-life improvement.</p>
 <p><a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=qjqqyy">RepoSense</a></p>
 </li>
 <li>
-<p>Initial RSS support <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/33">#33</a></p>
-</li>
-<li>
-<p>Architectural changes
+<p>Initial RSS support in <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/33">#33</a>,
+Architectural changes
 <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/80">#80</a>
-<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/107">#107</a></p>
-</li>
-<li>
-<p>Feeds subscription <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/114">#114</a>
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/107">#107</a>.
+Feeds subscription <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/114">#114</a>
 <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/173">#173</a>
-<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/183">#183</a></p>
-</li>
-<li>
-<p>Add counter to status bar
-<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/15">#15</a></p>
-</li>
-<li>
-<p>Staging usage of GitHub pages for network tests <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/64">#64</a></p>
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/183">#183</a>,
+Add counter to status bar
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/15">#15</a>,
+Staging usage of GitHub pages for network tests <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/64">#64</a>.</p>
 </li>
 </ul>
 </div>
@@ -229,6 +222,42 @@ Imported entries from the feed will also be tagged with the same tags as the fee
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="searching-the-web-code-bing-code"><a class="link" href="#searching-the-web-code-bing-code">Searching the web: <code>bing</code></a></h4>
+<div class="paragraph">
+<p>Searches <a href="https://www.bing.com">Bing</a> for entries that you can subsequently add.</p>
+</div>
+<div class="paragraph">
+<p>This command also enters the Search Results context.
+Refer to <a href="#Results-Context">[Results-Context]</a> for available commands in this context.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>bing [KEYWORD]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bing search the web for entries containing the <code>Trump</code> keyword</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>bing Trump</code><br></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug-context/ug-contextx-bing.png" alt="ug contextx bing" width="790">
+</div>
+<div class="title">Figure 3. Bing search for the phrase <code>Trump</code></div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -245,6 +274,75 @@ Imported entries from the feed will also be tagged with the same tags as the fee
 </tbody>
 </table>
 <div class="sect2">
+<h3 id="web-feed-support"><a class="link" href="#web-feed-support">Web Feed support</a></h3>
+<div class="paragraph">
+<p>To support the reading and subscription of web feeds, we decided to centralise various feed-related operations in a static class <code>FeedUtil</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="static-class-chosen-approach"><a class="link" href="#static-class-chosen-approach">Static class (chosen approach)</a></h4>
+<div class="paragraph">
+<p>We define a new static class <code>FeedUtil</code> in <code>commons.util</code>.
+<code>FeedUtil</code> is primarily in charge of fetching a web feed from a URL and serializing its contents into an <code>EntryBook</code>.
+The advantage of this approach, which is why we decided to use it, is because keeping all the feed handling code in a single class restricts the dependency of ROME at the program boundary, which is more maintainable.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FeedUtilActivityDiagram.png" alt="FeedUtilActivityDiagram">
+</div>
+<div class="title">Figure 4. Activity diagram for feed fetching.</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Relatively easy to write, and we minimise the number of classes that depend on the external library.</p>
+</li>
+<li>
+<p>Cons: Increased coupling with the components that handle RSS feeds.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ad-hoc"><a class="link" href="#ad-hoc">Ad-hoc</a></h4>
+<div class="paragraph">
+<p>Another approach we can consider is to directly invoke ROME whenever we deal with web feeds.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Even easier to write, almost no code needed.</p>
+</li>
+<li>
+<p>Cons: Bad cohesion, if we were to change the library for RSS parsing it requires changes in multiple components.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="extending-and-generalising-storage-component"><a class="link" href="#extending-and-generalising-storage-component">Extending and generalising Storage component.</a></h4>
+<div class="paragraph">
+<p>Reading Entries from a web feed shares a major similarity with reading a stored EntryBook from disk. Both actions serialize an <code>EntryBook</code> from a source of external data.
+To apply this general observation we can consider the following design.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GeneralisedEntryBookSerializer.png" alt="GeneralisedEntryBookSerializer">
+</div>
+<div class="title">Figure 5. Class diagram illustrating more general design.</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Expresses the intention of the code better with a stronger separation of concerns. Also applies interface segregation principle.</p>
+</li>
+<li>
+<p>Cons: Large amounts of refactors and changes needed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="multiple-entrybooks"><a class="link" href="#multiple-entrybooks">Multiple EntryBooks</a></h3>
 <div class="paragraph">
 <p>ModelManager used to have only a single <code>EntryBook</code>. However, managing feeds and archives subscription system means that we need to deal with more than a single <code>EntryBook</code>.
@@ -256,7 +354,7 @@ Since we should only show a single <code>EntryBook</code> at a time, we have to 
 <div class="content">
 <img src="../images/MultipleEntryBooksChosenApproach.png" alt="MultipleEntryBooksChosenApproach" width="293">
 </div>
-<div class="title">Figure 3. Class diagram illustrating a model supporting multiple EntryBooks.</div>
+<div class="title">Figure 6. Class diagram illustrating a model supporting multiple EntryBooks.</div>
 </div>
 <div class="paragraph">
 <p>To support multiple EntryBooks, we decided to have multiple differently named EntryBooks each with their own accessors.</p>
@@ -284,7 +382,7 @@ Since we should only show a single <code>EntryBook</code> at a time, we have to 
 <div class="content">
 <img src="../images/MultipleEntryBooksAlternativeApproach.png" alt="MultipleEntryBooksAlternativeApproach" width="399">
 </div>
-<div class="title">Figure 4. Class diagram of alternative approach for supporting multiple EntryBooks.</div>
+<div class="title">Figure 7. Class diagram of alternative approach for supporting multiple EntryBooks.</div>
 </div>
 <div class="ulist">
 <ul>
@@ -329,7 +427,7 @@ Decoupling the displayed <code>EntryBook</code> means that the following additio
 <div class="content">
 <img src="../images/DisplayEntryBookSequenceDiagram.png" alt="DisplayEntryBookSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 5. Sequence diagram illustrating how <code>displayEntryBook</code> is used.</div>
+<div class="title">Figure 8. Sequence diagram illustrating how <code>displayEntryBook</code> is used.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -388,4 +486,4 @@ it only gets called when <code>ModelContext</code> changes.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:42:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:50:28 UTC</div></div></div></body></html>
