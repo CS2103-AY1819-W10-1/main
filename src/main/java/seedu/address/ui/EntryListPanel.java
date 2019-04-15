@@ -1,19 +1,14 @@
 package seedu.address.ui;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import com.google.common.collect.Lists;
+
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.TransformationList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -37,9 +32,14 @@ public class EntryListPanel extends UiPart<Region> {
         super(FXML);
 
         entryListView.getItems().setAll(Lists.reverse(entryList));
-        entryList.addListener((ListChangeListener<Entry>) change ->
-            entryListView.getItems().setAll(Lists.reverse(entryList))
-        );
+        entryList.addListener((ListChangeListener<Entry>) change -> {
+            entryListView.getItems().setAll(Lists.reverse(entryList));
+            while (change.next()) {
+                entryListView.scrollTo(entryList.size() - change.getTo());
+                logger.info(String.format("List panel contents changed between %d and %d, scrolling to %d",
+                        change.getFrom(), change.getTo(), change.getTo()));
+            }
+        });
 
         entryListView.setCellFactory(listView -> new EntryListViewCell());
         entryListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -63,6 +63,7 @@ public class EntryListPanel extends UiPart<Region> {
                 entryListView.getSelectionModel().clearAndSelect(index);
             }
         });
+
     }
 
     /**
