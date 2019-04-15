@@ -48,8 +48,9 @@
 <li><a href="#Add-Command">6.2.4. Adding a single entry: <code>add</code> <code>[updated v1.2]</code></a></li>
 <li><a href="#Subscribe-command">6.2.5. Subscribing to a feed: <code>subscribe</code> <code>[since v1.3]</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">6.2.6. Listing entered commands : <code>history</code></a></li>
-<li><a href="#viewing-help-code-help-code">6.2.7. Viewing help : <code>help</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">6.2.8. Exiting the program : <code>exit</code></a></li>
+<li><a href="#enabling-or-disabling-offline-mode-code-offline-code">6.2.7. Enabling or disabling offline mode : <code>offline</code></a></li>
+<li><a href="#viewing-help-code-help-code">6.2.8. Viewing help : <code>help</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">6.2.9. Exiting the program : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#Context-switch">6.3. Context-switching commands</a>
@@ -882,13 +883,67 @@ Imported entries from the feed will also be tagged with the same tags as the fee
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">6.2.7. Viewing help : <code>help</code></a></h4>
+<h4 id="enabling-or-disabling-offline-mode-code-offline-code"><a class="link" href="#enabling-or-disabling-offline-mode-code-offline-code">6.2.7. Enabling or disabling offline mode : <code>offline</code></a></h4>
+<div class="paragraph">
+<p>Some web pages may not work with offline mode.
+In order to browse these web pages,
+you may temporarily disable offline mode with this command,
+or enable it after you wish to re-enter offline mode.<br></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>offline MODE(enable, disable)</code></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Disable offline mode</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>offline disable</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Enable offline mode</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>offline enable</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Offline mode is enabled by default at the start of every session
+so you don&#8217;t have to worry about forgetting to re-enable offline mode</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">6.2.8. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
 <p><span class="underline">Format</span>: <code>help</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">6.2.8. Exiting the program : <code>exit</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">6.2.9. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program.</p>
 </div>
@@ -2418,4 +2473,4 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:38:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:53:54 UTC</div></div></div></body></html>
