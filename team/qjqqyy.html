@@ -12,18 +12,19 @@
 <div class="paragraph">
 <p>README is an integrated link manager and web feed aggregator application.</p>
 </div>
+<div class="paragraph">
+<p>RSS and Atom are common ways of allowing an user to access updates to online content.
+When supported by websites, subscribing to the feed removes the need for users to manually check the website in question, offering greater convenience to the user.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="strong-major-enhancement-strong-i-added-web-syndication-rss-atom-support-in-readme"><a class="link" href="#strong-major-enhancement-strong-i-added-web-syndication-rss-atom-support-in-readme"><strong>Major enhancement</strong>: I added web syndication(RSS/Atom) support in README.</a></h3>
+<h3 id="strong-primary-enhancement-strong-i-added-web-syndication-rss-atom-support-in-readme"><a class="link" href="#strong-primary-enhancement-strong-i-added-web-syndication-rss-atom-support-in-readme"><strong>Primary enhancement</strong>: I added web syndication(RSS/Atom) support in README.</a></h3>
 <div class="ulist">
 <ul>
-<li>
-<p>Background: RSS and Atom achieve the purpose of web syndication. They are well-established Web syndication formats which lets users to subscribe to content sources.</p>
-</li>
 <li>
 <p>Justification: With support for web syndication the user can subscribe to sources of content that they care about, and have the content delivered to them.</p>
 </li>
@@ -37,11 +38,12 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="strong-minor-enhancement-strong-added-a-counter-in-status-bar-showing-how-many-entries-are-listed"><a class="link" href="#strong-minor-enhancement-strong-added-a-counter-in-status-bar-showing-how-many-entries-are-listed"><strong>Minor enhancement</strong>: added a counter in status bar showing how many entries are listed</a></h3>
+<h3 id="strong-minor-enhancements-strong"><a class="link" href="#strong-minor-enhancements-strong"><strong>Minor enhancements</strong></a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Quality-of-life improvement.</p>
+<p>I added a counter in status bar showing how many entries are listed, which
+is a quality-of-life improvement.</p>
 </li>
 </ul>
 </div>
@@ -51,7 +53,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/33">Initial RSS support</a></p>
+<p><a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=qjqqyy">RepoSense</a></p>
+</li>
+<li>
+<p>Initial RSS support <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/33">#33</a></p>
 </li>
 <li>
 <p>Architectural changes
@@ -59,7 +64,16 @@
 <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/107">#107</a></p>
 </li>
 <li>
-<p><a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/114">Feeds management</a></p>
+<p>Feeds subscription <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/114">#114</a>
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/173">#173</a>
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/183">#183</a></p>
+</li>
+<li>
+<p>Add counter to status bar
+<a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/15">#15</a></p>
+</li>
+<li>
+<p>Staging usage of GitHub pages for network tests <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/64">#64</a></p>
 </li>
 </ul>
 </div>
@@ -89,11 +103,22 @@
 <a href="https://github.com/CS2103-AY1819S2-W10-1/main/pull/106">#106</a></p>
 </li>
 <li>
-<p>Non-trivial contributions to forum discussions:
-<a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/5">#5</a>
-<a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/47">#47</a>
-<a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/51">#51</a>
-<a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/72">#72</a></p>
+<p>Contributions to forum discussions:
+<a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/5">#5</a> #47 #51 #72.
+Highlights include</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Linking to exact line of relevant code in <a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/47#issuecomment-471155263">#47</a></p>
+</li>
+<li>
+<p>Linking to exact section of relevant docs in <a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/51#issuecomment-471178524">#51</a></p>
+</li>
+<li>
+<p>Bisecting the exact commit which broke my peer&#8217;s code in <a href="https://github.com/nus-cs2103-AY1819S2/forum/issues/72#issuecomment-478489389">#72</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Tools:</p>
@@ -127,6 +152,83 @@
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="Subscribe-command"><a class="link" href="#Subscribe-command">Subscribing to a feed: <code>subscribe</code></a></h4>
+<div class="paragraph">
+<p>Adds a feed and subscribes to its updates.<br>
+All entries in the subscribed feed will be added to the reading list.<br></p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>subscribe l/URL [ti/TITLE_OVERRIDE] [d/DESCRIPTION_OVERRIDE] [t/TAG]..</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>Title</code> and <code>Description</code> fields are automatically filled up if you do not provide them.
+If no tags were specified, the feed entry will automatically be tagged with the URL&#8217;s (stripped) hostname, if possible.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A feed can have any number of tags (including 0).<br>
+Imported entries from the feed will also be tagged with the same tags as the feed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a feed whose name is “Kattis”.<br>
+<code>subscribe l/https://open.kattis.com/rss/new-problems t/programming</code><br></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug-sub/ug-subx-1.png" alt="ug subx 1" width="906">
+</div>
+<div class="title">Figure 1. Subscribing to a feed will add it to the feeds list.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ug-sub/ug-subx-2.png" alt="ug subx 2" width="400">
+</div>
+<div class="title">Figure 2. The links present in the feed are automatically imported to the reading list.</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The application may be unresponsive for a short while when adding entries from a large feed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -144,26 +246,90 @@
 </table>
 <div class="sect2">
 <h3 id="multiple-entrybooks"><a class="link" href="#multiple-entrybooks">Multiple EntryBooks</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
 <div class="paragraph">
-<p>ModelManager used to have only a single <code>EntryBook</code>. However, managing feeds and archives subscription system means that we need to deal with multiple <code>EntryBook`s.
-Since we should only show a single `EntryBook</code> at a time, our first task is to decouple the <code>EntryBook</code> that is displayed from the ones that we will be adding to <code>ModelManager</code>.</p>
+<p>ModelManager used to have only a single <code>EntryBook</code>. However, managing feeds and archives subscription system means that we need to deal with more than a single <code>EntryBook</code>.
+Since we should only show a single <code>EntryBook</code> at a time, we have to make model contain multiple entrybooks.</p>
+</div>
+<div class="sect3">
+<h4 id="multiple-entrybooks-2"><a class="link" href="#multiple-entrybooks-2">Multiple EntryBooks</a></h4>
+<div id="Current-ModelManager-Diagram" class="imageblock">
+<div class="content">
+<img src="../images/MultipleEntryBooksChosenApproach.png" alt="MultipleEntryBooksChosenApproach" width="293">
+</div>
+<div class="title">Figure 3. Class diagram illustrating a model supporting multiple EntryBooks.</div>
+</div>
+<div class="paragraph">
+<p>To support multiple EntryBooks, we decided to have multiple differently named EntryBooks each with their own accessors.</p>
 </div>
 <div class="sect4">
-<h5 id="decoupling-displayed-code-entrybook-code"><a class="link" href="#decoupling-displayed-code-entrybook-code">Decoupling displayed <code>EntryBook</code></a></h5>
-<div class="paragraph">
-<p>Decoupling the displayed <code>EntryBook</code> means that the following additional methods are implemented</p>
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice:</strong> multiple differently named <code>EntryBook</code>’s with differently-named accessors each</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: easy to implement</p>
+</li>
+<li>
+<p>Cons: accessors are basically duplicated code</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MultipleEntryBooksAlternativeApproach.png" alt="MultipleEntryBooksAlternativeApproach" width="399">
+</div>
+<div class="title">Figure 4. Class diagram of alternative approach for supporting multiple EntryBooks.</div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ModelManager#displayEntryBook(EntryBook)</code> — shows the <code>EntryBook</code> provided in the user interface</p>
+<p><strong>Alternative:</strong> Each <code>EntryBook</code> belongs to a <code>ModelContext</code>,
+modifiers overloaded to be context-sensitive</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: less code duplication due to polymorphism</p>
+</li>
+<li>
+<p>Cons: writing to an <code>EntryBook</code> that does not belong the current state will either involve an extra accessor (basically Alternative 1), or changing state (specifically <code>Model#setContext</code>), which is not robust.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose to implement multiple EntryBooks in parallel as it turned out that the different EntryBooks demanded slightly different behaviour, and a more polymorphic approach like that given in the alternative might overcomplicate the implementation.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="decoupling-displayed-code-entrybook-code"><a class="link" href="#decoupling-displayed-code-entrybook-code">Decoupling displayed <code>EntryBook</code></a></h4>
+<div class="paragraph">
+<p>Another task is to decouple the <code>EntryBook</code> that is displayed from the ones that we added  to <code>ModelManager</code>.
+Decoupling the displayed <code>EntryBook</code> means that the following additional methods are implemented</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ModelManager#displayEntryBook(EntryBook)</code> — shows the <code>EntryBook</code> provided in the user interface.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how this mechanism behaves.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DisplayEntryBookSequenceDiagram.png" alt="DisplayEntryBookSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 5. Sequence diagram illustrating how <code>displayEntryBook</code> is used.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -174,24 +340,20 @@ Since we should only show a single `EntryBook</code> at a time, our first task i
 <p>The user executes the <code>feed [valid_feed_url]</code> command to view a web feed. The <code>feed</code> command fetches and parses the web feed into an <code>EntryBook</code> which is used for <code>ModelManager#setSearchEntryBook</code> to replace the search context <code>EntryBook</code>.</p>
 </li>
 <li>
-<p>It then sets the <code>ModelContext</code> to <code>search</code>. In the <code>search</code> context the <code>EntryBook</code> is read-only, and you can import links from the currently displayed <code>EntryBook</code> into the <code>list</code> context <code>EntryBook</code>.</p>
+<p>It then sets the <code>ModelContext</code> to <code>CONTEXT_SEARCH</code>. In the search context the <code>EntryBook</code> is read-only, and you can import links from the currently displayed <code>EntryBook</code> into the <code>list</code> context <code>EntryBook</code>.</p>
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="decoupling-displayed-code-entrybook-code-2"><a class="link" href="#decoupling-displayed-code-entrybook-code-2">Decoupling displayed <code>EntryBook</code></a></h5>
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
 <div class="paragraph">
-<p>We decided to have a <code>SimpleListProperty&lt;Entry&gt;</code> called <code>displayedEntryList</code> which is used to provide the base list for <code>filteredEntries</code>.
-The implementation of <code>ModelManager#displayEntryBook</code> will then just be a <code>displayedEntryList.setValue</code>. However we decided to keep <code>displayEntryBook</code> private and not expose it via the <code>Model</code> interface.</p>
+<p>With reference to <a href="#Current-ModelManager-Diagram">Class diagram illustrating a model supporting multiple EntryBooks.</a>, we decided to have a <code>SimpleListProperty&lt;Entry&gt;</code> called <code>displayedEntryList</code> which is used to provide the base list for <code>filteredEntries</code>.
+The implementation of <code>ModelManager#displayEntryBook</code> will then just be a <code>displayedEntryList.setValue</code>. However we decided to keep <code>displayEntryBook</code> a private method  and not expose it via the <code>Model</code> interface.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Keep <code>displayEntryBook</code> private,
+<p><strong>Current choice:</strong> Keep <code>displayEntryBook</code> private,
 it only gets called when <code>ModelContext</code> changes.</p>
 <div class="ulist">
 <ul>
@@ -205,7 +367,7 @@ it only gets called when <code>ModelContext</code> changes.</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Add <code>displayEntryBook</code> under the <code>Model</code> interface so that other classes (such as various commands) could use it.</p>
+<p><strong>Alternative:</strong> Promote <code>displayEntryBook</code> to <code>Model</code> interface so that other classes (such as various commands) could use it.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -220,50 +382,10 @@ it only gets called when <code>ModelContext</code> changes.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We chose alternative 1 since it is more robust and only entails a slight additional cognitive load.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="multiple-entrybooks-2"><a class="link" href="#multiple-entrybooks-2">Multiple EntryBooks</a></h5>
-<div class="paragraph">
-<p>To support multiple EntryBooks, we decided to have multiple differently named EntryBooks each with their own accessors.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> multiple differently named <code>EntryBook</code>’s with differently-named accessors each</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: easy to implement</p>
-</li>
-<li>
-<p>Cons: accessors are basically duplicated code</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Each <code>EntryBook</code> belongs to a <code>ModelContext</code>,
-modifiers overloaded to be context-sensitive</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: less code duplication due to polymorphism</p>
-</li>
-<li>
-<p>Cons: writing to an <code>EntryBook</code> that does not belong the current
-state change will either involve an extra accessor (basically
-Alternative 1), or changing state (specifically <code>Model#setContext</code>),
-which is not robust.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>We chose to keep <code>displayEntryBook</code> private and only invoke it on model context change since doing so is more robust and only entails a slight additional cognitive load.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:52:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:53:40 UTC</div></div></div></body></html>

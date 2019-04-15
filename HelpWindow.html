@@ -59,7 +59,7 @@
 <li><a href="#showing-your-archives-code-archives-code">6.3.2. Showing your Archives: <code>archives</code></a></li>
 <li><a href="#searching-the-web-code-bing-code">6.3.3. Searching the web: <code>bing</code></a></li>
 <li><a href="#searching-for-news-code-googlenews-code">6.3.4. Searching for news: <code>googlenews</code></a></li>
-<li><a href="#searching-a-web-feed-code-feed-code">6.3.5. Searching a web feed: <code>feed</code></a></li>
+<li><a href="#previewing-a-web-feed-code-feed-code">6.3.5. Previewing a web feed: <code>feed</code></a></li>
 <li><a href="#searching-a-web-page-for-links-code-links-code-code-coming-in-v2-0-code">6.3.6. Searching a web page for links: <code>links</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#showing-feeds-code-feeds-code">6.3.7. Showing feeds: <code>feeds</code></a></li>
 <li><a href="#searching-online-for-feeds-code-searchfeeds-code-code-coming-in-v2-0-code">6.3.8. Searching online for feeds: <code>searchfeeds</code> <code>[coming in v2.0]</code></a></li>
@@ -806,7 +806,7 @@ A entry can have any number of tags (including 0).
 <div class="sect3">
 <h4 id="Subscribe-command"><a class="link" href="#Subscribe-command">6.2.5. Subscribing to a feed: <code>subscribe</code></a></h4>
 <div class="paragraph">
-<p>Adds a feed to the manager and subscribes to updates.<br>
+<p>Adds a feed and subscribes to its updates.<br>
 All entries in the subscribed feed will be added to the reading list.<br></p>
 </div>
 <div class="paragraph">
@@ -819,7 +819,10 @@ All entries in the subscribed feed will be added to the reading list.<br></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>Title</code> and <code>Description</code> fields are automatically filled up if you do not provide them.
+<div class="paragraph">
+<p>The <code>Title</code> and <code>Description</code> fields are automatically filled up if you do not provide them.
+If no tags were specified, the feed entry will automatically be tagged with the URL&#8217;s (stripped) hostname, if possible.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -831,8 +834,10 @@ The <code>Title</code> and <code>Description</code> fields are automatically fil
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A feed can have any number of tags (including 0).<br>
-Imported entries from the feed will also be tagged with the same tags as the feed
+<div class="paragraph">
+<p>A feed can have any number of tags (including 0).<br>
+Imported entries from the feed will also be tagged with the same tags as the feed.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -843,16 +848,22 @@ Imported entries from the feed will also be tagged with the same tags as the fee
 <div class="ulist">
 <ul>
 <li>
-<p>Adds a feed whose name is “Engadget”.<br></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>subscribe l/https://www.engadget.com/rss.xml ti/Engadget t/Tech</code><br></p>
-</li>
-</ol>
-</div>
+<p>Adds a feed whose name is “Kattis”.<br>
+<code>subscribe l/https://open.kattis.com/rss/new-problems t/programming</code><br></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ug-sub/ug-subx-1.png" alt="ug subx 1" width="906">
+</div>
+<div class="title">Figure 2. Subscribing to a feed will add it to the feeds list.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ug-sub/ug-subx-2.png" alt="ug subx 2" width="400">
+</div>
+<div class="title">Figure 3. The links present in the feed are automatically imported to the reading list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -985,7 +996,7 @@ Refer to <a href="#List-Context">Section 6.4, &#8220;<code>Reading List</code> C
 <div class="content">
 <img src="images/ug-context/ug-contextx-list.png" alt="ug contextx list" width="790">
 </div>
-<div class="title">Figure 2. Switch to the list context to see all your saved entries</div>
+<div class="title">Figure 4. Switch to the list context to see all your saved entries</div>
 </div>
 </div>
 <div class="sect3">
@@ -1004,7 +1015,7 @@ Refer to <a href="#Archives-Context">Section 6.5, &#8220;<code>Archives</code> C
 <div class="content">
 <img src="images/ug-context/ug-contextx-archives.png" alt="ug contextx archives" width="790">
 </div>
-<div class="title">Figure 3. Switch to the archives context to see all your archived entries</div>
+<div class="title">Figure 5. Switch to the archives context to see all your archived entries</div>
 </div>
 </div>
 <div class="sect3">
@@ -1040,7 +1051,7 @@ Refer to <a href="#Results-Context">Section 6.6, &#8220;<code>Search Results</co
 <div class="content">
 <img src="images/ug-context/ug-contextx-bing.png" alt="ug contextx bing" width="790">
 </div>
-<div class="title">Figure 4. Bing search for the phrase <code>Trump</code></div>
+<div class="title">Figure 6. Bing search for the phrase <code>Trump</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1086,11 +1097,11 @@ Refer to <a href="#Results-Context">Section 6.6, &#8220;<code>Search Results</co
 <div class="content">
 <img src="images/ug-context/ug-contextx-gnews.png" alt="ug contextx gnews" width="790">
 </div>
-<div class="title">Figure 5. View the latest top news on google news using the <code>googlenews</code> command</div>
+<div class="title">Figure 7. View the latest top news on google news using the <code>googlenews</code> command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="searching-a-web-feed-code-feed-code"><a class="link" href="#searching-a-web-feed-code-feed-code">6.3.5. Searching a web feed: <code>feed</code></a></h4>
+<h4 id="previewing-a-web-feed-code-feed-code"><a class="link" href="#previewing-a-web-feed-code-feed-code">6.3.5. Previewing a web feed: <code>feed</code></a></h4>
 <div class="paragraph">
 <p>Opens a web feed at the URL for previewing.</p>
 </div>
@@ -1122,7 +1133,7 @@ Refer to <a href="#Results-Context">Section 6.6, &#8220;<code>Search Results</co
 <div class="content">
 <img src="images/ug-context/ug-contextx-feed.png" alt="ug contextx feed" width="790">
 </div>
-<div class="title">Figure 6. Open any feed and view its contents as a list of entries</div>
+<div class="title">Figure 8. Open any feed and view its contents as a list of entries</div>
 </div>
 </div>
 <div class="sect3">
@@ -1192,7 +1203,7 @@ Refer to <a href="#Feeds-Context">Section 6.7, &#8220;<code>Feeds</code> Context
 <div class="content">
 <img src="images/ug-context/ug-contextx-feeds.png" alt="ug contextx feeds" width="790">
 </div>
-<div class="title">Figure 7. Switch to the feeds context to view your subscribed feeds</div>
+<div class="title">Figure 9. Switch to the feeds context to view your subscribed feeds</div>
 </div>
 </div>
 <div class="sect3">
@@ -1378,7 +1389,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="content">
 <img src="images/ug-find/ug-findfieldx.png" alt="ug findfieldx" width="800">
 </div>
-<div class="title">Figure 8. Only entries with title containing <code>lambda</code> (red) or link containing <code>github</code> (orange) shown after find command</div>
+<div class="title">Figure 10. Only entries with title containing <code>lambda</code> (red) or link containing <code>github</code> (orange) shown after find command</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1398,7 +1409,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="content">
 <img src="images/ug-find/ug-findtagx.png" alt="ug findtagx" width="800">
 </div>
-<div class="title">Figure 9. Only entries with tag <code>infoTheory</code> shown after find command</div>
+<div class="title">Figure 11. Only entries with tag <code>infoTheory</code> shown after find command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1489,7 +1500,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="content">
 <img src="images/ug-view/BrowserView.png" alt="BrowserView" width="720">
 </div>
-<div class="title">Figure 10. A web page with many distracting elements like advertisements in browser view</div>
+<div class="title">Figure 12. A web page with many distracting elements like advertisements in browser view</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1509,7 +1520,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="content">
 <img src="images/ug-view/ReaderView.png" alt="ReaderView" width="720">
 </div>
-<div class="title">Figure 11. The same web page in reader view - with clutter stripped away more actual content is visible</div>
+<div class="title">Figure 13. The same web page in reader view - with clutter stripped away more actual content is visible</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1529,7 +1540,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="content">
 <img src="images/ug-view/ReaderViewSepia.png" alt="ReaderViewSepia" width="720">
 </div>
-<div class="title">Figure 12. A web page in reader view with sepia colour scheme</div>
+<div class="title">Figure 14. A web page in reader view with sepia colour scheme</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1549,7 +1560,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="content">
 <img src="images/ug-view/ReaderViewDark.png" alt="ReaderViewDark" width="720">
 </div>
-<div class="title">Figure 13. A web page in reader view with dark colour scheme</div>
+<div class="title">Figure 15. A web page in reader view with dark colour scheme</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1569,7 +1580,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="content">
 <img src="images/ug-view/ReaderViewBlack.png" alt="ReaderViewBlack" width="720">
 </div>
-<div class="title">Figure 14. A web page in reader view with black colour scheme</div>
+<div class="title">Figure 16. A web page in reader view with black colour scheme</div>
 </div>
 </div>
 <div class="sect3">
@@ -1863,13 +1874,13 @@ with other commands such as <a href="#findcommand"><code>find</code></a> to be m
 <div class="content">
 <img src="images/ug-archive/ug-archivex-1.png" alt="ug archivex 1" width="800">
 </div>
-<div class="title">Figure 15. Archiving the second entry<br></div>
+<div class="title">Figure 17. Archiving the second entry<br></div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ug-archive/ug-archivex-2.png" alt="ug archivex 2" width="350">
 </div>
-<div class="title">Figure 16. Entry is saved in the archives</div>
+<div class="title">Figure 18. Entry is saved in the archives</div>
 </div>
 </div>
 <div class="sect3">
@@ -1938,13 +1949,13 @@ you can archive parts of your reading list by a search criteria.</p>
 <div class="content">
 <img src="images/find_archiveall.png" alt="find archiveall" width="1200">
 </div>
-<div class="title">Figure 17. Filtering then archiving all infoTheory entries<br></div>
+<div class="title">Figure 19. Filtering then archiving all infoTheory entries<br></div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/find_archiveall_list.png" alt="find archiveall list" width="290">
 </div>
-<div class="title">Figure 18. Reading list now no longer has any infoTheory entries</div>
+<div class="title">Figure 20. Reading list now no longer has any infoTheory entries</div>
 </div>
 </div>
 <div class="sect3">
@@ -2973,4 +2984,4 @@ with other commands such as <a href="#findcommand"><code>find</code></a> to be m
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:52:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:53:40 UTC</div></div></div></body></html>
