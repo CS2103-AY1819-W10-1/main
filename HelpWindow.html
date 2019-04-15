@@ -45,8 +45,8 @@
 <li><a href="#custom-user-command-macro-code-macro-code-code-coming-in-v2-0-code">6.2.1. Custom user command macro: <code>macro</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#export-settings-and-data-to-an-export-file-code-export-code-code-coming-in-v2-0-code">6.2.2. Export settings and data to an export file : <code>export</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#import-settings-and-data-from-an-export-file-code-import-code-code-coming-in-v2-0-code">6.2.3. Import settings and data from an export file : <code>import</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#Add-Command">6.2.4. Adding a single entry: <code>add</code> <code>[updated v1.2]</code></a></li>
-<li><a href="#Subscribe-command">6.2.5. Subscribing to a feed: <code>subscribe</code> <code>[since v1.3]</code></a></li>
+<li><a href="#Add-Command">6.2.4. Adding a single entry: <code>add</code></a></li>
+<li><a href="#Subscribe-command">6.2.5. Subscribing to a feed: <code>subscribe</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">6.2.6. Listing entered commands : <code>history</code></a></li>
 <li><a href="#enabling-or-disabling-offline-mode-code-offline-code">6.2.7. Enabling or disabling offline mode : <code>offline</code></a></li>
 <li><a href="#viewing-help-code-help-code">6.2.8. Viewing help : <code>help</code></a></li>
@@ -56,12 +56,12 @@
 <li><a href="#Context-switch">6.3. Context-switching commands</a>
 <ul class="sectlevel3">
 <li><a href="#showing-your-reading-list-code-list-code">6.3.1. Showing your Reading List: <code>list</code></a></li>
-<li><a href="#showing-your-archives-code-archives-code-code-since-v1-3-code">6.3.2. Showing your Archives: <code>archives</code> <code>[since v1.3]</code></a></li>
-<li><a href="#searching-the-web-code-bing-code-code-since-v1-3-code">6.3.3. Searching the web: <code>bing</code> <code>[since v1.3]</code></a></li>
-<li><a href="#searching-for-news-code-googlenews-code-code-since-v1-3-code">6.3.4. Searching for news: <code>googlenews</code> <code>[since v1.3]</code></a></li>
-<li><a href="#searching-a-web-feed-code-feed-code-code-since-v1-2-code">6.3.5. Searching a web feed: <code>feed</code> <code>[since v1.2]</code></a></li>
+<li><a href="#showing-your-archives-code-archives-code">6.3.2. Showing your Archives: <code>archives</code></a></li>
+<li><a href="#searching-the-web-code-bing-code">6.3.3. Searching the web: <code>bing</code></a></li>
+<li><a href="#searching-for-news-code-googlenews-code">6.3.4. Searching for news: <code>googlenews</code></a></li>
+<li><a href="#searching-a-web-feed-code-feed-code">6.3.5. Searching a web feed: <code>feed</code></a></li>
 <li><a href="#searching-a-web-page-for-links-code-links-code-code-coming-in-v2-0-code">6.3.6. Searching a web page for links: <code>links</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#showing-feeds-code-feeds-code-code-since-v1-3-code">6.3.7. Showing feeds: <code>feeds</code> <code>[since v1.3]</code></a></li>
+<li><a href="#showing-feeds-code-feeds-code">6.3.7. Showing feeds: <code>feeds</code></a></li>
 <li><a href="#searching-online-for-feeds-code-searchfeeds-code-code-coming-in-v2-0-code">6.3.8. Searching online for feeds: <code>searchfeeds</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#showing-reading-statistics-code-stats-code-code-coming-in-v2-0-code">6.3.9. Showing reading statistics: <code>stats</code> <code>[coming in v2.0]</code></a></li>
 </ul>
@@ -69,47 +69,52 @@
 <li><a href="#List-Context">6.4. <code>Reading List</code> Context Commands</a>
 <ul class="sectlevel3">
 <li><a href="#editing-an-entry-code-edit-code">6.4.1. Editing an entry: <code>edit</code></a></li>
-<li><a href="#finding-entries-by-title-code-find-code">6.4.2. Finding entries by title: <code>find</code></a></li>
+<li><a href="#findcommand">6.4.2. Finding entries by title: <code>find</code></a></li>
 <li><a href="#selecting-an-entry-code-select-code">6.4.3. Selecting an entry: <code>select</code></a></li>
 <li><a href="#changing-the-view-mode-code-view-code">6.4.4. Changing the view mode: <code>view</code></a></li>
-<li><a href="#refreshing-an-entry-code-refresh-code-code-since-v1-3-code">6.4.5. Refreshing an entry: <code>refresh</code> <code>[since v1.3]</code></a></li>
-<li><a href="#refreshing-all-entries-code-refreshall-code">6.4.6. Refreshing all entries: <code>refreshall</code></a></li>
+<li><a href="#refreshing-an-entry-code-refresh-code">6.4.5. Refreshing an entry: <code>refresh</code></a></li>
+<li><a href="#refreshallcommand">6.4.6. Refreshing all displayed entries: <code>refreshall</code></a></li>
 <li><a href="#marking-an-entry-as-read-code-read-code-code-coming-in-v2-0-code">6.4.7. Marking an entry as read: <code>read</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#marking-an-entry-as-unread-code-unread-code-code-coming-in-v2-0-code">6.4.8. Marking an entry as unread: <code>unread</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#sharing-an-entry-code-share-code-code-coming-in-v2-0-code">6.4.9. Sharing an entry: <code>share</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#archiving-an-entry-code-archive-code-code-since-v1-3-code">6.4.10. Archiving an entry: <code>archive</code> <code>[since v1.3]</code></a></li>
-<li><a href="#deleting-an-entry-code-delete-code-code-updated-v1-3-code">6.4.11. Deleting an entry: <code>delete</code> <code>[updated v1.3]</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">6.4.12. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#archiving-an-entry-code-archive-code">6.4.10. Archiving an entry: <code>archive</code></a></li>
+<li><a href="#archiveallcommand">6.4.11. Archiving all displayed entries: <code>archiveall</code></a></li>
+<li><a href="#deleting-an-entry-code-delete-code">6.4.12. Deleting an entry: <code>delete</code></a></li>
+<li><a href="#deleting-all-displayed-entries-code-deleteall-code">6.4.13. Deleting all displayed entries: <code>deleteall</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">6.4.14. Clearing all entries : <code>clear</code></a></li>
 </ul>
 </li>
 <li><a href="#Archives-Context">6.5. <code>Archives</code> Context Commands</a>
 <ul class="sectlevel3">
-<li><a href="#unarchiving-an-entry-code-unarchive-code-code-since-v1-3-code">6.5.1. Unarchiving an entry: <code>unarchive</code> <code>[since v1.3]</code></a></li>
-<li><a href="#deleting-an-entry-code-delete-code-code-since-v1-3-code">6.5.2. Deleting an entry: <code>delete</code> <code>[since v1.3]</code></a></li>
-<li><a href="#selecting-an-entry-code-select-code-2">6.5.3. Selecting an entry: <code>select</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code-code-coming-in-v2-0-code">6.5.4. Clearing all entries : <code>clear</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#unarchiving-an-entry-code-unarchive-code">6.5.1. Unarchiving an entry: <code>unarchive</code></a></li>
+<li><a href="#deleting-an-entry-code-delete-code-2">6.5.2. Deleting an entry: <code>delete</code></a></li>
+<li><a href="#deleting-all-displayed-entries-code-deleteall-code-2">6.5.3. Deleting all displayed entries: <code>deleteall</code></a></li>
+<li><a href="#selecting-an-entry-code-select-code-2">6.5.4. Selecting an entry: <code>select</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code-2">6.5.5. Clearing all entries : <code>clear</code></a></li>
 </ul>
 </li>
 <li><a href="#Results-Context">6.6. <code>Search Results</code> Context Commands</a>
 <ul class="sectlevel3">
-<li><a href="#adding-entries-code-addindex-code-code-since-v1-3-code">6.6.1. Adding entries: <code>addindex</code> <code>[since v1.3]</code></a></li>
-<li><a href="#selecting-an-entry-code-select-code-code-since-v1-3-code">6.6.2. Selecting an entry: <code>select</code> <code>[since v1.3]</code></a></li>
-<li><a href="#changing-the-view-mode-code-view-code-code-since-v1-2-updated-v1-3-code">6.6.3. Changing the view mode: <code>view</code> <code>[since v1.2, updated v1.3]</code></a></li>
+<li><a href="#adding-entries-code-addindex-code">6.6.1. Adding entries: <code>addindex</code></a></li>
+<li><a href="#adding-all-displayed-entries-code-addall-code">6.6.2. Adding all displayed entries: <code>addall</code></a></li>
+<li><a href="#selecting-an-entry-code-select-code-3">6.6.3. Selecting an entry: <code>select</code></a></li>
+<li><a href="#changing-the-view-mode-code-view-code-2">6.6.4. Changing the view mode: <code>view</code></a></li>
 </ul>
 </li>
 <li><a href="#Feeds-Context">6.7. <code>Feeds</code> Context Commands</a>
 <ul class="sectlevel3">
-<li><a href="#updating-entries-from-feeds-code-refresh-code-code-since-v1-3-code">6.7.1. Updating entries from feeds: <code>refresh</code> <code>[since v1.3]</code></a></li>
-<li><a href="#selecting-a-feed-code-select-code-code-since-v1-3-code">6.7.2. Selecting a feed: <code>select</code> <code>[since v1.3]</code></a></li>
-<li><a href="#editing-a-feed-code-edit-code-code-coming-in-v2-0-code">6.7.3. Editing a feed: <code>edit</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#unsubscribing-from-a-feed-code-unsubscribe-code-code-since-v1-3-code">6.7.4. Unsubscribing from a feed: <code>unsubscribe</code> <code>[since v1.3]</code></a></li>
-<li><a href="#clearing-all-feeds-code-clear-code-code-coming-in-v2-0-code">6.7.5. Clearing all feeds : <code>clear</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#updating-entries-from-feeds-code-refresh-code">6.7.1. Updating entries from feeds: <code>refresh</code></a></li>
+<li><a href="#updating-entries-from-all-currently-displayed-feeds-code-addall-code">6.7.2. Updating entries from all currently displayed feeds: <code>addall</code></a></li>
+<li><a href="#selecting-a-feed-code-select-code">6.7.3. Selecting a feed: <code>select</code></a></li>
+<li><a href="#editing-a-feed-code-edit-code-code-coming-in-v2-0-code">6.7.4. Editing a feed: <code>edit</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#unsubscribing-from-a-feed-code-unsubscribe-code">6.7.5. Unsubscribing from a feed: <code>unsubscribe</code></a></li>
+<li><a href="#clearing-all-feeds-code-clear-code-code-coming-in-v2-0-code">6.7.6. Clearing all feeds : <code>clear</code> <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#Searchfeeds-Context">6.8. <code>Feeds Search</code> Context Commands <code>[coming in v2.0]</code></a>
 <ul class="sectlevel3">
 <li><a href="#subscribing-to-a-feed-code-subscribe-code">6.8.1. Subscribing to a feed: <code>subscribe</code></a></li>
-<li><a href="#selecting-a-feed-code-select-code">6.8.2. Selecting a feed: <code>select</code></a></li>
+<li><a href="#selecting-a-feed-code-select-code-2">6.8.2. Selecting a feed: <code>select</code></a></li>
 </ul>
 </li>
 </ul>
@@ -252,13 +257,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : shows your reading list of saved links</p>
 </li>
 <li>
-<p><strong><code>select</code></strong><code>1</code> : selects the first entry for reading</p>
-</li>
-<li>
 <p><strong><code>add</code></strong><code>l/https://en.wikipedia.org/wiki/Special:Random</code> : adds a random Wikipedia page to your reading list</p>
 </li>
 <li>
-<p><strong><code>select</code></strong><code>7</code> : selects the Wikipedia page for reading</p>
+<p><strong><code>select</code></strong><code>1</code> : selects the Wikipedia page for reading</p>
+</li>
+<li>
+<p><strong><code>add</code></strong><code>l/https://en.wikipedia.org/wiki/Main_Page</code> : adds the Wikipedia main page to your reading list</p>
 </li>
 <li>
 <p><strong><code>googlenews</code></strong> : displays the current top stories from Google News</p>
@@ -270,13 +275,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : goes back to your reading list</p>
 </li>
 <li>
-<p><strong><code>select</code></strong><code>8</code> : selects the just-added news article for reading</p>
+<p><strong><code>select</code></strong><code>3</code> : selects the just-added news article for reading</p>
 </li>
 <li>
 <p><strong><code>view</code></strong><code>reader</code> : switches to a more comfortable reading experience</p>
 </li>
 <li>
-<p><strong><code>archive</code></strong><code>8</code> : archives the news article</p>
+<p><strong><code>archive</code></strong><code>3</code> : archives the news article</p>
 </li>
 <li>
 <p><strong><code>archives</code></strong> : shows your archived links</p>
@@ -294,7 +299,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : goes back to your reading list</p>
 </li>
 <li>
-<p><strong><code>select</code></strong><code>8</code> : selects one of the just-added news articles for reading</p>
+<p><strong><code>refresh</code></strong><code>1</code> : refreshes the first entry to get most recent version from internet</p>
+</li>
+<li>
+<p><strong><code>select</code></strong><code>1</code> : views the updated entry</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -745,7 +753,7 @@ The <code>Discover</code> button brings you to the Search Result context!
 </div>
 </div>
 <div class="sect3">
-<h4 id="Add-Command"><a class="link" href="#Add-Command">6.2.4. Adding a single entry: <code>add</code> <code>[updated v1.2]</code></a></h4>
+<h4 id="Add-Command"><a class="link" href="#Add-Command">6.2.4. Adding a single entry: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a single entry from a link URL to your reading list.
 Content is automatically downloaded onto your personal computer.</p>
@@ -796,7 +804,7 @@ A entry can have any number of tags (including 0).
 </div>
 </div>
 <div class="sect3">
-<h4 id="Subscribe-command"><a class="link" href="#Subscribe-command">6.2.5. Subscribing to a feed: <code>subscribe</code> <code>[since v1.3]</code></a></h4>
+<h4 id="Subscribe-command"><a class="link" href="#Subscribe-command">6.2.5. Subscribing to a feed: <code>subscribe</code></a></h4>
 <div class="paragraph">
 <p>Adds a feed to the manager and subscribes to updates.<br>
 All entries in the subscribed feed will be added to the reading list.<br></p>
@@ -824,7 +832,7 @@ The <code>Title</code> and <code>Description</code> fields are automatically fil
 </td>
 <td class="content">
 A feed can have any number of tags (including 0).<br>
-Imported entries from the feed will also be tagged with the same tags as the feed <code>[since v1.4]</code>
+Imported entries from the feed will also be tagged with the same tags as the feed
 </td>
 </tr>
 </table>
@@ -981,7 +989,7 @@ Refer to <a href="#List-Context">Section 6.4, &#8220;<code>Reading List</code> C
 </div>
 </div>
 <div class="sect3">
-<h4 id="showing-your-archives-code-archives-code-code-since-v1-3-code"><a class="link" href="#showing-your-archives-code-archives-code-code-since-v1-3-code">6.3.2. Showing your Archives: <code>archives</code> <code>[since v1.3]</code></a></h4>
+<h4 id="showing-your-archives-code-archives-code"><a class="link" href="#showing-your-archives-code-archives-code">6.3.2. Showing your Archives: <code>archives</code></a></h4>
 <div class="paragraph">
 <p>Shows your Archives of all archived entries.</p>
 </div>
@@ -1000,7 +1008,7 @@ Refer to <a href="#Archives-Context">Section 6.5, &#8220;<code>Archives</code> C
 </div>
 </div>
 <div class="sect3">
-<h4 id="searching-the-web-code-bing-code-code-since-v1-3-code"><a class="link" href="#searching-the-web-code-bing-code-code-since-v1-3-code">6.3.3. Searching the web: <code>bing</code> <code>[since v1.3]</code></a></h4>
+<h4 id="searching-the-web-code-bing-code"><a class="link" href="#searching-the-web-code-bing-code">6.3.3. Searching the web: <code>bing</code></a></h4>
 <div class="paragraph">
 <p>Searches <a href="https://www.bing.com">Bing</a> for entries that you can subsequently add.</p>
 </div>
@@ -1036,7 +1044,7 @@ Refer to <a href="#Results-Context">Section 6.6, &#8220;<code>Search Results</co
 </div>
 </div>
 <div class="sect3">
-<h4 id="searching-for-news-code-googlenews-code-code-since-v1-3-code"><a class="link" href="#searching-for-news-code-googlenews-code-code-since-v1-3-code">6.3.4. Searching for news: <code>googlenews</code> <code>[since v1.3]</code></a></h4>
+<h4 id="searching-for-news-code-googlenews-code"><a class="link" href="#searching-for-news-code-googlenews-code">6.3.4. Searching for news: <code>googlenews</code></a></h4>
 <div class="paragraph">
 <p>Searches <a href="https://news.google.com/">Google News</a> for entries that you can subsequently add.</p>
 </div>
@@ -1082,7 +1090,7 @@ Refer to <a href="#Results-Context">Section 6.6, &#8220;<code>Search Results</co
 </div>
 </div>
 <div class="sect3">
-<h4 id="searching-a-web-feed-code-feed-code-code-since-v1-2-code"><a class="link" href="#searching-a-web-feed-code-feed-code-code-since-v1-2-code">6.3.5. Searching a web feed: <code>feed</code> <code>[since v1.2]</code></a></h4>
+<h4 id="searching-a-web-feed-code-feed-code"><a class="link" href="#searching-a-web-feed-code-feed-code">6.3.5. Searching a web feed: <code>feed</code></a></h4>
 <div class="paragraph">
 <p>Opens a web feed at the URL for previewing.</p>
 </div>
@@ -1142,7 +1150,7 @@ Refer to <a href="#Results-Context">Section 6.6, &#8220;<code>Search Results</co
 </div>
 </div>
 <div class="sect3">
-<h4 id="showing-feeds-code-feeds-code-code-since-v1-3-code"><a class="link" href="#showing-feeds-code-feeds-code-code-since-v1-3-code">6.3.7. Showing feeds: <code>feeds</code> <code>[since v1.3]</code></a></h4>
+<h4 id="showing-feeds-code-feeds-code"><a class="link" href="#showing-feeds-code-feeds-code">6.3.7. Showing feeds: <code>feeds</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of feeds being followed.</p>
 </div>
@@ -1240,7 +1248,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="sect2">
 <h3 id="List-Context"><a class="link" href="#List-Context">6.4. <code>Reading List</code> Context Commands</a></h3>
 <div class="paragraph">
-<p>To add entries to the reading list, please refer to <a href="#Add-Command">Section 6.2.4, &#8220;Adding a single entry: <code>add</code> <code>[updated v1.2]</code>&#8221;</a>.</p>
+<p>To add entries to the reading list, please refer to <a href="#Add-Command">Section 6.2.4, &#8220;Adding a single entry: <code>add</code>&#8221;</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="editing-an-entry-code-edit-code"><a class="link" href="#editing-an-entry-code-edit-code">6.4.1. Editing an entry: <code>edit</code></a></h4>
@@ -1302,7 +1310,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-entries-by-title-code-find-code"><a class="link" href="#finding-entries-by-title-code-find-code">6.4.2. Finding entries by title: <code>find</code></a></h4>
+<h4 id="findcommand"><a class="link" href="#findcommand">6.4.2. Finding entries by title: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds entries whose fields contain any of the given keyphrases.<br></p>
 </div>
@@ -1565,9 +1573,12 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="refreshing-an-entry-code-refresh-code-code-since-v1-3-code"><a class="link" href="#refreshing-an-entry-code-refresh-code-code-since-v1-3-code">6.4.5. Refreshing an entry: <code>refresh</code> <code>[since v1.3]</code></a></h4>
+<h4 id="refreshing-an-entry-code-refresh-code"><a class="link" href="#refreshing-an-entry-code-refresh-code">6.4.5. Refreshing an entry: <code>refresh</code></a></h4>
 <div class="paragraph">
-<p>Refreshes the specified entry to get the latest version of its content.</p>
+<p>If you added an entry a long time ago and you think that the saved page might be outdated,
+you can fetch the most updated version from the internet by using this command.
+This is helpful for pages such as Wikipedia, which may change often!
+See the <a href="#refreshallcommand"><code>refreshall</code> command</a> which may be useful to use if you need to refresh a large number of entries at the same time.</p>
 </div>
 <div class="paragraph">
 <p><span class="underline">Format</span>: <code>refresh INDEX</code></p>
@@ -1611,9 +1622,92 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="refreshing-all-entries-code-refreshall-code"><a class="link" href="#refreshing-all-entries-code-refreshall-code">6.4.6. Refreshing all entries: <code>refreshall</code></a></h4>
+<h4 id="refreshallcommand"><a class="link" href="#refreshallcommand">6.4.6. Refreshing all displayed entries: <code>refreshall</code></a></h4>
 <div class="paragraph">
-<p>Dummy content</p>
+<p>Refreshes all currently displayed entries.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>refreshall</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Refreshes only entries that are currently displayed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The application may be unresponsive for a short while when refreshing a large number of entries.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may refer to the <a href="#archiveallcommand"><code>archiveall</code> command</a>
+for an example on how this command may be combined
+with other commands such as <a href="#findcommand"><code>find</code></a> to be more useful.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Refresh <strong>all</strong> entries in the reading list. (Will take a long time if you have a large reading list!)</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>refreshall</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Refresh all entries tagged “infoTheory”</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>find t/infoTheory</code><br></p>
+</li>
+<li>
+<p><code>refreshall</code><br></p>
+</li>
+<li>
+<p><code>list</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -1718,7 +1812,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="archiving-an-entry-code-archive-code-code-since-v1-3-code"><a class="link" href="#archiving-an-entry-code-archive-code-code-since-v1-3-code">6.4.10. Archiving an entry: <code>archive</code> <code>[since v1.3]</code></a></h4>
+<h4 id="archiving-an-entry-code-archive-code"><a class="link" href="#archiving-an-entry-code-archive-code">6.4.10. Archiving an entry: <code>archive</code></a></h4>
 <div class="paragraph">
 <p>Moves the specified entry to the archive and removes its downloaded content.</p>
 </div>
@@ -1779,7 +1873,82 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-entry-code-delete-code-code-updated-v1-3-code"><a class="link" href="#deleting-an-entry-code-delete-code-code-updated-v1-3-code">6.4.11. Deleting an entry: <code>delete</code> <code>[updated v1.3]</code></a></h4>
+<h4 id="archiveallcommand"><a class="link" href="#archiveallcommand">6.4.11. Archiving all displayed entries: <code>archiveall</code></a></h4>
+<div class="paragraph">
+<p>If you want to archive many entries at the same time,
+you can make use of this command to move all the currently displayed entries to the archive,
+removing all entries' downloaded content at the same time.
+By using a <a href="#findcommand"><code>find</code> command</a> first before executing <code>archiveall</code>,
+you can archive parts of your reading list by a search criteria.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>archiveall</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Archives only entries that are currently displayed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Archive <strong>all</strong> entries in the reading list</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>archiveall</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Archive all entries tagged “infoTheory”</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>find t/infoTheory</code><br></p>
+</li>
+<li>
+<p><code>archiveall</code><br></p>
+</li>
+<li>
+<p><code>list</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/find_archiveall.png" alt="find archiveall" width="1200">
+</div>
+<div class="title">Figure 17. Filtering then archiving all infoTheory entries<br></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/find_archiveall_list.png" alt="find archiveall list" width="290">
+</div>
+<div class="title">Figure 18. Reading list now no longer has any infoTheory entries</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">6.4.12. Deleting an entry: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified entry from the reading list and removes its downloaded content.</p>
 </div>
@@ -1838,7 +2007,93 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">6.4.12. Clearing all entries : <code>clear</code></a></h4>
+<h4 id="deleting-all-displayed-entries-code-deleteall-code"><a class="link" href="#deleting-all-displayed-entries-code-deleteall-code">6.4.13. Deleting all displayed entries: <code>deleteall</code></a></h4>
+<div class="paragraph">
+<p>Deletes all currently displayed entries from the reading list, and removes the entries' downloaded content.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>deleteall</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes only the entries that are currently displayed</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This operation is IRREVERSIBLE! Please take care not to accidentally delete entries you may wish to keep.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may refer to the <a href="#archiveallcommand"><code>archiveall</code> command</a>
+for an example on how this command may be combined
+with other commands such as <a href="#findcommand"><code>find</code></a> to be more useful.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delete all entries in the reading list.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>deleteall</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Delete all entries whose titles contain “Trump”.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>find ti/Trump</code><br></p>
+</li>
+<li>
+<p><code>deleteall</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">6.4.14. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all saved entries from the manager.</p>
 </div>
@@ -1850,7 +2105,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="sect2">
 <h3 id="Archives-Context"><a class="link" href="#Archives-Context">6.5. <code>Archives</code> Context Commands</a></h3>
 <div class="sect3">
-<h4 id="unarchiving-an-entry-code-unarchive-code-code-since-v1-3-code"><a class="link" href="#unarchiving-an-entry-code-unarchive-code-code-since-v1-3-code">6.5.1. Unarchiving an entry: <code>unarchive</code> <code>[since v1.3]</code></a></h4>
+<h4 id="unarchiving-an-entry-code-unarchive-code"><a class="link" href="#unarchiving-an-entry-code-unarchive-code">6.5.1. Unarchiving an entry: <code>unarchive</code></a></h4>
 <div class="paragraph">
 <p>Moves the specified entry from the archives to the reading list.</p>
 </div>
@@ -1899,7 +2154,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-entry-code-delete-code-code-since-v1-3-code"><a class="link" href="#deleting-an-entry-code-delete-code-code-since-v1-3-code">6.5.2. Deleting an entry: <code>delete</code> <code>[since v1.3]</code></a></h4>
+<h4 id="deleting-an-entry-code-delete-code-2"><a class="link" href="#deleting-an-entry-code-delete-code-2">6.5.2. Deleting an entry: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified entry from the archives.</p>
 </div>
@@ -1945,7 +2200,93 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-an-entry-code-select-code-2"><a class="link" href="#selecting-an-entry-code-select-code-2">6.5.3. Selecting an entry: <code>select</code></a></h4>
+<h4 id="deleting-all-displayed-entries-code-deleteall-code-2"><a class="link" href="#deleting-all-displayed-entries-code-deleteall-code-2">6.5.3. Deleting all displayed entries: <code>deleteall</code></a></h4>
+<div class="paragraph">
+<p>Deletes all currently displayed entries from the archives.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>deleteall</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes only the entries that are currently displayed</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This operation is IRREVERSIBLE! Please take care not to accidentally delete entries you may wish to keep.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may refer to the <a href="#archiveallcommand"><code>archiveall</code> command</a>
+for an example on how this command may be combined
+with other commands such as <a href="#findcommand"><code>find</code></a> to be more useful.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delete all entries in the reading list.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>deleteall</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Delete all entries whose titles contain “Trump”.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p><code>find ti/Trump</code><br></p>
+</li>
+<li>
+<p><code>deleteall</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-an-entry-code-select-code-2"><a class="link" href="#selecting-an-entry-code-select-code-2">6.5.4. Selecting an entry: <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the entry identified by the index number used in the displayed entry list for reading.</p>
 </div>
@@ -1979,7 +2320,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code-code-coming-in-v2-0-code"><a class="link" href="#clearing-all-entries-code-clear-code-code-coming-in-v2-0-code">6.5.4. Clearing all entries : <code>clear</code> <code>[coming in v2.0]</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code-2"><a class="link" href="#clearing-all-entries-code-clear-code-2">6.5.5. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all archived entries from the manager.</p>
 </div>
@@ -1991,7 +2332,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="sect2">
 <h3 id="Results-Context"><a class="link" href="#Results-Context">6.6. <code>Search Results</code> Context Commands</a></h3>
 <div class="sect3">
-<h4 id="adding-entries-code-addindex-code-code-since-v1-3-code"><a class="link" href="#adding-entries-code-addindex-code-code-since-v1-3-code">6.6.1. Adding entries: <code>addindex</code> <code>[since v1.3]</code></a></h4>
+<h4 id="adding-entries-code-addindex-code"><a class="link" href="#adding-entries-code-addindex-code">6.6.1. Adding entries: <code>addindex</code></a></h4>
 <div class="paragraph">
 <p>Adds entries from results to the reading list. Content is automatically downloaded to disk.</p>
 </div>
@@ -2000,9 +2341,6 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 <div class="paragraph">
 <p><span class="underline">Format</span>: <code>addindex INDEX [ti/TITLE_OVERRIDE] [d/DESCRIPTION_OVERRIDE] [t/TAG]&#8230;&#8203;</code> <code>[coming in v2.0]</code></p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Format</span>: <code>addindex all</code> <code>[coming in v2.0]</code></p>
 </div>
 <div class="paragraph">
 <p><span class="underline">Examples</span>:</p>
@@ -2033,7 +2371,93 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-an-entry-code-select-code-code-since-v1-3-code"><a class="link" href="#selecting-an-entry-code-select-code-code-since-v1-3-code">6.6.2. Selecting an entry: <code>select</code> <code>[since v1.3]</code></a></h4>
+<h4 id="adding-all-displayed-entries-code-addall-code"><a class="link" href="#adding-all-displayed-entries-code-addall-code">6.6.2. Adding all displayed entries: <code>addall</code></a></h4>
+<div class="paragraph">
+<p>Adds all currently displayed entries from results to the reading list. Content is automatically downloaded to disk.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>addall</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds only the entries that are currently displayed</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The application may be unresponsive for a short while when adding entries from a large search result.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may refer to the <a href="#archiveallcommand"><code>archiveall</code> command</a>
+for an example on how this command may be combined
+with other commands such as <a href="#findcommand"><code>find</code></a> to be more useful.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add all entries that result from searching "Lambda Calculus" on bing.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>bing Lambda Calculus</code><br></p>
+</li>
+<li>
+<p><code>addall</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Add all entries that result from searching "Lambda Calculus" on bing, but only those with a .org domain.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>bing Lambda Calculus</code><br></p>
+</li>
+<li>
+<p><code>find l/.org</code><br></p>
+</li>
+<li>
+<p><code>addall</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-an-entry-code-select-code-3"><a class="link" href="#selecting-an-entry-code-select-code-3">6.6.3. Selecting an entry: <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the entry identified by the index number used in the displayed entry list for viewing.</p>
 </div>
@@ -2076,7 +2500,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-the-view-mode-code-view-code-code-since-v1-2-updated-v1-3-code"><a class="link" href="#changing-the-view-mode-code-view-code-code-since-v1-2-updated-v1-3-code">6.6.3. Changing the view mode: <code>view</code> <code>[since v1.2, updated v1.3]</code></a></h4>
+<h4 id="changing-the-view-mode-code-view-code-2"><a class="link" href="#changing-the-view-mode-code-view-code-2">6.6.4. Changing the view mode: <code>view</code></a></h4>
 <div class="paragraph">
 <p>Changes the view mode between the original browser or a more comfortable reading experience.</p>
 </div>
@@ -2128,7 +2552,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <p>To subscribe to a feed, please refer to <a id="Subscribe-Command"></a>.</p>
 </div>
 <div class="sect3">
-<h4 id="updating-entries-from-feeds-code-refresh-code-code-since-v1-3-code"><a class="link" href="#updating-entries-from-feeds-code-refresh-code-code-since-v1-3-code">6.7.1. Updating entries from feeds: <code>refresh</code> <code>[since v1.3]</code></a></h4>
+<h4 id="updating-entries-from-feeds-code-refresh-code"><a class="link" href="#updating-entries-from-feeds-code-refresh-code">6.7.1. Updating entries from feeds: <code>refresh</code></a></h4>
 <div class="paragraph">
 <p>Refreshes a feed.</p>
 </div>
@@ -2181,7 +2605,93 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-feed-code-select-code-code-since-v1-3-code"><a class="link" href="#selecting-a-feed-code-select-code-code-since-v1-3-code">6.7.2. Selecting a feed: <code>select</code> <code>[since v1.3]</code></a></h4>
+<h4 id="updating-entries-from-all-currently-displayed-feeds-code-addall-code"><a class="link" href="#updating-entries-from-all-currently-displayed-feeds-code-addall-code">6.7.2. Updating entries from all currently displayed feeds: <code>addall</code></a></h4>
+<div class="paragraph">
+<p>Refreshes all currently displayed feeds.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Format</span>: <code>refreshall</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Refreshes only the feeds that are currently displayed</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The application may be unresponsive for a short while when adding entries from a large feed, or when refreshing many feeds.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may refer to the <a href="#archiveallcommand"><code>archiveall</code> command</a>
+for an example on how this command may be combined
+with other commands such as <a href="#findcommand"><code>find</code></a> to be more useful.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="underline">Examples</span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Refresh all subscribed feeds</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>feeds</code><br></p>
+</li>
+<li>
+<p><code>refreshall</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Refresh all news feeds</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>feeds</code><br></p>
+</li>
+<li>
+<p><code>find ti/News</code><br></p>
+</li>
+<li>
+<p><code>refreshall</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-a-feed-code-select-code"><a class="link" href="#selecting-a-feed-code-select-code">6.7.3. Selecting a feed: <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the feed identified by the index number used in the displayed feed list and displays its entries.</p>
 </div>
@@ -2227,7 +2737,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-feed-code-edit-code-code-coming-in-v2-0-code"><a class="link" href="#editing-a-feed-code-edit-code-code-coming-in-v2-0-code">6.7.3. Editing a feed: <code>edit</code> <code>[coming in v2.0]</code></a></h4>
+<h4 id="editing-a-feed-code-edit-code-code-coming-in-v2-0-code"><a class="link" href="#editing-a-feed-code-edit-code-code-coming-in-v2-0-code">6.7.4. Editing a feed: <code>edit</code> <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing feed in the manager.</p>
 </div>
@@ -2286,7 +2796,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="unsubscribing-from-a-feed-code-unsubscribe-code-code-since-v1-3-code"><a class="link" href="#unsubscribing-from-a-feed-code-unsubscribe-code-code-since-v1-3-code">6.7.4. Unsubscribing from a feed: <code>unsubscribe</code> <code>[since v1.3]</code></a></h4>
+<h4 id="unsubscribing-from-a-feed-code-unsubscribe-code"><a class="link" href="#unsubscribing-from-a-feed-code-unsubscribe-code">6.7.5. Unsubscribing from a feed: <code>unsubscribe</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified feeds from the manager and unsubscribes from them, but existing entries obtained from that feed will not be deleted.</p>
 </div>
@@ -2316,16 +2826,6 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="ulist">
 <ul>
 <li>
-<p>Delete all feeds. <code>[coming in v2.0]</code></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>unsubscribeall</code></p>
-</li>
-</ol>
-</div>
-</li>
-<li>
 <p>Delete the 2nd shown feed.</p>
 <div class="olist arabic">
 <ol class="arabic">
@@ -2339,7 +2839,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-feeds-code-clear-code-code-coming-in-v2-0-code"><a class="link" href="#clearing-all-feeds-code-clear-code-code-coming-in-v2-0-code">6.7.5. Clearing all feeds : <code>clear</code> <code>[coming in v2.0]</code></a></h4>
+<h4 id="clearing-all-feeds-code-clear-code-code-coming-in-v2-0-code"><a class="link" href="#clearing-all-feeds-code-clear-code-code-coming-in-v2-0-code">6.7.6. Clearing all feeds : <code>clear</code> <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Clears all followed feeds from the manager.</p>
 </div>
@@ -2417,7 +2917,7 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-feed-code-select-code"><a class="link" href="#selecting-a-feed-code-select-code">6.8.2. Selecting a feed: <code>select</code></a></h4>
+<h4 id="selecting-a-feed-code-select-code-2"><a class="link" href="#selecting-a-feed-code-select-code-2">6.8.2. Selecting a feed: <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the feed identified by the index number used in the displayed feed list.</p>
 </div>
@@ -2473,4 +2973,4 @@ Refer to <a href="#Searchfeeds-Context">Section 6.8, &#8220;<code>Feeds Search</
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:13:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:20:51 UTC</div></div></div></body></html>
